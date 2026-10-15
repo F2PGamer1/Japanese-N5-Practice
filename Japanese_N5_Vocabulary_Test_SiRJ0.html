@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Japanese N5 vocabulary and kana practice with Bangla meanings, pronunciation, progress tracking and mobile-friendly quizzes.">
+<title>Japanese N5 Vocabulary Practice - Created By SiRJ0</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+:root{color-scheme:dark;--bg:#090e1b;--panel:#111a2b;--panel2:#172238;--line:#283750;--text:#f2f6ff;--muted:#98a8c2;--accent:#55e0c0;--accent2:#8d83ff;--good:#49dfa0;--bad:#ff7186;--warn:#ffc86a;--shadow:0 22px 70px #0005;--radius:22px;--font:'DM Sans','Noto Sans Bengali','Noto Sans JP',sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 5% 0%,#234b6340,transparent 38%),radial-gradient(ellipse at 100% 90%,#5d4f9a24,transparent 40%),var(--bg);color:var(--text);font-family:var(--font);padding:clamp(12px,3vw,30px);overflow-x:hidden}
+button,select,input{font:inherit}button{touch-action:manipulation}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #55e0c0a8;outline-offset:3px}
+.app{max-width:960px;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,var(--accent),#5aa6ff);color:#071421;font-weight:900;font-size:19px;box-shadow:0 8px 26px #55e0c026}.brand-title{font-size:clamp(15px,2.7vw,20px);font-weight:800;letter-spacing:-.5px}.brand-sub{font-size:12px;color:var(--muted);margin-top:2px}.top-actions{display:flex;gap:8px}.icon-btn,.small-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:#111a2bcc;color:var(--text);border-radius:13px;min-height:42px;padding:0 13px;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}.icon-btn{width:44px;padding:0;font-size:18px}.icon-btn:hover,.small-btn:hover{border-color:#55e0c080;background:var(--panel2)}button:active{transform:scale(.98)}.panel{background:linear-gradient(150deg,#121c2eF2,#0e1728F2);border:1px solid #2b3b54;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.hero{padding:clamp(22px,4vw,38px);position:relative;isolation:isolate}.hero:after{content:"あ";position:absolute;right:5%;top:-30px;font-family:'Noto Sans JP',sans-serif;font-size:clamp(130px,23vw,230px);font-weight:700;color:#55e0c009;z-index:-1;pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}.eyebrow:before{content:"";width:20px;height:2px;background:var(--accent);border-radius:9px}.hero h1{font-size:clamp(27px,5.3vw,46px);line-height:1.1;letter-spacing:-1.6px;margin:14px 0 10px;max-width:620px}.gradient-text{background:linear-gradient(100deg,#f4f8ff 10%,var(--accent) 65%,#aaa2ff);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);line-height:1.65;margin:0;max-width:570px;font-size:14px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.stat{padding:15px 16px;background:#111a2bcc;border:1px solid var(--line);border-radius:17px;min-width:0}.stat-label{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}.stat-value{font-size:clamp(20px,3.5vw,28px);font-weight:800;letter-spacing:-.7px;margin-top:7px;overflow-wrap:anywhere}.stat-note{font-size:10px;color:var(--muted);margin-top:3px}.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:16px;margin-top:16px}.section{padding:clamp(18px,3vw,25px)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:19px}.section-title{font-size:17px;font-weight:800;letter-spacing:-.3px}.section-desc{font-size:12px;color:var(--muted);margin-top:4px}.pill{font-size:11px;color:var(--accent);background:#55e0c014;border:1px solid #55e0c033;padding:6px 9px;border-radius:999px;white-space:nowrap}.field-label{display:block;color:#bac7db;font-size:12px;font-weight:700;margin:15px 0 8px}.mode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.mode{border:1px solid var(--line);border-radius:14px;background:#0d1627;color:var(--muted);padding:13px 8px;min-height:75px;text-align:center;cursor:pointer;transition:all .2s}.mode .mode-icon{font-size:19px;display:block;margin-bottom:7px}.mode .mode-name{font-size:12px;font-weight:700}.mode.active{background:linear-gradient(145deg,#55e0c01c,#8d83ff16);border-color:#55e0c0a0;color:var(--text);box-shadow:inset 0 0 0 1px #55e0c014}.mode.active .mode-icon{color:var(--accent)}.select-wrap{position:relative}.select{width:100%;border:1px solid var(--line);border-radius:13px;padding:13px 40px 13px 13px;background:#0b1424;color:var(--text);min-height:48px;appearance:none}.select-wrap:after{content:"⌄";position:absolute;right:14px;top:10px;color:var(--muted);pointer-events:none;font-size:18px}.primary{width:100%;min-height:53px;border:0;border-radius:15px;background:linear-gradient(100deg,var(--accent),#75caff);color:#071821;font-weight:900;cursor:pointer;box-shadow:0 9px 24px #55e0c01d;transition:filter .2s,transform .2s;margin-top:20px}.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}.secondary{width:100%;min-height:46px;border:1px solid var(--line);border-radius:13px;background:#0d1627;color:var(--text);font-weight:700;cursor:pointer;margin-top:9px}.lesson-progress{display:grid;gap:12px}.lesson-row{display:grid;grid-template-columns:68px minmax(0,1fr) 34px;gap:10px;align-items:center;font-size:12px}.lesson-name{color:#cbd6e8}.bar{height:7px;border-radius:99px;background:#253149;overflow:hidden}.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#8d83ff);border-radius:99px;transition:width .35s}.lesson-count{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}.tip{margin-top:18px;padding:13px 14px;border-radius:13px;background:#55e0c00b;border:1px solid #55e0c01f;color:var(--muted);font-size:12px;line-height:1.6}.tip strong{color:var(--accent)}.screen{display:none}.screen.active{display:block;animation:enter .28s ease both}.quiz-panel{padding:clamp(18px,4vw,32px)}.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.quiz-chip{border:1px solid var(--line);background:#0d1627;border-radius:999px;padding:8px 11px;font-size:12px;color:#cad6e9;white-space:nowrap}.timer{font-variant-numeric:tabular-nums;color:var(--warn)}.timer.danger{color:var(--bad);animation:pulse .8s infinite}.quiz-progress{height:6px;background:#26344b;border-radius:99px;overflow:hidden;margin-bottom:25px}.quiz-progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}.question-card{text-align:center;padding:clamp(22px,5vw,42px) 14px 28px;border:1px solid #2b3b54;border-radius:20px;background:radial-gradient(ellipse at 50% 0%,#55e0c00c,transparent 65%),#0c1525;margin-bottom:17px}.question-kicker{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:800}.question-word{font-family:'Noto Sans JP','Noto Sans Bengali',sans-serif;font-size:clamp(32px,7vw,55px);font-weight:700;line-height:1.35;overflow-wrap:anywhere;margin:14px 0 10px}.question-sub{color:var(--muted);font-size:13px;line-height:1.6}.question-tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:15px}.speak-btn{border:1px solid #55e0c033;background:#55e0c00d;color:var(--accent);border-radius:11px;padding:8px 12px;cursor:pointer;font-size:12px;font-weight:700}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option{min-height:60px;text-align:left;padding:14px 15px;border:1px solid var(--line);border-radius:14px;background:#111b2d;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:12px;line-height:1.45;transition:background .18s,border-color .18s,transform .18s;overflow-wrap:anywhere}.option:hover:not(:disabled){border-color:#55e0c077;background:#19263b;transform:translateY(-1px)}.option-letter{flex:0 0 27px;height:27px;display:grid;place-items:center;border-radius:8px;background:#26334a;color:#b7c6dc;font-size:11px;font-weight:800}.option.correct{border-color:var(--good);background:#49dfa012}.option.correct .option-letter{background:var(--good);color:#062117}.option.wrong{border-color:var(--bad);background:#ff718612}.option.wrong .option-letter{background:var(--bad);color:#2a0610}.option:disabled{cursor:default}.feedback{min-height:25px;text-align:center;font-size:13px;color:var(--muted);padding-top:13px}.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}.quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px}.text-btn{border:0;background:transparent;color:var(--muted);padding:10px 0;cursor:pointer;font-size:12px}.text-btn:hover{color:var(--text)}.hidden{display:none!important}.result{text-align:center;padding:clamp(22px,5vw,40px)}.result-mark{width:74px;height:74px;border-radius:24px;background:#55e0c014;border:1px solid #55e0c03c;display:grid;place-items:center;font-size:32px;margin:0 auto 18px}.result h2{font-size:clamp(25px,5vw,36px);margin:0 0 8px;letter-spacing:-1px}.result p{color:var(--muted);font-size:13px;line-height:1.6}.result-score{font-size:clamp(44px,10vw,64px);font-weight:900;letter-spacing:-2px;margin:15px 0 4px;background:linear-gradient(90deg,var(--accent),#a6a0ff);background-clip:text;-webkit-background-clip:text;color:transparent}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:22px 0}.result-stat{padding:14px 8px;border-radius:14px;background:#0d1627;border:1px solid var(--line)}.result-stat b{display:block;font-size:22px}.result-stat span{font-size:11px;color:var(--muted)}.review{margin-top:20px;text-align:left}.review h3{font-size:14px;margin:0 0 10px}.review-list{display:grid;gap:8px;max-height:300px;overflow:auto}.review-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:11px 12px;border-radius:12px;background:#0d1627;border:1px solid var(--line);font-size:12px}.review-item .jp{font-family:'Noto Sans JP',sans-serif}.review-item .meaning{color:var(--muted);text-align:right}.settings-grid{display:grid;gap:0}.setting{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid #26344b}.setting:last-child{border-bottom:0}.setting-copy{min-width:0}.setting-title{font-size:13px;font-weight:700}.setting-desc{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}.switch{appearance:none;width:44px;height:26px;flex:0 0 44px;border-radius:99px;background:#35435b;position:relative;cursor:pointer;transition:background .2s;margin:0}.switch:before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;border-radius:50%;background:#fff;transition:transform .2s}.switch:checked{background:var(--accent)}.switch:checked:before{transform:translateX(18px);background:#082019}.footnote{text-align:center;color:#72829e;font-size:11px;line-height:1.6;padding:20px 8px 4px}.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:#17253a;border:1px solid #344963;color:var(--text);padding:11px 16px;border-radius:13px;font-size:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10;max-width:calc(100vw - 24px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.kana-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.kana-cell{padding:12px 4px;text-align:center;border:1px solid var(--line);border-radius:13px;background:#0d1627;cursor:pointer;min-width:0}.kana-cell:active{background:#55e0c01a}.kana-char{font-family:'Noto Sans JP',sans-serif;font-size:25px;font-weight:700}.kana-romaji{font-size:11px;color:var(--muted);margin-top:4px}.kana-tabs{display:flex;gap:7px;margin-bottom:13px}.kana-tabs button{flex:1;border:1px solid var(--line);border-radius:11px;background:#0d1627;color:var(--muted);padding:10px;cursor:pointer;font-size:12px}.kana-tabs button.active{color:var(--accent);border-color:#55e0c077;background:#55e0c010}.kana-caption{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.5}
+body.reduce-motion *,body.reduce-motion *:before,body.reduce-motion *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@keyframes enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{50%{opacity:.6}}@media(max-width:760px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{padding:13px 14px}.hero{padding:25px 22px}.hero h1{letter-spacing:-1px}.layout{gap:12px}.section{padding:20px}}@media(max-width:420px){body{padding:10px}.topbar{margin-bottom:13px}.brand-mark{width:40px;height:40px;border-radius:13px}.brand-sub{font-size:10px}.icon-btn{width:40px;min-height:40px}.top-actions{gap:6px}.mode-grid{gap:6px}.mode{padding:11px 4px;min-height:72px}.mode .mode-name{font-size:11px}.options{grid-template-columns:1fr}.option{min-height:54px}.quiz-chip{padding:7px 9px;font-size:11px}.question-word{font-size:clamp(30px,9vw,43px)}.kana-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.kana-cell{padding:10px 2px}.kana-char{font-size:22px}.result-grid{gap:6px}.result-stat{padding:12px 4px}.result-stat b{font-size:19px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">日</div><div><div class="brand-title">Japanese N5 Vocabulary Practice - Created By SiRJ0</div></div></div>
+    <div class="top-actions"><button class="icon-btn" id="settings-open" aria-label="Settings" title="Settings">⚙</button><button class="icon-btn" id="theme-toggle" aria-label="Change accent theme" title="Change accent theme">◐</button></div>
+  </header>
+
+  <section id="home-screen" class="screen active">
+    <div class="stats">
+      <div class="stat"><div class="stat-label">▦ Vocabulary</div><div class="stat-value" id="stat-words">—</div></div>
+      <div class="stat"><div class="stat-label">✓ Accuracy</div><div class="stat-value" id="stat-accuracy">0%</div></div>
+      <div class="stat"><div class="stat-label">✦ Answered</div><div class="stat-value" id="stat-answered">0</div></div>
+      <div class="stat"><div class="stat-label">↗ Best score</div><div class="stat-value" id="stat-best">0%</div></div>
+    </div>
+    <div class="layout">
+      <section class="panel section">
+        <div class="section-head"><div><div class="section-title">Start a practice</div></div><span class="pill">N5 · Beginner</span></div>
+        <div class="field-label">PRACTICE MODE</div>
+        <div class="mode-grid" role="group" aria-label="Practice mode">
+          <button class="mode active" data-mode="jp-bn"><span class="mode-icon">あ</span><span class="mode-name">日本語 → বাংলা</span></button>
+          <button class="mode" data-mode="bn-jp"><span class="mode-icon">文</span><span class="mode-name">বাংলা → 日本語</span></button>
+          <button class="mode" data-mode="kana"><span class="mode-icon">か</span><span class="mode-name">Kana quiz</span></button>
+        </div>
+        <label class="field-label" for="lesson-select">LESSON</label>
+        <div class="select-wrap"><select class="select" id="lesson-select"><option value="all">All lessons · 1–8</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option></select></div>
+        <label class="field-label" for="question-limit">QUESTION COUNT</label>
+        <div class="select-wrap"><select class="select" id="question-limit"><option value="10">10 questions · Quick practice</option><option value="20">20 questions</option><option value="all">All words in selected lesson</option></select></div>
+        <button class="primary" id="start-btn">Start practice <span aria-hidden="true">↗</span></button>
+        <button class="secondary" id="continue-btn" hidden>Continue saved quiz</button>
+      </section>
+      <aside class="panel section">
+        <div class="section-head"><div><div class="section-title">Lesson progress</div></div><span class="pill" id="lesson-completion">0 / 8</span></div>
+        <div class="lesson-progress" id="lesson-progress"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="quiz-screen" class="screen">
+    <div class="panel quiz-panel">
+      <div class="quiz-top"><button class="small-btn" id="quiz-home">← Home</button><span class="quiz-chip" id="lesson-badge">Lesson 1</span><span class="quiz-chip timer" id="timer-badge">◷ <span id="timer-text">10s</span></span></div>
+      <div class="quiz-progress"><div id="progress-bar"></div></div>
+      <div class="quiz-top"><span class="quiz-chip" id="question-count">1 / 10</span><span class="quiz-chip" id="score-live">Score 0</span></div>
+      <div class="question-card">
+        <div class="question-kicker" id="question-kicker">CHOOSE THE CORRECT MEANING</div>
+        <div class="question-word" id="question-text">わたし</div>
+        <div class="question-sub" id="sub-text"></div>
+        <div class="question-tools"><button class="speak-btn" id="speech-btn">▶ Listen</button></div>
+      </div>
+      <div class="options" id="options-container"></div>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="quiz-footer"><button class="text-btn" id="skip-btn">Skip question</button><span class="text-btn" id="answered-live">0 answered</span></div>
+    </div>
+  </section>
+
+  <section id="result-screen" class="screen">
+    <div class="panel result">
+      <div class="result-mark" id="result-mark">✦</div><h2 id="result-title">Nice work!</h2><p id="result-description">প্রতিটি অনুশীলনই অগ্রগতি।</p>
+      <div class="result-score" id="final-score">0/10</div><div class="question-sub">Final score</div>
+      <div class="result-grid"><div class="result-stat"><b id="correct-count">0</b><span>Correct</span></div><div class="result-stat"><b id="wrong-count">0</b><span>Wrong / skipped</span></div><div class="result-stat"><b id="result-accuracy">0%</b><span>Accuracy</span></div></div>
+      <button class="primary" id="retest-btn" hidden>Retry missed words <span id="wrong-retest-num"></span></button>
+      <button class="secondary" id="again-btn">Practice again</button><button class="text-btn" id="results-home">Back to home</button>
+      <div class="review" id="review-section" hidden><h3>Review missed words</h3><div class="review-list" id="review-list"></div></div>
+    </div>
+  </section>
+
+  <section id="kana-screen" class="screen">
+    <div class="panel section">
+      <div class="section-head"><div><div class="section-title">Kana practice</div><div class="section-desc">Tap any character to hear its pronunciation</div></div><button class="small-btn" id="kana-home">← Home</button></div>
+      <div class="kana-tabs"><button class="active" data-kana="hiragana">Hiragana · ひらがな</button><button data-kana="katakana">Katakana · カタカナ</button></div>
+      <p class="kana-caption">প্রথমে অক্ষর ও Romaji মিলিয়ে দেখো। Quiz mode-এ অক্ষরের উচ্চারণ চিনে উত্তর দাও।</p>
+      <div class="kana-grid" id="kana-grid"></div>
+      <button class="primary" id="kana-quiz-btn">Start Kana quiz</button>
+    </div>
+  </section>
+
+  <section id="settings-screen" class="screen">
+    <div class="panel section">
+      <div class="section-head"><div><div class="section-title">Practice settings</div><div class="section-desc">কম distraction, নিজের পছন্দের feedback</div></div><button class="small-btn" id="settings-home">← Home</button></div>
+      <div class="settings-grid">
+        <div class="setting"><div class="setting-copy"><div class="setting-title">Sound effects</div><div class="setting-desc">Answer feedback ও শেষের timer ticks। Audio browser-এর প্রথম interaction-এর পর চালু হয়।</div></div><input class="switch" id="sound-toggle" type="checkbox" checked aria-label="Sound effects"></div>
+        <div class="setting"><div class="setting-copy"><div class="setting-title">Phone vibration</div><div class="setting-desc">Supported Android/browser-এ সঠিক, ভুল, timeout এবং navigation-এ হালকা haptic feedback।</div></div><input class="switch" id="vibrate-toggle" type="checkbox" checked aria-label="Phone vibration"></div>
+        <div class="setting"><div class="setting-copy"><div class="setting-title">Auto-play Japanese audio</div><div class="setting-desc">Japanese → Bangla quiz-এ প্রশ্ন দেখানোর সময় Japanese উচ্চারণ শোনাবে। Bangla → Japanese-এ উত্তর বাছাই করার পরই শোনাবে।</div></div><input class="switch" id="auto-speech-toggle" type="checkbox" checked aria-label="Auto-play Japanese audio"></div>
+        <div class="setting"><div class="setting-copy"><div class="setting-title">Timer</div><div class="setting-desc">প্রশ্নের সময়সীমা বেছে নাও।</div></div><select class="select" id="timer-setting" style="width:auto;min-width:115px"><option value="10">10 sec</option><option value="15">15 sec</option><option value="0">Off</option></select></div>
+        <div class="setting"><div class="setting-copy"><div class="setting-title">Reduced animation</div><div class="setting-desc">কম motion এবং শান্ত transition।</div></div><input class="switch" id="motion-toggle" type="checkbox" aria-label="Reduced animation"></div>
+      </div>
+      <button class="secondary" id="reset-progress">Reset saved statistics</button>
+      <p class="tip">Vibration browser/device support-এর ওপর নির্ভরশীল। iPhone Safari-তে vibration API সাধারণত কাজ করে না; কোনো permission bypass করা হয় না।</p>
+    </div>
+  </section>
+  
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const vocabData = [
+            // Lesson 1
+            { l:1, j:'わたし', u:'Watashi', b:'আমি', k:'' },
+            { l:1, j:'あなた', u:'Anata', b:'তুমি', k:'' },
+            { l:1, j:'あの ひと', u:'Anohito', b:'সে', k:'' },
+            { l:1, j:'～さん', u:'~san', b:'জনাব', k:'' },
+            { l:1, j:'～ちゃん', u:'~chan', b:'শিশুর নামের সাথে যুক্ত হয়', k:'' },
+            { l:1, j:'～じん', u:'~jin', b:'জাতীয়তা বোঝাতে যুক্ত হয়', k:'' },
+            { l:1, j:'せんせい', u:'Sensei', b:'শিক্ষক', k:'先生' },
+            { l:1, j:'きょうし', u:'Kyoushi', b:'শিক্ষক (পেশা)', k:'教師' },
+            { l:1, j:'がくせい', u:'Gakusei', b:'ছাত্র', k:'学生' },
+            { l:1, j:'かいしゃいん', u:'Kaishain', b:'কোম্পানীর কর্মকর্তা', k:'会社員' },
+            { l:1, j:'しゃいん', u:'Shain', b:'কর্মকর্তা', k:'社員' },
+            { l:1, j:'ぎんこう', u:'Ginkou', b:'ব্যাংক', k:'銀行' },
+            { l:1, j:'ぎんこういん', u:'Ginkouin', b:'ব্যাংক কর্মকর্তা', k:'銀行員' },
+            { l:1, j:'いしゃ', u:'Isha', b:'ডাক্তার', k:'医者' },
+            { l:1, j:'けんきゅうしゃ', u:'Kenkyuusha', b:'গবেষক', k:'研究者' },
+            { l:1, j:'だいがく', u:'Daigaku', b:'বিশ্ববিদ্যালয়', k:'大学' },
+            { l:1, j:'びょういん', u:'Byouin', b:'হাসপাতাল', k:'病院' },
+            { l:1, j:'だれ (どなた)', u:'Donata', b:'কে', k:'' },
+            { l:1, j:'～さい', u:'~sai', b:'--বছর (বয়স)', k:'' },
+            { l:1, j:'なんさい', u:'Nansai', b:'কত বছর বয়স', k:'何歳' },
+            { l:1, j:'はい', u:'Hai', b:'হ্যাঁ', k:'' },
+            { l:1, j:'いいえ', u:'Iie', b:'না', k:'' },
+            { l:1, j:'はじめまして', u:'Hajimemashite', b:'প্রথম সাক্ষাতে শুভেচ্ছা', k:'' },
+            { l:1, j:'～からきました', u:'~karakimashita', b:'-- থেকে এসেছি', k:'' },
+            { l:1, j:'どうぞよろしく', u:'Douzoyoroshiku', b:'পরিচিত হয়ে ভালো লাগলো', k:'' },
+            { l:1, j:'しつれいですが', u:'Shitsureidesuga', b:'মাফ করবেন (জিজ্ঞাসার আগে)', k:'' },
+            { l:1, j:'おなまえは？', u:'Onamae wa?', b:'আপনার নাম কি?', k:'' },
+            { l:1, j:'こちらは～さんです', u:'Kochira wa ~san desu', b:'ইনি জনাব...', k:'' },
+            { l:1, j:'アメリカ', u:'Amerika', b:'আমেরিকা', k:'' },
+            { l:1, j:'イギリス', u:'Igirisu', b:'ইংল্যান্ড', k:'' },
+            { l:1, j:'インド', u:'Indo', b:'ইন্ডিয়া', k:'' },
+            { l:1, j:'インドネシア', u:'Indoneshia', b:'ইন্দোনেশিয়া', k:'' },
+            { l:1, j:'かんこく', u:'Kankoku', b:'দক্ষিণ কোরিয়া', k:'韓国' },
+            { l:1, j:'タイ', u:'Tai', b:'থাইল্যান্ড', k:'' },
+            { l:1, j:'ちゅうごく', u:'Chuugoku', b:'চীন', k:'中国' },
+            { l:1, j:'ドイツ', u:'Doitsu', b:'জার্মানি', k:'' },
+            { l:1, j:'にほん', u:'Nihon', b:'জাপান', k:'日本' },
+            { l:1, j:'ブラジル', u:'Burajiru', b:'ব্রাজিল', k:'' },
+            { l:1, j:'バングラデシュ', u:'Banguradeshu', b:'বাংলাদেশ', k:'' },
+            { l:1, j:'ちがいます', u:'Chigaimasu', b:'না, সঠিক নয়', k:'' },
+            { l:1, j:'しけん', u:'Shiken', b:'পরীক্ষা', k:'試験' },
+            { l:1, j:'しゅくだい', u:'Shukudai', b:'বাড়ির কাজ', k:'宿題' },
+            { l:1, j:'しつもん', u:'Shitsumon', b:'প্রশ্ন', k:'質問' },
+            { l:1, j:'こたえ', u:'Kotae', b:'উত্তর', k:'答え' },
+            { l:1, j:'れい', u:'Rei', b:'उदाहरण', k:'' },
+            { l:1, j:'おはようございます', u:'Ohayougozaimasu', b:'শুভসকাল', k:'' },
+            { l:1, j:'こんにちは', u:'Konnichiwa', b:'হ্যালো (দিনের বেলা)', k:'' },
+            { l:1, j:'こんばんわ', u:'Konbanwa', b:'হ্যালো (রাতের বেলা)', k:'' },
+            { l:1, j:'おやすみなさい', u:'Oyasuminasai', b:'শুভরাত', k:'' },
+            { l:1, j:'さようなら', u:'Sayounara', b:'বিদায়', k:'' },
+            { l:1, j:'ありがとうございます', u:'Arigatougozaimasu', b:'ধন্যবাদ', k:'' },
+            { l:1, j:'すみません', u:'Sumimasen', b:'মাফ করবেন', k:'' },
+            { l:1, j:'おねがいします', u:'Onegaishimasu', b:'অনুরোধ করা', k:'' },
+            { l:1, j:'れんしゅう', u:'Renshuu', b:'চর্চা', k:'練習' },
+            { l:1, j:'かいわ', u:'Kaiwa', b:'কথোপকথন', k:'会話' },
+            { l:1, j:'めいし', u:'Meishi', b:'বিশেষ্য', k:'名詞' },
+            { l:1, j:'けいようし', u:'Keiyoushi', b:'বিশেষণ', k:'形容詞' },
+            { l:1, j:'どうし', u:'Doushi', b:'ক্রিয়া', k:'動詞' },
+
+            // Lesson 2
+            { l:2, j:'これ', u:'Kore', b:'এটা (বস্তু)', k:'' },
+            { l:2, j:'それ', u:'Sore', b:'ওটা (বস্তু)', k:'' },
+            { l:2, j:'あれ', u:'Are', b:'ঐটা (বস্তু)', k:'' },
+            { l:2, j:'この～', u:'Kono~', b:'এই (বস্তু/প্রাণী)', k:'' },
+            { l:2, j:'その～', u:'Sono~', b:'ওই (বস্তু/প্রাণী)', k:'' },
+            { l:2, j:'あの～', u:'Ano~', b:'ঐ (বস্তু/প্রাণী)', k:'' },
+            { l:2, j:'ほん', u:'Hon', b:'বই', k:'本' },
+            { l:2, j:'じしょ', u:'Jisho', b:'অভিধান', k:'辞書' },
+            { l:2, j:'ざっし', u:'Zasshi', b:'ম্যাগাজিন', k:'' },
+            { l:2, j:'しんぶん', u:'Shinbun', b:'পত্রিকা', k:'新聞' },
+            { l:2, j:'ノート', u:'No-to', b:'নোটবুক', k:'' },
+            { l:2, j:'てちょう', u:'Techou', b:'পকেটের ডায়েরী', k:'手帳' },
+            { l:2, j:'めいし', u:'Meishi', b:'বিজনেস কার্ড', k:'名刺' },
+            { l:2, j:'カード', u:'Ka-do', b:'কার্ড', k:'' },
+            { l:2, j:'えんぴつ', u:'Enpitsu', b:'পেন্সিল', k:'' },
+            { l:2, j:'ボールペン', u:'Bo-rupen', b:'বলপেন কলম', k:'' },
+            { l:2, j:'シャープペンシル', u:'Sha-pupenshiru', b:'যান্ত্রিক পেন্সিল', k:'' },
+            { l:2, j:'かぎ', u:'Kagi', b:'চাবি', k:'' },
+            { l:2, j:'とけい', u:'Tokei', b:'ঘড়ি', k:'時計' },
+            { l:2, j:'かさ', u:'Kasa', b:'ছাতা', k:'傘' },
+            { l:2, j:'かばん', u:'Kaban', b:'ব্যাগ', k:'' },
+            { l:2, j:'テレビ', u:'Terebi', b:'টেলিভিশন', k:'' },
+            { l:2, j:'ラジオ', u:'Rajio', b:'রেডিও', k:'' },
+            { l:2, j:'カメラ', u:'Kamera', b:'ক্যামেরা', k:'' },
+            { l:2, j:'コンピューター', u:'Konpyuuta-', b:'কম্পিউটার', k:'' },
+            { l:2, j:'くるま', u:'Kuruma', b:'গাড়ি', k:'車' },
+            { l:2, j:'つくえ', u:'Tsukue', b:'ডেস্ক', k:'' },
+            { l:2, j:'いす', u:'Isu', b:'চেয়ার', k:'' },
+            { l:2, j:'チョコレート', u:'Chokore-to', b:'চকোলেট', k:'' },
+            { l:2, j:'コーヒー', u:'Ko-hi-', b:'কফি', k:'' },
+            { l:2, j:'(お)みやげ', u:'(O)miyage', b:'উপহার (স্মারক)', k:'' },
+            { l:2, j:'えいご', u:'Eigo', b:'ইংরেজি ভাষা', k:'英語' },
+            { l:2, j:'にほんご', u:'Nihongo', b:'জাপানিজ ভাষা', k:'日本語' },
+            { l:2, j:'～ご', u:'~go', b:'--ভাষা', k:'' },
+            { l:2, j:'なん', u:'Nan', b:'কি', k:'何' },
+            { l:2, j:'そう', u:'Sou', b:'তাই', k:'' },
+            { l:2, j:'あのう', u:'Anou', b:'দ্বিধা প্রকাশে ব্যবহৃত', k:'' },
+            { l:2, j:'えつ', u:'Etsu', b:'কি! (অবাক হয়ে)', k:'' },
+            { l:2, j:'どうぞ', u:'Douzo', b:'গ্রহণ করুন / নিন', k:'' },
+            { l:2, j:'ありがとうございます', u:'Arigatougozaimasu', b:'ধন্যবাদ', k:'' },
+            { l:2, j:'そうですか', u:'Soudesuka', b:'তাই নাকি', k:'' },
+            { l:2, j:'ちがいます', u:'Chigaimasu', b:'না এটা না / ভুল', k:'' },
+            { l:2, j:'あ', u:'A', b:'ওহ!', k:'' },
+            { l:2, j:'これからおせわになります', u:'Korekara osewaninarimasu', b:'সাহায্য আশা করি', k:'' },
+            { l:2, j:'こちらこそよろしく', u:'Kochirakoso yoroshiku', b:'আমারও ভালো লাগলো', k:'' },
+
+            // Lesson 3
+            { l:3, j:'ここ', u:'Koko', b:'এখানে', k:'' },
+            { l:3, j:'そこ', u:'Soko', b:'ওখানে', k:'' },
+            { l:3, j:'あそこ', u:'Asoko', b:'ঐখানে', k:'' },
+            { l:3, j:'どこ', u:'Doko', b:'কোথায়', k:'' },
+            { l:3, j:'こちら', u:'Kochira', b:'এদিকে', k:'' },
+            { l:3, j:'そちら', u:'Sochira', b:'সেদিকে', k:'' },
+            { l:3, j:'あちら', u:'Achira', b:'ঐদিকে', k:'' },
+            { l:3, j:'どちら', u:'Dochira', b:'কোনদিকে', k:'' },
+            { l:3, j:'きょうしつ', u:'Kyoushitsu', b:'ক্লাসরুম', k:'教室' },
+            { l:3, j:'しょくどう', u:'Shokudou', b:'ডাইনিং হল', k:'食堂' },
+            { l:3, j:'じむしょ', u:'Jimusho', b:'অফিস', k:'事務所' },
+            { l:3, j:'かいぎしつ', u:'Kaigishitsu', b:'মিটিং রুম', k:'会議室' },
+            { l:3, j:'うけつけ', u:'Uketsuke', b:'রিসেপশন', k:'受付' },
+            { l:3, j:'ロビー', u:'Robii', b:'লবি', k:'' },
+            { l:3, j:'へや', u:'Heya', b:'রুম / কক্ষ', k:'部屋' },
+            { l:3, j:'トイレ', u:'Toire', b:'টয়লেট', k:'お手洗い' },
+            { l:3, j:'かいだん', u:'Kaidan', b:'সিঁড়ি', k:'階段' },
+            { l:3, j:'エレベーター', u:'Erebe-ta-', b:'লিফট', k:'' },
+            { l:3, j:'エスカレーター', u:'Esukare-ta-', b:'চলন্ত সিঁড়ি', k:'' },
+            { l:3, j:'じどうはんばいき', u:'Jidouhanbaiki', b:'ভেন্ডイングマシン', k:'自動販売機' },
+            { l:3, j:'でんわ', u:'Denwa', b:'টেলিফোন', k:'電話' },
+            { l:3, j:'(お)くに', u:'(O)kuni', b:'দেশ', k:'国' },
+            { l:3, j:'かいしゃ', u:'Kaisha', b:'কোম্পানী', k:'会社' },
+            { l:3, j:'うち', u:'Uchi', b:'বাসা / বাড়ি', k:'' },
+            { l:3, j:'くつ', u:'Kutsu', b:'জুতা', k:'' },
+            { l:3, j:'ネクタイ', u:'Nekutai', b:'টাই', k:'' },
+            { l:3, j:'ワイン', u:'Wain', b:'ওয়াইন / মদ', k:'' },
+            { l:3, j:'うりば', u:'Uriba', b:'বিক্রয় কেন্দ্র', k:'売り場' },
+            { l:3, j:'ちか', u:'Chika', b:'মাটির নিচের তলা', k:'' },
+            { l:3, j:'～かい', u:'~kai', b:'-- তলা', k:'' },
+            { l:3, j:'なんがい', u:'Nangai', b:'কত তলা', k:'何階' },
+            { l:3, j:'～えん', u:'~en', b:'ইয়েন (টাকা)', k:'' },
+            { l:3, j:'いくら', u:'Ikura', b:'দাম কত?', k:'' },
+            { l:3, j:'ひゃく', u:'Hyaku', b:'একশত', k:'百' },
+            { l:3, j:'せん', u:'Sen', b:'এক হাজার', k:'千' },
+            { l:3, j:'まん', u:'Man', b:'দশ হাজার', k:'万' },
+            { l:3, j:'すみません', u:'Sumimasen', b:'একটু শুনুন', k:'' },
+            { l:3, j:'どうも', u:'Doumo', b:'ধন্যবাদ', k:'' },
+            { l:3, j:'いらっしゃいませ', u:'Irasshaimase', b:'স্বাগতম', k:'' },
+            { l:3, j:'みせてください', u:'Misete kudasai', b:'দয়া করে দেখান', k:'' },
+            { l:3, j:'じゃ', u:'Ja', b:'তাহলে', k:'' },
+            { l:3, j:'ください', u:'Kudasai', b:'দয়া করে দিন', k:'' },
+            { l:3, j:'イタリア', u:'Itaria', b:'ইতালি', k:'' },
+            { l:3, j:'スイス', u:'Suisu', b:'সুইজারল্যান্ড', k:'' },
+            { l:3, j:'フランス', u:'Furansu', b:'ফ্রান্স', k:'' },
+            { l:3, j:'ジャカルタ', u:'Jakaruta', b:'জাকার্তা', k:'' },
+            { l:3, j:'バンコク', u:'Bankoku', b:'ব্যাংকক', k:'' },
+            { l:3, j:'ベルリン', u:'Berurin', b:'বার্লিন', k:'' },
+            { l:3, j:'しんおおさか', u:'Shin-oosaka', b:'শিন-ওসাকা', k:'新大阪' },
+
+            // Lesson 4
+            { l:4, j:'おきます', u:'Okimasu', b:'জেগে ওঠা', k:'起きます' },
+            { l:4, j:'ねます', u:'Nemasu', b:'ঘুমানো', k:'寝ます' },
+            { l:4, j:'はたらきます', u:'Hatarakimasu', b:'কাজ করা', k:'働きます' },
+            { l:4, j:'やすみます', u:'Yasumimasu', b:'ছুটি নেওয়া / বিশ্রাম', k:'休みます' },
+            { l:4, j:'べんきょうします', u:'Benkyoushimasu', b:'পড়াশোনা করা', k:'勉強します' },
+            { l:4, j:'おわります', u:'Owarimasu', b:'শেষ হওয়া', k:'終わります' },
+            { l:4, j:'デパート', u:'Depa-to', b:'ডিপার্টমেন্ট স্টোর', k:'' },
+            { l:4, j:'ぎんこう', u:'Ginkou', b:'ব্যাংক', k:'銀行' },
+            { l:4, j:'ゆうびんきょく', u:'Yuubinkyoku', b:'পোস্ট অফিস', k:'郵便局' },
+            { l:4, j:'としょかん', u:'Toshokan', b:'লাইব্রেরি', k:'図書館' },
+            { l:4, j:'びじゅつかん', u:'Bijutsukan', b:'আর্ট মিউজিয়াম', k:'美術館' },
+            { l:4, j:'いま', u:'Ima', b:'এখন', k:'今' },
+            { l:4, j:'～じ', u:'~ji', b:'--টা (সময়)', k:'' },
+            { l:4, j:'～ふん / ～ぷん', u:'~fun / ~pun', b:'--মিনিট', k:'' },
+            { l:4, j:'はん', u:'Han', b:'অর্ধেক / সাড়ে', k:'半' },
+            { l:4, j:'なんじ', u:'Nanji', b:'কয়টা?', k:'何時' },
+            { l:4, j:'なんぷん', u:'Nanpun', b:'কত মিনিট?', k:'何分' },
+            { l:4, j:'ごぜん', u:'Gozen', b:'সকাল (AM)', k:'午前' },
+            { l:4, j:'ごご', u:'Gogo', b:'বিকাল (PM)', k:'午後' },
+            { l:4, j:'あさ', u:'Asa', b:'সকাল', k:'朝' },
+            { l:4, j:'ひる', u:'Hiru', b:'দুপুর', k:'昼' },
+            { l:4, j:'ばん (よる)', u:'Ban / Yoru', b:'রাত', k:'晩 / 夜' },
+            { l:4, j:'おととい', u:'Ototoi', b:'গত পরশু', k:'' },
+            { l:4, j:'きのう', u:'Kinou', b:'গতকাল', k:'' },
+            { l:4, j:'きょう', u:'Kyou', b:'আজ', k:'' },
+            { l:4, j:'あした', u:'Ashita', b:'আগামীকাল', k:'' },
+            { l:4, j:'あさって', u:'Asatte', b:'আগামী পরশু', k:'' },
+            { l:4, j:'けさ', u:'Kesa', b:'আজ সকাল', k:'' },
+            { l:4, j:'こんばん', u:'Konban', b:'আজ রাত', k:'今晩' },
+            { l:4, j:'やすみ', u:'Yasumi', b:'ছুটি / বিশ্রাম', k:'休み' },
+            { l:4, j:'ひるやすみ', u:'Hiruyasumi', b:'দুপুরের বিরতি', k:'昼休み' },
+            { l:4, j:'しけん', u:'Shiken', b:'পরীক্ষা', k:'試験' },
+            { l:4, j:'かいぎ', u:'Kaigi', b:'মিটিং', k:'会議' },
+            { l:4, j:'えいが', u:'Eiga', b:'সিনেমা', k:'映画' },
+            { l:4, j:'まいあさ', u:'Maiasa', b:'প্রতি সকাল', k:'毎朝' },
+            { l:4, j:'まいばん', u:'Maiban', b:'প্রতি রাত', k:'毎晩' },
+            { l:4, j:'まいにち', u:'Mainichi', b:'প্রতিদিন', k:'毎日' },
+            { l:4, j:'げつようび', u:'Getsuyoubi', b:'সোমবার', k:'月曜日' },
+            { l:4, j:'かようび', u:'Kayoubi', b:'মঙ্গলবার', k:'火曜日' },
+            { l:4, j:'すいようび', u:'Suiyoubi', b:'বুধবার', k:'水曜日' },
+            { l:4, j:'もくようび', u:'Mokuyoubi', b:'বৃহস্পতিবার', k:'木曜日' },
+            { l:4, j:'きんようび', u:'Kinyoubi', b:'শুক্রবার', k:'金曜日' },
+            { l:4, j:'どようび', u:'Doyoubi', b:'শনিবার', k:'土曜日' },
+            { l:4, j:'にちようび', u:'Nichiyoubi', b:'রবিবার', k:'日曜日' },
+            { l:4, j:'なんようび', u:'Nanyoubi', b:'কি বার?', k:'何曜日' },
+            { l:4, j:'～から', u:'~kara', b:'--থেকে', k:'' },
+            { l:4, j:'～まで', u:'~made', b:'--পর্যন্ত', k:'' },
+            { l:4, j:'～と～', u:'~to~', b:'--এবং--', k:'' },
+            { l:4, j:'たいへんですね', u:'Taihendesu ne', b:'খুব কষ্টকর তাই না!', k:'' },
+            { l:4, j:'ばんごう', u:'Bangou', b:'নম্বর', k:'番号' },
+            { l:4, j:'なんばん', u:'Nanban', b:'কত নম্বর', k:'何番' },
+            { l:4, j:'そちら', u:'Sochira', b:'সেখানে', k:'' },
+            { l:4, j:'ニューヨーク', u:'Nyu-yo-ku', b:'নিউইয়র্ক', k:'' },
+            { l:4, j:'ぺきん', u:'Pekin', b:'বেইজিং', k:'北京' },
+            { l:4, j:'ロサンゼルス', u:'Rosanzerusu', b:'লস এঞ্জেলেস', k:'' },
+            { l:4, j:'ロンドン', u:'Rondon', b:'লন্ডন', k:'' },
+
+            // Lesson 5
+            { l:5, j:'いきます', u:'Ikimasu', b:'যাওয়া', k:'行きます' },
+            { l:5, j:'きます', u:'Kimasu', b:'আসা', k:'来ます' },
+            { l:5, j:'かえります', u:'Kaerimasu', b:'ফিরে আসা', k:'帰ります' },
+            { l:5, j:'がっこう', u:'Gakkou', b:'স্কুল', k:'学校' },
+            { l:5, j:'スーパー', u:'Su-pa-', b:'সুপার মার্কেট', k:'' },
+            { l:5, j:'えき', u:'Eki', b:'স্টেশন', k:'駅' },
+            { l:5, j:'ひこうき', u:'Hikouki', b:'বিমান', k:'飛行機' },
+            { l:5, j:'ふね', u:'Fune', b:'জাহাজ', k:'船' },
+            { l:5, j:'でんしゃ', u:'Densha', b:'ট্রেন', k:'電車' },
+            { l:5, j:'ちかてつ', u:'Chikatetsu', b:'পাতাল রেল', k:'地下鉄' },
+            { l:5, j:'しんかんせん', u:'Shinkansen', b:'বুলেট ট্রেন', k:'新幹線' },
+            { l:5, j:'バス', u:'Basu', b:'বাস', k:'' },
+            { l:5, j:'タクシー', u:'Takushii', b:'ট্যাক্সি', k:'' },
+            { l:5, j:'じてんしゃ', u:'Jitensha', b:'সাইকেল', k:'自転車' },
+            { l:5, j:'あるいて', u:'Aruite', b:'হেঁটে', k:'歩いて' },
+            { l:5, j:'ひと', u:'Hito', b:'মানুষ / লোক', k:'人' },
+            { l:5, j:'ともだち', u:'Tomodachi', b:'বন্ধু', k:'友達' },
+            { l:5, j:'かれ', u:'Kare', b:'সে (ছেলে)', k:'彼' },
+            { l:5, j:'かのじょ', u:'Kanojo', b:'সে (মেয়ে)', k:'彼女' },
+            { l:5, j:'かぞく', u:'Kazoku', b:'পরিবার', k:'家族' },
+            { l:5, j:'ひとりでお', u:'Hitoride', b:'একা একা', k:'一人で' },
+            { l:5, j:'せんしゅう', u:'Senshuu', b:'গত সপ্তাহ', k:'先週' },
+            { l:5, j:'こんしゅう', u:'Konshuu', b:'এই সপ্তাহ', k:'今週' },
+            { l:5, j:'らいしゅう', u:'Raishuu', b:'আগামী সপ্তাহ', k:'来週' },
+            { l:5, j:'せんげつ', u:'Sengetsu', b:'গত মাস', k:'先月' },
+            { l:5, j:'こんげつ', u:'Kongetsu', b:'এই মাস', k:'今月' },
+            { l:5, j:'らいげつ', u:'Raigetsu', b:'আগামী মাস', k:'来月' },
+            { l:5, j:'きょねん', u:'Kyonen', b:'গত বছর', k:'昨年' },
+            { l:5, j:'ことし', u:'Kotoshi', b:'এই বছর', k:'今年' },
+            { l:5, j:'らいねん', u:'Rainen', b:'আগামী বছর', k:'来年' },
+            { l:5, j:'～ねん', u:'~nen', b:'-- বছর', k:'年' },
+            { l:5, j:'なんねん', u:'Nannen', b:'কয় বছর', k:'何年' },
+            { l:5, j:'～がつ', u:'~gatsu', b:'-- মাস', k:'月' },
+            { l:5, j:'なんがつ', u:'Nangatsu', b:'কোন মাস', k:'何月' },
+            { l:5, j:'ついたち', u:'Tuitachi', b:'১ তারিখ', k:'一日' },
+            { l:5, j:'ふつか', u:'Futsuka', b:'২ তারিখ', k:'二日' },
+            { l:5, j:'みっか', u:'Mikka', b:'৩ তারিখ', k:'三日' },
+            { l:5, j:'よっか', u:'Yokka', b:'৪ তারিখ', k:'四日' },
+            { l:5, j:'いつか', u:'Itsuka', b:'৫ তারিখ', k:'五日' },
+            { l:5, j:'むいか', u:'Muika', b:'৬ তারিখ', k:'六日' },
+            { l:5, j:'なのか', u:'Nanoka', b:'৭ তারিখ', k:'七日' },
+            { l:5, j:'ようか', u:'Youka', b:'৮ তারিখ', k:'八日' },
+            { l:5, j:'ここのか', u:'Kokonoka', b:'৯ তারিখ', k:'九日' },
+            { l:5, j:'とおか', u:'Tooka', b:'১০ তারিখ', k:'十日' },
+            { l:5, j:'じゅうよっか', u:'Jyuuyokka', b:'১৪ তারিখ', k:'十四日' },
+            { l:5, j:'はつか', u:'Hatsuka', b:'২০ তারিখ', k:'二十日' },
+            { l:5, j:'にじゅうよっか', u:'Nijuuyokka', b:'২৪ তারিখ', k:'二十四日' },
+            { l:5, j:'～にち', u:'~nichi', b:'-- দিন / তারিখ', k:'日' },
+            { l:5, j:'なんにち', u:'Nannichi', b:'কত তারিখ', k:'何日' },
+            { l:5, j:'いつ', u:'Itsu', b:'কবে / কখন', k:'' },
+            { l:5, j:'たんじょうび', u:'Tanjoubi', b:'জন্মদিন', k:'誕生日' },
+            { l:5, j:'そうですね', u:'Soudesne', b:'হ্যাঁ, তাই', k:'' },
+            { l:5, j:'ありがとうございました', u:'Arigatougozaimashita', b:'অনেক ধন্যবাদ (অতীত)', k:'' },
+            { l:5, j:'どういたしまして', u:'Douitashimashite', b:'ওয়েলকাম', k:'' },
+            { l:5, j:'～ばんせん', u:'~bansen', b:'-- নম্বর প্ল্যাটফর্ম', k:'番線' },
+            { l:5, j:'つぎの', u:'Tsugino', b:'পরবর্তী', k:'次の' },
+            { l:5, j:'ふつう', u:'Futsuu', b:'লোকাল ট্রেন', k:'普通' },
+            { l:5, j:'きゅうこう', u:'Kyuukou', b:'র‍্যাপিড ট্রেন', k:'急行' },
+            { l:5, j:'とっきゅう', u:'Tokkyuu', b:'এক্সপ্রেস ট্রেন', k:'特急' },
+            { l:5, j:'おおさかじょう', u:'Oosakajou', b:'ওসাকা দুর্গ', k:'大阪城' },
+
+            // Lesson 6
+            { l:6, j:'たべます', u:'Tabemasu', b:'খাওয়া', k:'食べます' },
+            { l:6, j:'のみます', u:'Nomimasu', b:'পান করা', k:'飲みます' },
+            { l:6, j:'すいます', u:'Suimasu', b:'ধূমপান করা', k:'吸います' },
+            { l:6, j:'みます', u:'Mimasu', b:'দেখা', k:'見ます' },
+            { l:6, j:'ききます', u:'Kikimasu', b:'শোনা', k:'聞きます' },
+            { l:6, j:'よみます', u:'Yomimasu', b:'পড়া', k:'読みます' },
+            { l:6, j:'かきます', u:'Kakimasu', b:'লেখা', k:'書きます' },
+            { l:6, j:'かいます', u:'Kaimasu', b:'কেনা', k:'買います' },
+            { l:6, j:'とります', u:'Torimasu', b:'ছবি তোলা', k:'撮ります' },
+            { l:6, j:'します', u:'Shimasu', b:'করা', k:'' },
+            { l:6, j:'あいます', u:'Aimasu', b:'দেখা করা', k:'会います' },
+            { l:6, j:'ごはん', u:'Gohan', b:'ভাত / খাবার', k:'' },
+            { l:6, j:'あさごはん', u:'Asagohan', b:'সকালের খাবার', k:'朝ごはん' },
+            { l:6, j:'ひるごはん', u:'Hirugohan', b:'দুপুরের খাবার', k:'昼ごはん' },
+            { l:6, j:'ばんごはん', u:'Bangohan', b:'রাতের খাবার', k:'晩ごはん' },
+            { l:6, j:'パン', u:'Pan', b:'পাউরুটি', k:'' },
+            { l:6, j:'たまご', u:'Tamago', b:'ডিম', k:'卵' },
+            { l:6, j:'にく', u:'Niku', b:'মাংস', k:'肉' },
+            { l:6, j:'さかな', u:'Sakana', b:'মাছ', k:'魚' },
+            { l:6, j:'やさい', u:'Yasai', b:'সবজি', k:'野菜' },
+            { l:6, j:'くだもの', u:'Kudamono', b:'ফলমূল', k:'果物' },
+            { l:6, j:'みず', u:'Mizu', b:'পানি', k:'水' },
+            { l:6, j:'おちゃ', u:'Ocha', b:'সবুজ চা', k:'お茶' },
+            { l:6, j:'こうちゃ', u:'Koucha', b:'লাল চা', k:'紅茶' },
+            { l:6, j:'ぎゅうにゅう', u:'Gyuunyuu', b:'গরুর দুধ', k:'牛乳' },
+            { l:6, j:'ジュース', u:'Juu-su', b:'জুস', k:'' },
+            { l:6, j:'ビール', u:'Bi-ru', b:'বিয়ার', k:'' },
+            { l:6, j:'(お)さけ', u:'(O)sake', b:'জাপানি মদ', k:'お酒' },
+            { l:6, j:'たばこ', u:'Tabako', b:'সিগারেট', k:'' },
+            { l:6, j:'てがみ', u:'Tegami', b:'চিঠি', k:'手紙' },
+            { l:6, j:'レポート', u:'Repo-to', b:'রিপোর্ট', k:'' },
+            { l:6, j:'しゃしん', u:'Shashin', b:'ছবি', k:'写真' },
+            { l:6, j:'ビデオ', u:'Bideo', b:'ভিডিও', k:'' },
+            { l:6, j:'みせ', u:'Mise', b:'দোকান', k:'店' },
+            { l:6, j:'にわ', u:'Niwa', b:'বাগান', k:'庭' },
+            { l:6, j:'しゅくだい', u:'Shukudai', b:'বাড়ির কাজ', k:'宿題' },
+            { l:6, j:'テニス', u:'Tenisu', b:'টেনিস', k:'' },
+            { l:6, j:'サッカー', u:'Sakka-', b:'ফুটবল', k:'' },
+            { l:6, j:'おはなみ', u:'Ohanami', b:'চেরি ফুল দেখা', k:'' },
+            { l:6, j:'なに', u:'Nani', b:'কি', k:'何' },
+            { l:6, j:'いっしょに', u:'Isshoni', b:'একসাথে', k:'' },
+            { l:6, j:'ちょっと', u:'Chotto', b:'একটু', k:'' },
+            { l:6, j:'いつも', u:'Itsumo', b:'সবসময়', k:'' },
+            { l:6, j:'ときどき', u:'Tokidoki', b:'মাঝে মাঝে', k:'時々' },
+            { l:6, j:'それから', u:'Sorekara', b:'তারপর', k:'' },
+            { l:6, j:'ええ', u:'Ee', b:'হ্যাঁ', k:'' },
+            { l:6, j:'いいですね', u:'Iisudesu ne', b:'বেশ ভালো!', k:'' },
+            { l:6, j:'わかりました', u:'Wakarimashita', b:'বুঝতে পেরেছি', k:'' },
+            { l:6, j:'なんですか', u:'Nandesuka', b:'কি ব্যাপার?', k:'' },
+            { l:6, j:'じゃ、また', u:'Ja, mata', b:'আবার দেখা হবে', k:'' },
+            { l:6, j:'メキシコ', u:'Mekishiko', b:'মেক্সিকো', k:'' },
+
+            // Lesson 7
+            { l:7, j:'きります', u:'Kirimasu', b:'কাটা', k:'切ります' },
+            { l:7, j:'おくります', u:'Okurimasu', b:'পাঠানো', k:'送ります' },
+            { l:7, j:'あげます', u:'Agemasu', b:'দেওয়া', k:'' },
+            { l:7, j:'もらいます', u:'Moraimasu', b:'গ্রহণ করা', k:'' },
+            { l:7, j:'かします', u:'Kashimasu', b:'ধার দেওয়া', k:'' },
+            { l:7, j:'かります', u:'Karimasu', b:'ধার নেওয়া', k:'借ります' },
+            { l:7, j:'おしえます', u:'Oshiemasu', b:'শেখানো', k:'教えます' },
+            { l:7, j:'ならいます', u:'Naraimasu', b:'শেখা', k:'習います' },
+            { l:7, j:'かけます', u:'Kakemasu', b:'ফোন করা', k:'' },
+            { l:7, j:'て', u:'Te', b:'হাত', k:'' },
+            { l:7, j:'はし', u:'Hashi', b:'চপস্টিক', k:'' },
+            { l:7, j:'スプーン', u:'Spu-n', b:'চামচ', k:'' },
+            { l:7, j:'ナイフ', u:'Naifu', b:'ছুরি', k:'' },
+            { l:7, j:'フォーク', u:'Fo-ku', b:'কাটা চামচ', k:'' },
+            { l:7, j:'はさみ', u:'Hasami', b:'কাঁচি', k:'' },
+            { l:7, j:'パソコン', u:'Pasokon', b:'কম্পিউটার', k:'' },
+            { l:7, j:'ケータイ', u:'Keetai', b:'মোবাইল', k:'' },
+            { l:7, j:'メール', u:'Me-ru', b:'ই-মেইল', k:'' },
+            { l:7, j:'ねんがじょう', u:'Nengajou', b:'নববর্ষের কার্ড', k:'年賀状' },
+            { l:7, j:'パンチ', u:'Panchi', b:'পাঞ্চ মেশিন', k:'' },
+            { l:7, j:'ホッチキス', u:'Hotchikisu', b:'স্টেপলার', k:'' },
+            { l:7, j:'セロテープ', u:'Serote-pu', b:'স্কচটেপ', k:'' },
+            { l:7, j:'けしゴム', u:'Keshigomu', b:'ইরেজার', k:'' },
+            { l:7, j:'かみ', u:'Kami', b:'কাগজ', k:'' },
+            { l:7, j:'はな', u:'Hana', b:'ফুল', k:'' },
+            { l:7, j:'シャツ', u:'Shatsu', b:'শার্ট', k:'' },
+            { l:7, j:'プレゼント', u:'Purezento', b:'উপহার', k:'' },
+            { l:7, j:'にもつ', u:'Nimotsu', b:'পার্সেল', k:'荷物' },
+            { l:7, j:'おかね', u:'Okane', b:'টাকা', k:'お金' },
+            { l:7, j:'きっぷ', u:'Kippu', b:'টিকিট', k:'切符' },
+            { l:7, j:'クリスマス', u:'Kurisumasu', b:'ক্রিসমাস', k:'' },
+            { l:7, j:'ちち', u:'Chichi', b:'আমার বাবা', k:'父' },
+            { l:7, j:'はは', u:'Haha', b:'আমার মা', k:'母' },
+            { l:7, j:'おとうさん', u:'Otousan', b:'অন্যের বাবা', k:'お父さん' },
+            { l:7, j:'おかあさん', u:'Okaasan', b:'অন্যের মা', k:'お母さん' },
+            { l:7, j:'もう', u:'Mou', b:'ইতিমধ্যে', k:'' },
+            { l:7, j:'まだ', u:'Mada', b:'এখনও না', k:'' },
+            { l:7, j:'これから', u:'Korekara', b:'এখন থেকে', k:'' },
+            { l:7, j:'すてきですね', u:'Sutekidesune', b:'চমৎকার!', k:'' },
+            { l:7, j:'いらっしゃい', u:'Irasshai', b:'স্বাগতম', k:'' },
+            { l:7, j:'どうぞおあがりください', u:'Douzo oagarikudasai', b:'ভেতরে আসুন', k:'' },
+            { l:7, j:'しつれいします', u:'Shitsureishimasu', b:'আসছি', k:'' },
+            { l:7, j:'いかがですか', u:'Ikagadesuka', b:'কেমন হয়?', k:'' },
+            { l:7, j:'いただきます', u:'Itadakimasu', b:'খাবার শুরু করার বাক্য', k:'' },
+            { l:7, j:'ごちそうさま', u:'Gochisousama', b:'খাবার শেষের বাক্য', k:'' },
+            { l:7, j:'スペイン', u:'Supein', b:'স্পেন', k:'' },
+
+            // Lesson 8
+            { l:8, j:'ハンサム(な)', u:'Hansamu(na)', b:'সুদর্শন', k:'' },
+            { l:8, j:'きれい(な)', u:'Kirei(na)', b:'সুন্দর / পরিষ্কার', k:'' },
+            { l:8, j:'しずか(な)', u:'Shizuka(na)', b:'শান্ত / নিরিবিলি', k:'' },
+            { l:8, j:'にぎやか(な)', u:'Nigiyaka(na)', b:'কোলাহলপূর্ণ', k:'' },
+            { l:8, j:'ゆうめい(な)', u:'Yuumei(na)', b:'বিখ্যাত', k:'' },
+            { l:8, j:'しんせつ(な)', u:'Shinsetsu(na)', b:'দয়ালু', k:'' },
+            { l:8, j:'げんき(な)', u:'Genki(na)', b:'সুস্থ', k:'' },
+            { l:8, j:'ひま(な)', u:'Hima(na)', b:'অবসর সময়', k:'' },
+            { l:8, j:'べんり(な)', u:'Benri(na)', b:'সুবিধাজনক', k:'' },
+            { l:8, j:'すてき(な)', u:'Suteki(na)', b:'চমৎকার', k:'' },
+            { l:8, j:'おおきい', u:'Ookii', b:'বড়', k:'大きい' },
+            { l:8, j:'ちいさい', u:'Chiisai', b:'ছোট', k:'小さい' },
+            { l:8, j:'あたらしい', u:'Atarashii', b:'নতুন', k:'新しい' },
+            { l:8, j:'ふるい', u:'Furui', b:'পুরাতন', k:'古い' },
+            { l:8, j:'いい (よい)', u:'Ii (yoi)', b:'ভালো', k:'' },
+            { l:8, j:'わるい', u:'Warui', b:'খারাপ', k:'悪い' },
+            { l:8, j:'あつい', u:'Atsui', b:'গরম', k:'暑い / 熱い' },
+            { l:8, j:'さむい', u:'Samui', b:'ঠান্ডা (আবহাওয়া)', k:'寒い' },
+            { l:8, j:'つめたい', u:'Tsumetai', b:'ঠান্ডা (স্পর্শে)', k:'冷たい' },
+            { l:8, j:'むずかしい', u:'Muzukashii', b:'কঠিন', k:'難しい' },
+            { l:8, j:'やさしい', u:'Yasashii', b:'সহজ', k:'易しい' },
+            { l:8, j:'たかい', u:'Takai', b:'উঁচু / দামী', k:'高い' },
+            { l:8, j:'やすい', u:'Yasui', b:'সস্তা', k:'安い' },
+            { l:8, j:'ひくい', u:'Hikui', b:'নিচু', k:'低い' },
+            { l:8, j:'おもしろい', u:'Omosiroi', b:'মজার', k:'面白い' },
+            { l:8, j:'おいしい', u:'Oishii', b:'সুস্বাদু', k:'美味しい' },
+            { l:8, j:'いそがしい', u:'Isogashii', b:'ব্যস্ত', k:'忙しい' },
+            { l:8, j:'たのしい', u:'Tanoshii', b:'উপভোগ্য', k:'楽しい' },
+            { l:8, j:'しろい', u:'Shiroi', b:'সাদা', k:'白い' },
+            { l:8, j:'くろい', u:'Kuroi', b:'কালো', k:'黒い' },
+            { l:8, j:'あかい', u:'Akai', b:'লাল', k:'赤い' },
+            { l:8, j:'あおい', u:'Aoi', b:'নীল', k:'青い' },
+            { l:8, j:'さくら', u:'Sakura', b:'চেরি ফুল', k:'桜' },
+            { l:8, j:'やま', u:'Yama', b:'পাহাড়', k:'山' },
+            { l:8, j:'まち', u:'Machi', b:'শহর', k:'町' },
+            { l:8, j:'たべもの', u:'Tabemono', b:'খাবার', k:'食べ物' },
+            { l:8, j:'ところ', u:'Tokoro', b:'জায়গা', k:'所' },
+            { l:8, j:'りょう', u:'Ryou', b:'হোস্টেল', k:'寮' },
+            { l:8, j:'レストラン', u:'Resutoran', b:'রেস্টুরেন্ট', k:'' },
+            { l:8, j:'せいかつ', u:'Seikatsu', b:'জীবনযাত্রা', k:'生活' },
+            { l:8, j:'おしごと', u:'Oshigoto', b:'কাজ / চাকরি', k:'仕事' },
+            { l:8, j:'どう', u:'Dou', b:'কেমন', k:'' },
+            { l:8, j:'どんな～', u:'Donna~', b:'কেমন ধরনের--', k:'' },
+            { l:8, j:'とても', u:'Totemo', b:'খুব', k:'' },
+            { l:8, j:'あまり', u:'Amari', b:'তেমন একটা না', k:'' },
+            { l:8, j:'そして', u:'Soshite', b:'এবং', k:'' },
+            { l:8, j:'～が、～', u:'~ga, ~', b:'--কিন্তু--', k:'' },
+            { l:8, j:'おげんきですか', u:'Ogenkidesuka', b:'কেমন আছেন?', k:'' },
+            { l:8, j:'そうですね', u:'Soudesune', b:'তাইতো!', k:'' },
+            { l:8, j:'もういっぱい', u:'Mou ippai', b:'আর এক কাপ...', k:'' },
+            { l:8, j:'けっこうです', u:'Kekkoudesu', b:'আর লাগবে না', k:'' },
+            { l:8, j:'もう～ですね', u:'Mou~desne', b:'ইতিমধ্যে--', k:'' },
+            { l:8, j:'そろそろしつれいします', u:'Sososurushureishimasu', b:'এখন বিদায় নিই', k:'' },
+            { l:8, j:'いいえ', u:'Iie', b:'ঠিক আছে', k:'' },
+            { l:8, j:'またいらっしゃってください', u:'Mata irasshattekudasai', b:'আবার আসবেন', k:'' },
+            { l:8, j:'シャンハイ', u:'Shanhai', b:'সাংহাই', k:'上海' },
+            { l:8, j:'きんかくじ', u:'Kinkakuji', b:'কিংকাকুজি টেমプル', k:'金閣寺' },
+            { l:8, j:'ならこうえん', u:'Narakouen', b:'নারা পার্ক', k:'奈良公園' },
+            { l:8, j:'ふじさん', u:'Fujisan', b:'মাউন্ট ফুজি', k:'富士山' },
+            { l:8, j:'しちにんのさむらい', u:'Shichinin no samurai', b:'সেভেন সামুরাই', k:'七人の侍' }
+        ];
+
+const $ = id => document.getElementById(id);
+const state = {
+  mode:'jp-bn', selectedLesson:'all', list:[], index:0, score:0, wrong:[],
+  isAnswered:false, timer:null, timeLeft:10, startedAt:0, answeredThisRun:0,
+  runCorrect:0, isRetest:false, kanaType:'hiragana', kanaRun:false
+};
+const defaultPrefs = {sound:true,vibrate:true,autoSpeech:true,timer:10,reducedMotion:false,accent:0};
+const storageKeys = {stats:'n5master_stats_v2',prefs:'n5master_prefs_v2',session:'n5master_session_v2',learned:'n5master_learned_v2'};
+function readStore(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(_){return fallback}}
+function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(_){showToast('Browser storage unavailable; progress may not persist.')}}
+let stats = readStore(storageKeys.stats,{answered:0,correct:0,best:0,completed:0,lessons:{},learned:[]});
+let prefs = {...defaultPrefs,...readStore(storageKeys.prefs,{})};
+let learned = new Set([...(stats.learned||[]),...readStore(storageKeys.learned,[])]);
+const accents = [{a:'#55e0c0',b:'#75caff'},{a:'#a89bff',b:'#f09bda'},{a:'#ffbf69',b:'#ff8b9d'}];
+function applyPrefs(){
+  const a=accents[prefs.accent%accents.length];document.documentElement.style.setProperty('--accent',a.a);document.documentElement.style.setProperty('--accent2',a.b);
+  document.body.classList.toggle('reduce-motion',!!prefs.reducedMotion);
+  $('sound-toggle').checked=!!prefs.sound;$('vibrate-toggle').checked=!!prefs.vibrate;$('auto-speech-toggle').checked=!!prefs.autoSpeech;$('timer-setting').value=String(prefs.timer);$('motion-toggle').checked=!!prefs.reducedMotion;
+}
+function savePrefs(){writeStore(storageKeys.prefs,prefs);applyPrefs()}
+function showToast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.remove('show'),2300)}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:prefs.reducedMotion?'auto':'smooth'})}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function playSound(type){
+  if(!prefs.sound)return;
+  try{
+    const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!playSound.ctx)playSound.ctx=new Ctx();const ctx=playSound.ctx;
+    if(ctx.state==='suspended')ctx.resume();
+    const notes=type==='correct'?[523,659,784]:type==='wrong'?[190,140]:type==='timeout'?[240,160]:type==='tick'?[440]:[620];
+    notes.forEach((freq,i)=>{const osc=ctx.createOscillator(),gain=ctx.createGain(),start=ctx.currentTime+i*(type==='correct'?.085:.11),dur=type==='tick'?.045:type==='correct'?.12:.13;osc.type=type==='wrong'||type==='timeout'?'triangle':'sine';osc.frequency.setValueAtTime(freq,start);gain.gain.setValueAtTime(type==='tick'?.018:.055,start);gain.gain.exponentialRampToValueAtTime(.001,start+dur);osc.connect(gain);gain.connect(ctx.destination);osc.start(start);osc.stop(start+dur+.01)})
+  }catch(_){}
+}
+function vibrate(type='tap'){
+  if(!prefs.vibrate||!('vibrate' in navigator))return;
+  const pattern=type==='correct'?[22,25,22]:type==='wrong'?[48,28,48]:type==='timeout'?[85,45,85]:type==='navigate'?[12]:[18];
+  try{navigator.vibrate(pattern)}catch(_){}
+}
+function speakJapaneseWord(text){
+  if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance){showToast('Japanese TTS is not available in this browser.');return}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=.86;const voices=speechSynthesis.getVoices();const ja=voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ja'));if(ja)u.voice=ja;speechSynthesis.speak(u)}catch(_){showToast('Could not play Japanese audio.')}
+}
+function renderStats(){
+  const n=vocabData.length; $('stat-words').textContent=n;
+  $('stat-accuracy').textContent=(stats.answered?Math.round(stats.correct/stats.answered*100):0)+'%';
+  $('stat-answered').textContent=stats.answered||0;$('stat-best').textContent=(stats.best||0)+'%';
+  let complete=0;
+  $('lesson-progress').innerHTML='';
+  for(let l=1;l<=8;l++){
+    const total=vocabData.filter(v=>v.l===l).length, mastered=(stats.lessons&&stats.lessons[l])||0;
+    const pct=total?Math.min(100,Math.round(mastered/total*100)):0;if(pct>=100&&total)complete++;
+    const row=document.createElement('div');row.className='lesson-row';
+    row.innerHTML=`<span class="lesson-name">Lesson ${l}</span><div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div><span class="lesson-count">${Math.min(mastered,total)}/${total}</span>`;
+    $('lesson-progress').appendChild(row);
+  }
+  $('lesson-completion').textContent=`${complete} / 8`;
+}
+function saveStats(){stats.learned=[...learned];writeStore(storageKeys.stats,stats);writeStore(storageKeys.learned,[...learned]);renderStats()}
+function activePool(){
+  let pool=state.selectedLesson==='all'?[...vocabData]:vocabData.filter(v=>v.l===Number(state.selectedLesson));
+  if(state.mode==='kana')return pool;
+  return pool;
+}
+function saveSession(){
+  if(!state.list.length||state.index>=state.list.length){try{localStorage.removeItem(storageKeys.session)}catch(_){}return}
+  writeStore(storageKeys.session,{mode:state.mode,selectedLesson:state.selectedLesson,list:state.list,index:state.index,score:state.score,wrong:state.wrong,answeredThisRun:state.answeredThisRun,runCorrect:state.runCorrect,isRetest:state.isRetest})
+}
+function startQuiz({retest=false,restore=null,kana=false}={}){
+  clearInterval(state.timer);if('speechSynthesis'in window)speechSynthesis.cancel();
+  state.mode=kana?'kana':state.mode;state.selectedLesson=$('lesson-select').value;state.isRetest=retest;state.kanaRun=kana;
+  if(restore){Object.assign(state,restore);state.isRetest=!!restore.isRetest}
+  else{
+    let pool=activePool();
+    if(retest)pool=[...state.wrong];
+    else if(kana)pool=[];
+    const limit=$('question-limit').value;
+    if(!retest&&!kana&&limit!=='all')pool=shuffle(pool).slice(0,Math.min(Number(limit),pool.length));
+    else pool=shuffle(pool);
+    if(kana)pool=shuffle(kanaData[state.kanaType]).slice(0,Math.min(10,kanaData[state.kanaType].length)).map(k=>({l:0,j:k.char,b:k.romaji,u:k.romaji,k:''}));
+    state.list=pool;state.index=0;state.score=0;state.wrong=[];state.answeredThisRun=0;state.runCorrect=0;
+  }
+  if(!state.list.length){showToast('এই lesson-এ কোনো প্রশ্ন নেই।');return}
+  state.startedAt=Date.now();showScreen('quiz-screen');loadQuestion();vibrate('navigate');saveSession();
+}
+function currentItem(){return state.list[state.index]}
+function loadQuestion(){
+  clearInterval(state.timer);state.isAnswered=false;state.timeLeft=Number(prefs.timer)||0;
+  const item=currentItem();if(!item){showResults();return}
+  const isKana=state.mode==='kana'||state.kanaRun;
+  $('lesson-badge').textContent=isKana?'Kana practice':`Lesson ${item.l}`;
+  $('question-count').textContent=`${state.index+1} / ${state.list.length}`;$('score-live').textContent=`Score ${state.score}`;
+  $('progress-bar').style.width=`${state.index/state.list.length*100}%`;
+  $('question-kicker').textContent=isKana?'CHOOSE THE CORRECT ROMAJI':state.mode==='jp-bn'?'CHOOSE THE CORRECT MEANING':'CHOOSE THE JAPANESE WORD';
+  $('question-text').textContent=state.mode==='bn-jp'?item.b:item.j;
+  $('sub-text').textContent=isKana?'Kana character recognition':(state.mode==='jp-bn'?(item.k?`Kanji: ${item.k} · ${item.u}`:item.u):'সঠিক Japanese শব্দটি বেছে নাও');
+  $('speech-btn').classList.toggle('hidden',false);
+  $('speech-btn').textContent=isKana?'▶ Hear sound':'▶ Listen';
+  $('feedback').textContent='';$('feedback').className='feedback';
+  const key=state.mode==='bn-jp'?'j':'b';let correct=isKana?item.b:item[key];
+  let distractors;
+  if(isKana){distractors=shuffle(kanaData[state.kanaType].map(k=>k.romaji).filter(x=>x!==correct)).slice(0,3)}
+  else{distractors=shuffle(vocabData.filter(v=>v.j!==item.j).map(v=>v[key]).filter(x=>x!==correct));distractors=[...new Set(distractors)].slice(0,3)}
+  let opts=shuffle([correct,...distractors]);while(opts.length<4)opts.push('—');opts=opts.slice(0,4);
+  $('options-container').innerHTML='';
+  opts.forEach((opt,i)=>{const b=document.createElement('button');b.className='option';b.innerHTML=`<span class="option-letter">${String.fromCharCode(65+i)}</span><span></span>`;b.lastElementChild.textContent=opt;b.addEventListener('click',()=>checkAnswer(b,opt,correct));$('options-container').appendChild(b)});
+  $('answered-live').textContent=`${state.answeredThisRun} answered`;
+  $('timer-badge').classList.toggle('hidden',!prefs.timer);$('timer-badge').classList.remove('danger');$('timer-text').textContent=prefs.timer?`${state.timeLeft}s`:'Off';
+  if(prefs.timer)state.timer=setInterval(()=>{state.timeLeft--; $('timer-text').textContent=`${state.timeLeft}s`;if(state.timeLeft<=3&&state.timeLeft>0){$('timer-badge').classList.add('danger');playSound('tick')}if(state.timeLeft<=0){clearInterval(state.timer);handleTimeout()}},1000);
+  if(prefs.autoSpeech&&!isKana&&state.mode!=='bn-jp')setTimeout(()=>{if(!state.isAnswered&&document.getElementById('quiz-screen').classList.contains('active'))speakJapaneseWord(item.j)},180);
+}
+function markAnswered(correct,timeout=false){
+  const item=currentItem();state.isAnswered=true;clearInterval(state.timer);state.answeredThisRun++;
+  if(!state.isRetest&&!state.kanaRun){stats.answered=(stats.answered||0)+1;if(correct){stats.correct=(stats.correct||0)+1;learned.add(item.j);stats.lessons=stats.lessons||{};stats.lessons[item.l]=(stats.lessons[item.l]||0)+1}}
+  if(correct){state.score++;state.runCorrect++;playSound('correct');vibrate('correct');$('feedback').textContent='ঠিক হয়েছে! よくできました';$('feedback').className='feedback good'}
+  else{if(!state.wrong.some(w=>w.j===item.j))state.wrong.push(item);playSound(timeout?'timeout':'wrong');vibrate(timeout?'timeout':'wrong');$('feedback').textContent=timeout?'সময় শেষ! সঠিক উত্তরটি দেখো।':'ভুল হয়েছে—সঠিক উত্তরটি দেখো।';$('feedback').className='feedback bad'}
+  [...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;const label=btn.lastElementChild.textContent;if(label=== (state.mode==='bn-jp'?item.j:item.b))btn.classList.add('correct')});
+  $('score-live').textContent=`Score ${state.score}`;$('answered-live').textContent=`${state.answeredThisRun} answered`;
+  if(!state.isRetest&&!state.kanaRun)saveStats();
+  if(!state.kanaRun&&!timeout)speakJapaneseWord(item.j);
+  saveSession();setTimeout(nextQuestion,correct?850:1450);
+}
+function checkAnswer(btn,selected,correct){if(state.isAnswered)return;const ok=selected===correct;btn.classList.add(ok?'correct':'wrong');markAnswered(ok,false)}
+function handleTimeout(){if(state.isAnswered)return;const item=currentItem();const correct=state.mode==='bn-jp'?item.j:item.b;[...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;if(btn.lastElementChild.textContent===correct)btn.classList.add('correct')});markAnswered(false,true)}
+function nextQuestion(){if(state.index+1<state.list.length){state.index++;loadQuestion();saveSession()}else showResults()}
+function showResults(){
+  clearInterval(state.timer);try{localStorage.removeItem(storageKeys.session)}catch(_){}
+  if('speechSynthesis'in window)speechSynthesis.cancel();
+  const total=state.list.length,wrongCount=state.wrong.length,acc=total?Math.round(state.score/total*100):0;
+  $('final-score').textContent=`${state.score}/${total}`;$('correct-count').textContent=state.score;$('wrong-count').textContent=wrongCount;$('result-accuracy').textContent=acc+'%';
+  $('result-title').textContent=acc>=90?'Excellent work!':acc>=70?'Nice progress!':acc>=40?'Keep going!':'Every try counts.';
+  $('result-description').textContent=`${total}টি প্রশ্ন শেষ হয়েছে। নিয়মিত practice করলে মনে রাখা সহজ হবে।`;
+  $('result-mark').textContent=acc>=80?'✦':'✓';
+  if(!state.isRetest&&!state.kanaRun){stats.completed=(stats.completed||0)+1;stats.best=Math.max(stats.best||0,acc);saveStats()}
+  $('retest-btn').hidden=wrongCount===0;$('wrong-retest-num').textContent=wrongCount?`(${wrongCount})`:'';
+  $('review-section').hidden=wrongCount===0;$('review-list').innerHTML='';
+  state.wrong.forEach(w=>{const row=document.createElement('div');row.className='review-item';const jp=document.createElement('span');jp.className='jp';jp.textContent=w.j;const bn=document.createElement('span');bn.className='meaning';bn.textContent=w.b;row.append(jp,bn);$('review-list').appendChild(row)});
+  showScreen('result-screen');vibrate('navigate');renderStats();
+}
+function goHome(){clearInterval(state.timer);if('speechSynthesis'in window)speechSynthesis.cancel();showScreen('home-screen');renderStats();vibrate('navigate')}
+function startRetest(){if(!state.wrong.length)return;const missed=[...state.wrong];state.mode=state.mode==='kana'?'kana':state.mode;state.list=missed;state.index=0;state.score=0;state.wrong=[];state.answeredThisRun=0;state.runCorrect=0;state.isRetest=true;state.kanaRun=false;showScreen('quiz-screen');loadQuestion();saveSession()}
+const kanaData={
+ hiragana:[
+ {char:'あ',romaji:'a'},{char:'い',romaji:'i'},{char:'う',romaji:'u'},{char:'え',romaji:'e'},{char:'お',romaji:'o'},
+ {char:'か',romaji:'ka'},{char:'き',romaji:'ki'},{char:'く',romaji:'ku'},{char:'け',romaji:'ke'},{char:'こ',romaji:'ko'},
+ {char:'さ',romaji:'sa'},{char:'し',romaji:'shi'},{char:'す',romaji:'su'},{char:'せ',romaji:'se'},{char:'そ',romaji:'so'},
+ {char:'た',romaji:'ta'},{char:'ち',romaji:'chi'},{char:'つ',romaji:'tsu'},{char:'て',romaji:'te'},{char:'と',romaji:'to'},
+ {char:'な',romaji:'na'},{char:'に',romaji:'ni'},{char:'ぬ',romaji:'nu'},{char:'ね',romaji:'ne'},{char:'の',romaji:'no'},
+ {char:'は',romaji:'ha'},{char:'ひ',romaji:'hi'},{char:'ふ',romaji:'fu'},{char:'へ',romaji:'he'},{char:'ほ',romaji:'ho'},
+ {char:'ま',romaji:'ma'},{char:'み',romaji:'mi'},{char:'む',romaji:'mu'},{char:'め',romaji:'me'},{char:'も',romaji:'mo'},
+ {char:'や',romaji:'ya'},{char:'ゆ',romaji:'yu'},{char:'よ',romaji:'yo'},
+ {char:'ら',romaji:'ra'},{char:'り',romaji:'ri'},{char:'る',romaji:'ru'},{char:'れ',romaji:'re'},{char:'ろ',romaji:'ro'},
+ {char:'わ',romaji:'wa'},{char:'を',romaji:'wo'},{char:'ん',romaji:'n'}
+ ],
+ katakana:[
+ {char:'ア',romaji:'a'},{char:'イ',romaji:'i'},{char:'ウ',romaji:'u'},{char:'エ',romaji:'e'},{char:'オ',romaji:'o'},
+ {char:'カ',romaji:'ka'},{char:'キ',romaji:'ki'},{char:'ク',romaji:'ku'},{char:'ケ',romaji:'ke'},{char:'コ',romaji:'ko'},
+ {char:'サ',romaji:'sa'},{char:'シ',romaji:'shi'},{char:'ス',romaji:'su'},{char:'セ',romaji:'se'},{char:'ソ',romaji:'so'},
+ {char:'タ',romaji:'ta'},{char:'チ',romaji:'chi'},{char:'ツ',romaji:'tsu'},{char:'テ',romaji:'te'},{char:'ト',romaji:'to'},
+ {char:'ナ',romaji:'na'},{char:'ニ',romaji:'ni'},{char:'ヌ',romaji:'nu'},{char:'ネ',romaji:'ne'},{char:'ノ',romaji:'no'},
+ {char:'ハ',romaji:'ha'},{char:'ヒ',romaji:'hi'},{char:'フ',romaji:'fu'},{char:'ヘ',romaji:'he'},{char:'ホ',romaji:'ho'},
+ {char:'マ',romaji:'ma'},{char:'ミ',romaji:'mi'},{char:'ム',romaji:'mu'},{char:'メ',romaji:'me'},{char:'モ',romaji:'mo'},
+ {char:'ヤ',romaji:'ya'},{char:'ユ',romaji:'yu'},{char:'ヨ',romaji:'yo'},
+ {char:'ラ',romaji:'ra'},{char:'リ',romaji:'ri'},{char:'ル',romaji:'ru'},{char:'レ',romaji:'re'},{char:'ロ',romaji:'ro'},
+ {char:'ワ',romaji:'wa'},{char:'ヲ',romaji:'wo'},{char:'ン',romaji:'n'}
+ ]
+};
+function renderKana(){const list=kanaData[state.kanaType];$('kana-grid').innerHTML='';list.forEach(k=>{const b=document.createElement('button');b.className='kana-cell';b.innerHTML=`<div class="kana-char"></div><div class="kana-romaji"></div>`;b.querySelector('.kana-char').textContent=k.char;b.querySelector('.kana-romaji').textContent=k.romaji;b.addEventListener('click',()=>{playSound('tap');speakJapaneseWord(k.char);vibrate('tap')});$('kana-grid').appendChild(b)})}
+document.querySelectorAll('[data-mode]').forEach(btn=>btn.addEventListener('click',()=>{state.mode=btn.dataset.mode;document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b===btn));if(state.mode==='kana'){showScreen('kana-screen');renderKana()}else showScreen('home-screen');vibrate('tap')}));
+$('start-btn').addEventListener('click',()=>{state.mode=document.querySelector('[data-mode].active').dataset.mode;if(state.mode==='kana'){state.kanaRun=true;showScreen('kana-screen');renderKana()}else startQuiz()});
+$('continue-btn').addEventListener('click',()=>{const s=readStore(storageKeys.session,null);if(s){state.mode=s.mode;state.selectedLesson=s.selectedLesson;startQuiz({restore:s})}});
+$('quiz-home').addEventListener('click',goHome);$('results-home').addEventListener('click',goHome);$('kana-home').addEventListener('click',goHome);$('settings-home').addEventListener('click',goHome);
+$('speech-btn').addEventListener('click',()=>{const item=currentItem();if(item)speakJapaneseWord(item.j);vibrate('tap')});
+$('skip-btn').addEventListener('click',()=>{if(!state.isAnswered){handleTimeout()}});
+$('retest-btn').addEventListener('click',startRetest);
+$('again-btn').addEventListener('click',()=>{if(state.kanaRun){state.mode='kana';showScreen('kana-screen');renderKana()}else startQuiz()});
+$('settings-open').addEventListener('click',()=>{showScreen('settings-screen');vibrate('tap')});
+$('theme-toggle').addEventListener('click',()=>{prefs.accent=(prefs.accent+1)%accents.length;savePrefs();vibrate('tap');showToast('Accent theme changed')});
+$('sound-toggle').addEventListener('change',e=>{prefs.sound=e.target.checked;savePrefs();if(prefs.sound)playSound('tap')});
+$('vibrate-toggle').addEventListener('change',e=>{prefs.vibrate=e.target.checked;savePrefs();vibrate('tap');if(prefs.vibrate&&!('vibrate'in navigator))showToast('This browser does not support vibration.')});
+$('auto-speech-toggle').addEventListener('change',e=>{prefs.autoSpeech=e.target.checked;savePrefs()});
+$('timer-setting').addEventListener('change',e=>{prefs.timer=Number(e.target.value);savePrefs()});
+$('motion-toggle').addEventListener('change',e=>{prefs.reducedMotion=e.target.checked;savePrefs()});
+$('reset-progress').addEventListener('click',()=>{if(confirm('Reset all saved quiz statistics and progress on this device?')){stats={answered:0,correct:0,best:0,completed:0,lessons:{},learned:[]};learned.clear();try{localStorage.removeItem(storageKeys.session);localStorage.removeItem(storageKeys.learned)}catch(_){}saveStats();showToast('Saved statistics reset.')}})
+document.querySelectorAll('[data-kana]').forEach(btn=>btn.addEventListener('click',()=>{state.kanaType=btn.dataset.kana;document.querySelectorAll('[data-kana]').forEach(b=>b.classList.toggle('active',b===btn));renderKana();vibrate('tap')}));
+$('kana-quiz-btn').addEventListener('click',()=>{state.mode='kana';state.kanaRun=true;startQuiz({kana:true})});
+// Consistent tactile/click feedback for navigation and controls.
+document.addEventListener('click',e=>{
+  const control=e.target.closest('button');
+  if(!control || control.disabled || control.classList.contains('option') || control.classList.contains('kana-cell'))return;
+  // Answer feedback and manual TTS already have their own dedicated sounds.
+  if(control.closest('#options-container') || control.id==='speech-btn')return;
+  playSound('tap');
+  // Existing handlers use a stronger navigation/correctness vibration where appropriate.
+  if(!['quiz-home','results-home','kana-home','settings-home','settings-open','theme-toggle','speech-btn','start-btn','continue-btn','again-btn','retest-btn','skip-btn','kana-quiz-btn'].includes(control.id) && !control.matches('[data-mode],[data-kana]'))vibrate('tap');
+});
+document.querySelectorAll('select').forEach(el=>el.addEventListener('change',()=>{playSound('tap');vibrate('tap')}));
+window.addEventListener('beforeunload',()=>{if(state.list.length&&state.index<state.list.length)saveSession()});
+applyPrefs();renderStats();renderKana();
+$('stat-words').title=`${vocabData.length} entries; ${new Set(vocabData.map(v=>v.j)).size} distinct headwords`;
+const savedSession=readStore(storageKeys.session,null);if(savedSession&&savedSession.list&&savedSession.index<savedSession.list.length){$('continue-btn').hidden=false}
+</script>
+</body>
+</html>
