@@ -7,23 +7,274 @@
 <meta name="description" content="Japanese N5 vocabulary and kana practice with Bangla meanings, pronunciation, progress tracking and mobile-friendly quizzes.">
 <title>Japanese N5 Vocabulary Practice - Created By SiRJ0</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+
 :root{color-scheme:dark;--bg:#090e1b;--panel:#111a2b;--panel2:#172238;--line:#283750;--text:#f2f6ff;--muted:#98a8c2;--accent:#55e0c0;--accent2:#8d83ff;--good:#49dfa0;--bad:#ff7186;--warn:#ffc86a;--shadow:0 22px 70px #0005;--radius:22px;--font:'DM Sans','Noto Sans Bengali','Noto Sans JP',sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 5% 0%,#234b6340,transparent 38%),radial-gradient(ellipse at 100% 90%,#5d4f9a24,transparent 40%),var(--bg);color:var(--text);font-family:var(--font);padding:clamp(12px,3vw,30px);overflow-x:hidden}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+.home-profile{display:flex;align-items:center;gap:14px;padding:15px 18px;margin-bottom:16px;border:1px solid #2b3b54;border-radius:18px;background:linear-gradient(120deg,#121c2eF2,#0e1728F2);box-shadow:var(--shadow)}.home-profile-picture{width:58px;height:58px;flex:0 0 58px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);background:#172238}.home-profile-copy{min-width:0;flex:1}.home-profile-label{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--accent)}.home-profile-name{font-size:20px;font-weight:800;overflow-wrap:anywhere;margin-top:3px}.home-profile-note{font-size:11px;color:var(--muted);margin-top:2px}.home-profile .small-btn{width:auto;flex:0 0 auto;margin:0;min-height:38px}@media(max-width:420px){.home-profile{gap:10px;padding:13px}.home-profile-picture{width:48px;height:48px;flex-basis:48px}.home-profile-name{font-size:17px}}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 5% 0%,#234b6340,transparent 38%),radial-gradient(ellipse at 100% 90%,#5d4f9a24,transparent 40%),var(--bg);color:var(--text);font-family:var(--font);padding:clamp(12px,3vw,30px);overflow-x:hidden}
 button,select,input{font:inherit}button{touch-action:manipulation}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #55e0c0a8;outline-offset:3px}
-.app{max-width:960px;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,var(--accent),#5aa6ff);color:#071421;font-weight:900;font-size:19px;box-shadow:0 8px 26px #55e0c026}.brand-title{font-size:clamp(15px,2.7vw,20px);font-weight:800;letter-spacing:-.5px}.brand-sub{font-size:12px;color:var(--muted);margin-top:2px}.top-actions{display:flex;gap:8px}.icon-btn,.small-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:#111a2bcc;color:var(--text);border-radius:13px;min-height:42px;padding:0 13px;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}.icon-btn{width:44px;padding:0;font-size:18px}.icon-btn:hover,.small-btn:hover{border-color:#55e0c080;background:var(--panel2)}button:active{transform:scale(.98)}.panel{background:linear-gradient(150deg,#121c2eF2,#0e1728F2);border:1px solid #2b3b54;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.hero{padding:clamp(22px,4vw,38px);position:relative;isolation:isolate}.hero:after{content:"あ";position:absolute;right:5%;top:-30px;font-family:'Noto Sans JP',sans-serif;font-size:clamp(130px,23vw,230px);font-weight:700;color:#55e0c009;z-index:-1;pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}.eyebrow:before{content:"";width:20px;height:2px;background:var(--accent);border-radius:9px}.hero h1{font-size:clamp(27px,5.3vw,46px);line-height:1.1;letter-spacing:-1.6px;margin:14px 0 10px;max-width:620px}.gradient-text{background:linear-gradient(100deg,#f4f8ff 10%,var(--accent) 65%,#aaa2ff);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);line-height:1.65;margin:0;max-width:570px;font-size:14px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.stat{padding:15px 16px;background:#111a2bcc;border:1px solid var(--line);border-radius:17px;min-width:0}.stat-label{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}.stat-value{font-size:clamp(20px,3.5vw,28px);font-weight:800;letter-spacing:-.7px;margin-top:7px;overflow-wrap:anywhere}.stat-note{font-size:10px;color:var(--muted);margin-top:3px}.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:16px;margin-top:16px}.section{padding:clamp(18px,3vw,25px)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:19px}.section-title{font-size:17px;font-weight:800;letter-spacing:-.3px}.section-desc{font-size:12px;color:var(--muted);margin-top:4px}.pill{font-size:11px;color:var(--accent);background:#55e0c014;border:1px solid #55e0c033;padding:6px 9px;border-radius:999px;white-space:nowrap}.field-label{display:block;color:#bac7db;font-size:12px;font-weight:700;margin:15px 0 8px}.mode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.mode{border:1px solid var(--line);border-radius:14px;background:#0d1627;color:var(--muted);padding:13px 8px;min-height:75px;text-align:center;cursor:pointer;transition:all .2s}.mode .mode-icon{font-size:19px;display:block;margin-bottom:7px}.mode .mode-name{font-size:12px;font-weight:700}.mode.active{background:linear-gradient(145deg,#55e0c01c,#8d83ff16);border-color:#55e0c0a0;color:var(--text);box-shadow:inset 0 0 0 1px #55e0c014}.mode.active .mode-icon{color:var(--accent)}.select-wrap{position:relative}.select{width:100%;border:1px solid var(--line);border-radius:13px;padding:13px 40px 13px 13px;background:#0b1424;color:var(--text);min-height:48px;appearance:none}.select-wrap:after{content:"⌄";position:absolute;right:14px;top:10px;color:var(--muted);pointer-events:none;font-size:18px}.primary{width:100%;min-height:53px;border:0;border-radius:15px;background:linear-gradient(100deg,var(--accent),#75caff);color:#071821;font-weight:900;cursor:pointer;box-shadow:0 9px 24px #55e0c01d;transition:filter .2s,transform .2s;margin-top:20px}.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}.secondary{width:100%;min-height:46px;border:1px solid var(--line);border-radius:13px;background:#0d1627;color:var(--text);font-weight:700;cursor:pointer;margin-top:9px}.lesson-progress{display:grid;gap:12px}.lesson-row{display:grid;grid-template-columns:68px minmax(0,1fr) 34px;gap:10px;align-items:center;font-size:12px}.lesson-name{color:#cbd6e8}.bar{height:7px;border-radius:99px;background:#253149;overflow:hidden}.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#8d83ff);border-radius:99px;transition:width .35s}.lesson-count{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}.tip{margin-top:18px;padding:13px 14px;border-radius:13px;background:#55e0c00b;border:1px solid #55e0c01f;color:var(--muted);font-size:12px;line-height:1.6}.tip strong{color:var(--accent)}.screen{display:none}.screen.active{display:block;animation:enter .28s ease both}.quiz-panel{padding:clamp(18px,4vw,32px)}.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.quiz-chip{border:1px solid var(--line);background:#0d1627;border-radius:999px;padding:8px 11px;font-size:12px;color:#cad6e9;white-space:nowrap}.timer{font-variant-numeric:tabular-nums;color:var(--warn)}.timer.danger{color:var(--bad);animation:pulse .8s infinite}.quiz-progress{height:6px;background:#26344b;border-radius:99px;overflow:hidden;margin-bottom:25px}.quiz-progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}.question-card{text-align:center;padding:clamp(22px,5vw,42px) 14px 28px;border:1px solid #2b3b54;border-radius:20px;background:radial-gradient(ellipse at 50% 0%,#55e0c00c,transparent 65%),#0c1525;margin-bottom:17px}.question-kicker{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:800}.question-word{font-family:'Noto Sans JP','Noto Sans Bengali',sans-serif;font-size:clamp(32px,7vw,55px);font-weight:700;line-height:1.35;overflow-wrap:anywhere;margin:14px 0 10px}.question-sub{color:var(--muted);font-size:13px;line-height:1.6}.question-tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:15px}.speak-btn{border:1px solid #55e0c033;background:#55e0c00d;color:var(--accent);border-radius:11px;padding:8px 12px;cursor:pointer;font-size:12px;font-weight:700}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option{min-height:60px;text-align:left;padding:14px 15px;border:1px solid var(--line);border-radius:14px;background:#111b2d;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:12px;line-height:1.45;transition:background .18s,border-color .18s,transform .18s;overflow-wrap:anywhere}.option:hover:not(:disabled){border-color:#55e0c077;background:#19263b;transform:translateY(-1px)}.option-letter{flex:0 0 27px;height:27px;display:grid;place-items:center;border-radius:8px;background:#26334a;color:#b7c6dc;font-size:11px;font-weight:800}.option.correct{border-color:var(--good);background:#49dfa012}.option.correct .option-letter{background:var(--good);color:#062117}.option.wrong{border-color:var(--bad);background:#ff718612}.option.wrong .option-letter{background:var(--bad);color:#2a0610}.option:disabled{cursor:default}.feedback{min-height:25px;text-align:center;font-size:13px;color:var(--muted);padding-top:13px}.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}.quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px}.text-btn{border:0;background:transparent;color:var(--muted);padding:10px 0;cursor:pointer;font-size:12px}.text-btn:hover{color:var(--text)}.hidden{display:none!important}.result{text-align:center;padding:clamp(22px,5vw,40px)}.result-mark{width:74px;height:74px;border-radius:24px;background:#55e0c014;border:1px solid #55e0c03c;display:grid;place-items:center;font-size:32px;margin:0 auto 18px}.result h2{font-size:clamp(25px,5vw,36px);margin:0 0 8px;letter-spacing:-1px}.result p{color:var(--muted);font-size:13px;line-height:1.6}.result-score{font-size:clamp(44px,10vw,64px);font-weight:900;letter-spacing:-2px;margin:15px 0 4px;background:linear-gradient(90deg,var(--accent),#a6a0ff);background-clip:text;-webkit-background-clip:text;color:transparent}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:22px 0}.result-stat{padding:14px 8px;border-radius:14px;background:#0d1627;border:1px solid var(--line)}.result-stat b{display:block;font-size:22px}.result-stat span{font-size:11px;color:var(--muted)}.review{margin-top:20px;text-align:left}.review h3{font-size:14px;margin:0 0 10px}.review-list{display:grid;gap:8px;max-height:300px;overflow:auto}.review-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:11px 12px;border-radius:12px;background:#0d1627;border:1px solid var(--line);font-size:12px}.review-item .jp{font-family:'Noto Sans JP',sans-serif}.review-item .meaning{color:var(--muted);text-align:right}.settings-grid{display:grid;gap:0}.setting{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid #26344b}.setting:last-child{border-bottom:0}.setting-copy{min-width:0}.setting-title{font-size:13px;font-weight:700}.setting-desc{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}.switch{appearance:none;width:44px;height:26px;flex:0 0 44px;border-radius:99px;background:#35435b;position:relative;cursor:pointer;transition:background .2s;margin:0}.switch:before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;border-radius:50%;background:#fff;transition:transform .2s}.switch:checked{background:var(--accent)}.switch:checked:before{transform:translateX(18px);background:#082019}.footnote{text-align:center;color:#72829e;font-size:11px;line-height:1.6;padding:20px 8px 4px}.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:#17253a;border:1px solid #344963;color:var(--text);padding:11px 16px;border-radius:13px;font-size:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10;max-width:calc(100vw - 24px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.kana-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.kana-cell{padding:12px 4px;text-align:center;border:1px solid var(--line);border-radius:13px;background:#0d1627;cursor:pointer;min-width:0}.kana-cell:active{background:#55e0c01a}.kana-char{font-family:'Noto Sans JP',sans-serif;font-size:25px;font-weight:700}.kana-romaji{font-size:11px;color:var(--muted);margin-top:4px}.kana-tabs{display:flex;gap:7px;margin-bottom:13px}.kana-tabs button{flex:1;border:1px solid var(--line);border-radius:11px;background:#0d1627;color:var(--muted);padding:10px;cursor:pointer;font-size:12px}.kana-tabs button.active{color:var(--accent);border-color:#55e0c077;background:#55e0c010}.kana-caption{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.5}
+.app{max-width:960px;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,var(--accent),#5aa6ff);color:#071421;font-weight:900;font-size:19px;box-shadow:0 8px 26px #55e0c026}.brand-title{font-size:clamp(15px,2.7vw,20px);font-weight:800;letter-spacing:-.5px}.brand-sub{font-size:12px;color:var(--muted);margin-top:2px}.top-actions{display:flex;gap:8px}.icon-btn,.small-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:#111a2bcc;color:var(--text);border-radius:13px;min-height:42px;padding:0 13px;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}.icon-btn{width:44px;padding:0;font-size:18px}.icon-btn:hover,.small-btn:hover{border-color:#55e0c080;background:var(--panel2)}button:active{transform:scale(.98)}.panel{background:linear-gradient(150deg,#121c2eF2,#0e1728F2);border:1px solid #2b3b54;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.hero{padding:clamp(22px,4vw,38px);position:relative;isolation:isolate}.hero:after{content:"あ";position:absolute;right:5%;top:-30px;font-family:'Noto Sans JP',sans-serif;font-size:clamp(130px,23vw,230px);font-weight:700;color:#55e0c009;z-index:-1;pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}.eyebrow:before{content:"";width:20px;height:2px;background:var(--accent);border-radius:9px}.hero h1{font-size:clamp(27px,5.3vw,46px);line-height:1.1;letter-spacing:-1.6px;margin:14px 0 10px;max-width:620px}.gradient-text{background:linear-gradient(100deg,#f4f8ff 10%,var(--accent) 65%,#aaa2ff);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);line-height:1.65;margin:0;max-width:570px;font-size:14px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.stat{padding:15px 16px;background:#111a2bcc;border:1px solid var(--line);border-radius:17px;min-width:0}.stat-label{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}.stat-value{font-size:clamp(20px,3.5vw,28px);font-weight:800;letter-spacing:-.7px;margin-top:7px;overflow-wrap:anywhere}.stat-note{font-size:10px;color:var(--muted);margin-top:3px}.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:16px;margin-top:16px}.section{padding:clamp(18px,3vw,25px)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:19px}.section-title{font-size:17px;font-weight:800;letter-spacing:-.3px}.section-desc{font-size:12px;color:var(--muted);margin-top:4px}.pill{font-size:11px;color:var(--accent);background:#55e0c014;border:1px solid #55e0c033;padding:6px 9px;border-radius:999px;white-space:nowrap}.field-label{display:block;color:#bac7db;font-size:12px;font-weight:700;margin:15px 0 8px}.mode-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.mode{border:1px solid var(--line);border-radius:14px;background:#0d1627;color:var(--muted);padding:13px 8px;min-height:75px;text-align:center;cursor:pointer;transition:all .2s}.mode .mode-icon{font-size:19px;display:block;margin-bottom:7px}.mode .mode-name{font-size:12px;font-weight:700}.mode.active{background:linear-gradient(145deg,#55e0c01c,#8d83ff16);border-color:#55e0c0a0;color:var(--text);box-shadow:inset 0 0 0 1px #55e0c014}.mode.active .mode-icon{color:var(--accent)}.select-wrap{position:relative}.select{width:100%;border:1px solid var(--line);border-radius:13px;padding:13px 40px 13px 13px;background:#0b1424;color:var(--text);min-height:48px;appearance:none}.select-wrap:after{content:"⌄";position:absolute;right:14px;top:10px;color:var(--muted);pointer-events:none;font-size:18px}.primary{width:100%;min-height:53px;border:0;border-radius:15px;background:linear-gradient(100deg,var(--accent),#75caff);color:#071821;font-weight:900;cursor:pointer;box-shadow:0 9px 24px #55e0c01d;transition:filter .2s,transform .2s;margin-top:20px}.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}.secondary{width:100%;min-height:46px;border:1px solid var(--line);border-radius:13px;background:#0d1627;color:var(--text);font-weight:700;cursor:pointer;margin-top:9px}.lesson-progress{display:grid;gap:12px}.lesson-row{display:grid;grid-template-columns:68px minmax(0,1fr) 34px;gap:10px;align-items:center;font-size:12px}.lesson-name{color:#cbd6e8}.bar{height:7px;border-radius:99px;background:#253149;overflow:hidden}.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#8d83ff);border-radius:99px;transition:width .35s}.lesson-count{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}.tip{margin-top:18px;padding:13px 14px;border-radius:13px;background:#55e0c00b;border:1px solid #55e0c01f;color:var(--muted);font-size:12px;line-height:1.6}.tip strong{color:var(--accent)}.screen{display:none}.screen.active{display:block;animation:enter .28s ease both}.quiz-panel{padding:clamp(18px,4vw,32px)}.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.quiz-chip{border:1px solid var(--line);background:#0d1627;border-radius:999px;padding:8px 11px;font-size:12px;color:#cad6e9;white-space:nowrap}.timer{font-variant-numeric:tabular-nums;color:var(--warn)}.timer.danger{color:var(--bad);animation:pulse .8s infinite}.quiz-progress{height:6px;background:#26344b;border-radius:99px;overflow:hidden;margin-bottom:25px}.quiz-progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}.question-card{text-align:center;padding:clamp(22px,5vw,42px) 14px 28px;border:1px solid #2b3b54;border-radius:20px;background:radial-gradient(ellipse at 50% 0%,#55e0c00c,transparent 65%),#0c1525;margin-bottom:17px}.question-kicker{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:800}.question-word{font-family:'Noto Sans JP','Noto Sans Bengali',sans-serif;font-size:clamp(32px,7vw,55px);font-weight:700;line-height:1.35;overflow-wrap:anywhere;margin:14px 0 10px}.question-sub{color:var(--muted);font-size:13px;line-height:1.6}.question-tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:15px}.speak-btn{border:1px solid #55e0c033;background:#55e0c00d;color:var(--accent);border-radius:11px;padding:8px 12px;cursor:pointer;font-size:12px;font-weight:700}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option{min-height:60px;text-align:left;padding:14px 15px;border:1px solid var(--line);border-radius:14px;background:#111b2d;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:12px;line-height:1.45;transition:background .18s,border-color .18s,transform .18s;overflow-wrap:anywhere}.option:hover:not(:disabled){border-color:#55e0c077;background:#19263b;transform:translateY(-1px)}.option-letter{flex:0 0 27px;height:27px;display:grid;place-items:center;border-radius:8px;background:#26334a;color:#b7c6dc;font-size:11px;font-weight:800}.option.correct{border-color:var(--good);background:#49dfa012}.option.correct .option-letter{background:var(--good);color:#062117}.option.wrong{border-color:var(--bad);background:#ff718612}.option.wrong .option-letter{background:var(--bad);color:#2a0610}.option:disabled{cursor:default}.feedback{min-height:25px;text-align:center;font-size:13px;color:var(--muted);padding-top:13px}.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}.quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px}.text-btn{border:0;background:transparent;color:var(--muted);padding:10px 0;cursor:pointer;font-size:12px}.text-btn:hover{color:var(--text)}.hidden{display:none!important}
+/* Minimal animated sign-in */
+body.login-mode .topbar{display:none}#login-screen{min-height:calc(100vh - 60px);display:none;place-items:center}
+#login-screen.active{display:grid}
+.login-wrap{width:min(100%,430px);padding:clamp(24px,5vw,38px);position:relative;overflow:hidden}
+.login-wrap:before{content:"あ";position:absolute;right:-8px;top:-42px;font:700 170px 'Noto Sans JP',sans-serif;color:#55e0c00b;pointer-events:none;animation:floatKana 7s ease-in-out infinite}
+.login-brand{display:flex;align-items:center;gap:12px;margin-bottom:32px;position:relative}
+.login-mark{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,var(--accent),#75caff);color:#071821;font-size:23px;font-weight:900;box-shadow:0 8px 30px #55e0c02b}
+.login-heading{font-size:clamp(26px,6vw,34px);font-weight:900;letter-spacing:-1.1px;margin:0 0 8px;position:relative}
+.login-sub{font-size:13px;color:var(--muted);margin:0 0 25px;position:relative}
+.login-form{position:relative}.login-input{width:100%;min-height:49px;border:1px solid var(--line);border-radius:13px;background:#0b1424;color:var(--text);padding:13px 14px;outline:none}
+.login-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #55e0c015}
+.login-switch{width:100%;border:0;background:transparent;color:var(--muted);padding:15px 6px 0;cursor:pointer;font-size:12px}
+.login-error{font-size:12px;color:var(--bad);min-height:18px;margin-top:10px}
+.profile-edit{border:1px solid var(--line);border-radius:13px;padding:14px;margin:15px 0}
+.home-profile{display:flex;align-items:center;gap:15px;padding:16px 18px;margin-bottom:16px;min-width:0}
+.home-profile-picture{width:64px;height:64px;flex:0 0 64px;object-fit:cover;border-radius:50%;border:2px solid var(--accent);background:var(--panel2)}
+.home-profile-info{min-width:0;flex:1}.home-profile-kicker{font-size:10px;font-weight:800;letter-spacing:1.5px;color:var(--accent)}.home-profile-name{font-size:19px;font-weight:900;overflow-wrap:anywhere;margin-top:4px}.home-profile-meta{font-size:11px;color:var(--muted);margin-top:3px}.home-profile-edit{flex:0 0 auto}
+@media(max-width:420px){.home-profile{gap:11px;padding:13px}.home-profile-picture{width:52px;height:52px;flex-basis:52px}.home-profile-name{font-size:16px}.home-profile-edit{min-height:38px;padding:0 10px}}
+@keyframes floatKana{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(12px) rotate(5deg)}}
+.option,.kana-cell,.mode,.small-btn,.icon-btn,.secondary,.primary,.text-btn,.speak-btn{transition:transform .14s ease,filter .14s ease,background .18s,border-color .18s}
+button:active{transform:scale(.965)!important}
+@media(max-width:500px){#login-screen{min-height:calc(100vh - 30px)}.login-wrap{padding:25px 21px}}
+.result{text-align:center;padding:clamp(22px,5vw,40px)}.result-mark{width:74px;height:74px;border-radius:24px;background:#55e0c014;border:1px solid #55e0c03c;display:grid;place-items:center;font-size:32px;margin:0 auto 18px}.result h2{font-size:clamp(25px,5vw,36px);margin:0 0 8px;letter-spacing:-1px}.result p{color:var(--muted);font-size:13px;line-height:1.6}.result-score{font-size:clamp(44px,10vw,64px);font-weight:900;letter-spacing:-2px;margin:15px 0 4px;background:linear-gradient(90deg,var(--accent),#a6a0ff);background-clip:text;-webkit-background-clip:text;color:transparent}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:22px 0}.result-stat{padding:14px 8px;border-radius:14px;background:#0d1627;border:1px solid var(--line)}.result-stat b{display:block;font-size:22px}.result-stat span{font-size:11px;color:var(--muted)}.review{margin-top:20px;text-align:left}.review h3{font-size:14px;margin:0 0 10px}.review-list{display:grid;gap:8px;max-height:300px;overflow:auto}.review-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:11px 12px;border-radius:12px;background:#0d1627;border:1px solid var(--line);font-size:12px}.review-item .jp{font-family:'Noto Sans JP',sans-serif}.review-item .meaning{color:var(--muted);text-align:right}.settings-grid{display:grid;gap:0}.setting{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid #26344b}.setting:last-child{border-bottom:0}.setting-copy{min-width:0}.setting-title{font-size:13px;font-weight:700}.setting-desc{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}.switch{appearance:none;width:44px;height:26px;flex:0 0 44px;border-radius:99px;background:#35435b;position:relative;cursor:pointer;transition:background .2s;margin:0}.switch:before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;border-radius:50%;background:#fff;transition:transform .2s}.switch:checked{background:var(--accent)}.switch:checked:before{transform:translateX(18px);background:#082019}.footnote{text-align:center;color:#72829e;font-size:11px;line-height:1.6;padding:20px 8px 4px}.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:#17253a;border:1px solid #344963;color:var(--text);padding:11px 16px;border-radius:13px;font-size:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10;max-width:calc(100vw - 24px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.kana-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.kana-cell{padding:12px 4px;text-align:center;border:1px solid var(--line);border-radius:13px;background:#0d1627;cursor:pointer;min-width:0}.kana-cell:active{background:#55e0c01a}.kana-char{font-family:'Noto Sans JP',sans-serif;font-size:25px;font-weight:700}.kana-romaji{font-size:11px;color:var(--muted);margin-top:4px}.kana-tabs{display:flex;gap:7px;margin-bottom:13px}.kana-tabs button{flex:1;border:1px solid var(--line);border-radius:11px;background:#0d1627;color:var(--muted);padding:10px;cursor:pointer;font-size:12px}.kana-tabs button.active{color:var(--accent);border-color:#55e0c077;background:#55e0c010}.kana-caption{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.5}
 body.reduce-motion *,body.reduce-motion *:before,body.reduce-motion *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @keyframes enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{50%{opacity:.6}}@media(max-width:760px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{padding:13px 14px}.hero{padding:25px 22px}.hero h1{letter-spacing:-1px}.layout{gap:12px}.section{padding:20px}}@media(max-width:420px){body{padding:10px}.topbar{margin-bottom:13px}.brand-mark{width:40px;height:40px;border-radius:13px}.brand-sub{font-size:10px}.icon-btn{width:40px;min-height:40px}.top-actions{gap:6px}.mode-grid{gap:6px}.mode{padding:11px 4px;min-height:72px}.mode .mode-name{font-size:11px}.options{grid-template-columns:1fr}.option{min-height:54px}.quiz-chip{padding:7px 9px;font-size:11px}.question-word{font-size:clamp(30px,9vw,43px)}.kana-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.kana-cell{padding:10px 2px}.kana-char{font-size:22px}.result-grid{gap:6px}.result-stat{padding:12px 4px}.result-stat b{font-size:19px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Profile image uploader + polished live motion */
+@keyframes avatarOrbit{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes avatarBreath{0%,100%{transform:scale(.96);opacity:.45}50%{transform:scale(1.08);opacity:.9}}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.avatar-upload{display:flex;align-items:center;gap:18px;padding:18px;border:1px solid #55e0c04a;border-radius:20px;background:radial-gradient(circle at 12% 50%,#55e0c018,transparent 42%),linear-gradient(135deg,#121e31,#0c1424);cursor:pointer;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.avatar-upload:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,#ffffff08 48%,transparent 72%);background-size:200% 100%;animation:shimmer 6s linear infinite;pointer-events:none}
+.avatar-upload:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 12px 35px #55e0c018}
+.avatar-orbit{width:108px;height:108px;flex:0 0 108px;display:grid;place-items:center;position:relative;border-radius:50%;background:conic-gradient(from 20deg,var(--accent),transparent 24%,var(--accent2),transparent 70%,var(--accent));animation:avatarOrbit 13s linear infinite}
+.avatar-glow{position:absolute;inset:5px;border-radius:50%;background:radial-gradient(circle,#55e0c025,transparent 70%);animation:avatarBreath 3.4s ease-in-out infinite}.avatar-glow:after{content:"日";position:absolute;inset:0;display:grid;place-items:center;color:#55e0c070;font-size:35px;font-weight:900}
+.avatar-preview{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px);border-radius:22px!important;object-fit:cover;background:linear-gradient(135deg,#17263b,#0a1323);border:3px solid #0b1424;z-index:1}
+.avatar-upload-copy{display:flex;flex-direction:column;gap:6px;min-width:0;position:relative;z-index:1}.avatar-upload-copy strong{font-size:15px;color:var(--text)}.avatar-upload-copy>span:not(.avatar-upload-cta){font-size:11px;color:var(--muted);line-height:1.5}.avatar-upload-cta{display:inline-flex;align-self:flex-start;margin-top:3px;padding:8px 11px;border-radius:10px;background:#55e0c018;border:1px solid #55e0c044;color:var(--accent);font-size:11px;font-weight:800}
+.visually-hidden-file{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.profile-image-status{font-size:11px;color:var(--muted);margin:9px 2px 0;min-height:17px}.home-profile{animation:floatCard 7s ease-in-out infinite}.home-profile-picture{box-shadow:0 0 0 4px #55e0c012,0 0 28px #55e0c018;transition:transform .35s,box-shadow .35s}.home-profile-picture:hover{transform:scale(1.06);box-shadow:0 0 0 5px #55e0c022,0 0 34px #55e0c030}
+@media(max-width:520px){.avatar-upload{gap:13px;padding:14px}.avatar-orbit{width:86px;height:86px;flex-basis:86px}.avatar-upload-copy strong{font-size:13px}.avatar-upload-cta{font-size:10px}}
+body.reduce-motion .avatar-orbit,body.reduce-motion .avatar-glow,body.reduce-motion .avatar-upload:before,body.reduce-motion .home-profile{animation:none}
+
+
+/* Animated avatar upload and kana handwriting studio */
+.avatar-upload{min-height:154px;gap:20px;padding:20px;background:radial-gradient(ellipse at 15% 20%,#55e0c022,transparent 45%),radial-gradient(ellipse at 85% 90%,#8d83ff20,transparent 50%),linear-gradient(145deg,#121e31,#0a1221);box-shadow:inset 0 1px #ffffff0b,0 15px 40px #0002}
+.avatar-orbit{width:118px;height:118px;flex-basis:118px;filter:drop-shadow(0 0 16px #55e0c026);border-radius:28px!important;animation:avatarBreath 4s ease-in-out infinite!important;background:linear-gradient(135deg,var(--accent),#8d83ff,var(--accent))!important;padding:3px;box-sizing:border-box}
+.avatar-orbit:after{content:"";position:absolute;inset:7px;border:1px dashed #ffffff50;border-radius:22px;animation:avatarOrbit 18s linear infinite reverse}
+.avatar-glow{position:absolute;inset:13px;border-radius:22px;background:radial-gradient(circle,#55e0c044,transparent 68%);animation:avatarBreath 2.8s ease-in-out infinite}.avatar-glow:after{content:none!important}
+.avatar-preview{position:relative;z-index:1;width:82%;height:82%;object-fit:cover;border-radius:22px!important;border:2px solid #ffffff65;background:linear-gradient(135deg,#20314a,#0b1424);box-shadow:0 0 0 5px #0c1525,0 0 30px #55e0c02b;transition:transform .35s,filter .35s}
+.avatar-upload:hover .avatar-preview{transform:scale(1.06);filter:saturate(1.15)}
+.avatar-upload-cta{box-shadow:0 0 20px #55e0c015;transition:transform .2s,box-shadow .2s}.avatar-upload:hover .avatar-upload-cta{transform:translateY(-2px);box-shadow:0 0 25px #55e0c030}
+.profile-image-status:empty{display:none}
+.write-practice{margin:20px 0;padding:clamp(15px,3vw,24px);border:1px solid #35445f;border-radius:22px;background:radial-gradient(ellipse at 50% 0%,#55e0c014,transparent 60%),linear-gradient(150deg,#111c2e,#0b1322);box-shadow:0 20px 55px #0003;overflow:hidden}
+.write-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.write-kicker{font-size:10px;letter-spacing:1.5px;font-weight:900;color:var(--accent)}.write-head h3{margin:5px 0;font-size:20px}.write-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}.write-counter{white-space:nowrap;font-size:11px;color:var(--accent);border:1px solid #55e0c044;background:#55e0c010;border-radius:99px;padding:7px 10px;font-variant-numeric:tabular-nums}
+.write-stage{height:clamp(260px,58vw,430px);max-height:65vh;min-height:240px;position:relative;overflow:hidden;isolation:isolate;border:1px solid #52627d;border-radius:18px;background-color:#0a1220;background-image:linear-gradient(#26354c55 1px,transparent 1px),linear-gradient(90deg,#26354c55 1px,transparent 1px),radial-gradient(ellipse at 50% 45%,#1b2b42,#0a1220 75%);background-size:28px 28px,28px 28px,auto;touch-action:none;cursor:crosshair;transition:border-color .25s,box-shadow .25s}
+.write-stage.drawing{border-color:var(--accent);box-shadow:0 0 0 3px #55e0c018,0 0 35px #55e0c018}
+.write-guide{position:absolute;inset:0;display:grid;place-items:center;font-family:'Noto Sans JP',sans-serif;font-size:clamp(150px,35vw,300px);font-weight:600;line-height:1;color:#ffffff0d;pointer-events:none;user-select:none;transition:opacity .25s,transform .35s;animation:guideFloat 5s ease-in-out infinite}
+.write-stage.tutorial-ready .write-guide{opacity:.425!important;clip-path:inset(0 0 0 0);animation:none!important}
+.write-stage.has-ink .write-guide{opacity:.425!important;transform:scale(.97)}
+#write-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;z-index:2}
+.write-hint{position:absolute;z-index:3;bottom:12px;left:0;right:0;text-align:center;color:#8091ad;font-size:10px;letter-spacing:.3px;pointer-events:none;transition:opacity .2s}.write-stage.has-ink .write-hint{opacity:0}
+.write-controls{display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;gap:8px;margin-top:12px}.write-controls button{min-width:0;padding:0 9px;font-size:12px}.write-next{border-color:#55e0c055;background:linear-gradient(100deg,#55e0c01c,#75caff18);color:var(--accent)}.write-feedback{font-size:11px;color:var(--muted);min-height:17px;margin-top:10px;text-align:center}
+@keyframes avatarBreath{0%,100%{transform:scale(.9);opacity:.55}50%{transform:scale(1.08);opacity:1}}@keyframes guideFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.012)}}
+/* Handwriting dojo redesign: clear hierarchy, calm grid, useful controls */
+.write-practice{background:linear-gradient(145deg,#101b2d,#0b1322 70%);border-color:#35445f}
+.write-head h3{font-size:clamp(20px,3vw,27px);letter-spacing:-.5px}
+.write-target-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;margin:0 0 10px;border:1px solid #ffffff12;border-radius:14px;background:#080f1b80}
+.write-target-label{font-size:9px;font-weight:800;letter-spacing:1.3px;color:var(--muted)}
+.write-romaji{font-size:21px;font-weight:800;color:var(--accent);line-height:1.25;margin-top:3px}
+.write-target-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.write-target-actions button{font-size:11px;padding:9px 11px}
+.write-stage{height:clamp(300px,55vw,470px);max-height:68vh;min-height:270px;border:1px solid #40516d;border-radius:16px;background-color:#0b1423;background-image:linear-gradient(#32445c38 1px,transparent 1px),linear-gradient(90deg,#32445c38 1px,transparent 1px),linear-gradient(#52647a25 1px,transparent 1px),linear-gradient(90deg,#52647a25 1px,transparent 1px),radial-gradient(ellipse at center,#17263b,#0a1220 76%);background-size:32px 32px,32px 32px,160px 160px,160px 160px,auto;background-position:center;box-shadow:inset 0 0 55px #0002}
+.write-guide{font-size:clamp(180px,39vw,330px);font-weight:500;color:#dbe7f512;animation:none;transform:none}
+.write-stage.has-ink .write-guide{transform:none}
+.write-stage.guide-hidden .write-guide{opacity:0!important}
+.write-stage-tag{position:absolute;z-index:1;top:11px;right:12px;font-size:8px;letter-spacing:1.2px;color:#8394ad99;pointer-events:none}
+.write-hint{bottom:12px;font-size:10px;color:#a2b0c4;letter-spacing:.2px}
+.write-progress-row{display:flex;justify-content:space-between;gap:10px;margin:10px 2px 0;color:var(--muted);font-size:10px}.write-progress-row span:last-child{font-variant-numeric:tabular-nums}
+.write-controls{grid-template-columns:1fr 1fr 1.25fr;margin-top:12px}.write-controls button{min-height:43px;border-radius:12px}.write-next{font-weight:800}
+.write-feedback{padding:10px 12px;border:1px solid #ffffff0c;border-radius:12px;background:#ffffff05;min-height:38px;line-height:1.5}
+.write-stage.drawing{border-color:var(--accent);box-shadow:0 0 0 3px #55e0c014,inset 0 0 55px #0002}
+.write-stage.tutorial-running .write-guide{opacity:0!important;visibility:hidden!important}
+.write-stage.tutorial-ready .write-guide{opacity:.17!important}
+.write-tutorial,.stroke-step-label{font-family:inherit}
+@media(max-width:520px){.write-target-row{align-items:flex-start}.write-target-actions{max-width:62%}.write-target-actions button{padding:8px;font-size:10px}.write-stage{height:330px;min-height:290px}.write-controls{grid-template-columns:1fr 1fr}.write-next{grid-column:1/-1}.write-romaji{font-size:19px}}
+@media(max-width:520px){.avatar-upload{gap:12px;padding:13px;min-height:130px}.avatar-orbit{width:88px;height:88px;flex-basis:88px}.write-controls{grid-template-columns:1fr 1fr}.write-next{grid-column:1/-1;min-height:48px}.write-stage{min-height:250px}}
+body.reduce-motion .avatar-glow,body.reduce-motion .avatar-orbit:after,body.reduce-motion .write-guide{animation:none}
+
+
+.write-tutorial{display:flex;align-items:center;gap:13px;padding:12px 14px;margin:0 0 12px;border:1px solid #55e0c033;border-radius:16px;background:linear-gradient(110deg,#55e0c010,#8d83ff0d);min-width:0}.tutorial-character{display:none;font-family:'Noto Sans JP',sans-serif;font-size:46px;line-height:1;flex:0 0 58px;text-align:center;color:var(--accent);animation:tutorialTrace 2.4s ease-in-out infinite;text-shadow:0 0 22px #55e0c055}.tutorial-copy{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}.tutorial-copy strong{font-size:12px}.tutorial-copy span{font-size:11px;color:var(--muted);line-height:1.5}.write-tutorial button{flex:0 0 auto;font-size:10px;padding:8px}.stroke-tutorial-svg{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible}.stroke-tutorial-svg path{fill:none;stroke:#55e0c0;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px #55e0c066)}.stroke-tutorial-svg path.kana-silhouette{fill:#55e0c0;stroke:none;filter:none;transition:opacity 260ms ease}.stroke-step-label{position:absolute;z-index:5;left:12px;top:12px;padding:7px 10px;border-radius:10px;background:#07101ad9;border:1px solid #55e0c044;color:#55e0c0;font-size:12px;font-weight:800;pointer-events:none}.write-stage.tutorial-running #write-canvas{pointer-events:none;cursor:wait}.write-stage.tutorial-ready #write-canvas{pointer-events:auto;cursor:crosshair}.write-stage.tutorial-running .write-hint{opacity:0}.write-stage.reveal-answer:after{content:attr(data-answer);position:absolute;inset:0;z-index:4;display:grid;place-items:center;font-family:'Noto Sans JP',sans-serif;font-size:clamp(150px,35vw,300px);line-height:1;color:#55e0c0cc;background:#07101a66;backdrop-filter:blur(2px);animation:answerPop .55s cubic-bezier(.2,.8,.2,1) both;pointer-events:none}
+@keyframes tutorialTrace{0%,100%{transform:translateY(0) scale(1);opacity:.72}50%{transform:translateY(-5px) scale(1.1);opacity:1}}@keyframes answerPop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@media(max-width:520px){.write-tutorial{flex-wrap:wrap}.write-tutorial button{margin-left:auto}}
+body.reduce-motion .tutorial-character{animation:none}
+.tutorial-character.auto-trace{animation:tutorialTrace 1.15s ease-in-out 3!important}
+.write-tutorial{position:relative}
+.write-tutorial:before{content:"";position:absolute;left:10px;top:8px;width:4px;height:4px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:traceDot 2.1s ease-in-out infinite;pointer-events:none}
+@keyframes traceDot{0%{transform:translate(0,0);opacity:0}15%{opacity:1}50%{transform:translate(40px,16px);opacity:.9}85%{opacity:1}100%{transform:translate(0,0);opacity:0}}
+
+
+/* Clean avatar placeholder: no broken-image alt text or stray labels */
+.avatar-orbit{position:relative;display:grid;place-items:center;width:118px;height:118px;flex:0 0 118px;padding:3px;border-radius:30px!important;background:linear-gradient(135deg,var(--accent),#8d83ff,var(--accent))!important;filter:drop-shadow(0 0 16px #55e0c026);animation:avatarBreath 4s ease-in-out infinite!important;overflow:visible}
+.avatar-orbit:after{content:"";position:absolute;inset:7px;border:1px dashed #ffffff42;border-radius:23px;pointer-events:none;animation:avatarOrbit 18s linear infinite reverse}
+.avatar-glow{position:absolute;inset:12px;border-radius:25px;background:radial-gradient(circle,#55e0c044,transparent 68%);animation:avatarBreath 2.8s ease-in-out infinite}
+.avatar-placeholder{position:relative;z-index:1;width:82%;height:82%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border:2px solid #ffffff55;border-radius:23px;background:linear-gradient(145deg,#243750,#0d1728);box-shadow:0 0 0 5px #0c1525,0 0 30px #55e0c02b;transition:transform .35s,opacity .25s}
+.avatar-placeholder i{display:block;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#91a9c7,#55e0c0);box-shadow:0 0 18px #55e0c033}
+.avatar-placeholder b{display:block;width:54px;height:27px;border-radius:28px 28px 12px 12px;background:linear-gradient(135deg,#91a9c7,#55e0c0)}
+.avatar-preview{position:absolute!important;inset:9%!important;width:82%!important;height:82%!important;object-fit:cover;border-radius:22px!important;border:2px solid #ffffff70!important;background:#101a2b;box-shadow:0 0 0 5px #0c1525,0 0 30px #55e0c02b;z-index:2}
+.avatar-upload:hover .avatar-placeholder,.avatar-upload:hover .avatar-preview{transform:scale(1.04)}
+.avatar-orbit:has(.avatar-preview:not([hidden])) .avatar-placeholder{display:none}
+@media(max-width:520px){.avatar-orbit{width:88px;height:88px;flex-basis:88px}.avatar-placeholder{border-radius:19px}.avatar-placeholder i{width:23px;height:23px}.avatar-placeholder b{width:42px;height:21px}}
+body.reduce-motion .avatar-orbit,body.reduce-motion .avatar-orbit:after,body.reduce-motion .avatar-glow{animation:none!important}
+
+/* Kana guide: automatically traces/fades the selected glyph; no tutorial click needed */
+.write-guide{color:#55e0c0!important;clip-path:inset(0 100% 0 0);}
+.write-guide.guide-trace{animation:kanaGuideTrace 1.65s cubic-bezier(.45,0,.25,1) forwards;}
+@keyframes kanaGuideTrace{0%{clip-path:inset(0 100% 0 0);opacity:.12;transform:translateX(-5px)}65%{clip-path:inset(0 0 0 0);opacity:.55;transform:translateX(0)}100%{clip-path:inset(0 0 0 0);opacity:.22;transform:translateX(0)}}
+
+
+.quick-login{width:100%;display:flex;align-items:center;gap:13px;padding:11px 14px;margin:0 0 18px;border:1px solid #55e0c055;border-radius:16px;background:linear-gradient(110deg,#55e0c014,#8d83ff10);color:var(--text);text-align:left;cursor:pointer;transition:transform .25s,border-color .25s;animation:quickLoginPulse 3s ease-in-out infinite}
+.quick-login:hover{transform:translateY(-2px);border-color:var(--accent)}.quick-login img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:2px solid var(--accent);box-shadow:0 0 0 4px #55e0c012,0 0 22px #55e0c033;animation:avatarOrbitPulse 3.2s ease-in-out infinite}.quick-login span:nth-child(2){display:flex;flex-direction:column;gap:4px;flex:1}.quick-login strong{font-size:13px}.quick-login small{font-size:11px;color:var(--muted)}.quick-login-arrow{font-size:22px;color:var(--accent)}
+.home-profile-kicker{animation:profileShimmer 4s ease-in-out infinite}.home-profile-name{animation:nameFloat 4s ease-in-out infinite;text-shadow:0 0 20px #55e0c018}.home-profile-picture{animation:avatarOrbitPulse 3.5s ease-in-out infinite}
+@keyframes quickLoginPulse{0%,100%{box-shadow:0 0 0 #55e0c000}50%{box-shadow:0 0 24px #55e0c015}}
+@keyframes avatarOrbitPulse{0%,100%{transform:scale(1) rotate(0deg);box-shadow:0 0 0 3px #55e0c012,0 0 20px #55e0c01c}50%{transform:scale(1.045) rotate(2deg);box-shadow:0 0 0 6px #55e0c018,0 0 30px #55e0c033}}
+@keyframes profileShimmer{0%,100%{letter-spacing:1.5px;opacity:.8}50%{letter-spacing:2.2px;opacity:1}}
+@keyframes nameFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+body.reduce-motion .quick-login,body.reduce-motion .quick-login img,body.reduce-motion .home-profile-kicker,body.reduce-motion .home-profile-name,body.reduce-motion .home-profile-picture{animation:none!important}
+
+
+/* Requested Home profile motion: only the avatar disc rotates; profile label/name glitch briefly. */
+.home-profile-picture{animation:profileDiscSpin 7s linear infinite;transform-origin:center center}
+.home-profile-kicker,.home-profile-name{animation:profileTextGlitch 8s steps(1,end) infinite}
+.home-profile-name{animation-delay:2.7s}
+@keyframes profileDiscSpin{to{transform:rotate(360deg)}}
+@keyframes profileTextGlitch{0%,89%,91%,100%{transform:none;clip-path:none;text-shadow:none;filter:none}89.2%{transform:translateX(-1px);text-shadow:2px 0 #ff5577,-2px 0 #55e0c0;filter:skewX(-3deg)}89.7%{transform:translateX(1px);text-shadow:-2px 0 #ff5577,2px 0 #55e0c0;filter:skewX(2deg)}90.2%{transform:none;text-shadow:1px 0 #8d83ff;filter:none}}
+/* Keep the original dark radial background; animate the Japanese-character wallpaper layer instead. */
+body{background:radial-gradient(ellipse at 5% 0%,#234b6340,transparent 38%),radial-gradient(ellipse at 100% 90%,#5d4f9a24,transparent 40%),var(--bg);background-attachment:fixed}
+.jp-parallax-wall{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;contain:strict;}
+.jp-float{position:absolute;display:block;font-family:'Noto Sans JP',sans-serif;font-weight:700;line-height:1;color:var(--jp-color,#55e0c0);opacity:var(--jp-opacity,.12);font-size:var(--jp-size,70px);transform:translate3d(var(--px,0px),var(--py,0px),0) rotate(var(--tilt,0deg));will-change:transform;animation:jpDrift var(--duration,18s) ease-in-out infinite alternate;filter:drop-shadow(0 0 18px currentColor);user-select:none}
+.jp-float:nth-child(3n){animation-delay:-7s}.jp-float:nth-child(4n){animation-delay:-12s}
+@keyframes jpDrift{0%{margin-top:-13px;rotate:-4deg}50%{margin-top:8px;rotate:2deg}100%{margin-top:22px;rotate:5deg}}
+.app{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.home-profile-picture,.home-profile-kicker,.home-profile-name,.jp-float{animation:none!important}}
+
+
+/* 2026 polish: calm, premium handwriting studio + gentle Japanese glyph bounce */
+.write-practice{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(16px,3vw,28px);
+  border:1px solid #52647b88;border-radius:26px;
+  background:radial-gradient(ellipse at 12% 0%,#55e0c018,transparent 36%),radial-gradient(ellipse at 100% 100%,#8d83ff15,transparent 42%),linear-gradient(145deg,#101b2d 0%,#0b1322 58%,#0c1727 100%);
+  box-shadow:0 24px 70px #0004,inset 0 1px #ffffff0a;
+}
+.write-practice:before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:.22;background:radial-gradient(circle at 1px 1px,#8ca0ba 1px,transparent 1.3px);background-size:22px 22px;mask-image:linear-gradient(135deg,#000,transparent 70%)}
+.write-head{align-items:center;margin-bottom:19px}
+.write-kicker{display:inline-flex;align-items:center;gap:7px;font-size:9px;letter-spacing:2px;color:#69ead0}
+.write-kicker:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#55e0c0;box-shadow:0 0 12px #55e0c0;}
+.write-head h3{font-size:clamp(23px,3vw,31px);letter-spacing:-.9px;margin:7px 0 6px;color:#edf5ff}
+.write-head p{max-width:560px;font-size:12px;line-height:1.75;color:#9cabc0}
+.write-counter{display:inline-flex;align-items:center;justify-content:center;min-width:72px;padding:9px 13px;border-radius:13px;background:#55e0c011;border:1px solid #55e0c044;color:#77efda;font-size:12px;font-weight:800;box-shadow:inset 0 1px #ffffff08}
+.write-target-row{align-items:center;gap:14px;padding:13px 15px;margin-bottom:12px;border-radius:17px;border:1px solid #ffffff13;background:linear-gradient(105deg,#0a1321dd,#111c2cdd);box-shadow:inset 0 1px #ffffff06}
+.write-target-label{font-size:9px;letter-spacing:1.7px;color:#8799b3}
+.write-romaji{font-size:25px;letter-spacing:-.5px;color:#72ead3;margin-top:2px}
+.write-target-actions{gap:8px}
+.write-target-actions button,.write-controls button{border-radius:12px;min-height:42px;transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.write-target-actions button:hover,.write-controls button:hover{transform:translateY(-2px);border-color:#55e0c077;box-shadow:0 8px 22px #0002}
+.write-stage{
+  height:clamp(320px,48vw,490px);max-height:68vh;min-height:285px;
+  border:1px solid #526681;border-radius:21px;
+  background-color:#0a1220;
+  background-image:linear-gradient(#34465d38 1px,transparent 1px),linear-gradient(90deg,#34465d38 1px,transparent 1px),linear-gradient(#70829a17 1px,transparent 1px),linear-gradient(90deg,#70829a17 1px,transparent 1px),radial-gradient(ellipse at 50% 42%,#1b2c43 0%,#0c1728 58%,#09111e 100%);
+  background-size:32px 32px,32px 32px,160px 160px,160px 160px,auto;
+  box-shadow:inset 0 0 80px #0003,0 10px 30px #0002;
+  transition:border-color .25s ease,box-shadow .25s ease,background-color .25s ease;
+}
+.write-stage:before{content:"";position:absolute;inset:12px;border:1px solid #a5b6ce0c;border-radius:13px;pointer-events:none;z-index:1}
+.write-stage.drawing{border-color:#55e0c0;box-shadow:0 0 0 3px #55e0c018,0 0 38px #55e0c015,inset 0 0 70px #0003}
+.write-guide{font-size:clamp(190px,34vw,340px);font-weight:500;color:#e5f2ff18;transition:opacity .25s ease;}
+.write-stage.tutorial-ready .write-guide{opacity:.2125!important}
+.write-stage.has-ink .write-guide{opacity:.187!important}
+.write-stage-tag{top:16px;right:17px;padding:6px 9px;border:1px solid #ffffff10;border-radius:8px;background:#07101a99;color:#8b9bb0;font-size:8px;letter-spacing:1.5px}
+.write-hint{bottom:16px;color:#a6b7cb;font-size:10px;letter-spacing:.25px}
+.write-progress-row{align-items:center;margin:12px 3px 0;font-size:10px;color:#91a1b8}
+#write-progress-label{display:inline-flex;align-items:center;gap:7px}
+#write-progress-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#55e0c0;box-shadow:0 0 8px #55e0c088}
+.write-controls{gap:9px;margin-top:14px}
+.write-controls button{min-height:47px;font-size:12px;font-weight:650}
+.write-next{background:linear-gradient(110deg,#55e0c01e,#75caff12)!important;border:1px solid #55e0c055!important;color:#79efda!important}
+.write-feedback{margin-top:12px;padding:12px 14px;min-height:43px;text-align:left;border:1px solid #ffffff0e;border-radius:13px;background:#ffffff04;color:#aab8cb;font-size:11px;line-height:1.65}
+.stroke-step-label{top:15px;left:15px;box-shadow:0 8px 24px #0004;backdrop-filter:blur(10px)}
+.stroke-tutorial-svg path{stroke-width:6;filter:drop-shadow(0 0 7px #55e0c055)}
+/* The wallpaper glyphs float with a soft, slow bounce rather than a stiff drift. */
+.jp-float{transform:translate3d(var(--px,0px),var(--py,0px),0) rotate(var(--tilt,0deg));translate:0 0;rotate:0deg;animation:jpSoftBounce var(--duration,18s) cubic-bezier(.42,0,.25,1) infinite;will-change:transform,translate}
+.jp-float:nth-child(2n){animation-direction:alternate}
+.jp-float:nth-child(3n){animation-delay:-4.5s}
+.jp-float:nth-child(4n){animation-delay:-8s}
+@keyframes jpSoftBounce{
+  0%,100%{translate:0 0;rotate:-3deg;filter:drop-shadow(0 0 12px currentColor)}
+  25%{translate:0 -13px;rotate:1deg;filter:drop-shadow(0 0 18px currentColor)}
+  50%{translate:0 -23px;rotate:3deg;filter:drop-shadow(0 0 22px currentColor)}
+  75%{translate:0 -9px;rotate:-1deg;filter:drop-shadow(0 0 16px currentColor)}
+}
+@media(max-width:600px){.write-head{align-items:flex-start}.write-counter{min-width:58px;padding:8px 9px}.write-target-row{align-items:center}.write-stage{height:350px;min-height:300px}.write-feedback{text-align:left}.write-controls button{font-size:11px;padding:0 7px}}
+@media(prefers-reduced-motion:reduce){.jp-float{animation:none!important;translate:0 0!important}.write-target-actions button,.write-controls button{transition:none!important}}
+
+
+/* Refined interaction polish: short, accessible error feedback without layout jumps. */
+@keyframes appErrorShake{0%,100%{translate:0 0}15%{translate:-5px 0}30%{translate:5px 0}45%{translate:-4px 0}60%{translate:4px 0}75%{translate:-2px 0}90%{translate:2px 0}}
+@keyframes errorHalo{0%,100%{box-shadow:var(--shadow)}35%{box-shadow:0 0 0 1px #ff718655,0 0 28px #ff71861f,var(--shadow)}}
+.app.error-shake{animation:appErrorShake .38s cubic-bezier(.36,.07,.19,.97) both;}
+.app.error-shake .panel{animation:errorHalo .38s ease-out both;}
+.option.wrong{animation:optionNudge .28s ease-out both;}
+@keyframes optionNudge{0%,100%{translate:0 0}35%{translate:-3px 0}70%{translate:3px 0}}
+button,.option,.mode,.kana-cell,.small-btn,.icon-btn{ -webkit-tap-highlight-color:transparent; }
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline-offset:4px;box-shadow:0 0 0 5px #55e0c018;}
+@media(prefers-reduced-motion:reduce){.app.error-shake,.app.error-shake .panel,.option.wrong{animation:none!important;}}
 </style>
 </head>
 <body>
+<div class="jp-parallax-wall" id="jp-parallax-wall" aria-hidden="true">
+  <span class="jp-float" style="left:5%;top:12%;--jp-size:clamp(54px,9vw,112px);--jp-opacity:.13;--jp-color:#55e0c0;--duration:19s;--tilt:-8deg">あ</span>
+  <span class="jp-float" style="left:77%;top:8%;--jp-size:clamp(62px,10vw,128px);--jp-opacity:.12;--jp-color:#8d83ff;--duration:23s;--tilt:9deg">カ</span>
+  <span class="jp-float" style="left:84%;top:42%;--jp-size:clamp(52px,8vw,104px);--jp-opacity:.12;--jp-color:#75caff;--duration:17s;--tilt:-5deg">漢</span>
+  <span class="jp-float" style="left:9%;top:62%;--jp-size:clamp(56px,9vw,116px);--jp-opacity:.11;--jp-color:#8d83ff;--duration:21s;--tilt:6deg">ひ</span>
+  <span class="jp-float" style="left:62%;top:76%;--jp-size:clamp(60px,9vw,118px);--jp-opacity:.11;--jp-color:#55e0c0;--duration:25s;--tilt:-7deg">字</span>
+  <span class="jp-float" style="left:38%;top:25%;--jp-size:clamp(38px,6vw,78px);--jp-opacity:.075;--jp-color:#75caff;--duration:20s;--tilt:5deg">ア</span>
+  <span class="jp-float" style="left:46%;top:87%;--jp-size:clamp(40px,6vw,80px);--jp-opacity:.09;--jp-color:#8d83ff;--duration:22s;--tilt:3deg">の</span>
+  <span class="jp-float" style="left:90%;top:82%;--jp-size:clamp(40px,6vw,78px);--jp-opacity:.10;--jp-color:#55e0c0;--duration:18s;--tilt:-4deg">学</span>
+</div>
 <div class="app">
   <header class="topbar">
     <div class="brand"><div class="brand-mark">日</div><div><div class="brand-title">Japanese N5 Vocabulary Practice - Created By SiRJ0</div></div></div>
     <div class="top-actions"><button class="icon-btn" id="settings-open" aria-label="Settings" title="Settings">⚙</button><button class="icon-btn" id="theme-toggle" aria-label="Change accent theme" title="Change accent theme">◐</button></div>
   </header>
 
-  <section id="home-screen" class="screen active">
+  <section id="login-screen" class="screen active">
+    <div class="panel login-wrap">
+      <div class="login-brand"><div class="login-mark">日</div><div class="brand-title">Japanese N5</div></div>
+      <h1 class="login-heading" id="login-heading">Create your profile</h1>
+      <p class="login-sub" id="login-sub">Username লিখো এবং Profile Picture যোগ করো।</p>
+      <button type="button" id="quick-login" class="quick-login" hidden aria-label="Log in with saved profile"><img id="quick-login-avatar" alt=""><span><strong id="quick-login-name">Your profile</strong><small>Tap avatar to log in</small></span><span class="quick-login-arrow">↗</span></button>
+      <form class="login-form" id="login-form">
+        <label class="field-label" for="profile-name">USERNAME</label>
+        <input class="login-input" id="profile-name" autocomplete="username" placeholder="Username" maxlength="30" required>
+        <label class="field-label" for="profile-picture">PROFILE PICTURE</label>
+        <label class="avatar-upload" id="avatar-upload" for="profile-picture">
+          <span class="avatar-orbit" aria-hidden="true"><span class="avatar-glow"></span><span class="avatar-placeholder"><i></i><b></b></span><img id="profile-preview" alt="" class="avatar-preview" hidden></span>
+          <span class="avatar-upload-copy"><strong id="avatar-upload-title">Choose your avatar</strong><span id="avatar-upload-hint">Click to browse · JPG, PNG, WEBP</span><span class="avatar-upload-cta">＋ Upload picture</span></span>
+        </label>
+        <input class="visually-hidden-file" id="profile-picture" type="file" accept="image/*">
+        <div class="profile-image-status" id="profile-image-status" aria-live="polite"></div>
+        <div class="login-error" id="login-error" aria-live="polite"></div>
+        <button class="primary" id="login-submit" type="submit">Create Profile ↗</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="home-screen" class="screen">
+    <section class="panel home-profile" aria-label="Your profile">
+      <img id="home-profile-picture" alt="Your profile picture" src="" class="home-profile-picture">
+      <div class="home-profile-info"><div class="home-profile-kicker">YOUR PROFILE</div><div class="home-profile-name" id="home-profile-name">Username</div><div class="home-profile-meta" id="home-profile-meta">Profile saved on this device</div></div>
+      <button class="small-btn home-profile-edit" id="home-edit-profile" type="button">Edit</button>
+    </section>
     <div class="stats">
       <div class="stat"><div class="stat-label">▦ Vocabulary</div><div class="stat-value" id="stat-words">—</div></div>
       <div class="stat"><div class="stat-label">✓ Accuracy</div><div class="stat-value" id="stat-accuracy">0%</div></div>
@@ -37,7 +288,7 @@ body.reduce-motion *,body.reduce-motion *:before,body.reduce-motion *:after{anim
         <div class="mode-grid" role="group" aria-label="Practice mode">
           <button class="mode active" data-mode="jp-bn"><span class="mode-icon">あ</span><span class="mode-name">日本語 → বাংলা</span></button>
           <button class="mode" data-mode="bn-jp"><span class="mode-icon">文</span><span class="mode-name">বাংলা → 日本語</span></button>
-          <button class="mode" data-mode="kana"><span class="mode-icon">か</span><span class="mode-name">Kana quiz</span></button>
+          <button class="mode" data-mode="kana"><span class="mode-icon">か</span><span class="mode-name">Kana quiz</span></button><button class="mode" data-mode="hardest"><span class="mode-icon">⚡</span><span class="mode-name">Hardest mode</span></button>
         </div>
         <label class="field-label" for="lesson-select">LESSON</label>
         <div class="select-wrap"><select class="select" id="lesson-select"><option value="all">All lessons · 1–8</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option></select></div>
@@ -86,6 +337,14 @@ body.reduce-motion *,body.reduce-motion *:before,body.reduce-motion *:after{anim
       <div class="section-head"><div><div class="section-title">Kana practice</div><div class="section-desc">Tap any character to hear its pronunciation</div></div><button class="small-btn" id="kana-home">← Home</button></div>
       <div class="kana-tabs"><button class="active" data-kana="hiragana">Hiragana · ひらがな</button><button data-kana="katakana">Katakana · カタカナ</button></div>
       <p class="kana-caption">প্রথমে অক্ষর ও Romaji মিলিয়ে দেখো। Quiz mode-এ অক্ষরের উচ্চারণ চিনে উত্তর দাও।</p>
+      <section class="write-practice" aria-label="Kana handwriting practice">
+        <div class="write-head"><div><div class="write-kicker">✦ KANA DOJO / HANDWRITING</div><h3>Write it yourself</h3><p>অক্ষরটা দেখে ট্রেস করো, অথবা guide লুকিয়ে memory থেকে লেখো। কোনো loading শেষ হওয়ার জন্য অপেক্ষা করতে হবে না।</p></div><span class="write-counter" id="write-counter">1 / 46</span></div>
+        <div class="write-target-row"><div><span class="write-target-label">CURRENT CHARACTER</span><div class="write-romaji" id="write-romaji">a</div></div><div class="write-target-actions"><button class="small-btn" id="write-guide-toggle" type="button" aria-pressed="true">Hide guide</button><button class="small-btn" id="write-replay" type="button">▶ Stroke order</button></div></div>
+        <div class="write-stage" id="write-stage"><div class="write-guide" id="write-guide">あ</div><canvas id="write-canvas" aria-label="Draw the Japanese character here"></canvas><div class="write-hint" id="write-hint">এখানে অক্ষরটি লেখো · mouse / touch / stylus</div><div class="write-stage-tag">PRACTICE CANVAS</div></div>
+        <div class="write-progress-row"><span id="write-progress-label">Ready when you are</span><span id="write-ink-status">0 strokes</span></div>
+        <div class="write-controls"><button class="small-btn" id="write-prev" type="button">← Previous</button><button class="small-btn" id="write-undo" type="button">↶ Undo stroke</button><button class="small-btn" id="write-clear" type="button">⌫ Erase all</button><button class="small-btn write-next" id="write-next" type="button">Next character →</button></div>
+        <div class="write-feedback" id="write-feedback" aria-live="polite">Start writing inside the practice area. Use Stroke order if you need a hint.</div>
+      </section>
       <div class="kana-grid" id="kana-grid"></div>
       <button class="primary" id="kana-quiz-btn">Start Kana quiz</button>
     </div>
@@ -101,6 +360,7 @@ body.reduce-motion *,body.reduce-motion *:before,body.reduce-motion *:after{anim
         <div class="setting"><div class="setting-copy"><div class="setting-title">Timer</div><div class="setting-desc">প্রশ্নের সময়সীমা বেছে নাও।</div></div><select class="select" id="timer-setting" style="width:auto;min-width:115px"><option value="10">10 sec</option><option value="15">15 sec</option><option value="0">Off</option></select></div>
         <div class="setting"><div class="setting-copy"><div class="setting-title">Reduced animation</div><div class="setting-desc">কম motion এবং শান্ত transition।</div></div><input class="switch" id="motion-toggle" type="checkbox" aria-label="Reduced animation"></div>
       </div>
+      <div class="profile-edit"><div class="setting-title">Account profile</div><div class="setting-desc" id="profile-summary">Saved profile</div><button class="secondary" id="edit-profile" type="button">Edit username / profile picture</button><button class="secondary" id="logout-btn" type="button">Log out</button></div>
       <button class="secondary" id="reset-progress">Reset saved statistics</button>
       <p class="tip">Vibration browser/device support-এর ওপর নির্ভরশীল। iPhone Safari-তে vibration API সাধারণত কাজ করে না; কোনো permission bypass করা হয় না।</p>
     </div>
@@ -557,7 +817,7 @@ const $ = id => document.getElementById(id);
 const state = {
   mode:'jp-bn', selectedLesson:'all', list:[], index:0, score:0, wrong:[],
   isAnswered:false, timer:null, timeLeft:10, startedAt:0, answeredThisRun:0,
-  runCorrect:0, isRetest:false, kanaType:'hiragana', kanaRun:false
+  runCorrect:0, isRetest:false, kanaType:'hiragana', kanaRun:false, questionDirection:'jp-bn'
 };
 const defaultPrefs = {sound:true,vibrate:true,autoSpeech:true,timer:10,reducedMotion:false,accent:0};
 const storageKeys = {stats:'n5master_stats_v2',prefs:'n5master_prefs_v2',session:'n5master_session_v2',learned:'n5master_learned_v2'};
@@ -567,6 +827,38 @@ let stats = readStore(storageKeys.stats,{answered:0,correct:0,best:0,completed:0
 let prefs = {...defaultPrefs,...readStore(storageKeys.prefs,{})};
 let learned = new Set([...(stats.learned||[]),...readStore(storageKeys.learned,[])]);
 const accents = [{a:'#55e0c0',b:'#75caff'},{a:'#a89bff',b:'#f09bda'},{a:'#ffbf69',b:'#ff8b9d'}];
+const accountKey='n5master_local_profile_v1';const authKey='n5master_auth_v1';let account=readStore(accountKey,null),editingProfile=false,previewData='';
+function updateLoginView(){const quick=$('quick-login');if(quick){quick.hidden=!!editingProfile||!account;if(account&&!editingProfile){$('quick-login-avatar').src=account.picture||'';$('quick-login-name').textContent=account.name;}}
+  const editing=editingProfile&&!!account;
+  $('login-heading').textContent=editing?'Edit your profile':account?'Log in':'Create your profile';
+  $('login-sub').textContent=editing?'Username ও Profile Picture পরিবর্তন করে Save করো।':account?'Username লিখে login করো। Profile Picture আবার দিতে হবে না।':'Username লিখো এবং Profile Picture যোগ করো।';
+  $('login-submit').textContent=editing?'Save changes ✓':account?'Log in ↗':'Create Profile ↗';  
+  $('profile-name').value=editing?account.name:'';
+  $('profile-picture').required=!account;
+  $('profile-picture').disabled=false;
+  $('avatar-upload').classList.toggle('editing-avatar',editing);
+  previewData=editing?(account.picture||''):'';
+  $('profile-preview').src=previewData;$('profile-preview').hidden=!previewData;
+  $('avatar-upload-title').textContent=previewData?'Your current avatar':'Choose your avatar';
+  $('avatar-upload-hint').textContent=editing?'Optional · Upload a new image to replace it':'Click to browse · JPG, PNG, WEBP';
+  $('profile-image-status').textContent=previewData?'Current picture saved · choose another to replace it':'';
+  $('login-error').textContent='';}
+function openLogin(edit=false){editingProfile=!!edit;showScreen('login-screen');updateLoginView();}
+function renderProfile(){if(!account)return;$('profile-summary').textContent=account.name;$('home-profile-name').textContent=account.name;$('home-profile-picture').src=account.picture||'';$('home-profile-picture').alt=`${account.name}'s profile picture`;$('home-profile-meta').textContent=account.createdAt?`Profile created · ${new Date(account.createdAt).toLocaleDateString()}`:'Profile saved on this device';const quick=$('quick-login');if(quick){quick.hidden=false;$('quick-login-avatar').src=account.picture||'';$('quick-login-avatar').alt=`${account.name}'s avatar`;$('quick-login-name').textContent=account.name;}}
+function enterApp(){writeStore(authKey,true);showScreen('home-screen');renderStats();renderProfile();}
+$('profile-picture').addEventListener('change',()=>{
+  const file=$('profile-picture').files?.[0];if(!file)return;
+  if(!file.type.startsWith('image/')){$('login-error').textContent='একটি image file নির্বাচন করো।';$('profile-picture').value='';return;}
+  const reader=new FileReader();reader.onload=()=>{previewData=reader.result;$('profile-preview').src=previewData;$('profile-preview').hidden=false;$('avatar-upload-title').textContent=file.name||'New avatar selected';$('avatar-upload-hint').textContent='Preview ready · Click to replace';$('profile-image-status').textContent='New picture selected · Save to apply ✦';$('login-error').textContent='';};reader.onerror=()=>{$('login-error').textContent='ছবিটি পড়া যায়নি। আবার চেষ্টা করো।';};reader.readAsDataURL(file);
+});
+$('quick-login').addEventListener('click',()=>{if(!account)return;writeStore(authKey,true);editingProfile=false;enterApp();vibrate('navigate');showToast('Welcome back ✦')});
+$('login-form').addEventListener('submit',e=>{
+  e.preventDefault();const name=$('profile-name').value.trim();const file=$('profile-picture').files?.[0];if(!name){$('login-error').textContent='Username লিখো।';return;}
+  if(editingProfile&&account){if(file&&!previewData){$('login-error').textContent='ছবিটি আবার নির্বাচন করো।';return;}account={...account,name,picture:previewData||account.picture,updatedAt:new Date().toISOString()};writeStore(accountKey,account);editingProfile=false;enterApp();showToast('Profile updated ✦');return;}
+  if(account){if(name.toLowerCase()!==String(account.name||'').trim().toLowerCase()){$('login-error').textContent='Username মেলেনি। আবার লিখো।';return;}writeStore(authKey,true);enterApp();vibrate('navigate');return;}
+  if(!file||!previewData){$('login-error').textContent='Profile Picture যোগ করো।';return;}
+  account={name,picture:previewData,createdAt:new Date().toISOString()};writeStore(accountKey,account);editingProfile=false;enterApp();vibrate('navigate');
+});
 function applyPrefs(){
   const a=accents[prefs.accent%accents.length];document.documentElement.style.setProperty('--accent',a.a);document.documentElement.style.setProperty('--accent2',a.b);
   document.body.classList.toggle('reduce-motion',!!prefs.reducedMotion);
@@ -574,7 +866,7 @@ function applyPrefs(){
 }
 function savePrefs(){writeStore(storageKeys.prefs,prefs);applyPrefs()}
 function showToast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.remove('show'),2300)}
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:prefs.reducedMotion?'auto':'smooth'})}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');document.body.classList.toggle('login-mode',id==='login-screen');window.scrollTo({top:0,behavior:prefs.reducedMotion?'auto':'smooth'})}
 function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function playSound(type){
   if(!prefs.sound)return;
@@ -586,10 +878,33 @@ function playSound(type){
     notes.forEach((freq,i)=>{const osc=ctx.createOscillator(),gain=ctx.createGain(),start=ctx.currentTime+i*(type==='correct'?.085:.11),dur=type==='tick'?.045:type==='correct'?.12:.13;osc.type=type==='wrong'||type==='timeout'?'triangle':'sine';osc.frequency.setValueAtTime(freq,start);gain.gain.setValueAtTime(type==='tick'?.018:.055,start);gain.gain.exponentialRampToValueAtTime(.001,start+dur);osc.connect(gain);gain.connect(ctx.destination);osc.start(start);osc.stop(start+dur+.01)})
   }catch(_){}
 }
+// Soft pencil-on-paper scratch for the animated kana strokes (respects the Sound setting).
+function playPencilScratch(durationMs=900){
+  if(!prefs.sound)return;
+  try{
+    const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!playPencilScratch.ctx)playPencilScratch.ctx=new Ctx();const ctx=playPencilScratch.ctx;
+    if(ctx.state==='suspended')ctx.resume();
+    const duration=Math.max(.12,durationMs/1000),frames=Math.ceil(ctx.sampleRate*duration);
+    const buffer=ctx.createBuffer(1,frames,ctx.sampleRate),data=buffer.getChannelData(0);
+    for(let i=0;i<frames;i++)data[i]=((Math.random()*2-1)*0.72+Math.sin(i*0.19)*0.28)*(0.18+0.24*Math.sin(Math.PI*i/frames));
+    const source=ctx.createBufferSource();source.buffer=buffer;
+    const filter=ctx.createBiquadFilter();filter.type='bandpass';filter.frequency.value=1850;filter.Q.value=1.35;
+    const gain=ctx.createGain(),now=ctx.currentTime;
+    gain.gain.setValueAtTime(.0001,now);gain.gain.linearRampToValueAtTime(.016,now+.035);gain.gain.setValueAtTime(.010,now+Math.max(.05,duration-.09));gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+    source.connect(filter);filter.connect(gain);gain.connect(ctx.destination);source.start(now);source.stop(now+duration+.01);
+  }catch(_){}
+}
 function vibrate(type='tap'){
   if(!prefs.vibrate||!('vibrate' in navigator))return;
-  const pattern=type==='correct'?[22,25,22]:type==='wrong'?[48,28,48]:type==='timeout'?[85,45,85]:type==='navigate'?[12]:[18];
+  const pattern=type==='correct'?[18,22,18]:type==='wrong'?[45,24,55,24,45]:type==='timeout'?[70,35,70]:type==='navigate'?[10]:[14];
   try{navigator.vibrate(pattern)}catch(_){}
+}
+let errorShakeTimer=0;
+function signalMistake({haptic=true}={}){
+  const app=document.querySelector('.app');
+  if(app){app.classList.remove('error-shake');void app.offsetWidth;app.classList.add('error-shake');clearTimeout(errorShakeTimer);errorShakeTimer=setTimeout(()=>app.classList.remove('error-shake'),430);}
+  if(haptic)vibrate('wrong');
 }
 function speakJapaneseWord(text){
   if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance){showToast('Japanese TTS is not available in this browser.');return}
@@ -641,41 +956,41 @@ function currentItem(){return state.list[state.index]}
 function loadQuestion(){
   clearInterval(state.timer);state.isAnswered=false;state.timeLeft=Number(prefs.timer)||0;
   const item=currentItem();if(!item){showResults();return}
-  const isKana=state.mode==='kana'||state.kanaRun;
+  const isKana=state.mode==='kana'||state.kanaRun;state.questionDirection=state.mode==='hardest'?(Math.random()<.5?'jp-bn':'bn-jp'):state.mode;const direction=state.questionDirection;
   $('lesson-badge').textContent=isKana?'Kana practice':`Lesson ${item.l}`;
   $('question-count').textContent=`${state.index+1} / ${state.list.length}`;$('score-live').textContent=`Score ${state.score}`;
   $('progress-bar').style.width=`${state.index/state.list.length*100}%`;
-  $('question-kicker').textContent=isKana?'CHOOSE THE CORRECT ROMAJI':state.mode==='jp-bn'?'CHOOSE THE CORRECT MEANING':'CHOOSE THE JAPANESE WORD';
-  $('question-text').textContent=state.mode==='bn-jp'?item.b:item.j;
+  $('question-kicker').textContent=isKana?'CHOOSE THE CORRECT ROMAJI':direction==='jp-bn'?'CHOOSE THE CORRECT MEANING':state.mode==='hardest'?'HARD MODE · CHOOSE THE JAPANESE WORD':'CHOOSE THE JAPANESE WORD';
+  $('question-text').textContent=direction==='bn-jp'?item.b:item.j;
   $('sub-text').textContent=isKana?'Kana character recognition':(state.mode==='jp-bn'?(item.k?`Kanji: ${item.k} · ${item.u}`:item.u):'সঠিক Japanese শব্দটি বেছে নাও');
   $('speech-btn').classList.toggle('hidden',false);
   $('speech-btn').textContent=isKana?'▶ Hear sound':'▶ Listen';
   $('feedback').textContent='';$('feedback').className='feedback';
-  const key=state.mode==='bn-jp'?'j':'b';let correct=isKana?item.b:item[key];
+  const key=direction==='bn-jp'?'j':'b';let correct=isKana?item.b:item[key];
   let distractors;
   if(isKana){distractors=shuffle(kanaData[state.kanaType].map(k=>k.romaji).filter(x=>x!==correct)).slice(0,3)}
-  else{distractors=shuffle(vocabData.filter(v=>v.j!==item.j).map(v=>v[key]).filter(x=>x!==correct));distractors=[...new Set(distractors)].slice(0,3)}
+  else{const distractorPool=state.mode==='hardest'?vocabData.filter(v=>v.l===item.l&&v.j!==item.j):vocabData.filter(v=>v.j!==item.j);distractors=shuffle(distractorPool.map(v=>v[key]).filter(x=>x!==correct));distractors=[...new Set(distractors)].slice(0,3)}
   let opts=shuffle([correct,...distractors]);while(opts.length<4)opts.push('—');opts=opts.slice(0,4);
   $('options-container').innerHTML='';
   opts.forEach((opt,i)=>{const b=document.createElement('button');b.className='option';b.innerHTML=`<span class="option-letter">${String.fromCharCode(65+i)}</span><span></span>`;b.lastElementChild.textContent=opt;b.addEventListener('click',()=>checkAnswer(b,opt,correct));$('options-container').appendChild(b)});
   $('answered-live').textContent=`${state.answeredThisRun} answered`;
   $('timer-badge').classList.toggle('hidden',!prefs.timer);$('timer-badge').classList.remove('danger');$('timer-text').textContent=prefs.timer?`${state.timeLeft}s`:'Off';
   if(prefs.timer)state.timer=setInterval(()=>{state.timeLeft--; $('timer-text').textContent=`${state.timeLeft}s`;if(state.timeLeft<=3&&state.timeLeft>0){$('timer-badge').classList.add('danger');playSound('tick')}if(state.timeLeft<=0){clearInterval(state.timer);handleTimeout()}},1000);
-  if(prefs.autoSpeech&&!isKana&&state.mode!=='bn-jp')setTimeout(()=>{if(!state.isAnswered&&document.getElementById('quiz-screen').classList.contains('active'))speakJapaneseWord(item.j)},180);
+  if(prefs.autoSpeech&&!isKana&&direction!=='bn-jp')setTimeout(()=>{if(!state.isAnswered&&document.getElementById('quiz-screen').classList.contains('active'))speakJapaneseWord(item.j)},180);
 }
 function markAnswered(correct,timeout=false){
   const item=currentItem();state.isAnswered=true;clearInterval(state.timer);state.answeredThisRun++;
   if(!state.isRetest&&!state.kanaRun){stats.answered=(stats.answered||0)+1;if(correct){stats.correct=(stats.correct||0)+1;learned.add(item.j);stats.lessons=stats.lessons||{};stats.lessons[item.l]=(stats.lessons[item.l]||0)+1}}
   if(correct){state.score++;state.runCorrect++;playSound('correct');vibrate('correct');$('feedback').textContent='ঠিক হয়েছে! よくできました';$('feedback').className='feedback good'}
-  else{if(!state.wrong.some(w=>w.j===item.j))state.wrong.push(item);playSound(timeout?'timeout':'wrong');vibrate(timeout?'timeout':'wrong');$('feedback').textContent=timeout?'সময় শেষ! সঠিক উত্তরটি দেখো।':'ভুল হয়েছে—সঠিক উত্তরটি দেখো।';$('feedback').className='feedback bad'}
-  [...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;const label=btn.lastElementChild.textContent;if(label=== (state.mode==='bn-jp'?item.j:item.b))btn.classList.add('correct')});
+  else{if(!state.wrong.some(w=>w.j===item.j))state.wrong.push(item);playSound(timeout?'timeout':'wrong');signalMistake();if(timeout)vibrate('timeout');$('feedback').textContent=timeout?'সময় শেষ! সঠিক উত্তরটি দেখো।':'ভুল হয়েছে—সঠিক উত্তরটি দেখো।';$('feedback').className='feedback bad'}
+  [...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;const label=btn.lastElementChild.textContent;if(label=== (state.questionDirection==='bn-jp'?item.j:item.b))btn.classList.add('correct')});
   $('score-live').textContent=`Score ${state.score}`;$('answered-live').textContent=`${state.answeredThisRun} answered`;
   if(!state.isRetest&&!state.kanaRun)saveStats();
-  if(!state.kanaRun&&!timeout)speakJapaneseWord(item.j);
+  speakJapaneseWord(item.j);
   saveSession();setTimeout(nextQuestion,correct?850:1450);
 }
 function checkAnswer(btn,selected,correct){if(state.isAnswered)return;const ok=selected===correct;btn.classList.add(ok?'correct':'wrong');markAnswered(ok,false)}
-function handleTimeout(){if(state.isAnswered)return;const item=currentItem();const correct=state.mode==='bn-jp'?item.j:item.b;[...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;if(btn.lastElementChild.textContent===correct)btn.classList.add('correct')});markAnswered(false,true)}
+function handleTimeout(){if(state.isAnswered)return;const item=currentItem();const correct=state.questionDirection==='bn-jp'?item.j:item.b;[...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;if(btn.lastElementChild.textContent===correct)btn.classList.add('correct')});markAnswered(false,true)}
 function nextQuestion(){if(state.index+1<state.list.length){state.index++;loadQuestion();saveSession()}else showResults()}
 function showResults(){
   clearInterval(state.timer);try{localStorage.removeItem(storageKeys.session)}catch(_){}
@@ -719,7 +1034,180 @@ const kanaData={
  {char:'ワ',romaji:'wa'},{char:'ヲ',romaji:'wo'},{char:'ン',romaji:'n'}
  ]
 };
-function renderKana(){const list=kanaData[state.kanaType];$('kana-grid').innerHTML='';list.forEach(k=>{const b=document.createElement('button');b.className='kana-cell';b.innerHTML=`<div class="kana-char"></div><div class="kana-romaji"></div>`;b.querySelector('.kana-char').textContent=k.char;b.querySelector('.kana-romaji').textContent=k.romaji;b.addEventListener('click',()=>{playSound('tap');speakJapaneseWord(k.char);vibrate('tap')});$('kana-grid').appendChild(b)})}
+// Handwriting practice: pointer events support mouse, touch, and stylus.
+let writeIndex=0,writeDrawing=false,writeLast=null,writeInk=false,writeResizeObserver=null,kanaTutorialTimer=null,kanaTutorialDone=false,kanaStrokeTimers=[],currentKanaStrokeData=null,checkingKana=false,kanaStrokeMask=null,kanaStrokeMaskKey='';
+let activeUserStroke=[],userStrokeHistory=[],snappedKanaStrokeIds=new Set();
+let queuedPointerPoints=[],drawFrame=0,lastDrawnPoint=null;
+function writeList(){return kanaData[state.kanaType]||kanaData.hiragana}
+function resizeWriteCanvas(){const canvas=$('write-canvas'),stage=$('write-stage');if(!canvas||!stage)return;kanaStrokeMask=null;kanaStrokeMaskKey='';const rect=stage.getBoundingClientRect(),dpr=Math.max(1,window.devicePixelRatio||1);let saved=null;if(canvas.width&&canvas.height&&writeInk){try{saved=document.createElement('canvas');saved.width=canvas.width;saved.height=canvas.height;saved.getContext('2d').drawImage(canvas,0,0);}catch(_){saved=null;}}canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);const ctx=canvas.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=Math.max(4,rect.width*.015);ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#55e0c0';ctx.shadowColor=ctx.strokeStyle;ctx.shadowBlur=2;if(saved&&writeInk){ctx.drawImage(saved,0,0,saved.width,saved.height,0,0,rect.width,rect.height);}}
+function clearStrokeTutorial(){kanaStrokeTimers.forEach(clearTimeout);kanaStrokeTimers=[];$('write-stage').querySelector('.stroke-tutorial-svg')?.remove();$('write-stage').querySelector('.stroke-step-label')?.remove();}
+function clearWrite(quiet=false){if(drawFrame){cancelAnimationFrame(drawFrame);drawFrame=0;}queuedPointerPoints=[];lastDrawnPoint=null;const c=$('write-canvas');if(!c)return;const ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);writeInk=false;activeUserStroke=[];userStrokeHistory=[];snappedKanaStrokeIds=new Set();$('write-stage').classList.remove('has-ink','drawing','reveal-answer');$('write-stage').removeAttribute('data-answer');$('write-feedback').textContent=quiet?'':'Start with the first stroke.';}
+// Kana stroke-order data: load the original SVG path/median data for the selected kana.
+// Source data is the open-source kana-svg-data package (AnimCJK kana data, LGPL).
+const kanaStrokeCache=new Map();
+async function loadKanaStrokeData(char){
+ if(kanaStrokeCache.has(char))return kanaStrokeCache.get(char);
+ const script=state.kanaType==='katakana'?'katakana':'hiragana';
+ const url='https://cdn.jsdelivr.net/npm/kana-svg-data/dist/'+script+'/'+encodeURIComponent(char)+'.json';
+ const promise=fetch(url).then(r=>{if(!r.ok)throw new Error('Kana data unavailable');return r.json();});
+ kanaStrokeCache.set(char,promise);
+ try{return await promise;}catch(err){kanaStrokeCache.delete(char);throw err;}
+}
+// Smooth the source median into rounded quadratic curves so stroke playback does not look jagged.
+function smoothKanaPathData(d){
+ try{
+  const ns='http://www.w3.org/2000/svg',tmp=document.createElementNS(ns,'svg'),p=document.createElementNS(ns,'path');
+  tmp.setAttribute('viewBox','0 0 1024 1024');tmp.style.cssText='position:absolute;width:1px;height:1px;visibility:hidden;overflow:hidden';p.setAttribute('d',d);tmp.appendChild(p);document.body.appendChild(tmp);
+  const len=p.getTotalLength();if(!Number.isFinite(len)||len<2){tmp.remove();return d;}
+  const count=Math.max(8,Math.min(90,Math.ceil(len/9))),pts=[];for(let i=0;i<=count;i++){const q=p.getPointAtLength(len*i/count);pts.push([q.x,q.y]);}tmp.remove();
+  let out=`M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
+  for(let i=1;i<pts.length-1;i++){const mx=(pts[i][0]+pts[i+1][0])/2,my=(pts[i][1]+pts[i+1][1])/2;out+=` Q ${pts[i][0].toFixed(2)} ${pts[i][1].toFixed(2)} ${mx.toFixed(2)} ${my.toFixed(2)}`;}
+  const last=pts[pts.length-1];out+=` L ${last[0].toFixed(2)} ${last[1].toFixed(2)}`;return out;
+ }catch(_){return d;}
+}
+function replayKanaTutorial(showFilledResult=false){
+ clearTimeout(kanaTutorialTimer);clearStrokeTutorial();kanaTutorialDone=false;
+ const stage=$('write-stage'),guide=$('write-guide'),item=writeList()[writeIndex];
+ stage.classList.remove('tutorial-ready');stage.classList.add('tutorial-running');guide.classList.remove('guide-trace');guide.style.opacity=stage.classList.contains('guide-hidden')?'0':'0.18';void guide.offsetWidth;
+ $('write-feedback').textContent='Loading original kana stroke order…';$('write-clear').disabled=true;$('write-replay').disabled=true;
+ loadKanaStrokeData(item.char).then(data=>{
+  if(writeList()[writeIndex]?.char!==item.char)return;
+  clearStrokeTutorial();currentKanaStrokeData=data;snappedKanaStrokeIds=new Set();kanaStrokeMask=null;kanaStrokeMaskKey='';guide.style.opacity='0';
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 1024 1024');svg.setAttribute('preserveAspectRatio','xMidYMid meet');svg.classList.add('stroke-tutorial-svg');stage.appendChild(svg);
+  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');svg.appendChild(defs);
+  const strokeById=new Map((data.strokes||[]).map(st=>[String(st.id),st]));
+  // Draw the character's stroke silhouettes as a soft guide underneath.
+  const silhouettes=[];
+  (data.strokes||[]).forEach((st,i)=>{const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',st.value||'');p.setAttribute('fill',showFilledResult?'#55e0c0':'#ffffff');p.setAttribute('opacity',showFilledResult?'0':'.075');p.classList.add('kana-silhouette');p.setAttribute('data-stroke-id',String(st.id));p.__kanaStrokeId=String(st.id);svg.appendChild(p);silhouettes.push({id:String(st.id),path:p});});
+  const animated=[];
+  (data.clipPaths||[]).forEach((med,i)=>{
+    const sid=String(med.id),stroke=strokeById.get(sid);
+    if(!stroke||!stroke.value||!med.value)return;
+    const clip=document.createElementNS('http://www.w3.org/2000/svg','clipPath');clip.setAttribute('id','kanaClip'+i);
+    const outline=document.createElementNS('http://www.w3.org/2000/svg','path');outline.setAttribute('d',stroke.value);clip.appendChild(outline);defs.appendChild(clip);
+    const line=document.createElementNS('http://www.w3.org/2000/svg','path');line.setAttribute('d',med.value);line.setAttribute('clip-path','url(#kanaClip'+i+')');line.setAttribute('pathLength','1000');line.setAttribute('fill','none');line.setAttribute('stroke','#55e0c0');line.setAttribute('stroke-width','68');line.setAttribute('stroke-linecap','round');line.setAttribute('stroke-linejoin','round');line.setAttribute('stroke-dasharray','1000');line.setAttribute('stroke-dashoffset','1000');line.style.filter='drop-shadow(0 0 3px #55e0c044)';svg.appendChild(line);
+    // Split labels like 3a/3b are pieces of the same numbered stroke.
+    const order=(sid.match(/^\d+/)||['0'])[0];animated.push({order:Number(order),line});
+  });
+  animated.sort((a,b)=>a.order-b.order);
+  const groups=[];animated.forEach(x=>{let g=groups.find(y=>y.order===x.order);if(!g){g={order:x.order,lines:[]};groups.push(g);}g.lines.push(x.line);});
+  groups.sort((a,b)=>a.order-b.order);
+  if(!groups.length)throw new Error('No stroke paths in kana data');
+  const label=document.createElement('div');label.className='stroke-step-label';label.textContent=`Stroke 1 / ${groups.length}`;stage.appendChild(label);
+  const oneStrokeMs=950,gapMs=300;
+  groups.forEach((group,i)=>{kanaStrokeTimers.push(setTimeout(()=>{
+    label.textContent=`Stroke ${i+1} / ${groups.length}`;
+    group.lines.forEach(line=>{line.style.transition=`stroke-dashoffset ${oneStrokeMs}ms linear`;line.style.strokeDashoffset='0';});
+  },i*(oneStrokeMs+gapMs)));});
+  const duration=groups.length*(oneStrokeMs+gapMs)+350;
+  kanaTutorialTimer=setTimeout(()=>{
+    stage.classList.remove('tutorial-running');stage.classList.add('tutorial-ready');kanaTutorialDone=true;
+    // Tutorial strokes disappear when finished; only the original kana remains at 50% opacity.
+    kanaStrokeTimers.forEach(clearTimeout);kanaStrokeTimers=[];
+    stage.querySelector('.stroke-step-label')?.remove();
+    if(showFilledResult){
+      // The replay SVG is the single canonical Kana. Never overlay a second font glyph on it.
+      stage.querySelectorAll('.stroke-tutorial-svg > path:not(.kana-silhouette)').forEach(p=>p.remove());
+      guide.style.opacity='0';guide.style.visibility='hidden';guide.style.clipPath='inset(0 0 0 0)';
+      silhouettes.forEach((entry,i)=>{kanaStrokeTimers.push(setTimeout(()=>{entry.path.style.transition='opacity 220ms ease';entry.path.style.opacity='1';},i*190));});
+      $('write-feedback').textContent='Nice match! The same Kana from Replay is filling stroke by stroke.';
+      kanaStrokeTimers.push(setTimeout(()=>{silhouettes.forEach(entry=>{entry.path.style.transition='opacity 260ms ease';entry.path.style.opacity='.425';});guide.style.opacity='0';},silhouettes.length*190+300));
+    }else{
+      // Keep the exact same SVG stroke silhouettes used by Replay as the practice guide.
+      // Remove only the animated drawing lines, so the font glyph cannot mismatch the tutorial.
+      stage.querySelectorAll('.stroke-tutorial-svg > path:not(.kana-silhouette)').forEach(p=>p.remove());
+      silhouettes.forEach(entry=>{entry.path.style.transition='opacity 260ms ease';entry.path.style.opacity='.425';});
+      guide.style.opacity='0';guide.style.visibility='hidden';guide.style.clipPath='inset(0 0 0 0)';
+      $('write-feedback').textContent='Your turn! Trace the same Kana shape shown in Replay.';
+    }
+    $('write-clear').disabled=false;$('write-replay').disabled=false;
+  },duration);
+ }).catch(()=>{
+  if(writeList()[writeIndex]?.char!==item.char)return;
+  stage.classList.remove('tutorial-running');stage.classList.add('tutorial-ready');kanaTutorialDone=true;guide.style.clipPath='inset(0 0 0 0)';guide.style.visibility='visible';guide.style.opacity='0.425';
+  $('write-feedback').textContent='Could not load stroke guide. Connect to the internet and press Replay Guide.';
+  $('write-clear').disabled=false;$('write-replay').disabled=false;
+ });
+}
+function renderWriteTarget(){const list=writeList();writeIndex=((writeIndex%list.length)+list.length)%list.length;const item=list[writeIndex];clearStrokeTutorial();$('write-guide').textContent=item.char;$('write-romaji').textContent=item.romaji;$('write-counter').textContent=`${writeIndex+1} / ${list.length}`;$('write-progress-label').textContent='Ready when you are';$('write-ink-status').textContent='0 strokes';$('write-guide-toggle').textContent='Hide guide';$('write-guide-toggle').setAttribute('aria-pressed','true');$('write-stage').classList.remove('guide-hidden');clearWrite(true);resizeWriteCanvas();kanaTutorialDone=true;$('write-clear').disabled=false;$('write-replay').disabled=false;replayKanaTutorial();}
+function writePoint(e){const r=$('write-canvas').getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function getKanaStrokeMask(){
+ const canvas=$('write-canvas'),stage=$('write-stage'),data=currentKanaStrokeData;if(!canvas||!stage||!data||!Array.isArray(data.clipPaths)||!data.clipPaths.length)return null;
+ const key=[canvas.width,canvas.height,writeIndex,data.char||''].join(':');if(kanaStrokeMask&&kanaStrokeMaskKey===key)return kanaStrokeMask;
+ const mask=document.createElement('canvas');mask.width=canvas.width;mask.height=canvas.height;const m=mask.getContext('2d'),rect=stage.getBoundingClientRect(),dpr=canvas.width/Math.max(1,rect.width),scale=Math.min(rect.width/1024,rect.height/1024),ox=(rect.width-1024*scale)/2,oy=(rect.height-1024*scale)/2;
+ m.setTransform(dpr,0,0,dpr,0,0);m.translate(ox,oy);m.scale(scale,scale);m.lineCap='round';m.lineJoin='round';m.strokeStyle='#fff';m.lineWidth=64;
+ (data.clipPaths||[]).forEach(st=>{if(st.value){try{m.stroke(new Path2D(st.value));}catch(_){}}});kanaStrokeMask=mask;kanaStrokeMaskKey=key;return mask;
+}
+function constrainCanvasInk(bounds){const mask=getKanaStrokeMask();if(!mask)return;const ctx=writeCanvas.getContext('2d'),dpr=writeCanvas.width/Math.max(1,writeCanvas.getBoundingClientRect().width);ctx.save();ctx.setTransform(1,0,0,1,0,0);if(bounds){ctx.beginPath();ctx.rect(Math.max(0,bounds.x*dpr),Math.max(0,bounds.y*dpr),Math.max(1,bounds.w*dpr),Math.max(1,bounds.h*dpr));ctx.clip();}ctx.globalCompositeOperation='destination-in';ctx.drawImage(mask,0,0);ctx.restore();}
+const writeCanvas=$('write-canvas');
+function drawQueuedPointerPoints(){if(drawFrame){cancelAnimationFrame(drawFrame);drawFrame=0;}if(!queuedPointerPoints.length||!writeDrawing)return;const pts=queuedPointerPoints.splice(0),ctx=writeCanvas.getContext('2d'),r=$('write-stage').getBoundingClientRect();let prev=lastDrawnPoint||writeLast||pts[0],minX=prev.x,maxX=prev.x,minY=prev.y,maxY=prev.y;ctx.save();ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#55e0c0';ctx.shadowColor=ctx.strokeStyle;ctx.shadowBlur=2;for(const p of pts){minX=Math.min(minX,p.x);maxX=Math.max(maxX,p.x);minY=Math.min(minY,p.y);maxY=Math.max(maxY,p.y);if(Math.hypot(p.x-prev.x,p.y-prev.y)>.25){ctx.lineWidth=Math.max(3,r.width*.015*Math.max(.7,Math.min(1.35,(p.pressure||.5)*1.25)));ctx.beginPath();ctx.moveTo(prev.x,prev.y);ctx.quadraticCurveTo((prev.x+p.x)/2,(prev.y+p.y)/2,p.x,p.y);ctx.stroke();}prev=p;activeUserStroke.push({x:p.x,y:p.y,pressure:p.pressure||.5});}lastDrawnPoint=prev;ctx.restore();const pad=Math.max(12,r.width*.025);constrainCanvasInk({x:minX-pad,y:minY-pad,w:maxX-minX+2*pad,h:maxY-minY+2*pad});writeLast=prev;writeInk=true;$('write-stage').classList.add('has-ink');$('write-feedback').textContent='Smooth ink · strokes stay inside the Kana guide.';$('write-progress-label').textContent='Writing…';$('write-ink-status').textContent='Writing';}
+function schedulePointerDraw(){if(!drawFrame)drawFrame=requestAnimationFrame(()=>{drawFrame=0;drawQueuedPointerPoints();});}
+writeCanvas.addEventListener('pointerdown',e=>{if(e.button!==undefined&&e.button!==0)return;e.preventDefault();writeDrawing=true;writeLast=writePoint(e);lastDrawnPoint=writeLast;activeUserStroke=[{x:writeLast.x,y:writeLast.y,pressure:e.pressure||.5}];queuedPointerPoints=[];writeCanvas.setPointerCapture?.(e.pointerId);playPencilScratch(1100);$('write-stage').classList.add('drawing');});
+writeCanvas.addEventListener('pointermove',e=>{if(!writeDrawing)return;e.preventDefault();const events=e.getCoalescedEvents?e.getCoalescedEvents():[e];for(const ev of events){const p=writePoint(ev),prev=queuedPointerPoints[queuedPointerPoints.length-1]||lastDrawnPoint||writeLast;if(!prev||Math.hypot(p.x-prev.x,p.y-prev.y)>.6)queuedPointerPoints.push({...p,pressure:ev.pressure||.5});}schedulePointerDraw();});
+function snapKanaIfPlausible(){
+  const canvas=$('write-canvas'),stage=$('write-stage'),data=currentKanaStrokeData;
+  if(!canvas||!stage||!data||!writeInk||checkingKana)return;
+  checkingKana=true;
+  try{
+    const W=canvas.width,H=canvas.height,ctx=canvas.getContext('2d'),ink=ctx.getImageData(0,0,W,H).data;
+    let inkCount=0,minX=W,minY=H,maxX=-1,maxY=-1;
+    for(let y=0;y<H;y+=2)for(let x=0;x<W;x+=2){if(ink[(y*W+x)*4+3]>35){inkCount++;minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);}}
+    if(maxX<0||inkCount<30){checkingKana=false;$('write-feedback').textContent='Write the character more clearly, then try again.';return;}
+    const stageRect=stage.getBoundingClientRect(),dpr=W/Math.max(1,stageRect.width);
+    // Build a pixel-accurate reference from the SAME original median paths used by Replay.
+    const ref=document.createElement('canvas');ref.width=W;ref.height=H;const rctx=ref.getContext('2d');
+    const scale=Math.min(W/1024,H/1024),ox=(W-1024*scale)/2,oy=(H-1024*scale)/2;
+    rctx.setTransform(scale,0,0,scale,ox,oy);rctx.lineCap='round';rctx.lineJoin='round';rctx.strokeStyle='#fff';rctx.lineWidth=64;
+    (data.clipPaths||[]).forEach(st=>{if(st.value){try{rctx.stroke(new Path2D(st.value));}catch(_){}}});
+    rctx.setTransform(1,0,0,1,0,0);const refPixels=rctx.getImageData(0,0,W,H).data;
+    // Compare both ways: how much of the user's writing follows the real stroke paths,
+    // and how much of the real path is covered by the user's attempt (with a forgiving margin).
+    const radius=Math.max(8,Math.round(19*dpr)),step=2;
+    const isInk=(x,y)=>x>=0&&y>=0&&x<W&&y<H&&ink[(y*W+x)*4+3]>35;
+    const isRef=(x,y)=>x>=0&&y>=0&&x<W&&y<H&&refPixels[(y*W+x)*4+3]>20;
+    function nearMask(x,y,mask){for(let yy=-radius;yy<=radius;yy+=Math.max(2,Math.floor(radius/4)))for(let xx=-radius;xx<=radius;xx+=Math.max(2,Math.floor(radius/4))){if(xx*xx+yy*yy<=radius*radius&&mask(x+xx,y+yy))return true;}return false;}
+    let userNear=0,userTotal=0,refNear=0,refTotal=0;
+    for(let y=0;y<H;y+=step)for(let x=0;x<W;x+=step){
+      if(isInk(x,y)){userTotal++;if(nearMask(x,y,isRef))userNear++;}
+      if(isRef(x,y)){refTotal++;if(nearMask(x,y,isInk))refNear++;}
+    }
+    const precision=userNear/Math.max(1,userTotal),recall=refNear/Math.max(1,refTotal);
+    const boxW=(maxX-minX)/W,boxH=(maxY-minY)/H;
+    const sizeOk=boxW>.07&&boxH>.07&&boxW<.9&&boxH<.9;
+    // A genuine trace should overlap the canonical strokes, not merely have a similar bounding box.
+    const similar=sizeOk&&precision>=.48&&recall>=.23;
+    if(similar){
+      $('write-feedback').textContent='Good tracing! Filling the original Kana, stroke by stroke…';
+      clearWrite(true);checkingKana=false;replayKanaTutorial(true);
+    }else{
+      $('write-feedback').textContent='Not close enough to the original strokes yet. Try again; replaying the guide…';
+      clearWrite(true);checkingKana=false;
+      setTimeout(()=>{if(!writeInk)replayKanaTutorial();},650);
+    }
+  }catch(_){checkingKana=false;$('write-feedback').textContent='Could not compare this attempt. Try tracing the faint Kana again.';}
+}
+function redrawUserStrokes(){const c=$('write-canvas'),ctx=c.getContext('2d'),r=$('write-stage').getBoundingClientRect(),dpr=c.width/Math.max(1,r.width);ctx.clearRect(0,0,c.width,c.height);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=Math.max(4,r.width*.015);ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#55e0c0';ctx.shadowColor=ctx.strokeStyle;ctx.shadowBlur=2;userStrokeHistory.forEach(points=>{if(points.length<2)return;ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i];ctx.quadraticCurveTo(a.x+(b.x-a.x)*.45,a.y+(b.y-a.y)*.45,b.x,b.y);}ctx.stroke();});writeInk=userStrokeHistory.length>0; c.style.opacity='1';}
+function trySnapSingleStroke(points){
+ const data=currentKanaStrokeData,stage=$('write-stage');if(!data||!Array.isArray(points)||points.length<5||!kanaTutorialDone||stage.classList.contains('guide-hidden'))return false;
+ const stageRect=stage.getBoundingClientRect(),scale=Math.min(stageRect.width/1024,stageRect.height/1024),ox=(stageRect.width-1024*scale)/2,oy=(stageRect.height-1024*scale)/2;
+ const ns='http://www.w3.org/2000/svg',tmp=document.createElementNS(ns,'svg');tmp.setAttribute('viewBox','0 0 1024 1024');tmp.style.cssText='position:absolute;width:1px;height:1px;visibility:hidden;pointer-events:none';document.body.appendChild(tmp);
+ const user=points.filter((_,i)=>i%Math.max(1,Math.floor(points.length/45))===0).map(q=>({x:q.x,y:q.y}));
+ const distanceToUser=(q)=>{let best=1e9;for(let i=1;i<user.length;i++){const a=user[i-1],b=user[i],dx=b.x-a.x,dy=b.y-a.y,den=dx*dx+dy*dy,t=den?Math.max(0,Math.min(1,((q.x-a.x)*dx+(q.y-a.y)*dy)/den)):0;best=Math.min(best,Math.hypot(q.x-(a.x+t*dx),q.y-(a.y+t*dy)));}return best;};
+ let best=null,bestScore=0;
+ try{(data.clipPaths||[]).forEach(med=>{const id=String(med.id);if(snappedKanaStrokeIds.has(id)||!med.value)return;const path=document.createElementNS(ns,'path');path.setAttribute('d',med.value);tmp.appendChild(path);const len=path.getTotalLength();if(!len){path.remove();return;}const samples=[];const n=Math.max(12,Math.min(70,Math.ceil(len/12)));for(let i=0;i<=n;i++){const q=path.getPointAtLength(len*i/n);samples.push({x:ox+q.x*scale,y:oy+q.y*scale});}const radius=Math.max(13,stageRect.width*.045);const userHit=user.filter(q=>samples.some(r=>Math.hypot(q.x-r.x,q.y-r.y)<radius)).length/Math.max(1,user.length);const refHit=samples.filter(q=>distanceToUser(q)<radius).length/Math.max(1,samples.length);const score=(userHit+refHit)/2;if(userHit>.62&&refHit>.48&&score>bestScore){best={id};bestScore=score;}path.remove();});}catch(_){}tmp.remove();
+ if(!best)return false;
+ snappedKanaStrokeIds.add(best.id);
+ const svg=stage.querySelector('.stroke-tutorial-svg');const silhouette=svg&&Array.from(svg.querySelectorAll('.kana-silhouette')).find(p=>p.__kanaStrokeId===best.id || p.getAttribute('data-stroke-id')===best.id);
+ if(silhouette){silhouette.style.transition='opacity 260ms ease, filter 260ms ease';silhouette.style.opacity='.95';silhouette.style.filter='drop-shadow(0 0 5px #55e0c066)';}
+ $('write-feedback').textContent=`Stroke ${snappedKanaStrokeIds.size} matched — snapped into place! Keep writing the next stroke.`;
+ $('write-progress-label').textContent=`${snappedKanaStrokeIds.size} stroke${snappedKanaStrokeIds.size===1?'':'s'} matched`;
+ return true;
+}
+function endWrite(e){if(!writeDrawing)return;if(drawFrame){cancelAnimationFrame(drawFrame);drawFrame=0;}drawQueuedPointerPoints();writeDrawing=false;writeLast=null;lastDrawnPoint=null;queuedPointerPoints=[];$('write-stage').classList.remove('drawing');try{if(e.pointerId!==undefined)writeCanvas.releasePointerCapture?.(e.pointerId)}catch(_){}if(activeUserStroke.length>1){const matched=trySnapSingleStroke(activeUserStroke);if(!matched){userStrokeHistory.push(activeUserStroke.slice());signalMistake();$('write-feedback').textContent='Stroke মেলেনি — guide-এর কাছাকাছি ধীরে আবার লেখো।';}else redrawUserStrokes();}activeUserStroke=[];writeInk=userStrokeHistory.length>0||writeInk;$('write-stage').classList.toggle('has-ink',writeInk);if(writeInk||snappedKanaStrokeIds.size){$('write-feedback').textContent=snappedKanaStrokeIds.size?`Matched ${snappedKanaStrokeIds.size} stroke(s). Continue one stroke at a time.`:'Nice practice! Keep following the guide, one stroke at a time.';$('write-progress-label').textContent='Practice in progress';$('write-ink-status').textContent=snappedKanaStrokeIds.size?`${snappedKanaStrokeIds.size} matched`:'Writing';$('write-clear').disabled=false;}}
+writeCanvas.addEventListener('pointerup',endWrite);writeCanvas.addEventListener('pointercancel',endWrite);writeCanvas.addEventListener('lostpointercapture',endWrite);
+$('write-undo').addEventListener('click',()=>{if(userStrokeHistory.length){userStrokeHistory.pop();redrawUserStrokes();$('write-stage').classList.toggle('has-ink',writeInk);$('write-feedback').textContent='Last stroke undone.';$('write-ink-status').textContent=userStrokeHistory.length+' stroke(s)';}else if(snappedKanaStrokeIds.size){const last=[...snappedKanaStrokeIds].pop();snappedKanaStrokeIds.delete(last);const svg=$('write-stage').querySelector('.stroke-tutorial-svg');const path=svg&&Array.from(svg.querySelectorAll('.kana-silhouette')).find(x=>x.__kanaStrokeId===last||x.getAttribute('data-stroke-id')===last);if(path){path.style.opacity='.425';path.style.filter='none';}$('write-feedback').textContent='Last snapped stroke undone.';$('write-ink-status').textContent=snappedKanaStrokeIds.size+' matched';}else{$('write-feedback').textContent='Nothing to undo yet.';}vibrate('tap')});$('write-clear').addEventListener('click',()=>{clearWrite();$('write-progress-label').textContent='Canvas cleared';$('write-ink-status').textContent='0 strokes';vibrate('tap')});$('write-replay').addEventListener('click',()=>{replayKanaTutorial();vibrate('tap')});$('write-guide-toggle').addEventListener('click',()=>{const stage=$('write-stage'),hidden=stage.classList.toggle('guide-hidden');$('write-guide-toggle').textContent=hidden?'Show guide':'Hide guide';$('write-guide-toggle').setAttribute('aria-pressed',String(!hidden));stage.querySelectorAll('.kana-silhouette').forEach(p=>{p.style.opacity=hidden?'0':'.425'});const guide=$('write-guide');if(!stage.querySelector('.kana-silhouette')){guide.style.visibility=hidden?'hidden':'visible';guide.style.opacity=hidden?'0':'.425'}$('write-feedback').textContent=hidden?'Guide hidden — try writing the character from memory.':'Faint guide shown — trace the shape at your own pace.';vibrate('tap')});$('write-next').addEventListener('click',()=>{writeIndex++;renderWriteTarget();vibrate('navigate')});$('write-prev').addEventListener('click',()=>{writeIndex--;renderWriteTarget();vibrate('navigate')});
+if('ResizeObserver'in window){writeResizeObserver=new ResizeObserver(()=>resizeWriteCanvas());writeResizeObserver.observe($('write-stage'))}else window.addEventListener('resize',resizeWriteCanvas);
+function renderKana(){const list=kanaData[state.kanaType];writeIndex=0;renderWriteTarget();$('kana-grid').innerHTML='';list.forEach(k=>{const b=document.createElement('button');b.className='kana-cell';b.innerHTML=`<div class="kana-char"></div><div class="kana-romaji"></div>`;b.querySelector('.kana-char').textContent=k.char;b.querySelector('.kana-romaji').textContent=k.romaji;b.addEventListener('click',()=>{playSound('tap');speakJapaneseWord(k.char);vibrate('tap')});$('kana-grid').appendChild(b)})}
 document.querySelectorAll('[data-mode]').forEach(btn=>btn.addEventListener('click',()=>{state.mode=btn.dataset.mode;document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b===btn));if(state.mode==='kana'){showScreen('kana-screen');renderKana()}else showScreen('home-screen');vibrate('tap')}));
 $('start-btn').addEventListener('click',()=>{state.mode=document.querySelector('[data-mode].active').dataset.mode;if(state.mode==='kana'){state.kanaRun=true;showScreen('kana-screen');renderKana()}else startQuiz()});
 $('continue-btn').addEventListener('click',()=>{const s=readStore(storageKeys.session,null);if(s){state.mode=s.mode;state.selectedLesson=s.selectedLesson;startQuiz({restore:s})}});
@@ -728,7 +1216,10 @@ $('speech-btn').addEventListener('click',()=>{const item=currentItem();if(item)s
 $('skip-btn').addEventListener('click',()=>{if(!state.isAnswered){handleTimeout()}});
 $('retest-btn').addEventListener('click',startRetest);
 $('again-btn').addEventListener('click',()=>{if(state.kanaRun){state.mode='kana';showScreen('kana-screen');renderKana()}else startQuiz()});
-$('settings-open').addEventListener('click',()=>{showScreen('settings-screen');vibrate('tap')});
+$('settings-open').addEventListener('click',()=>{showScreen('settings-screen');renderProfile();vibrate('tap')});
+$('edit-profile').addEventListener('click',()=>openLogin(true));
+$('home-edit-profile').addEventListener('click',()=>openLogin(true));$('home-profile-picture').addEventListener('click',()=>openLogin(true));$('home-profile-picture').style.cursor='pointer';
+$('logout-btn').addEventListener('click',()=>{writeStore(authKey,false);editingProfile=false;openLogin(false);showToast('Signed out')});
 $('theme-toggle').addEventListener('click',()=>{prefs.accent=(prefs.accent+1)%accents.length;savePrefs();vibrate('tap');showToast('Accent theme changed')});
 $('sound-toggle').addEventListener('change',e=>{prefs.sound=e.target.checked;savePrefs();if(prefs.sound)playSound('tap')});
 $('vibrate-toggle').addEventListener('change',e=>{prefs.vibrate=e.target.checked;savePrefs();vibrate('tap');if(prefs.vibrate&&!('vibrate'in navigator))showToast('This browser does not support vibration.')});
@@ -749,10 +1240,15 @@ document.addEventListener('click',e=>{
   if(!['quiz-home','results-home','kana-home','settings-home','settings-open','theme-toggle','speech-btn','start-btn','continue-btn','again-btn','retest-btn','skip-btn','kana-quiz-btn'].includes(control.id) && !control.matches('[data-mode],[data-kana]'))vibrate('tap');
 });
 document.querySelectorAll('select').forEach(el=>el.addEventListener('change',()=>{playSound('tap');vibrate('tap')}));
+document.addEventListener('click',e=>{if(e.target.closest('input,select,textarea'))vibrate('tap')});
 window.addEventListener('beforeunload',()=>{if(state.list.length&&state.index<state.list.length)saveSession()});
 applyPrefs();renderStats();renderKana();
+if(account&&readStore(authKey,false)){renderProfile();showScreen('home-screen')}else{editingProfile=false;updateLoginView();showScreen('login-screen')}
 $('stat-words').title=`${vocabData.length} entries; ${new Set(vocabData.map(v=>v.j)).size} distinct headwords`;
 const savedSession=readStore(storageKeys.session,null);if(savedSession&&savedSession.list&&savedSession.index<savedSession.list.length){$('continue-btn').hidden=false}
+
+// Subtle pointer + scroll parallax for the background Japanese characters.
+(()=>{const wall=document.getElementById('jp-parallax-wall');if(!wall||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const chars=[...wall.querySelectorAll('.jp-float')];let tx=0,ty=0,sy=0,raf=0;const paint=()=>{chars.forEach((el,i)=>{const depth=0.018+(i%4)*0.012;el.style.setProperty('--px',`${tx*depth}px`);el.style.setProperty('--py',`${ty*depth+sy*(0.025+(i%3)*0.012)}px`)});raf=0};const schedule=()=>{if(!raf)raf=requestAnimationFrame(paint)};window.addEventListener('pointermove',e=>{tx=(e.clientX-window.innerWidth/2);ty=(e.clientY-window.innerHeight/2);schedule()},{passive:true});window.addEventListener('scroll',()=>{sy=window.scrollY||0;schedule()},{passive:true});})();
 </script>
 </body>
 </html>
