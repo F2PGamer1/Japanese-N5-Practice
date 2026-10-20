@@ -291,14 +291,14 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
           <button class="mode" data-mode="kana"><span class="mode-icon">か</span><span class="mode-name">Kana quiz</span></button><button class="mode" data-mode="hardest"><span class="mode-icon">⚡</span><span class="mode-name">Hardest mode</span></button>
         </div>
         <label class="field-label" for="lesson-select">LESSON</label>
-        <div class="select-wrap"><select class="select" id="lesson-select"><option value="all">All lessons · 1–8</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option></select></div>
+        <div class="select-wrap"><select class="select" id="lesson-select"><option value="all">All lessons · 1–9</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option><option value="9">Lesson 9</option></select></div>
         <label class="field-label" for="question-limit">QUESTION COUNT</label>
         <div class="select-wrap"><select class="select" id="question-limit"><option value="10">10 questions · Quick practice</option><option value="20">20 questions</option><option value="all">All words in selected lesson</option></select></div>
         <button class="primary" id="start-btn">Start practice <span aria-hidden="true">↗</span></button>
         <button class="secondary" id="continue-btn" hidden>Continue saved quiz</button>
       </section>
       <aside class="panel section">
-        <div class="section-head"><div><div class="section-title">Lesson progress</div></div><span class="pill" id="lesson-completion">0 / 8</span></div>
+        <div class="section-head"><div><div class="section-title">Lesson progress</div></div><span class="pill" id="lesson-completion">0 / 9</span></div>
         <div class="lesson-progress" id="lesson-progress"></div>
       </aside>
     </div>
@@ -810,7 +810,63 @@ const vocabData = [
             { l:8, j:'きんかくじ', u:'Kinkakuji', b:'কিকিংকাকুজি মন্দির', k:'金閣寺' },
             { l:8, j:'ならこうえん', u:'Narakouen', b:'নারা পার্ক', k:'奈良公園' },
             { l:8, j:'ふじさん', u:'Fujisan', b:'মাউন্ট ফুজি', k:'富士山' },
-            { l:8, j:'しちにんのさむらい', u:'Shichinin no samurai', b:'সেভেন সামুরাই', k:'七人の侍' }
+            { l:8, j:'しちにんのさむらい', u:'Shichinin no samurai', b:'সেভেন সামুরাই', k:'七人の侍' },
+
+            // Lesson 9 — 54 vocabulary items
+            { l:9, j:'わかります', u:'Wakarimasu', b:'বুঝতে পারা', k:'分かります' },
+            { l:9, j:'あります', u:'Arimasu', b:'আছে (বস্তু/জিনিস)', k:'あります' },
+            { l:9, j:'すき（な）', u:'Suki (na)', b:'পছন্দ; পছন্দের', k:'好き（な）' },
+            { l:9, j:'きらい（な）', u:'Kirai (na)', b:'অপছন্দ; অপছন্দের', k:'嫌い（な）' },
+            { l:9, j:'じょうず（な）', u:'Jouzu (na)', b:'দক্ষ; ভালো পারে', k:'上手（な）' },
+            { l:9, j:'へた（な）', u:'Heta (na)', b:'অদক্ষ; ভালো পারে না', k:'下手（な）' },
+            { l:9, j:'のみもの', u:'Nomimono', b:'পানীয়', k:'飲み物' },
+            { l:9, j:'りょうり（～を します）', u:'Ryouri (~ o shimasu)', b:'রান্না; রান্না করা খাবার', k:'料理' },
+            { l:9, j:'スポーツ（～を します）', u:'Supootsu (~ o shimasu)', b:'খেলাধুলা', k:'スポーツ' },
+            { l:9, j:'やきゅう（～を します）', u:'Yakyuu (~ o shimasu)', b:'বেসবল খেলা', k:'野球' },
+            { l:9, j:'ダンス（～を します）', u:'Dansu (~ o shimasu)', b:'নাচ; নাচ করা', k:'ダンス' },
+            { l:9, j:'りょこう（～を します）', u:'Ryokou (~ o shimasu)', b:'ভ্রমণ; ভ্রমণ করা', k:'旅行' },
+            { l:9, j:'おんがく', u:'Ongaku', b:'সঙ্গীত; মিউজিক', k:'音楽' },
+            { l:9, j:'うた', u:'Uta', b:'গান', k:'歌' },
+            { l:9, j:'クラシック', u:'Kurashikku', b:'ক্লাসিক্যাল সঙ্গীত', k:'クラシック' },
+            { l:9, j:'ジャズ', u:'Jazu', b:'জ্যাজ সঙ্গীত', k:'ジャズ' },
+            { l:9, j:'コンサート', u:'Konsaato', b:'কনসার্ট; গানের অনুষ্ঠান', k:'コンサート' },
+            { l:9, j:'カラオケ', u:'Karaoke', b:'কারাওকে', k:'カラオケ' },
+            { l:9, j:'かぶき', u:'Kabuki', b:'জাপানের ঐতিহ্যবাহী নাট্যধারা কাবুকি', k:'歌舞伎' },
+            { l:9, j:'え', u:'E', b:'ছবি; চিত্র', k:'絵' },
+            { l:9, j:'じ', u:'Ji', b:'অক্ষর', k:'字' },
+            { l:9, j:'かんじ', u:'Kanji', b:'কানজি; চীনা উৎসের জাপানি অক্ষর', k:'漢字' },
+            { l:9, j:'ひらがな', u:'Hiragana', b:'হিরাগানা', k:'ひらがな' },
+            { l:9, j:'かたかな', u:'Katakana', b:'কাতাকানা', k:'カタカナ' },
+            { l:9, j:'ローマじ', u:'Roomaji', b:'রোমান অক্ষর', k:'ローマ字' },
+            { l:9, j:'こまかい おかね', u:'Komakai okane', b:'খুচরা টাকা', k:'細かいお金' },
+            { l:9, j:'チケット', u:'Chiketto', b:'টিকিট', k:'チケット' },
+            { l:9, j:'じかん', u:'Jikan', b:'সময়', k:'時間' },
+            { l:9, j:'ようじ', u:'Youji', b:'কাজ; কোনো প্রয়োজনীয় কাজ/ব্যস্ততা', k:'用事' },
+            { l:9, j:'やくそく（～を します）', u:'Yakusoku (~ o shimasu)', b:'প্রতিশ্রুতি; afspraak/নির্ধারিত কথা', k:'約束' },
+            { l:9, j:'アルバイト（～を します）', u:'Arubaito (~ o shimasu)', b:'পার্টটাইম কাজ', k:'アルバイト' },
+            { l:9, j:'ごしゅじん', u:'Goshujin', b:'অন্যের স্বামী', k:'ご主人' },
+            { l:9, j:'おっと／しゅじん', u:'Otto / shujin', b:'নিজের স্বামী', k:'夫／主人' },
+            { l:9, j:'おくさん', u:'Okusan', b:'অন্যের স্ত্রী', k:'奥さん' },
+            { l:9, j:'つま／かない', u:'Tsuma / kanai', b:'নিজের স্ত্রী', k:'妻／家内' },
+            { l:9, j:'こども', u:'Kodomo', b:'শিশু; সন্তান', k:'子ども' },
+            { l:9, j:'よく', u:'Yoku', b:'প্রায়ই; ভালোভাবে; বেশ', k:'よく' },
+            { l:9, j:'だいたい', u:'Daitai', b:'প্রায়; মোটামুটি', k:'だいたい' },
+            { l:9, j:'たくさん', u:'Takusan', b:'অনেক', k:'たくさん' },
+            { l:9, j:'すこし', u:'Sukoshi', b:'অল্প; একটু', k:'少し' },
+            { l:9, j:'ぜんぜん', u:'Zenzen', b:'মোটেই না (সাধারণত নেতিবাচক বাক্যে)', k:'全然' },
+            { l:9, j:'はやく', u:'Hayaku', b:'তাড়াতাড়ি; আগে', k:'早く' },
+            { l:9, j:'～から', u:'~ kara', b:'কারণ; তাই', k:'～から' },
+            { l:9, j:'どうして', u:'Doushite', b:'কেন?', k:'どうして' },
+            { l:9, j:'れんしゅう（～を します）', u:'Renshuu (~ o shimasu)', b:'অনুশীলন; অনুশীলন করা', k:'練習' },
+            { l:9, j:'かしてください', u:'Kashite kudasai', b:'দয়া করে ধার দিন', k:'貸してください' },
+            { l:9, j:'いいですよ', u:'Ii desu yo', b:'ঠিক আছে; অবশ্যই', k:'いいですよ' },
+            { l:9, j:'ざんねんですが', u:'Zannen desu ga', b:'দুঃখিত, তবে…; দুর্ভাগ্যবশত…', k:'残念ですが' },
+            { l:9, j:'かいわ', u:'Kaiwa', b:'কথোপকথন', k:'会話' },
+            { l:9, j:'ああ', u:'Aa', b:'আচ্ছা; আহা', k:'ああ' },
+            { l:9, j:'いっしょに いかがですか', u:'Issho ni ikaga desu ka', b:'একসঙ্গে গেলে/করলে কেমন হয়?', k:'一緒にいかがですか' },
+            { l:9, j:'（～は）ちょっと…', u:'(~ wa) chotto…', b:'(… করা) একটু কঠিন/সম্ভব নয়…', k:'（～は）ちょっと…' },
+            { l:9, j:'だめですか', u:'Dame desu ka', b:'হবে না?; অসুবিধা আছে?', k:'だめですか' },
+            { l:9, j:'またこんど おねがいします', u:'Mata kondo onegai shimasu', b:'তাহলে অন্য কোনো সময়; পরে আবার অনুরোধ করব', k:'また今度お願いします' },
         ];
 
 const $ = id => document.getElementById(id);
@@ -916,14 +972,14 @@ function renderStats(){
   $('stat-answered').textContent=stats.answered||0;$('stat-best').textContent=(stats.best||0)+'%';
   let complete=0;
   $('lesson-progress').innerHTML='';
-  for(let l=1;l<=8;l++){
+  for(let l=1;l<=9;l++){
     const total=vocabData.filter(v=>v.l===l).length, mastered=(stats.lessons&&stats.lessons[l])||0;
     const pct=total?Math.min(100,Math.round(mastered/total*100)):0;if(pct>=100&&total)complete++;
     const row=document.createElement('div');row.className='lesson-row';
     row.innerHTML=`<span class="lesson-name">Lesson ${l}</span><div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div><span class="lesson-count">${Math.min(mastered,total)}/${total}</span>`;
     $('lesson-progress').appendChild(row);
   }
-  $('lesson-completion').textContent=`${complete} / 8`;
+  $('lesson-completion').textContent=`${complete} / 9`;
 }
 function saveStats(){stats.learned=[...learned];writeStore(storageKeys.stats,stats);writeStore(storageKeys.learned,[...learned]);renderStats()}
 function activePool(){
@@ -946,7 +1002,7 @@ function startQuiz({retest=false,restore=null,kana=false}={}){
     const limit=$('question-limit').value;
     if(!retest&&!kana&&limit!=='all')pool=shuffle(pool).slice(0,Math.min(Number(limit),pool.length));
     else pool=shuffle(pool);
-    if(kana)pool=shuffle(kanaData[state.kanaType]).slice(0,Math.min(10,kanaData[state.kanaType].length)).map(k=>({l:0,j:k.char,b:k.romaji,u:k.romaji,k:''}));
+    if(kana)pool=shuffle(kanaData[state.kanaType]).map(k=>({l:0,j:k.char,b:k.romaji,u:k.romaji,k:''}));
     state.list=pool;state.index=0;state.score=0;state.wrong=[];state.answeredThisRun=0;state.runCorrect=0;
   }
   if(!state.list.length){showToast('এই lesson-এ কোনো প্রশ্ন নেই।');return}
@@ -995,6 +1051,14 @@ function nextQuestion(){if(state.index+1<state.list.length){state.index++;loadQu
 function showResults(){
   clearInterval(state.timer);try{localStorage.removeItem(storageKeys.session)}catch(_){}
   if('speechSynthesis'in window)speechSynthesis.cancel();
+  // Kana mode: repeat only missed characters automatically until every kana is correct.
+  if(state.kanaRun && state.wrong.length){
+    const missed=shuffle([...state.wrong]);
+    state.list=missed;state.index=0;state.score=0;state.wrong=[];
+    state.answeredThisRun=0;state.runCorrect=0;state.isRetest=true;
+    showToast(`ভুল হওয়া ${missed.length}টি kana আবার পরীক্ষা হবে।`);
+    showScreen('quiz-screen');loadQuestion();saveSession();return;
+  }
   const total=state.list.length,wrongCount=state.wrong.length,acc=total?Math.round(state.score/total*100):0;
   $('final-score').textContent=`${state.score}/${total}`;$('correct-count').textContent=state.score;$('wrong-count').textContent=wrongCount;$('result-accuracy').textContent=acc+'%';
   $('result-title').textContent=acc>=90?'Excellent work!':acc>=70?'Nice progress!':acc>=40?'Keep going!':'Every try counts.';
