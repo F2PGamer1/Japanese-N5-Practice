@@ -227,10 +227,11 @@ body{background:radial-gradient(ellipse at 5% 0%,#234b6340,transparent 38%),radi
 .jp-float:nth-child(3n){animation-delay:-4.5s}
 .jp-float:nth-child(4n){animation-delay:-8s}
 @keyframes jpSoftBounce{
-  0%,100%{translate:0 0;rotate:-3deg;filter:drop-shadow(0 0 12px currentColor)}
-  25%{translate:0 -13px;rotate:1deg;filter:drop-shadow(0 0 18px currentColor)}
-  50%{translate:0 -23px;rotate:3deg;filter:drop-shadow(0 0 22px currentColor)}
-  75%{translate:0 -9px;rotate:-1deg;filter:drop-shadow(0 0 16px currentColor)}
+  0%,100%{translate:0 0;rotate:-4deg;filter:drop-shadow(0 0 10px currentColor)}
+  20%{translate:0 -15px;rotate:2deg;filter:drop-shadow(0 0 17px currentColor)}
+  45%{translate:0 -29px;rotate:4deg;filter:drop-shadow(0 0 24px currentColor)}
+  70%{translate:0 -12px;rotate:-2deg;filter:drop-shadow(0 0 18px currentColor)}
+  85%{translate:0 -20px;rotate:1deg;filter:drop-shadow(0 0 21px currentColor)}
 }
 @media(max-width:600px){.write-head{align-items:flex-start}.write-counter{min-width:58px;padding:8px 9px}.write-target-row{align-items:center}.write-stage{height:350px;min-height:300px}.write-feedback{text-align:left}.write-controls button{font-size:11px;padding:0 7px}}
 @media(prefers-reduced-motion:reduce){.jp-float{animation:none!important;translate:0 0!important}.write-target-actions button,.write-controls button{transition:none!important}}
@@ -332,18 +333,107 @@ input:hover,select:hover,textarea:hover{border-color:#506b8c}
 @media(max-width:680px){body{background-attachment:scroll}.guide-lesson{animation:none}.generated-sentence{animation:none}.panel:hover,.guide-rule:hover,.generated-sentence:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+
+
+/* ===== SI RJ0 NEXT-LEVEL UI RECREATION — visual-only layer; app logic preserved ===== */
+:root{
+ --bg:#070b16;--panel:#0e1729;--panel2:#121f35;--line:#263852;--text:#f5f8ff;--muted:#9aabc5;
+ --accent:#5ff0ce;--accent2:#a69bff;--good:#5ee5a8;--bad:#ff708e;--warn:#ffd078;
+ --shadow:0 24px 70px #0007;--radius:24px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{font-family:'DM Sans','Noto Sans Bengali','Noto Sans JP',system-ui,sans-serif;background:radial-gradient(ellipse at 8% -4%,#1f9e9a22,transparent 32%),radial-gradient(ellipse at 98% 18%,#7e5cf022,transparent 35%),radial-gradient(ellipse at 50% 100%,#183f6530,transparent 42%),#070b16;background-attachment:fixed;letter-spacing:.005em}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;background-image:linear-gradient(#7892b40b 1px,transparent 1px),linear-gradient(90deg,#7892b40b 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.app{max-width:1100px;width:100%}
+.topbar{position:relative;padding:12px 14px;margin:0 0 22px;border:1px solid #ffffff0d;border-radius:20px;background:linear-gradient(120deg,#101a2ce8,#0b1323e8);box-shadow:0 10px 40px #0003;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.brand-mark,.login-mark{border-radius:17px;background:linear-gradient(140deg,#64f2d0,#7da7ff 58%,#b3a1ff);box-shadow:0 8px 30px #55e0c02c, inset 0 1px #ffffff8c;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.brand:hover .brand-mark{transform:rotate(-7deg) scale(1.05);box-shadow:0 12px 36px #55e0c047}
+.brand-title{letter-spacing:-.7px}.brand-sub{letter-spacing:.02em}
+.panel,.stat,.mode,.setting,.question-card,.result-stat,.quiz-chip,.tip,.write-practice,.guide-lesson,.generated-sentence,.sentence-card,.grammar-progress-panel,.grammar-guide-launch,.progress-gain-panel{border-color:#8ba9d51c;box-shadow:0 16px 48px #0002;transition:border-color .25s,box-shadow .25s,transform .25s,background .25s}
+.panel{background:linear-gradient(145deg,#111d31f5,#0b1425f7 75%);border:1px solid #8ba9d526;border-radius:var(--radius);box-shadow:0 20px 65px #0004,inset 0 1px #ffffff07}
+.panel:hover{border-color:#76e8d32c}
+.hero{background:radial-gradient(ellipse at 92% 8%,#8c83ff13,transparent 35%),linear-gradient(145deg,#13243a,#0d1729 70%)}
+.hero:after{color:#65f1d00b;transform:rotate(-8deg);animation:jpGlyphDrift 10s ease-in-out infinite alternate}
+@keyframes jpGlyphDrift{from{transform:translateY(0) rotate(-8deg)}to{transform:translateY(13px) rotate(1deg)}}
+.eyebrow{letter-spacing:2px}.eyebrow:before{height:3px;box-shadow:0 0 12px #55e0c080}
+.hero h1{letter-spacing:-1.8px;line-height:1.06}.gradient-text{background-image:linear-gradient(100deg,#f7fbff 0%,#63efd0 48%,#a89cff 88%);background-size:180% auto;animation:gradientShimmer 8s ease-in-out infinite alternate}
+@keyframes gradientShimmer{from{background-position:0% center}to{background-position:100% center}}
+.stats{gap:12px}.stat{position:relative;overflow:hidden;background:linear-gradient(145deg,#14243a,#0d1728);border-radius:19px;padding:17px;border-color:#9bb9e51c}.stat:after{content:"";position:absolute;right:-30px;top:-42px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,#69efd01a,transparent 70%);pointer-events:none}.stat:hover{transform:translateY(-3px);border-color:#5ff0ce55;box-shadow:0 18px 36px #0003}.stat-value{font-variant-numeric:tabular-nums}
+.layout{gap:18px}.section{padding:clamp(19px,3vw,29px)}.section-head{margin-bottom:22px}.section-title{letter-spacing:-.5px}.section-desc,.stat-note{line-height:1.55}
+.icon-btn,.small-btn,.primary,.secondary,.text-btn,.sentence-tts,.guide-toolbar button,.quiz-option,.mode,.select,.select-wrap select,input,textarea{transition:background .22s,border-color .22s,box-shadow .22s,transform .22s,color .22s}
+.icon-btn,.small-btn{border-radius:14px;background:linear-gradient(145deg,#15243a,#0e192b);border-color:#9ab3d622;box-shadow:inset 0 1px #ffffff08}.icon-btn:hover,.small-btn:hover{transform:translateY(-2px);border-color:#5ff0ce80;box-shadow:0 8px 24px #0003,0 0 0 3px #5ff0ce0c}.primary{border:1px solid #78f7db66!important;background:linear-gradient(105deg,#5ff0ce,#83d9ff 55%,#aaa0ff)!important;color:#07131d!important;font-weight:850!important;box-shadow:0 8px 25px #5ff0ce20,inset 0 1px #ffffffa8!important}.primary:hover{transform:translateY(-2px);box-shadow:0 13px 32px #5ff0ce30,inset 0 1px #ffffffa8!important;filter:saturate(1.08)}.secondary{background:#17253a!important;border-color:#829bb72b!important}.secondary:hover{background:#1c3048!important;border-color:#5ff0ce66!important;transform:translateY(-1px)}button:active{transform:scale(.975)}
+input,textarea,.select,select{border-radius:14px!important;border-color:#91add52b!important;background:#091323!important;color:var(--text)!important}input:hover,textarea:hover,select:hover{border-color:#6adfce55!important}input:focus,textarea:focus,select:focus{border-color:#5ff0ce!important;box-shadow:0 0 0 4px #5ff0ce12!important}
+.mode-grid{gap:12px}.mode{position:relative;overflow:hidden;border-radius:19px!important;background:linear-gradient(145deg,#15243a,#0d1729)!important;border:1px solid #8ca8cf24!important;padding:18px!important}.mode:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#5ff0ce0a,transparent 48%,#a69bff0a);opacity:0;transition:opacity .25s;pointer-events:none}.mode:hover{transform:translateY(-3px);border-color:#5ff0ce5c!important;box-shadow:0 15px 34px #0003}.mode:hover:before{opacity:1}.mode.active{border-color:#5ff0ce90!important;box-shadow:0 0 0 1px #5ff0ce24,0 15px 35px #0003;background:linear-gradient(145deg,#16313b,#121c32)!important}
+.quiz-chip,.pill{border-radius:999px!important;border:1px solid #a0b5d626!important;background:#ffffff08!important;padding:7px 11px!important;font-weight:750}
+.question-card{position:relative;border-radius:23px;background:radial-gradient(ellipse at 100% 0%,#8c83ff10,transparent 35%),linear-gradient(145deg,#14243a,#0c1627);border:1px solid #a0b8db24;padding:clamp(20px,4vw,34px)}.question-kicker{letter-spacing:1.5px;text-transform:uppercase}.quiz-top{gap:10px}.timer{filter:drop-shadow(0 0 12px #5ff0ce14)}
+.quiz-option{border:1px solid #8da8ce24!important;border-radius:16px!important;background:linear-gradient(145deg,#142238,#0d1728)!important}.quiz-option:hover{transform:translateY(-2px);border-color:#5ff0ce75!important;background:#142c3b!important}.quiz-option.correct{box-shadow:0 0 0 2px #5ee5a82a!important}.quiz-option.wrong{box-shadow:0 0 0 2px #ff708e24!important}
+.result-stat{border-radius:17px;background:linear-gradient(145deg,#15243a,#0d1728);border:1px solid #9ab4d51d}
+.guide-intro{background:radial-gradient(ellipse at 92% 0%,#a69bff13,transparent 40%),linear-gradient(145deg,#14243a,#0c1628)}
+.guide-toolbar{position:sticky;top:10px;z-index:5;padding:10px;border:1px solid #8fa9cf24;border-radius:18px;background:#0b1425dc;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 10px 28px #0003}
+.guide-lesson{position:relative;margin:16px 0;padding:clamp(16px,2.5vw,24px);border-radius:22px!important;background:linear-gradient(145deg,#111f34,#0b1425)!important;border:1px solid #8ea9d222!important;box-shadow:0 14px 38px #0002!important;overflow:hidden}.guide-lesson:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(#5ff0ce,#a69bff);opacity:.8}.guide-lesson:hover{border-color:#5ff0ce40!important;box-shadow:0 18px 46px #0003!important}
+.guide-lesson h3,.guide-lesson h4{letter-spacing:-.3px}.guide-lesson .rule-number,.rule-number,.rule-badge,.grammar-rule-badge{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:7px 12px;border-radius:10px;background:linear-gradient(110deg,#5ff0ce20,#a69bff22);border:1px solid #78e9db42;color:#bfffee;font-size:11px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase;box-shadow:inset 0 1px #ffffff0b}
+.sentence-tts{min-width:38px;min-height:38px;border-radius:12px!important;border:1px solid #5ff0ce42!important;background:linear-gradient(145deg,#12343a,#14233a)!important;color:#7ff5dc!important;box-shadow:0 5px 16px #0002}.sentence-tts:hover{transform:translateY(-2px) scale(1.03);background:linear-gradient(145deg,#1b4a4c,#1c2d4a)!important;box-shadow:0 7px 20px #5ff0ce15}.sentence-tts:active{transform:scale(.94)}
+.generated-placeholder{border:1px dashed #8ba8ce3d!important;border-radius:18px!important;background:#ffffff03!important}.generated-sentence,.sentence-card{position:relative;border-radius:17px!important;background:linear-gradient(145deg,#14243a,#0c1627)!important;border:1px solid #8da9d224!important;padding:15px!important;animation:sentenceRise .42s cubic-bezier(.2,.8,.2,1) both}.generated-sentence:hover,.sentence-card:hover{transform:translateY(-2px);border-color:#5ff0ce54!important;box-shadow:0 12px 28px #0003}.generated-sentence:nth-child(2n),.sentence-card:nth-child(2n){animation-delay:.035s}.generated-sentence:nth-child(3n),.sentence-card:nth-child(3n){animation-delay:.07s}@keyframes sentenceRise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.write-practice{border-radius:20px!important;background:linear-gradient(145deg,#14243a,#0c1627)!important;border:1px solid #8ea9d222!important}.setting{border-radius:17px!important;background:linear-gradient(145deg,#142238,#0d1728)!important;border:1px solid #8fa9ce20!important}.setting:hover{border-color:#5ff0ce44!important}.switch{accent-color:var(--accent)}
+#login-screen .login-wrap{border:1px solid #8ba8d52b;border-radius:28px;background:radial-gradient(ellipse at 100% 0%,#a69bff13,transparent 40%),linear-gradient(145deg,#111e32f5,#0b1425f7);box-shadow:0 28px 90px #0005;backdrop-filter:blur(18px)}.login-brand{margin-bottom:20px}.login-heading{letter-spacing:-1px}.avatar-orbit{filter:drop-shadow(0 0 20px #5ff0ce18)}.avatar-glow{animation:avatarPulse 4s ease-in-out infinite alternate}@keyframes avatarPulse{from{opacity:.45;transform:scale(.94)}to{opacity:.9;transform:scale(1.04)}}
+.home-profile{border-radius:21px!important;background:linear-gradient(115deg,#122638,#11182c 70%,#1b1934)!important;border-color:#5ff0ce25!important}.home-profile-picture{box-shadow:0 0 0 4px #5ff0ce10,0 8px 22px #0004}.home-profile-kicker{letter-spacing:1.5px}.grammar-progress-panel,.grammar-guide-launch,.progress-gain-panel{border-radius:21px!important;background:linear-gradient(120deg,#122638,#11182c 68%,#1a1933)!important}.grammar-guide-launch:hover{transform:translateY(-3px);border-color:#5ff0ce50!important;box-shadow:0 20px 48px #0003!important}.grammar-ring{filter:drop-shadow(0 0 18px #5ff0ce18)}
+.jp-float{filter:drop-shadow(0 0 12px #5ff0ce12);opacity:.65;animation:floatKanji 9s ease-in-out infinite alternate}@keyframes floatKanji{from{transform:translate3d(0,0,0) rotate(-4deg)}to{transform:translate3d(0,-14px,0) rotate(5deg)}}
+.screen.active{animation:screenReveal .42s cubic-bezier(.2,.8,.2,1) both}@keyframes screenReveal{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+::selection{background:#5ff0ce45;color:#fff}::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:#080d18}::-webkit-scrollbar-thumb{background:linear-gradient(#31576b,#443d73);border:2px solid #080d18;border-radius:99px}::-webkit-scrollbar-thumb:hover{background:linear-gradient(#4c9a99,#7168b1)}
+@media(min-width:1100px){body{padding:28px}.hero{padding:42px}.app{max-width:1120px}.layout{gap:20px}}
+@media(max-width:720px){body{padding:12px}.topbar{padding:10px;border-radius:17px;margin-bottom:15px}.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{padding:14px}.hero{padding:24px 20px}.section{padding:19px}.guide-toolbar{top:6px}.guide-lesson{margin:12px 0}.panel{border-radius:20px}}
+@media(max-width:420px){body{padding:8px}.brand{gap:8px}.brand-mark{width:40px;height:40px;border-radius:13px}.brand-title{font-size:14px}.brand-sub{font-size:10px}.top-actions{gap:5px}.icon-btn{width:38px;min-height:38px;border-radius:12px}.small-btn{padding:0 10px;min-height:38px}.hero h1{font-size:29px;letter-spacing:-1.2px}.stats{gap:7px}.stat{padding:12px;border-radius:15px}.stat-value{font-size:22px}.mode-grid{gap:9px}.mode{padding:14px!important}.question-card{padding:18px}.guide-toolbar{padding:7px;border-radius:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+/* Sensor-aware parallax controls + graceful touch fallback */
+.jp-parallax-wall{transition:opacity .35s ease,filter .35s ease;perspective:900px}
+.jp-parallax-wall.parallax-off{opacity:0;visibility:hidden}
+.jp-float{backface-visibility:hidden;transform-style:preserve-3d}
+.sensor-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
+.sensor-tools .secondary{flex:0 1 auto;min-height:42px}
+.sensor-status{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid #55e0c033;border-radius:12px;background:#55e0c00a;color:#a8f5e6;font-size:11px;line-height:1.5}
+.sensor-status:before{content:"";width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#7c8ba2;box-shadow:0 0 0 3px #7c8ba21a}
+.sensor-status[data-state="active"]:before{background:#55e0c0;box-shadow:0 0 0 3px #55e0c022,0 0 12px #55e0c0}
+.sensor-status[data-state="fallback"]:before{background:#ffbf69;box-shadow:0 0 0 3px #ffbf6922}
+#parallax-toggle{accent-color:#55e0c0}
+@media(max-width:600px){.sensor-tools{align-items:stretch}.sensor-tools .secondary{flex:1 1 100%}.sensor-status{width:100%;box-sizing:border-box}}
+@media(prefers-reduced-motion:reduce){.jp-parallax-wall{transition:none}.jp-float{transform:none!important;filter:none!important}}
+/* Desktop pointer parallax uses margins so the wallpaper's own float transforms cannot overwrite it. */
+.jp-float{transition:margin-left .10s ease-out,margin-top .10s ease-out}
+/* Premium score reveal */
+#result-screen .result{position:relative;isolation:isolate}
+.result-mark{animation:resultBadgeIn .75s cubic-bezier(.18,.9,.25,1.25) both}
+.result-score{display:inline-block;transform-origin:50% 60%;animation:resultScoreIn .9s cubic-bezier(.16,1,.3,1) .12s both;text-shadow:0 0 28px #8d83ff18}
+.result-stat{animation:resultStatIn .55s cubic-bezier(.2,.8,.2,1) both;transition:transform .2s,border-color .2s,box-shadow .2s}
+.result-stat:nth-child(1){animation-delay:.18s}.result-stat:nth-child(2){animation-delay:.28s}.result-stat:nth-child(3){animation-delay:.38s}
+.result-stat b{display:inline-block;animation:resultNumberIn .65s ease-out both;animation-delay:.25s}
+#result-title{animation:resultTitleIn .65s ease-out .08s both}
+#result-screen.result-celebrate .result-mark{box-shadow:0 0 0 8px #55e0c00a,0 0 42px #55e0c044;animation:resultBadgeIn .75s cubic-bezier(.18,.9,.25,1.25) both,resultGlow 2.2s ease-in-out .8s infinite}
+.result-confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:5;border-radius:inherit}
+.result-confetti i{position:absolute;top:-18px;width:7px;height:12px;border-radius:2px;opacity:0;animation:resultConfettiFall var(--fall,2.6s) cubic-bezier(.2,.65,.4,1) var(--delay,0s) forwards;transform:translate3d(0,0,0) rotate(0deg);background:var(--confetti,#55e0c0);box-shadow:0 0 10px color-mix(in srgb,var(--confetti,#55e0c0) 45%,transparent)}
+.result-confetti i:nth-child(3n){width:5px;height:5px;border-radius:50%}.result-confetti i:nth-child(4n){width:3px;height:17px}
+@keyframes resultBadgeIn{0%{opacity:0;transform:translateY(16px) scale(.55) rotate(-18deg)}65%{opacity:1;transform:translateY(-4px) scale(1.12) rotate(5deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes resultScoreIn{0%{opacity:0;transform:translateY(18px) scale(.72);filter:blur(7px)}70%{opacity:1;transform:translateY(-3px) scale(1.06);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes resultStatIn{from{opacity:0;transform:translateY(18px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes resultNumberIn{0%{transform:scale(.65);opacity:.25}65%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}
+@keyframes resultTitleIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes resultGlow{0%,100%{filter:drop-shadow(0 0 0 #55e0c000)}50%{filter:drop-shadow(0 0 15px #55e0c077)}}
+@keyframes resultConfettiFall{0%{opacity:0;transform:translate3d(0,-12px,0) rotate(0deg)}8%{opacity:.95}80%{opacity:.9}100%{opacity:0;transform:translate3d(var(--drift,40px),min(75vh,620px),0) rotate(var(--spin,560deg))}}
+@media(prefers-reduced-motion:reduce){.jp-float{transition:none!important}.result-mark,.result-score,.result-stat,.result-stat b,#result-title{animation:none!important}.result-confetti{display:none!important}}
+
 </style>
 </head>
 <body>
 <div class="jp-parallax-wall" id="jp-parallax-wall" aria-hidden="true">
-  <span class="jp-float" style="left:5%;top:12%;--jp-size:clamp(54px,9vw,112px);--jp-opacity:.13;--jp-color:#55e0c0;--duration:19s;--tilt:-8deg">あ</span>
-  <span class="jp-float" style="left:77%;top:8%;--jp-size:clamp(62px,10vw,128px);--jp-opacity:.12;--jp-color:#8d83ff;--duration:23s;--tilt:9deg">カ</span>
-  <span class="jp-float" style="left:84%;top:42%;--jp-size:clamp(52px,8vw,104px);--jp-opacity:.12;--jp-color:#75caff;--duration:17s;--tilt:-5deg">漢</span>
-  <span class="jp-float" style="left:9%;top:62%;--jp-size:clamp(56px,9vw,116px);--jp-opacity:.11;--jp-color:#8d83ff;--duration:21s;--tilt:6deg">ひ</span>
-  <span class="jp-float" style="left:62%;top:76%;--jp-size:clamp(60px,9vw,118px);--jp-opacity:.11;--jp-color:#55e0c0;--duration:25s;--tilt:-7deg">字</span>
-  <span class="jp-float" style="left:38%;top:25%;--jp-size:clamp(38px,6vw,78px);--jp-opacity:.075;--jp-color:#75caff;--duration:20s;--tilt:5deg">ア</span>
-  <span class="jp-float" style="left:46%;top:87%;--jp-size:clamp(40px,6vw,80px);--jp-opacity:.09;--jp-color:#8d83ff;--duration:22s;--tilt:3deg">の</span>
-  <span class="jp-float" style="left:90%;top:82%;--jp-size:clamp(40px,6vw,78px);--jp-opacity:.10;--jp-color:#55e0c0;--duration:18s;--tilt:-4deg">学</span>
+  <span class="jp-float" style="left:5%;top:12%;--jp-size:clamp(54px,9vw,112px);--jp-opacity:.13;--jp-color:#55e0c0;--duration:8.5s;--tilt:-8deg">あ</span>
+  <span class="jp-float" style="left:77%;top:8%;--jp-size:clamp(62px,10vw,128px);--jp-opacity:.12;--jp-color:#8d83ff;--duration:10s;--tilt:9deg">カ</span>
+  <span class="jp-float" style="left:84%;top:42%;--jp-size:clamp(52px,8vw,104px);--jp-opacity:.12;--jp-color:#75caff;--duration:7.5s;--tilt:-5deg">漢</span>
+  <span class="jp-float" style="left:9%;top:62%;--jp-size:clamp(56px,9vw,116px);--jp-opacity:.11;--jp-color:#8d83ff;--duration:9s;--tilt:6deg">ひ</span>
+  <span class="jp-float" style="left:62%;top:76%;--jp-size:clamp(60px,9vw,118px);--jp-opacity:.11;--jp-color:#55e0c0;--duration:11s;--tilt:-7deg">字</span>
+  <span class="jp-float" style="left:38%;top:25%;--jp-size:clamp(38px,6vw,78px);--jp-opacity:.075;--jp-color:#75caff;--duration:8.8s;--tilt:5deg">ア</span>
+  <span class="jp-float" style="left:46%;top:87%;--jp-size:clamp(40px,6vw,80px);--jp-opacity:.09;--jp-color:#8d83ff;--duration:9.5s;--tilt:3deg">の</span>
+  <span class="jp-float" style="left:90%;top:82%;--jp-size:clamp(40px,6vw,78px);--jp-opacity:.10;--jp-color:#55e0c0;--duration:8s;--tilt:-4deg">学</span>
 </div>
 <div class="app">
   <header class="topbar">
@@ -493,6 +583,9 @@ input:hover,select:hover,textarea:hover{border-color:#506b8c}
         <div class="setting"><div class="setting-copy"><div class="setting-title">Auto-play Japanese audio</div><div class="setting-desc">Japanese → Bangla quiz-এ প্রশ্ন দেখানোর সময় Japanese উচ্চারণ শোনাবে। Bangla → Japanese-এ উত্তর বাছাই করার পরই শোনাবে।</div></div><input class="switch" id="auto-speech-toggle" type="checkbox" checked aria-label="Auto-play Japanese audio"></div>
         <div class="setting"><div class="setting-copy"><div class="setting-title">Timer</div><div class="setting-desc">প্রশ্নের সময়সীমা বেছে নাও।</div></div><select class="select" id="timer-setting" style="width:auto;min-width:115px"><option value="10">10 sec</option><option value="15">15 sec</option><option value="0">Off</option></select></div>
         <div class="setting"><div class="setting-copy"><div class="setting-title">Reduced animation</div><div class="setting-desc">কম motion এবং শান্ত transition।</div></div><input class="switch" id="motion-toggle" type="checkbox" aria-label="Reduced animation"></div>
+        <div class="setting"><div class="setting-copy"><div class="setting-title">Japanese live wallpaper / parallax</div><div class="setting-desc">PC-তে mouse, ফোনে touch বা অনুমতি দিলে device orientation দিয়ে Japanese glyph-গুলো নড়বে।</div></div><input class="switch" id="parallax-toggle" type="checkbox" checked aria-label="Japanese wallpaper parallax"></div>
+        <div class="setting"><div class="setting-copy"><div class="setting-title">Japanese glyph animation speed</div><div class="setting-desc">Wallpaper character-গুলোর float / bounce animation আরও দ্রুত বা ultra-fast করো।</div></div><select class="select" id="wallpaper-speed" style="width:auto;min-width:145px"><option value="fast">Fast</option><option value="faster" selected>Very fast</option><option value="ultra">Ultra fast</option></select></div>
+        <div class="setting setting-sensor"><div class="setting-copy"><div class="setting-title">Motion sensor controls</div><div class="setting-desc">সমর্থিত ফোনে gyroscope / orientation চালু করার চেষ্টা করো। iOS-এ অনুমতি চাইতে পারে; sensor না থাকলেও touch fallback কাজ করবে।</div></div><div class="sensor-tools"><button class="secondary" id="sensor-enable-btn" type="button">Enable phone motion</button><span class="sensor-status" id="sensor-status" data-state="fallback" role="status" aria-live="polite">Mouse / touch parallax ready</span></div></div>
       </div>
       <div class="profile-edit"><div class="setting-title">Account profile</div><div class="setting-desc" id="profile-summary">Saved profile</div><button class="secondary" id="edit-profile" type="button">Edit username / profile picture</button><button class="secondary" id="logout-btn" type="button">Log out</button></div>
       <button class="secondary" id="reset-progress">Reset saved statistics</button>
@@ -1301,7 +1394,7 @@ const state = {
   isAnswered:false, timer:null, timeLeft:10, startedAt:0, answeredThisRun:0,
   runCorrect:0, isRetest:false, kanaType:'hiragana', kanaRun:false, questionDirection:'jp-bn'
 };
-const defaultPrefs = {sound:true,vibrate:true,autoSpeech:true,timer:10,reducedMotion:false,accent:0};
+const defaultPrefs = {sound:true,vibrate:true,autoSpeech:true,timer:10,reducedMotion:false,parallax:true,wallpaperSpeed:'faster',accent:0};
 const storageKeys = {stats:'n5master_stats_v2',prefs:'n5master_prefs_v2',session:'n5master_session_v2',learned:'n5master_learned_v2'};
 function readStore(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(_){return fallback}}
 function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(_){showToast('Browser storage unavailable; progress may not persist.')}}
@@ -1345,7 +1438,7 @@ $('login-form').addEventListener('submit',e=>{
 function applyPrefs(){
   const a=accents[prefs.accent%accents.length];document.documentElement.style.setProperty('--accent',a.a);document.documentElement.style.setProperty('--accent2',a.b);
   document.body.classList.toggle('reduce-motion',!!prefs.reducedMotion);
-  $('sound-toggle').checked=!!prefs.sound;$('vibrate-toggle').checked=!!prefs.vibrate;$('auto-speech-toggle').checked=!!prefs.autoSpeech;$('timer-setting').value=String(prefs.timer);$('motion-toggle').checked=!!prefs.reducedMotion;
+  $('sound-toggle').checked=!!prefs.sound;$('vibrate-toggle').checked=!!prefs.vibrate;$('auto-speech-toggle').checked=!!prefs.autoSpeech;$('timer-setting').value=String(prefs.timer);$('motion-toggle').checked=!!prefs.reducedMotion;if($('parallax-toggle'))$('parallax-toggle').checked=prefs.parallax!==false;if($('wallpaper-speed'))$('wallpaper-speed').value=prefs.wallpaperSpeed||'faster';const wall=$('jp-parallax-wall');if(wall){wall.classList.toggle('parallax-off',prefs.parallax===false);wall.style.display=prefs.parallax===false?'none':'';applyWallpaperSpeed();}
 }
 function savePrefs(){writeStore(storageKeys.prefs,prefs);applyPrefs()}
 function showToast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.remove('show'),2300)}
@@ -1357,8 +1450,8 @@ function playSound(type){
     const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
     if(!playSound.ctx)playSound.ctx=new Ctx();const ctx=playSound.ctx;
     if(ctx.state==='suspended')ctx.resume();
-    const notes=type==='correct'?[523,659,784]:type==='wrong'?[190,140]:type==='timeout'?[240,160]:type==='tick'?[440]:[620];
-    notes.forEach((freq,i)=>{const osc=ctx.createOscillator(),gain=ctx.createGain(),start=ctx.currentTime+i*(type==='correct'?.085:.11),dur=type==='tick'?.045:type==='correct'?.12:.13;osc.type=type==='wrong'||type==='timeout'?'triangle':'sine';osc.frequency.setValueAtTime(freq,start);gain.gain.setValueAtTime(type==='tick'?.018:.055,start);gain.gain.exponentialRampToValueAtTime(.001,start+dur);osc.connect(gain);gain.connect(ctx.destination);osc.start(start);osc.stop(start+dur+.01)})
+    const notes=type==='result-win'?[523,659,784,1047,1319]:type==='result-try'?[392,494,587]:type==='correct'?[523,659,784]:type==='wrong'?[190,140]:type==='timeout'?[240,160]:type==='tick'?[440]:[620];
+    notes.forEach((freq,i)=>{const osc=ctx.createOscillator(),gain=ctx.createGain(),isResult=type==='result-win'||type==='result-try',start=ctx.currentTime+i*(type==='result-win'?.105:type==='result-try'?.12:type==='correct'?.085:.11),dur=type==='tick'?.045:type==='correct'?.12:isResult?.19:.13;osc.type=type==='wrong'||type==='timeout'?'triangle':type==='result-win'?'sine':type==='result-try'?'triangle':'sine';osc.frequency.setValueAtTime(freq,start);if(type==='result-win')osc.frequency.exponentialRampToValueAtTime(freq*1.012,start+dur*.65);gain.gain.setValueAtTime(type==='tick'?.018:isResult?.0001:.055,start);if(isResult)gain.gain.linearRampToValueAtTime(type==='result-win'?.07:.035,start+.025);gain.gain.exponentialRampToValueAtTime(.001,start+dur);osc.connect(gain);gain.connect(ctx.destination);osc.start(start);osc.stop(start+dur+.015)})
   }catch(_){}
 }
 // Soft pencil-on-paper scratch for the animated kana strokes (respects the Sound setting).
@@ -1526,6 +1619,22 @@ function markAnswered(correct,timeout=false){
 function checkAnswer(btn,selected,correct){if(state.isAnswered)return;const ok=selected===correct;btn.classList.add(ok?'correct':'wrong');markAnswered(ok,false)}
 function handleTimeout(){if(state.isAnswered)return;const item=currentItem();const correct=state.mode==='grammar'?(item.correctAnswer||item.b):(state.questionDirection==='bn-jp'?item.j:item.b);[...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;if(btn.lastElementChild.textContent===correct)btn.classList.add('correct')});markAnswered(false,true)}
 function nextQuestion(){if(state.index+1<state.list.length){state.index++;loadQuestion();saveSession()}else showResults()}
+function animateFinalScore(score,total){
+  const el=$('final-score');el.classList.remove('score-running');
+  if(prefs.reducedMotion||window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=`${score}/${total}`;return}
+  const start=performance.now(),duration=850;el.textContent=`0/${total}`;el.classList.add('score-running');
+  const frame=now=>{const t=Math.min(1,(now-start)/duration),ease=1-Math.pow(1-t,3);el.textContent=`${Math.round(score*ease)}/${total}`;if(t<1)requestAnimationFrame(frame);else el.classList.remove('score-running')};requestAnimationFrame(frame);
+}
+function animateResultConfetti(acc){
+  const panel=$('result-screen').querySelector('.result');if(!panel)return;
+  panel.querySelector('.result-confetti')?.remove();$('result-screen').classList.remove('result-celebrate');
+  if(prefs.reducedMotion||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const layer=document.createElement('div');layer.className='result-confetti';layer.setAttribute('aria-hidden','true');
+  const palette=acc>=70?['#55e0c0','#75caff','#a6a0ff','#ffd166','#ff8fab']:['#75caff','#8d83ff','#55e0c0'];
+  const count=acc>=70?54:24;
+  for(let i=0;i<count;i++){const bit=document.createElement('i');bit.style.left=(Math.random()*100)+'%';bit.style.setProperty('--confetti',palette[i%palette.length]);bit.style.setProperty('--delay',(Math.random()*.6)+'s');bit.style.setProperty('--fall',(2.0+Math.random()*1.8)+'s');bit.style.setProperty('--drift',((Math.random()-.5)*190)+'px');bit.style.setProperty('--spin',((Math.random()>.5?1:-1)*(240+Math.random()*720))+'deg');layer.appendChild(bit)}
+  panel.prepend(layer);if(acc>=70)$('result-screen').classList.add('result-celebrate');setTimeout(()=>{layer.remove();$('result-screen').classList.remove('result-celebrate')},4600);
+}
 function showResults(){
   clearInterval(state.timer);try{localStorage.removeItem(storageKeys.session)}catch(_){}
   if('speechSynthesis'in window)speechSynthesis.cancel();
@@ -1538,7 +1647,7 @@ function showResults(){
     showScreen('quiz-screen');loadQuestion();saveSession();return;
   }
   const total=state.list.length,wrongCount=state.wrong.length,acc=total?Math.round(state.score/total*100):0;
-  $('final-score').textContent=`${state.score}/${total}`;$('correct-count').textContent=state.score;$('wrong-count').textContent=wrongCount;$('result-accuracy').textContent=acc+'%';
+  animateFinalScore(state.score,total);$('correct-count').textContent=state.score;$('wrong-count').textContent=wrongCount;$('result-accuracy').textContent=acc+'%';
   $('result-title').textContent=acc>=90?'Excellent work!':acc>=70?'Nice progress!':acc>=40?'Keep going!':'Every try counts.';
   $('result-description').textContent=`${total}টি প্রশ্ন শেষ হয়েছে। নিয়মিত practice করলে মনে রাখা সহজ হবে।`;
   $('result-mark').textContent=acc>=80?'✦':'✓';
@@ -1547,7 +1656,7 @@ function showResults(){
   $('retest-btn').hidden=wrongCount===0;$('wrong-retest-num').textContent=wrongCount?`(${wrongCount})`:'';
   $('review-section').hidden=wrongCount===0;$('review-list').innerHTML='';
   state.wrong.forEach(w=>{const row=document.createElement('div');row.className='review-item';const jp=document.createElement('span');jp.className='jp';jp.textContent=state.mode==='grammar'?(w.question||w.j):w.j;const bn=document.createElement('span');bn.className='meaning';bn.textContent=state.mode==='grammar'?(w.correctAnswer||w.b):w.b;row.append(jp,bn);if(state.mode==='grammar'){const exp=document.createElement('span');exp.className='explanation';exp.textContent=w.explanation||w.u||'';row.appendChild(exp)}$('review-list').appendChild(row)});
-  showScreen('result-screen');vibrate('navigate');renderStats();
+  showScreen('result-screen');animateResultConfetti(acc);playSound(acc>=70?'result-win':'result-try');vibrate(acc>=70?'correct':'navigate');renderStats();
 }
 function goHome(){clearInterval(state.timer);if('speechSynthesis'in window)speechSynthesis.cancel();showScreen('home-screen');renderStats();renderProgressGain();vibrate('navigate')}
 function startRetest(){if(!state.wrong.length)return;const missed=[...state.wrong];state.mode=state.mode==='kana'?'kana':state.mode;state.list=missed;state.index=0;state.score=0;state.wrong=[];state.answeredThisRun=0;state.runCorrect=0;state.isRetest=true;state.kanaRun=false;showScreen('quiz-screen');loadQuestion();saveSession()}
@@ -2134,6 +2243,8 @@ $('vibrate-toggle').addEventListener('change',e=>{prefs.vibrate=e.target.checked
 $('auto-speech-toggle').addEventListener('change',e=>{prefs.autoSpeech=e.target.checked;savePrefs()});
 $('timer-setting').addEventListener('change',e=>{prefs.timer=Number(e.target.value);savePrefs()});
 $('motion-toggle').addEventListener('change',e=>{prefs.reducedMotion=e.target.checked;savePrefs()});
+$('parallax-toggle').addEventListener('change',e=>{prefs.parallax=e.target.checked;savePrefs();if(prefs.parallax){showToast('Japanese parallax enabled ✦');window.dispatchEvent(new PointerEvent('pointermove',{clientX:window.innerWidth*.72,clientY:window.innerHeight*.35,pointerType:'mouse'}))}else showToast('Japanese wallpaper paused')});
+$('wallpaper-speed').addEventListener('change',e=>{prefs.wallpaperSpeed=e.target.value;savePrefs();showToast('Wallpaper speed: '+e.target.options[e.target.selectedIndex].text)});
 $('progress-gain-dismiss').addEventListener('click',()=>{try{localStorage.removeItem(pendingProgressKey)}catch(_){}renderProgressGain()});
 $('reset-progress').addEventListener('click',()=>{if(confirm('Reset all saved quiz statistics and progress on this device?')){stats={answered:0,correct:0,best:0,completed:0,lessons:{},learned:[],grammarAnswered:0,grammarCorrect:0};learned.clear();try{localStorage.removeItem(storageKeys.session);localStorage.removeItem(storageKeys.learned)}catch(_){}saveStats();showToast('Saved statistics reset.')}})
 document.querySelectorAll('[data-kana]').forEach(btn=>btn.addEventListener('click',()=>{state.kanaType=btn.dataset.kana;document.querySelectorAll('[data-kana]').forEach(b=>b.classList.toggle('active',b===btn));renderKana();vibrate('tap')}));
@@ -2156,8 +2267,50 @@ if(account&&readStore(authKey,false)){renderProfile();showScreen('home-screen');
 $('stat-words').title=`${vocabData.length} entries; ${new Set(vocabData.map(v=>v.j)).size} distinct headwords`;
 const savedSession=readStore(storageKeys.session,null);if(savedSession&&savedSession.list&&savedSession.index<savedSession.list.length){$('continue-btn').hidden=false}
 
-// Parallax: desktop pointer/scroll plus phone gyroscope when supported.
-(()=>{const wall=document.getElementById('jp-parallax-wall');if(!wall||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const chars=[...wall.querySelectorAll('.jp-float')];let tx=0,ty=0,sy=0,raf=0;const paint=()=>{chars.forEach((el,i)=>{const depth=0.018+(i%4)*0.012;el.style.setProperty('--px',`${tx*depth}px`);el.style.setProperty('--py',`${ty*depth+sy*(0.025+(i%3)*0.012)}px`)});raf=0};const schedule=()=>{if(!raf)raf=requestAnimationFrame(paint)};window.addEventListener('pointermove',e=>{tx=(e.clientX-window.innerWidth/2);ty=(e.clientY-window.innerHeight/2);schedule()},{passive:true});window.addEventListener('scroll',()=>{sy=window.scrollY||0;schedule()},{passive:true});let gyroEnabled=false;const enableGyro=()=>{if(gyroEnabled)return;gyroEnabled=true;const start=()=>{window.addEventListener('deviceorientation',e=>{if(e.gamma==null||e.beta==null)return;tx=Math.max(-30,Math.min(30,e.gamma))*12;ty=Math.max(-30,Math.min(30,(e.beta-35)))*8;schedule()},{passive:true})};if(typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function'){DeviceOrientationEvent.requestPermission().then(result=>{if(result==='granted')start()}).catch(()=>{})}else if('DeviceOrientationEvent'in window)start()};document.addEventListener('pointerdown',enableGyro,{once:true,passive:true});document.addEventListener('touchstart',enableGyro,{once:true,passive:true});})();
+// Speed presets scale only the Japanese glyph animation; learning/quiz timing stays untouched.
+function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;const factor=({fast:1,faster:.72,ultra:.48})[prefs.wallpaperSpeed||'faster']||.72;wall.querySelectorAll('.jp-float').forEach(el=>{const base=parseFloat(el.style.getPropertyValue('--duration'))||9;el.style.animationDuration=`${Math.max(2.5,base*factor)}s`})}
+// Adaptive Japanese live wallpaper: mouse on PC, touch on phones, orientation/motion sensors when permitted.
+(()=>{
+ const wall=$('jp-parallax-wall'); if(!wall)return;
+ const chars=[...wall.querySelectorAll('.jp-float')], status=$('sensor-status'), enableBtn=$('sensor-enable-btn');
+ let tx=0,ty=0,sy=0,raf=0,sensorActive=false,sensorAttempted=false,lastPointer=0,orientationSeen=0;
+ const reduced=()=>!!prefs.reducedMotion||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const setStatus=(label,kind='fallback')=>{if(status){status.textContent=label;status.dataset.state=kind}};
+ const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+ const paint=()=>{chars.forEach((el,i)=>{const depth=.055+(i%4)*.027;const x=clamp(tx,-600,600)*depth;const y=clamp(ty,-600,600)*depth+clamp(sy,-1500,1500)*(.008+(i%3)*.004);el.style.setProperty('--px',`${x}px`);el.style.setProperty('--py',`${y}px`);/* margin offsets are not overwritten by the float keyframes' transform/translate */el.style.marginLeft=`${x}px`;el.style.marginTop=`${y}px`;});raf=0};
+ const schedule=()=>{if(!raf&&!reduced()&&prefs.parallax!==false)raf=requestAnimationFrame(paint)};
+ const pointerPosition=(x,y)=>{tx=x-window.innerWidth/2;ty=y-window.innerHeight/2;schedule()};
+ window.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen'){lastPointer=Date.now();pointerPosition(e.clientX,e.clientY)}},{passive:true});
+ window.addEventListener('scroll',()=>{sy=window.scrollY||0;schedule()},{passive:true});
+ // Touch position is a universal fallback even if sensors are unavailable or permission is denied.
+ let touchStart=null;
+ window.addEventListener('touchstart',e=>{const t=e.touches&&e.touches[0];if(t){touchStart={x:t.clientX,y:t.clientY};pointerPosition(t.clientX,t.clientY)}},{passive:true});
+ window.addEventListener('touchmove',e=>{const t=e.touches&&e.touches[0];if(t)pointerPosition(t.clientX,t.clientY)},{passive:true});
+ window.addEventListener('touchend',()=>{touchStart=null},{passive:true});
+ const onOrientation=e=>{if(e.gamma==null||e.beta==null)return;orientationSeen=Date.now();sensorActive=true;tx=clamp(e.gamma,-35,35)*13;ty=clamp(e.beta-35,-35,35)*12;setStatus('Phone orientation sensor active','active');schedule()};
+ const onMotion=e=>{if(Date.now()-orientationSeen<1200)return;const a=e.accelerationIncludingGravity;if(!a)return;const x=a.x,y=a.y;if(x==null||y==null)return;sensorActive=true;tx=clamp(x,-9,9)*42;ty=clamp(y,-9,9)*42;setStatus('Motion sensor active','active');schedule()};
+ const attachSensors=()=>{if(sensorAttempted)return;sensorAttempted=true;
+   const listen=()=>{let attached=false;
+     if('DeviceOrientationEvent'in window){window.addEventListener('deviceorientation',onOrientation,{passive:true});attached=true}
+     if('DeviceMotionEvent'in window){window.addEventListener('devicemotion',onMotion,{passive:true});attached=true}
+     if(attached){setStatus('Waiting for phone movement…','fallback');setTimeout(()=>{if(!sensorActive)setStatus('Sensor unavailable — touch parallax active','fallback')},1800)}
+     else setStatus('No motion sensor — touch parallax active','fallback');
+   };
+   try{
+     if(typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function'){
+       DeviceOrientationEvent.requestPermission().then(r=>{if(r==='granted')listen();else setStatus('Sensor permission declined — touch fallback active','fallback')}).catch(()=>setStatus('Sensor permission unavailable — touch fallback active','fallback'));
+     }else if(typeof DeviceMotionEvent!=='undefined'&&typeof DeviceMotionEvent.requestPermission==='function'){
+       DeviceMotionEvent.requestPermission().then(r=>{if(r==='granted')listen();else setStatus('Sensor permission declined — touch fallback active','fallback')}).catch(()=>setStatus('Sensor permission unavailable — touch fallback active','fallback'));
+     }else listen();
+   }catch(_){setStatus('Sensor blocked — touch fallback active','fallback')}
+ };
+ if(enableBtn)enableBtn.addEventListener('click',()=>{attachSensors();if(!sensorAttempted)setStatus('Requesting sensor permission…','fallback');else if(sensorActive)setStatus('Phone motion sensor active','active');else setStatus('Mouse / touch fallback remains active','fallback')});
+ // One deliberate interaction attempts sensor setup on browsers that do not need a permission prompt.
+ document.addEventListener('pointerdown',()=>{if(!sensorAttempted&&('DeviceOrientationEvent'in window||'DeviceMotionEvent'in window))attachSensors()},{once:true,passive:true});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&raf){cancelAnimationFrame(raf);raf=0}else if(!document.hidden)schedule()});
+ const mq=window.matchMedia('(prefers-reduced-motion: reduce)');mq.addEventListener?.('change',()=>{if(reduced()){chars.forEach(el=>{el.style.setProperty('--px','0px');el.style.setProperty('--py','0px')})}else schedule()});
+ if(prefs.parallax===false)setStatus('Wallpaper paused in settings','fallback');else setStatus('Mouse / touch parallax ready','fallback');
+})();
 </script>
 </body>
 </html>
