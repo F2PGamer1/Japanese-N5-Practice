@@ -1490,9 +1490,10 @@ function signalMistake({haptic=true}={}){
   if(app){app.classList.remove('error-shake');void app.offsetWidth;app.classList.add('error-shake');clearTimeout(errorShakeTimer);errorShakeTimer=setTimeout(()=>app.classList.remove('error-shake'),430);}
   if(haptic)vibrate('wrong');
 }
-function speakJapaneseWord(text){
-  if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance){showToast('Japanese TTS is not available in this browser.');return}
-  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=.86;const voices=speechSynthesis.getVoices();const ja=voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ja'));if(ja)u.voice=ja;speechSynthesis.speak(u)}catch(_){showToast('Could not play Japanese audio.')}
+function speakJapaneseWord(text,onDone=null){
+  let finished=false;const finish=()=>{if(finished)return;finished=true;if(typeof onDone==='function')onDone()};
+  if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance){showToast('Japanese TTS is not available in this browser.');if(onDone)setTimeout(finish,250);return}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=.86;u.onend=finish;u.onerror=finish;const voices=speechSynthesis.getVoices();const ja=voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ja'));if(ja)u.voice=ja;speechSynthesis.speak(u)}catch(_){showToast('Could not play Japanese audio.');finish()}
 }
 function grammarFullAnswer(item){
   if(!item)return '';
@@ -1621,7 +1622,24 @@ function markAnswered(correct,timeout=false){
   const item=currentItem();state.isAnswered=true;clearInterval(state.timer);state.answeredThisRun++;
   if(!state.isRetest&&!state.kanaRun&&state.mode!=='grammar'){stats.answered=(stats.answered||0)+1;if(correct){stats.correct=(stats.correct||0)+1;learned.add(item.j);stats.lessons=stats.lessons||{};stats.lessons[item.l]=(stats.lessons[item.l]||0)+1}}
   if(state.mode==='grammar'){stats.grammarAnswered=(Number(stats.grammarAnswered)||0)+1;if(correct)stats.grammarCorrect=(Number(stats.grammarCorrect)||0)+1}
-  if(correct){state.score++;state.runCorrect++;playSound('correct');vibrate('correct');$('feedback').textContent=state.mode==='grammar'?'সঠিক উত্তর! よくできました':'ঠিক হয়েছে! よくできました';$('feedback').className='feedback good'}
+  let grammarTtsAdvance=false;
+  if(correct){state.score++;state.runCorrect++;playSound('correct');vibrate('correct');$('feedback').textContent=state.mode==='grammar'?'সঠিক উত্তর! よくできました':'ঠিক হয়েছে! よくできました';$('feedback').className='feedback good';
+    if(state.mode==='grammar'){
+      const fullAnswer=grammarFullAnswer(item),particle=grammarParticleInfo(item),explanation=String(item.explanation||item.u||'');
+      state.grammarAnswerRevealed=true;
+      $('question-kicker').textContent='সঠিক উত্তর · সম্পূর্ণ বাক্য';
+      $('question-text').textContent=fullAnswer||String(item.correctAnswer||item.b||'');
+      $('question-text').classList.toggle('long-question',String(fullAnswer).length>32||item.type==='passage'||item.type==='composition');
+      $('question-text').closest('.question-card').classList.add('answer-revealed');
+      $('sub-text').innerHTML='';
+      const meta=document.createElement('div');meta.className='grammar-correction-meta';
+      const chip=document.createElement('span');chip.className='grammar-particle-chip';chip.append(document.createTextNode(particle?'সঠিক Particle: ':'সঠিক Grammar / শব্দাংশ: '));
+      const strong=document.createElement('strong');strong.textContent=particle||String(item.correctAnswer||item.b||'');chip.appendChild(strong);meta.appendChild(chip);$('sub-text').appendChild(meta);
+      if(explanation){const exp=document.createElement('div');exp.className='grammar-answer-translation';exp.textContent=explanation;$('sub-text').appendChild(exp)}
+      $('speech-btn').textContent='▶ সম্পূর্ণ উত্তর শুনুন';$('options-container').style.display='none';
+      grammarTtsAdvance=true;
+    }
+  }
   else{
     if(!state.wrong.some(w=>w.j===item.j&&w.testKind===item.testKind))state.wrong.push(item);
     playSound(timeout?'timeout':'wrong');signalMistake();if(timeout)vibrate('timeout');
@@ -1658,7 +1676,13 @@ function markAnswered(correct,timeout=false){
   $('score-live').textContent=`Score ${state.score}`;$('answered-live').textContent=`${state.answeredThisRun} answered`;
   if(!state.isRetest&&!state.kanaRun&&state.mode!=='grammar')saveStats();else if(state.mode==='grammar')saveStats();
   if(state.mode!=='grammar')speakJapaneseWord(item.j);
-  saveSession();setTimeout(nextQuestion,state.mode==='grammar'?(correct?950:5200):(correct?850:1450));
+  saveSession();
+  if(state.mode==='grammar'&&correct){
+    // Wait for the complete Japanese answer audio before moving to the next question.
+    let advanced=false;const advance=()=>{if(advanced)return;advanced=true;clearTimeout(grammarAdvanceFallback);if(state.isAnswered&&state.index<state.list.length)nextQuestion()};
+    const grammarAdvanceFallback=setTimeout(advance,15000);
+    speakJapaneseWord(grammarFullAnswer(item)||String(item.correctAnswer||item.b||''),advance);
+  }else setTimeout(nextQuestion,state.mode==='grammar'?5200:(correct?850:1450));
 }
 function checkAnswer(btn,selected,correct){if(state.isAnswered)return;const ok=selected===correct;btn.classList.add(ok?'correct':'wrong');markAnswered(ok,false)}
 function handleTimeout(){if(state.isAnswered)return;const item=currentItem();const correct=state.mode==='grammar'?(item.correctAnswer||item.b):(state.questionDirection==='bn-jp'?item.j:item.b);[...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;if(btn.lastElementChild.textContent===correct)btn.classList.add('correct')});markAnswered(false,true)}
@@ -1691,9 +1715,13 @@ function showResults(){
     showScreen('quiz-screen');loadQuestion();saveSession();return;
   }
   const total=state.list.length,wrongCount=state.wrong.length,acc=total?Math.round(state.score/total*100):0;
+  const elapsedSeconds=Math.max(0,Math.round((Date.now()-(state.startedAt||Date.now()))/1000));
+  const elapsedLabel=elapsedSeconds>=3600?`${Math.floor(elapsedSeconds/3600)}ঘ ${Math.floor((elapsedSeconds%3600)/60)}মি ${elapsedSeconds%60}সে`:elapsedSeconds>=60?`${Math.floor(elapsedSeconds/60)}মি ${elapsedSeconds%60}সে`:`${elapsedSeconds} সেকেন্ড`;
+  const avgSeconds=total?elapsedSeconds/total:elapsedSeconds;
+  const speedLabel=avgSeconds<=4?'Very fast ⚡':avgSeconds<=7?'Fast 🚀':avgSeconds<=13?'Good pace 👍':avgSeconds<=22?'Slow pace 🐢':'Very slow 🌱';
   animateFinalScore(state.score,total);$('correct-count').textContent=state.score;$('wrong-count').textContent=wrongCount;$('result-accuracy').textContent=acc+'%';
   $('result-title').textContent=acc>=90?'Excellent work!':acc>=70?'Nice progress!':acc>=40?'Keep going!':'Every try counts.';
-  $('result-description').textContent=`${total}টি প্রশ্ন শেষ হয়েছে। নিয়মিত practice করলে মনে রাখা সহজ হবে।`;
+  $('result-description').textContent=`${total}টি প্রশ্ন সম্পন্ন · সময়: ${elapsedLabel} · গতি: ${speedLabel} (গড়ে ${avgSeconds.toFixed(1)} সেকেন্ড/প্রশ্ন)। নিয়মিত practice করলে আরও উন্নতি হবে।`;
   $('result-mark').textContent=acc>=80?'✦':'✓';
   if(!state.isRetest&&!state.kanaRun){stats.completed=(stats.completed||0)+1;stats.best=Math.max(stats.best||0,acc);saveStats()}
   if(!state.isRetest&&!state.kanaRun)captureProgressGain();
