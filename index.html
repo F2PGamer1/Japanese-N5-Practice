@@ -253,6 +253,85 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
 .guide-rule-title{font-size:14px;font-weight:850;line-height:1.5;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.guide-rule-badge{display:inline-flex;align-items:center;justify-content:center;min-width:82px;padding:6px 11px;border:1px solid #8d83ff66;border-radius:9px;background:linear-gradient(120deg,#8d83ff26,#55e0c018);color:#c8c0ff;font-size:11px;font-weight:950;letter-spacing:.5px;box-shadow:inset 0 1px #ffffff0b}.guide-example-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.sentence-tts{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:34px;min-height:32px;padding:5px 9px;border:1px solid #55e0c044;border-radius:9px;background:#55e0c012;color:#77ead1;font-size:12px;font-weight:800;cursor:pointer}.sentence-tts:hover{background:#55e0c024;border-color:#55e0c088}.generated-japanese-line{display:flex;align-items:flex-start;justify-content:space-between;gap:9px}.generated-japanese-line .generated-japanese{flex:1;min-width:0}.guide-pattern{font-family:'Noto Sans JP',sans-serif;font-size:17px;color:var(--accent);background:#55e0c00d;border:1px solid #55e0c021;border-radius:10px;padding:10px 12px;margin:10px 0;overflow-wrap:anywhere}.guide-explain{font-size:13px;line-height:1.8;color:#d4deee}.guide-example{margin-top:11px;padding:11px 12px;border-left:3px solid var(--accent2);background:#8d83ff0b;border-radius:0 10px 10px 0}.guide-jp{font-family:'Noto Sans JP',sans-serif;font-size:17px;line-height:1.65}.guide-romaji{font-size:11px;color:#a8b6cd;margin-top:3px}.guide-bn{font-size:13px;line-height:1.7;margin-top:4px}.guide-count{font-size:11px;color:var(--accent);white-space:nowrap}.guide-empty{padding:24px;text-align:center;color:var(--muted)}@media(max-width:520px){.grammar-guide-launch{align-items:stretch;flex-direction:column}.grammar-guide-launch .primary{width:100%}.guide-lesson{padding:13px}.guide-rule{padding:12px}.guide-lesson-title{font-size:16px}}
 
 
+
+
+/* SI RJ0 SMART REDESIGN — visual-only layer; keeps existing app logic intact */
+:root{
+ --bg:#070b16;--panel:#10192a;--panel2:#16243a;--line:#2a3b56;
+ --accent:#64f0cf;--accent2:#9b8cff;--radius:23px;
+ --shadow:0 18px 54px #0005,0 1px 0 #ffffff08 inset;
+}
+html{scroll-padding-top:18px}
+body{
+ background:
+  radial-gradient(ellipse at 8% -5%,#55e0c025,transparent 34%),
+  radial-gradient(ellipse at 102% 20%,#8d83ff24,transparent 35%),
+  radial-gradient(ellipse at 50% 110%,#3182ce14,transparent 45%),var(--bg);
+ background-attachment:fixed;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;background-image:linear-gradient(#8ba4c10b 1px,transparent 1px),linear-gradient(90deg,#8ba4c10b 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+.app{max-width:1040px;animation:siAppEnter .65s cubic-bezier(.2,.75,.25,1) both}
+@keyframes siAppEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.topbar{padding:10px 2px 15px;border-bottom:1px solid #ffffff0c}
+.brand-mark{position:relative;isolation:isolate;overflow:hidden;box-shadow:0 8px 28px #55e0c02a,0 0 0 5px #55e0c00b}
+.brand-mark:after{content:"";position:absolute;inset:-50%;background:linear-gradient(110deg,transparent 38%,#ffffff75 50%,transparent 62%);transform:translateX(-110%);animation:siShimmer 6s ease-in-out infinite;z-index:-1}
+@keyframes siShimmer{0%,65%,100%{transform:translateX(-110%)}82%{transform:translateX(110%)}}
+.panel{position:relative;border-color:#31435f;background:linear-gradient(145deg,#121e32f5,#0d1627f7);box-shadow:var(--shadow);transition:border-color .25s,box-shadow .25s,transform .25s}
+.panel:hover{border-color:#4a6688;box-shadow:0 22px 65px #0006,0 0 0 1px #55e0c00a inset}
+.hero{background:radial-gradient(ellipse at 88% 5%,#8d83ff19,transparent 38%),radial-gradient(ellipse at 5% 100%,#55e0c018,transparent 42%),linear-gradient(145deg,#142239f7,#0c1526f7)}
+.hero h1{letter-spacing:-1.25px;text-wrap:balance}
+.stat,.mode,.lesson-progress-circle-card,.guide-rule,.generated-sentence,.rule-example-practice,.guide-example{transition:transform .22s cubic-bezier(.2,.75,.25,1),border-color .22s,background .22s,box-shadow .22s}
+.stat{background:linear-gradient(145deg,#142138e8,#0d1728e8)}
+.stat:hover{transform:translateY(-3px);border-color:#55e0c077;box-shadow:0 12px 26px #0003}
+.mode{position:relative;overflow:hidden;background:linear-gradient(145deg,#111d31,#0b1424)}
+.mode:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,#ffffff0a,transparent);transform:translateX(-120%);transition:transform .55s}
+.mode:hover:after{transform:translateX(120%)}
+.mode:hover{transform:translateY(-2px);border-color:#55e0c077;color:#eafbf7}
+.mode.active{border-color:#64f0cfaa;background:linear-gradient(145deg,#55e0c025,#8d83ff1e);box-shadow:0 0 0 1px #55e0c014 inset,0 8px 24px #55e0c00d}
+.primary{position:relative;overflow:hidden;background:linear-gradient(105deg,#64f0cf,#76cfff 54%,#a69aff);box-shadow:0 10px 28px #55e0c025;transition:filter .2s,transform .2s,box-shadow .2s}
+.primary:after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:35%;background:linear-gradient(90deg,transparent,#ffffff65,transparent);transform:skewX(-18deg);transition:left .65s}
+.primary:hover{box-shadow:0 14px 34px #55e0c035;transform:translateY(-2px)}.primary:hover:after{left:130%}
+.secondary,.small-btn,.icon-btn,.sentence-tts{transition:transform .18s,border-color .2s,background .2s,box-shadow .2s}
+.secondary:hover,.small-btn:hover,.icon-btn:hover{box-shadow:0 7px 20px #0003;transform:translateY(-1px)}
+.grammar-progress-panel{border-color:#35536a;background:radial-gradient(ellipse at 0 0,#55e0c020,transparent 55%),radial-gradient(ellipse at 100% 100%,#8d83ff16,transparent 45%),linear-gradient(145deg,#13243a,#0d1728)}
+.grammar-ring{box-shadow:0 0 0 7px #55e0c008}
+.grammar-guide-launch{border-color:#4b4778;background:radial-gradient(ellipse at 100% 0,#8d83ff25,transparent 52%),radial-gradient(ellipse at 0 100%,#55e0c018,transparent 45%),linear-gradient(145deg,#151d35,#0d1728)}
+.guide-intro{border-color:#3d4d71;background:radial-gradient(ellipse at 100% 0,#55e0c01b,transparent 50%),radial-gradient(ellipse at 0 100%,#8d83ff17,transparent 50%),linear-gradient(145deg,#142038,#0d1728)}
+.guide-lesson{position:relative;border-color:#354865;background:linear-gradient(150deg,#121e32f7,#0b1424f8);box-shadow:0 14px 38px #0003;animation:siCardIn .5s both;}
+@keyframes siCardIn{from{opacity:.25;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.guide-lesson-head{padding-bottom:13px;border-bottom:1px solid #ffffff0c}
+.guide-lesson-num{position:relative;overflow:hidden;box-shadow:0 7px 18px #55e0c01c,0 0 0 4px #55e0c00b}
+.guide-lesson-num:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,#ffffff60,transparent);transform:translateX(-130%);animation:siShimmer 7s ease-in-out infinite}
+.guide-lesson-title{letter-spacing:-.25px}
+.guide-rule{border-color:#2e425f;background:linear-gradient(145deg,#0f1a2c,#0b1424);box-shadow:0 5px 15px #00000010}
+.guide-rule:hover{border-color:#526b8d;transform:translateY(-1px);box-shadow:0 10px 24px #0003}
+.guide-rule-title{gap:11px}
+.guide-rule-badge{position:relative;overflow:hidden;min-width:94px;padding:7px 12px;border-color:#9b8cff78;border-radius:10px;background:linear-gradient(115deg,#8d83ff32,#55e0c01d);color:#d5ceff;box-shadow:0 4px 15px #8d83ff12,inset 0 1px #ffffff12;letter-spacing:.8px;text-shadow:0 1px 12px #8d83ff35}
+.guide-rule-badge:before{content:"✦";font-size:10px;margin-right:6px;color:#64f0cf}
+.guide-pattern{border-color:#55e0c033;background:linear-gradient(110deg,#55e0c014,#8d83ff0c);box-shadow:inset 3px 0 #55e0c0}
+.guide-example{background:linear-gradient(120deg,#8d83ff0d,#55e0c009);border-left-color:#9b8cff}
+.guide-example:hover{border-left-color:#64f0cf;transform:translateX(2px)}
+.sentence-tts{min-width:37px;min-height:35px;border-radius:11px;background:linear-gradient(145deg,#55e0c01c,#8d83ff14);box-shadow:inset 0 1px #ffffff0b}
+.sentence-tts:hover{transform:translateY(-1px);box-shadow:0 6px 16px #55e0c016;border-color:#64f0cf99}
+.sentence-tts:active{transform:scale(.94)}
+.rule-example-practice{border-color:#3c5676;background:radial-gradient(ellipse at 100% 0,#55e0c01b,transparent 48%),linear-gradient(145deg,#101f33,#0b1526);box-shadow:0 12px 28px #0002}
+.rule-practice-title{display:flex;align-items:center;gap:7px}
+.rule-practice-title:before{flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:linear-gradient(145deg,#55e0c02b,#8d83ff25);color:#75f2d5;box-shadow:inset 0 0 0 1px #55e0c01c}
+.rule-practice-actions button{transition:transform .18s,filter .18s,box-shadow .18s}
+.rule-practice-actions button:hover{transform:translateY(-2px);filter:brightness(1.1);box-shadow:0 8px 20px #0003}
+.generated-sentence{position:relative;overflow:hidden;border-color:#2e425f;background:linear-gradient(145deg,#101d30,#0a1423);box-shadow:0 5px 16px #0002;animation:siSentenceIn .38s cubic-bezier(.2,.7,.2,1) both}
+@keyframes siSentenceIn{from{opacity:0;transform:translateY(7px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+.generated-sentence:hover{border-color:#64f0cf77;transform:translateY(-2px);box-shadow:0 11px 25px #0003}
+.sentence-number{background:linear-gradient(145deg,#8d83ff2d,#55e0c01c);color:#cfc8ff;box-shadow:inset 0 0 0 1px #8d83ff15}
+.generated-japanese{letter-spacing:.1px}
+.generated-romaji span,.generated-bengali span{color:#9baec9}
+.guide-count{padding:5px 8px;border:1px solid #55e0c022;border-radius:999px;background:#55e0c00b}
+input,select,textarea{transition:border-color .2s,box-shadow .2s}
+input:hover,select:hover,textarea:hover{border-color:#506b8c}
+::selection{background:#55e0c04d;color:#fff}
+@media(max-width:680px){body{background-attachment:scroll}.guide-lesson{animation:none}.generated-sentence{animation:none}.panel:hover,.guide-rule:hover,.generated-sentence:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
