@@ -769,6 +769,49 @@ body>.color-fog-layer{z-index:-1!important;opacity:.18!important;}
 body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.color-fog-layer):not(.jp-parallax-wall){position:relative;z-index:2}
 @media(max-width:680px){body{background-attachment:scroll!important}}
 @media(prefers-reduced-motion:reduce){body{animation:siBackgroundColorTravel 36s ease-in-out infinite alternate!important}}
+/* Mobile performance pass: keep all learning features, reduce decorative rendering cost. */
+@media (max-width: 680px), (pointer: coarse) {
+  html { scroll-behavior: auto; }
+  body {
+    background-attachment: scroll !important;
+    /* A single slow gradient avoids multiple expensive animated layers on phones. */
+    background-size: 240% 240% !important;
+    animation: siMobileBackgroundDrift 38s ease-in-out infinite alternate !important;
+  }
+  @keyframes siMobileBackgroundDrift {
+    0% { background-position: 0% 45%; }
+    50% { background-position: 100% 55%; }
+    100% { background-position: 25% 100%; }
+  }
+  #si-animated-backdrop {
+    opacity: .48 !important;
+    background-size: 220% 220% !important;
+    animation: siMobileBackdropDrift 44s ease-in-out infinite alternate !important;
+    filter: none !important;
+  }
+  @keyframes siMobileBackdropDrift {
+    0% { background-position: 0% 40%; }
+    100% { background-position: 100% 65%; }
+  }
+  /* Large blurred fog layers cost GPU time and duplicate the base gradient. */
+  body > .color-fog-layer { display: none !important; }
+  body:after { filter: none !important; }
+  body > .jp-parallax-wall { opacity: .12 !important; }
+  .jp-float { filter: none !important; animation: none !important; }
+  .panel, .hero, .section, .stat, .mode, .generated-sentence {
+    backdrop-filter: none !important;
+  }
+  .panel:hover, .guide-rule:hover, .generated-sentence:hover { transform: none !important; }
+}
+@media (max-width: 380px) {
+  body { padding: 7px !important; }
+  .panel { border-radius: 16px !important; }
+  .section { padding: 14px !important; }
+  button, .select, input, textarea { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body, #si-animated-backdrop { animation: none !important; }
+}
 </style>
 </head>
 <body>
@@ -2980,7 +3023,7 @@ function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;
  const reduced=()=>!!prefs.reducedMotion||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const setStatus=(label,kind='fallback')=>{if(status){status.textContent=label;status.dataset.state=kind}};
  const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
- const paint=()=>{chars.forEach((el,i)=>{const depth=.006+(i%4)*.002;const x=clamp(tx,-220,220)*depth;const y=clamp(ty,-220,220)*depth+clamp(sy,-1500,1500)*(.0004+(i%3)*.0003);el.style.setProperty('--px',`${x}px`);el.style.setProperty('--py',`${y}px`);/* margin offsets are not overwritten by the float keyframes' transform/translate */el.style.marginLeft=`${x}px`;el.style.marginTop=`${y}px`;});raf=0};
+ const paint=()=>{if(window.matchMedia('(max-width: 680px), (pointer: coarse)').matches){raf=0;return;}chars.forEach((el,i)=>{const depth=.006+(i%4)*.002;const x=clamp(tx,-220,220)*depth;const y=clamp(ty,-220,220)*depth+clamp(sy,-1500,1500)*(.0004+(i%3)*.0003);el.style.setProperty('--px',`${x}px`);el.style.setProperty('--py',`${y}px`);/* margin offsets are not overwritten by the float keyframes' transform/translate */el.style.marginLeft=`${x}px`;el.style.marginTop=`${y}px`;});raf=0};
  const schedule=()=>{if(!raf&&!reduced()&&prefs.parallax!==false)raf=requestAnimationFrame(paint)};
  const pointerPosition=(x,y)=>{tx=x-window.innerWidth/2;ty=y-window.innerHeight/2;schedule()};
  window.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen'){lastPointer=Date.now();pointerPosition(e.clientX,e.clientY)}},{passive:true});
