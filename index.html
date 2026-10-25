@@ -167,7 +167,7 @@ body.reduce-motion .quick-login,body.reduce-motion .quick-login img,body.reduce-
 @keyframes profileTextGlitch{0%,89%,91%,100%{transform:none;clip-path:none;text-shadow:none;filter:none}89.2%{transform:translateX(-1px);text-shadow:2px 0 #ff5577,-2px 0 #55e0c0;filter:skewX(-3deg)}89.7%{transform:translateX(1px);text-shadow:-2px 0 #ff5577,2px 0 #55e0c0;filter:skewX(2deg)}90.2%{transform:none;text-shadow:1px 0 #8d83ff;filter:none}}
 /* Keep the original dark radial background; animate the Japanese-character wallpaper layer instead. */
 body{background:radial-gradient(ellipse at 5% 0%,#234b6340,transparent 38%),radial-gradient(ellipse at 100% 90%,#5d4f9a24,transparent 40%),var(--bg);background-attachment:fixed}
-.jp-parallax-wall{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;contain:strict;}
+.jp-parallax-wall{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;contain:strict;display:block;}.jp-float{white-space:nowrap;text-shadow:0 0 22px currentColor;transition:color .8s ease,opacity .8s ease;letter-spacing:.02em;}
 .jp-float{position:absolute;display:block;font-family:'Noto Sans JP',sans-serif;font-weight:700;line-height:1;color:var(--jp-color,#55e0c0);opacity:var(--jp-opacity,.12);font-size:var(--jp-size,70px);transform:translate3d(var(--px,0px),var(--py,0px),0) rotate(var(--tilt,0deg));will-change:transform;animation:jpDrift var(--duration,18s) ease-in-out infinite alternate;filter:drop-shadow(0 0 18px currentColor);user-select:none}
 .jp-float:nth-child(3n){animation-delay:-7s}.jp-float:nth-child(4n){animation-delay:-12s}
 @keyframes jpDrift{0%{margin-top:-13px;rotate:-4deg}50%{margin-top:8px;rotate:2deg}100%{margin-top:22px;rotate:5deg}}
@@ -227,11 +227,10 @@ body{background:radial-gradient(ellipse at 5% 0%,#234b6340,transparent 38%),radi
 .jp-float:nth-child(3n){animation-delay:-4.5s}
 .jp-float:nth-child(4n){animation-delay:-8s}
 @keyframes jpSoftBounce{
-  0%,100%{translate:0 0;rotate:-4deg;filter:drop-shadow(0 0 10px currentColor)}
-  20%{translate:0 -15px;rotate:2deg;filter:drop-shadow(0 0 17px currentColor)}
-  45%{translate:0 -29px;rotate:4deg;filter:drop-shadow(0 0 24px currentColor)}
-  70%{translate:0 -12px;rotate:-2deg;filter:drop-shadow(0 0 18px currentColor)}
-  85%{translate:0 -20px;rotate:1deg;filter:drop-shadow(0 0 21px currentColor)}
+  0%,100%{translate:var(--float-x,0) 5px;rotate:-3deg;scale:.88;filter:drop-shadow(0 0 7px currentColor);opacity:calc(var(--jp-opacity,.1)*.78)}
+  20%{translate:calc(var(--float-x,0px) - 3px) -7px;rotate:2deg;scale:1.04;filter:drop-shadow(0 0 15px currentColor);opacity:calc(var(--jp-opacity,.1)*1.25)}
+  48%{translate:calc(var(--float-x,0px) + 4px) -15px;rotate:4deg;scale:1.12;filter:drop-shadow(0 0 23px currentColor);opacity:var(--jp-opacity,.1)}
+  72%{translate:calc(var(--float-x,0px) - 2px) -5px;rotate:-1deg;scale:.96;filter:drop-shadow(0 0 13px currentColor);opacity:calc(var(--jp-opacity,.1)*1.18)}
 }
 @media(max-width:600px){.write-head{align-items:flex-start}.write-counter{min-width:58px;padding:8px 9px}.write-target-row{align-items:center}.write-stage{height:350px;min-height:300px}.write-feedback{text-align:left}.write-controls button{font-size:11px;padding:0 7px}}
 @media(prefers-reduced-motion:reduce){.jp-float{animation:none!important;translate:0 0!important}.write-target-actions button,.write-controls button{transition:none!important}}
@@ -424,7 +423,7 @@ input,textarea,.select,select{border-radius:14px!important;border-color:#91add52
 @media(max-width:600px){.sensor-tools{align-items:stretch}.sensor-tools .secondary{flex:1 1 100%}.sensor-status{width:100%;box-sizing:border-box}}
 @media(prefers-reduced-motion:reduce){.jp-parallax-wall{transition:none}.jp-float{transform:none!important;filter:none!important}}
 /* Desktop pointer parallax uses margins so the wallpaper's own float transforms cannot overwrite it. */
-.jp-float{transition:margin-left .10s ease-out,margin-top .10s ease-out}
+.jp-float{transition:margin-left .34s cubic-bezier(.2,.7,.2,1),margin-top .34s cubic-bezier(.2,.7,.2,1)}
 /* Premium score reveal */
 #result-screen .result{position:relative;isolation:isolate}
 .result-mark{animation:resultBadgeIn .75s cubic-bezier(.18,.9,.25,1.25) both}
@@ -446,9 +445,335 @@ input,textarea,.select,select{border-radius:14px!important;border-color:#91add52
 @keyframes resultConfettiFall{0%{opacity:0;transform:translate3d(0,-12px,0) rotate(0deg)}8%{opacity:.95}80%{opacity:.9}100%{opacity:0;transform:translate3d(var(--drift,40px),min(75vh,620px),0) rotate(var(--spin,560deg))}}
 @media(prefers-reduced-motion:reduce){.jp-float{transition:none!important}.result-mark,.result-score,.result-stat,.result-stat b,#result-title{animation:none!important}.result-confetti{display:none!important}}
 
+
+/* TTS word-by-word focus: active spoken Japanese segment gets a soft teal glass highlight. */
+.question-word.tts-word-active,.generated-sentence.tts-word-active,.sentence-card.tts-word-active{overflow-wrap:anywhere}
+.tts-word{display:inline;border-radius:.28em;padding:.015em .035em;transition:color .14s ease,background .14s ease,box-shadow .14s ease;text-decoration:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.tts-word.speaking{position:relative;color:#fff!important;background:linear-gradient(115deg,#55e0c06b,#8d83ff63)!important;box-shadow:inset 0 0 0 1px #b9fff2a6,0 0 0 2px #7af3df22,0 0 16px #55e0c04d!important;text-shadow:0 0 9px #eafff9a8;border-radius:.3em}
+/* Fixed wallpaper cells keep Japanese and Bangla labels in their own lanes. */
+.jp-float{display:flex!important;align-items:center;justify-content:center;width:11.8%;height:5.4vh;min-height:18px;max-height:44px;overflow:hidden;text-overflow:clip;white-space:nowrap;text-align:center;font-family:'Noto Sans Bengali','Noto Sans JP',sans-serif!important;font-size:clamp(10px,1.25vw,18px)!important;line-height:1.1!important;letter-spacing:0!important;padding:0 2px;contain:layout paint;will-change:margin-left,margin-top;filter:drop-shadow(0 0 9px #5ff0ce14)!important}
+@media(max-width:600px){.jp-float{width:23.7%;height:4.4vh;min-height:16px;font-size:clamp(9px,2.4vw,14px)!important;max-height:32px}}
+/* Dense wallpaper grid: align cells to their lanes, including the bottom edge. */
+.jp-float{
+  width:8.15%!important;height:6.2vh!important;min-height:18px!important;max-height:52px!important;
+  padding:0 1px!important;overflow:visible!important;contain:layout style!important;
+  border-radius:10px;isolation:isolate;
+}
+@media(max-width:600px){
+ .jp-float{width:19.1%!important;height:2.72vh!important;min-height:15px!important;max-height:23px!important;font-size:clamp(8px,2.05vw,12px)!important}
+}
+@keyframes jpLaneDrift{0%{translate:-2px 4px;scale:.92;opacity:calc(var(--jp-opacity,.1)*.7);filter:drop-shadow(0 0 5px currentColor)}50%{translate:2px -8px;scale:1.08;opacity:var(--jp-opacity,.1);filter:drop-shadow(0 0 18px currentColor)}100%{translate:0 2px;scale:.98;opacity:calc(var(--jp-opacity,.1)*1.2);filter:drop-shadow(0 0 9px currentColor)}}
+@keyframes jpSoftPulse{0%,100%{scale:.88;opacity:calc(var(--jp-opacity,.1)*.65);filter:blur(.15px) drop-shadow(0 0 5px currentColor)}50%{scale:1.12;opacity:var(--jp-opacity,.1);filter:blur(0) drop-shadow(0 0 22px currentColor)}}
+@keyframes jpTiltWave{0%,100%{rotate:-7deg;translate:0 3px;scale:.95}50%{rotate:7deg;translate:0 -6px;scale:1.05}}
+@keyframes jpGlowBreath{0%,100%{filter:drop-shadow(0 0 3px currentColor);opacity:calc(var(--jp-opacity,.1)*.65)}50%{filter:drop-shadow(0 0 24px currentColor);opacity:var(--jp-opacity,.1)}}
+@keyframes jpSlidePeek{0%,100%{translate:-5px 0;scale:.94;opacity:calc(var(--jp-opacity,.1)*.7)}50%{translate:5px -4px;scale:1.04;opacity:var(--jp-opacity,.1)}}
+@keyframes jpScaleFloat{0%,100%{scale:.8;translate:0 5px}50%{scale:1.16;translate:0 -7px}}
+@keyframes jpSpinWhisper{0%,100%{rotate:-10deg;scale:.92}50%{rotate:10deg;scale:1.04}}
+@keyframes jpRiseFade{0%,100%{translate:0 7px;opacity:calc(var(--jp-opacity,.1)*.55)}50%{translate:0 -9px;opacity:var(--jp-opacity,.1)}}
+@keyframes jpSideSway{0%,100%{translate:-4px 2px;rotate:4deg}50%{translate:4px -3px;rotate:-4deg}}
+@keyframes jpRippleLift{0%,100%{translate:0 5px;scale:.9;filter:drop-shadow(0 0 4px currentColor)}50%{translate:0 -10px;scale:1.1;filter:drop-shadow(0 0 20px currentColor)}}
+@media(prefers-reduced-motion:reduce){.jp-float,.jp-float:nth-child(n){animation:none!important;translate:0 0!important;rotate:0deg!important;scale:1!important}}
+
+.tts-word-active{overflow-wrap:normal!important;word-break:normal!important}
+/* Restore the intended transparent glass UI instead of opaque/matte cards. */
+.topbar,.panel,.stat,.mode,.setting,.question-card,.result-stat,.tip,.write-practice,.guide-lesson,.generated-sentence,.sentence-card,.grammar-progress-panel,.grammar-guide-launch,.progress-gain-panel,.guide-intro,.guide-toolbar,#login-screen .login-wrap{
+  background-color:#0b1426a8!important;
+  background-image:linear-gradient(135deg,#ffffff0b,#ffffff02 48%,#a69bff08)!important;
+  border-color:#c5e1ff30!important;
+  box-shadow:0 18px 52px #0004,inset 0 1px #ffffff12!important;
+  backdrop-filter:blur(22px) saturate(145%)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(145%)!important;
+}
+.hero{background:radial-gradient(ellipse at 92% 8%,#8c83ff1b,transparent 38%),linear-gradient(135deg,#12243ab0,#0b1426a3)!important;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%)}
+.mode.active{background:linear-gradient(135deg,#174044c7,#202143b8)!important;border-color:#5ff0ce70!important}
+.quiz-option,.option,.icon-btn,.small-btn,.secondary,.sentence-tts,.setting input,.select-wrap select{backdrop-filter:blur(14px) saturate(135%);-webkit-backdrop-filter:blur(14px) saturate(135%)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.topbar,.panel,.stat,.mode,.setting,.question-card,.result-stat,.tip,.write-practice,.guide-lesson,.generated-sentence,.sentence-card,.grammar-progress-panel,.grammar-guide-launch,.progress-gain-panel,.guide-intro,.guide-toolbar,#login-screen .login-wrap{background-color:#101a2bf2!important}}
+@media(prefers-reduced-motion:reduce){.tts-word{transition:none}.jp-float{transition:none!important}}
+
+
+/* Hold-to-answer interaction: animated glass progress ring and confirmation pop. */
+.option{position:relative;isolation:isolate;overflow:hidden;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.option:before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(var(--hold-progress,0));transform-origin:left;background:linear-gradient(100deg,#55e0c02b,#8d83ff32);border-radius:inherit}
+.option.hold-arming:before{transition:none}
+.option.hold-arming{border-color:#8af4dfb0;box-shadow:0 0 0 1px #55e0c044,0 0 24px #55e0c025;animation:optionHoldPulse .08s ease-in-out infinite alternate}
+.option.hold-confirmed{animation:optionConfirm .38s cubic-bezier(.18,.9,.25,1.25) both}
+@keyframes optionHoldPulse{from{filter:brightness(1)}to{filter:brightness(1.22)}}
+@keyframes optionConfirm{0%{transform:scale(.97)}60%{transform:scale(1.035)}100%{transform:scale(1)}}
+/* Premium transparent glass TTS focus. */
+.tts-word{display:inline;border-radius:.3em;padding:0 .045em;color:inherit;transition:color .14s ease,background .14s ease,box-shadow .14s ease;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.tts-word.speaking{position:relative;color:#f7fffe!important;background:linear-gradient(125deg,#49e5c65c,#8f8bff66)!important;outline:1px solid #b7fff19c;box-shadow:0 0 0 3px #55e0c018,0 0 22px #55e0c055,inset 0 1px #ffffff9c;text-shadow:0 0 12px #d8fff8b0;border-radius:.32em;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:ttsGlassPulse .6s ease-in-out infinite alternate}
+@keyframes ttsGlassPulse{from{filter:brightness(1);box-shadow:0 0 0 2px #55e0c014,0 0 14px #55e0c044,inset 0 1px #ffffff70}to{filter:brightness(1.16);box-shadow:0 0 0 4px #55e0c01e,0 0 25px #8d83ff55,inset 0 1px #ffffffc0}}
+.jp-float{transition:left 1.8s cubic-bezier(.2,.75,.2,1),top 1.8s cubic-bezier(.2,.75,.2,1),margin-left .3s ease,margin-top .3s ease;}
+
+
+/* Previous Aqua layer retained in history; disabled by Smooth Random 400 override. */
+.jp-parallax-wall{
+  background:
+    radial-gradient(ellipse at 18% 24%,#2bdac51c,transparent 34%),
+    radial-gradient(ellipse at 82% 66%,#4a9dff1a,transparent 39%),
+    linear-gradient(180deg,#0613220a,#0b31501c 48%,#07152622);
+  isolation:isolate;
+}
+.jp-parallax-wall:before{
+  content:"";position:absolute;inset:-28%;z-index:0;pointer-events:none;opacity:.74;
+  background:
+    radial-gradient(ellipse at 20% 30%,#67ffe51b 0 2%,transparent 21%),
+    radial-gradient(ellipse at 72% 60%,#62c9ff1d 0 3%,transparent 25%),
+    radial-gradient(ellipse at 48% 82%,#8e8bff16 0 2%,transparent 23%),
+    repeating-radial-gradient(ellipse at 45% 50%,transparent 0 34px,#8ceeff0a 36px 38px,transparent 41px 73px),
+    repeating-linear-gradient(112deg,transparent 0 48px,#9bf5ff08 50px 52px,transparent 55px 110px);
+  background-size:120% 130%,135% 145%,140% 150%,100% 100%,180% 180%;
+  mix-blend-mode:screen;filter:blur(1.5px) saturate(1.18);
+  animation:waterCaustics 17s ease-in-out infinite alternate,waterShimmer 8.5s linear infinite;
+}
+.jp-parallax-wall:after{
+  content:"";position:absolute;inset:-12%;z-index:0;pointer-events:none;opacity:.34;
+  background:repeating-radial-gradient(ellipse at 50% 50%,transparent 0 46px,#74e8ff12 48px 50px,transparent 53px 96px);
+  transform-origin:center;animation:waterSurfaceRings 24s ease-in-out infinite alternate;
+}
+.jp-float{z-index:1;text-shadow:0 1px 1px #d9ffff18,0 0 14px currentColor,0 0 28px #58dfff20!important;}
+.jp-float:after{
+  content:"";position:absolute;z-index:-1;left:50%;top:69%;width:112%;height:34%;
+  border:1px solid #7beeff35;border-radius:50%;pointer-events:none;
+  transform:translate(-50%,-50%) scale(.38,.45);opacity:0;
+  box-shadow:0 0 9px #55e0c018,inset 0 0 8px #75caff0a;
+  animation:wordWaterRipple var(--ripple-duration,4s) ease-out infinite;
+  animation-delay:calc(var(--ripple-delay, 0s));
+}
+.jp-float:nth-child(3n):after{width:138%;height:44%;animation-duration:5.4s}
+.jp-float:nth-child(4n):after{width:90%;height:27%;animation-duration:4.1s}
+.jp-float:nth-child(5n){text-shadow:0 2px 1px #d9ffff20,0 0 18px currentColor,0 0 32px #58dfff24!important}
+@keyframes waterCaustics{
+  0%{transform:translate3d(-2.5%,-1.5%,0) rotate(-3deg) scale(1);background-position:0% 10%,100% 0%,20% 90%,0 0,0 0}
+  50%{transform:translate3d(2%,1.8%,0) rotate(2deg) scale(1.04);background-position:75% 80%,15% 60%,90% 10%,55px -28px,70px 35px}
+  100%{transform:translate3d(-1%,2.5%,0) rotate(-1deg) scale(1.08);background-position:100% 25%,0% 100%,35% 40%,-35px 48px,-55px -35px}
+}
+@keyframes waterShimmer{0%,100%{filter:blur(1.5px) saturate(1.1) brightness(.85)}50%{filter:blur(2.8px) saturate(1.4) brightness(1.22)}}
+@keyframes waterSurfaceRings{0%{transform:translate3d(-4%,2%,0) scale(.88) rotate(-8deg);opacity:.16}50%{opacity:.4}100%{transform:translate3d(4%,-2%,0) scale(1.12) rotate(8deg);opacity:.28}}
+@keyframes wordWaterRipple{0%{opacity:0;transform:translate(-50%,-50%) scale(.35,.35)}18%{opacity:.34}70%{opacity:.14}100%{opacity:0;transform:translate(-50%,-50%) scale(1.42,.82)}}
+@media(max-width:600px){.jp-parallax-wall:before{opacity:.56;filter:blur(2px) saturate(1.1)}.jp-float:after{height:28%;width:105%;border-color:#7beeff28}}
+@media(prefers-reduced-motion:reduce){.jp-parallax-wall:before,.jp-parallax-wall:after,.jp-float:after{animation:none!important}.jp-parallax-wall:before{opacity:.18}}
+
+/* SiRJ0 kinetic wallpaper v2: 64 distinct per-glyph motion patterns + dramatic re-entry */
+.jp-parallax-wall{overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#13263a16,transparent 70%);}
+.jp-float{transform-origin:center;will-change:transform,opacity,filter;backface-visibility:hidden;}
+.jp-parallax-wall.wallpaper-reentry{animation:jpWallReveal 1.65s cubic-bezier(.16,1,.3,1) both;}
+.jp-parallax-wall.wallpaper-reentry:after{content:"";position:absolute;inset:-25%;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,transparent 0 35%,#55e0c012 42%,#8d83ff1b 49%,#75caff12 56%,transparent 64% 100%);animation:jpWallSweep 1.9s cubic-bezier(.2,.7,.1,1) both;}
+@keyframes jpWallReveal{0%{opacity:.25;filter:blur(8px) saturate(.65)}45%{opacity:1;filter:blur(0) saturate(1.5)}100%{opacity:1;filter:blur(0) saturate(1)}}
+@keyframes jpWallSweep{0%{transform:rotate(-28deg) scale(.65);opacity:0}20%{opacity:1}100%{transform:rotate(35deg) scale(1.25);opacity:0}}
+@media(prefers-reduced-motion:reduce){.jp-parallax-wall.wallpaper-reentry,.jp-parallax-wall.wallpaper-reentry:after{animation:none!important}}
+
+
+/* Smoothly morphing ambient background; no water/ripple effect. */
+@property --ambient-a { syntax: '<color>'; inherits: false; initial-value: #214e65; }
+@property --ambient-b { syntax: '<color>'; inherits: false; initial-value: #4a3478; }
+@property --ambient-c { syntax: '<color>'; inherits: false; initial-value: #174e4b; }
+body{position:relative;isolation:isolate;background:var(--bg)!important;}
+body:before{content:"";position:fixed;inset:-12%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 8% 12%,color-mix(in srgb,var(--ambient-a) 54%,transparent),transparent 42%),radial-gradient(ellipse at 92% 82%,color-mix(in srgb,var(--ambient-b) 48%,transparent),transparent 44%),radial-gradient(ellipse at 52% 52%,color-mix(in srgb,var(--ambient-c) 30%,transparent),transparent 60%);filter:saturate(1.08);transform:scale(1.02);transition:--ambient-a 8s cubic-bezier(.2,.7,.2,1),--ambient-b 10s cubic-bezier(.2,.7,.2,1),--ambient-c 9s cubic-bezier(.2,.7,.2,1);will-change:background;}
+/* Visible animated color layer: deliberately sits above the body paint and behind the app. */
+body:after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.82;background:radial-gradient(ellipse at 12% 18%,#0ea5a566 0%,transparent 42%),radial-gradient(ellipse at 86% 22%,#8b5cf666 0%,transparent 43%),radial-gradient(ellipse at 65% 88%,#0284c766 0%,transparent 46%),linear-gradient(135deg,#07111f,#12162e,#092a30);background-size:170% 170%;background-position:0% 0%;mix-blend-mode:screen;animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate;will-change:background-position,filter,opacity}
+body>.jp-parallax-wall{z-index:1!important}
+body>:not(.jp-parallax-wall){position:relative;z-index:2}
+@keyframes siVisibleAmbientFlow{0%{background-position:0% 0%;filter:hue-rotate(0deg) saturate(1.05);opacity:.52}35%{background-position:80% 18%;filter:hue-rotate(45deg) saturate(1.35);opacity:.82}70%{background-position:35% 100%;filter:hue-rotate(105deg) saturate(1.25);opacity:.66}100%{background-position:100% 55%;filter:hue-rotate(175deg) saturate(1.5);opacity:.88}}
+@media(prefers-reduced-motion:reduce){body:before,body:after{transition:none!important;animation:none!important}}
+
+</style>
+<style id="si-smooth-random-400">
+/* SiRJ0 Smooth Random 400: no water effects; fluid ambient palette + independently behaving glyphs. */
+body{
+  background:linear-gradient(125deg,#07111f 0%,#101b31 22%,#102a30 43%,#211936 64%,#0b2030 82%,#07111f 100%)!important;
+  background-size:360% 360%!important;
+  background-attachment:fixed!important;
+  animation:siAmbientColorFlow 42s cubic-bezier(.45,0,.55,1) infinite alternate!important;
+}
+@keyframes siAmbientColorFlow{
+  0%{background-position:0% 15%}
+  25%{background-position:55% 0%}
+  50%{background-position:100% 65%}
+  75%{background-position:35% 100%}
+  100%{background-position:0% 15%}
+}
+.jp-parallax-wall{background:none!important;isolation:isolate}
+.jp-parallax-wall:before,.jp-parallax-wall:after,.jp-parallax-wall.wallpaper-reentry:after,.jp-float:after{content:none!important;display:none!important;animation:none!important;background:none!important;box-shadow:none!important;border:0!important}
+.jp-float{
+  transition:color 1.5s cubic-bezier(.2,.7,.2,1),opacity 1.7s cubic-bezier(.2,.7,.2,1),text-shadow 1.5s ease,filter 1.5s ease!important;
+  text-shadow:0 0 12px color-mix(in srgb,currentColor 32%,transparent),0 0 26px color-mix(in srgb,currentColor 17%,transparent)!important;
+  transform-origin:center center;backface-visibility:hidden;transform-style:preserve-3d;will-change:transform,opacity,filter,color;
+  animation-composition:replace;contain:layout style paint;filter:drop-shadow(0 0 12px currentColor);
+}
+.jp-float:nth-child(7n){font-weight:600}
+.jp-float:nth-child(11n){letter-spacing:.08em}
+.jp-float:nth-child(13n){text-shadow:0 0 16px currentColor,0 0 30px color-mix(in srgb,currentColor 25%,transparent)!important}
+@media(prefers-reduced-motion:reduce){body{animation:none!important;background-position:center!important}.jp-float{transition:none!important}}
+/* The user explicitly requested an animated background, so keep only this ambient layer moving. */
+body:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}
+body.reduce-motion:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}
+@media(prefers-reduced-motion:reduce){body:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}}
+</style>
+
+<style id="sirjo-blue-teal-violet-fog-fix">
+:root{--ambient-a:#174f8a;--ambient-b:#087b83;--ambient-c:#452b80}
+body{
+ background:linear-gradient(125deg,#06152c 0%,#0a2747 22%,#073b46 44%,#211443 67%,#0a2742 84%,#06152c 100%)!important;
+ background-size:420% 420%!important;background-attachment:fixed!important;
+ animation:siBlueTealVioletBase 36s cubic-bezier(.45,0,.55,1) infinite alternate!important;
+}
+@keyframes siBlueTealVioletBase{
+ 0%{background-position:0% 15%}25%{background-position:58% 0%}50%{background-position:100% 62%}75%{background-position:35% 100%}100%{background-position:0% 15%}
+}
+/* Disable the old hue-rotating overlay: it introduced colors outside the requested palette. */
+body:after{content:none!important;display:none!important;animation:none!important;background:none!important;filter:none!important}
+.color-fog-layer{position:fixed;inset:-24%;z-index:0;pointer-events:none;overflow:hidden;isolation:isolate;opacity:.9;filter:blur(30px) saturate(135%);will-change:transform,opacity,filter;background:radial-gradient(ellipse at 12% 35%,#167ec799 0%,transparent 34%),radial-gradient(ellipse at 76% 25%,#5b38b788 0%,transparent 37%),radial-gradient(ellipse at 62% 78%,#00a9a088 0%,transparent 39%),radial-gradient(ellipse at 28% 82%,#246bd777 0%,transparent 36%);background-size:150% 150%;animation:fogBreath 17s ease-in-out infinite alternate}
+.color-fog-layer:before,.color-fog-layer:after{content:"";position:absolute;inset:-15%;border-radius:45%;mix-blend-mode:screen;will-change:transform,opacity,filter;background:radial-gradient(ellipse at 18% 45%,#168bca70 0%,transparent 31%),radial-gradient(ellipse at 64% 30%,#6743c970 0%,transparent 33%),radial-gradient(ellipse at 70% 76%,#00b7a766 0%,transparent 34%);filter:blur(44px);opacity:0;animation:fogDriftA 19s cubic-bezier(.42,0,.58,1) infinite}
+.color-fog-layer:after{inset:-22%;background:radial-gradient(ellipse at 34% 24%,#256eea65 0%,transparent 32%),radial-gradient(ellipse at 80% 54%,#4f2d9b78 0%,transparent 36%),radial-gradient(ellipse at 30% 82%,#00a79a70 0%,transparent 34%);animation:fogDriftB 23s cubic-bezier(.42,0,.58,1) infinite;animation-delay:-8s}
+@keyframes fogBreath{0%{background-position:0% 45%;transform:translate3d(-2%,2%,0) scale(.94);opacity:.44;filter:blur(35px) saturate(120%)}35%{opacity:.9}60%{background-position:100% 25%;transform:translate3d(3%,-2%,0) scale(1.08);opacity:.72;filter:blur(46px) saturate(150%)}100%{background-position:20% 100%;transform:translate3d(-1%,-3%,0) scale(1.02);opacity:.48;filter:blur(38px) saturate(130%)}}
+@keyframes fogDriftA{0%,100%{opacity:0;transform:translate3d(-9%,5%,0) rotate(-8deg) scale(.82)}18%{opacity:.32}42%{opacity:.72;transform:translate3d(4%,-4%,0) rotate(4deg) scale(1.12)}63%{opacity:.46;transform:translate3d(10%,3%,0) rotate(9deg) scale(1.02)}82%{opacity:.12}94%{opacity:0;transform:translate3d(-3%,-5%,0) rotate(-3deg) scale(.9)}}
+@keyframes fogDriftB{0%,100%{opacity:0;transform:translate3d(8%,-4%,0) rotate(10deg) scale(.8)}20%{opacity:.25}45%{opacity:.62;transform:translate3d(-5%,6%,0) rotate(-5deg) scale(1.15)}68%{opacity:.4;transform:translate3d(-10%,-2%,0) rotate(-11deg) scale(1.04)}85%{opacity:.1}96%{opacity:0;transform:translate3d(3%,5%,0) rotate(4deg) scale(.88)}}
+/* Only blue, teal and violet glow tones for floating Japanese words. */
+.jp-float{filter:drop-shadow(0 0 12px currentColor)!important}
+@media(max-width:600px){.color-fog-layer{filter:blur(24px) saturate(130%);opacity:.78}.color-fog-layer:before,.color-fog-layer:after{filter:blur(34px)}}
+@media(prefers-reduced-motion:reduce){.color-fog-layer,.color-fog-layer:before,.color-fog-layer:after,body{animation-duration:36s!important}}
+</style>
+<style id="sirjo-actual-background-and-kana-modal-fix">
+/* Dedicated visible background plane: animate the plane, not the body's painted background. */
+#si-animated-backdrop{position:fixed!important;inset:0!important;z-index:0!important;pointer-events:none!important;display:block!important;opacity:1!important;background:linear-gradient(125deg,#06152c 0%,#0b3765 18%,#07505a 36%,#24164c 55%,#153f76 73%,#063b43 88%,#06152c 100%);background-size:360% 360%;background-position:0% 45%;animation:siBackdropTravel 27s cubic-bezier(.45,0,.55,1) infinite alternate!important;will-change:background-position,filter}
+@keyframes siBackdropTravel{0%{background-position:0% 45%;filter:brightness(.86) saturate(1.1)}25%{background-position:58% 0%;filter:brightness(1.04) saturate(1.28)}50%{background-position:100% 58%;filter:brightness(.95) saturate(1.16)}75%{background-position:32% 100%;filter:brightness(1.08) saturate(1.32)}100%{background-position:0% 45%;filter:brightness(.9) saturate(1.12)}}
+body>.color-fog-layer{position:fixed!important;inset:-24%!important;z-index:1!important;display:block!important;pointer-events:none!important}
+body>.jp-parallax-wall{z-index:1!important;pointer-events:none!important}
+body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.color-fog-layer):not(.jp-parallax-wall){z-index:2}
+/* Kana handwriting studio is now a hold-to-open modal, never embedded in the kana page. */
+#kana-screen .write-practice{display:none!important}
+#kana-write-modal{position:fixed;inset:0;z-index:10000;display:none;grid-template-rows:auto auto;align-content:center;justify-items:center;padding:clamp(8px,2vw,24px);background:#020817c9;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:auto}
+#kana-write-modal.open{display:grid}
+.kana-write-modal-head{width:min(920px,100%);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 auto 8px;padding:10px 14px;border:1px solid #5a7ca955;border-radius:14px;background:#0b1426;color:#b9d7ff;font-size:11px;font-weight:850;letter-spacing:1.3px}
+#kana-write-modal .write-practice{display:block!important;width:min(920px,100%);max-height:94vh;overflow:auto;margin:auto;position:relative;z-index:1;box-shadow:0 25px 100px #0009}
+#kana-write-modal .write-stage{min-height:min(42vh,360px)}
+.kana-cell.hold-arming{border-color:#70cfff!important;box-shadow:0 0 0 2px #70cfff22,0 0 22px #7a62ff33;transform:scale(.98)}
+.kana-cell.hold-arming:after{content:'OPENING PRACTICE…';display:block;margin-top:7px;font-size:8px;letter-spacing:.6px;color:#9ecfff}
+@media(prefers-reduced-motion:reduce){#si-animated-backdrop{animation:siBackdropTravel 27s linear infinite alternate!important}}
+</style>
+
+
+<style id="sirjo-calm-dark-ambient-theme">
+/* Calm, eye-friendly ambient colors: deep teal, midnight blue, muted violet. */
+#si-animated-backdrop{
+  background:linear-gradient(125deg,#06131d 0%,#0a2633 18%,#0b3040 34%,#17172f 52%,#172942 70%,#092b30 86%,#06131d 100%)!important;
+  background-size:320% 320%!important;
+  animation:siCalmBackdrop 38s ease-in-out infinite alternate!important;
+  opacity:.94!important;
+}
+@keyframes siCalmBackdrop{
+  0%{background-position:0% 45%;filter:brightness(.84) saturate(.78)}
+  35%{background-position:55% 5%;filter:brightness(.94) saturate(.88)}
+  68%{background-position:100% 72%;filter:brightness(.89) saturate(.82)}
+  100%{background-position:24% 100%;filter:brightness(.92) saturate(.86)}
+}
+.color-fog-layer{
+  opacity:.48!important;
+  filter:blur(42px) saturate(88%)!important;
+  background:
+    radial-gradient(ellipse at 12% 35%,#16758a66 0%,transparent 35%),
+    radial-gradient(ellipse at 76% 25%,#51418a55 0%,transparent 38%),
+    radial-gradient(ellipse at 62% 78%,#078b8060 0%,transparent 40%),
+    radial-gradient(ellipse at 28% 82%,#245da855 0%,transparent 37%)!important;
+  animation:fogBreath 34s ease-in-out infinite alternate!important;
+}
+.color-fog-layer:before,.color-fog-layer:after{
+  filter:blur(54px) saturate(85%)!important;
+  mix-blend-mode:normal!important;
+  opacity:.3;
+  animation-duration:38s!important;
+}
+.color-fog-layer:before{
+  background:radial-gradient(ellipse at 18% 45%,#167c9b45 0%,transparent 32%),radial-gradient(ellipse at 64% 30%,#65509b40 0%,transparent 34%),radial-gradient(ellipse at 70% 76%,#078c8045 0%,transparent 35%)!important;
+}
+.color-fog-layer:after{
+  background:radial-gradient(ellipse at 34% 24%,#285fa545 0%,transparent 33%),radial-gradient(ellipse at 80% 54%,#55408c48 0%,transparent 37%),radial-gradient(ellipse at 30% 82%,#07867c45 0%,transparent 35%)!important;
+  animation-duration:44s!important;
+}
+@media(prefers-reduced-motion:reduce){#si-animated-backdrop,.color-fog-layer,.color-fog-layer:before,.color-fog-layer:after{animation-duration:60s!important}}
+</style>
+
+
+<style id="sirjo-visible-calm-animated-background">
+/* Visible ambient backdrop: slow, low-contrast deep teal / midnight blue / muted violet. */
+html{background:#06131d!important;min-height:100%;}
+body{
+  position:relative!important;isolation:isolate!important;
+  background-color:#06131d!important;
+  background-image:linear-gradient(125deg,#06131d 0%,#0a2633 22%,#0b3040 38%,#17172f 56%,#172942 73%,#092b30 89%,#06131d 100%)!important;
+  background-size:360% 360%!important;background-position:0% 45%!important;background-attachment:fixed!important;
+  animation:siVisibleBodyDrift 42s ease-in-out infinite alternate!important;
+}
+@keyframes siVisibleBodyDrift{
+  0%{background-position:0% 45%}
+  30%{background-position:42% 0%}
+  62%{background-position:100% 65%}
+  100%{background-position:22% 100%}
+}
+#si-animated-backdrop{z-index:-1!important;opacity:.68!important;background:linear-gradient(125deg,#06131d 0%,#0a2633 20%,#0b3040 38%,#17172f 56%,#172942 74%,#092b30 90%,#06131d 100%)!important;background-size:360% 360%!important;animation:siCalmBackdrop 42s ease-in-out infinite alternate!important;pointer-events:none!important}
+@keyframes siCalmBackdrop{0%{background-position:0% 45%;filter:brightness(.8)}35%{background-position:55% 5%;filter:brightness(.94)}68%{background-position:100% 72%;filter:brightness(.86)}100%{background-position:24% 100%;filter:brightness(.92)}}
+body>.color-fog-layer{z-index:-1!important;opacity:.32!important;filter:blur(48px) saturate(78%)!important;mix-blend-mode:normal!important;pointer-events:none!important}
+body>.jp-parallax-wall{z-index:0!important;pointer-events:none!important}
+body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.color-fog-layer):not(.jp-parallax-wall){position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce){body,#si-animated-backdrop,.color-fog-layer,.color-fog-layer:before,.color-fog-layer:after{animation-duration:80s!important}}
+</style>
+
+
+<style id="sirjo-grammar-visual-learning">
+.grammar-breakdown{margin-top:14px;padding:14px;border:1px solid #304963;border-radius:14px;background:linear-gradient(145deg,#0b1b2b,#0c1728);overflow:hidden}
+.grammar-breakdown-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.grammar-breakdown-title{font-size:13px;font-weight:900;color:#e4edf9}.grammar-breakdown-subtitle{font-size:11px;color:#91a6c0;line-height:1.6;margin-top:3px}
+.grammar-breakdown-play{border:1px solid #52708b;border-radius:10px;background:#14263a;color:#dbeaff;min-height:36px;padding:0 11px;font-size:11px;font-weight:800;cursor:pointer;white-space:nowrap}
+.grammar-token-row{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:10px 0 12px}
+.grammar-token{min-width:58px;max-width:100%;padding:8px 10px;border-radius:11px;border:1px solid #49617b;background:#132338;text-align:center;opacity:1;transform:translateY(0);overflow-wrap:anywhere}
+.grammar-token .token-jp{display:block;font-family:'Noto Sans JP',sans-serif;font-size:17px;font-weight:750;line-height:1.55;color:#f2f7ff}
+.grammar-token .token-kind{display:block;margin-top:3px;font-size:9px;font-weight:850;letter-spacing:.2px;color:#a8bbd4}
+.grammar-token.kind-particle{background:#0b393b;border-color:#287e79}.grammar-token.kind-particle .token-kind{color:#75e5d2}
+.grammar-token.kind-ending{background:#252047;border-color:#6658a5}.grammar-token.kind-ending .token-kind{color:#c7baff}
+.grammar-token.kind-question{background:#3a2c18;border-color:#8d6b35}.grammar-token.kind-question .token-kind{color:#f2d18c}
+.grammar-token.kind-verb{background:#102e4b;border-color:#3974a5}.grammar-token.kind-verb .token-kind{color:#8fcfff}
+.grammar-token.kind-word,.grammar-token.kind-noun{background:#172536;border-color:#3c526c}.grammar-token.kind-pronoun{background:#213044;border-color:#55708e}.grammar-token.kind-adjective{background:#332443;border-color:#78549a}.grammar-token.kind-adverb{background:#302c1e;border-color:#76683c}.grammar-token.kind-noun .token-kind{color:#c0d5ef}.grammar-token.kind-pronoun .token-kind{color:#c6d9f4}.grammar-token.kind-adjective .token-kind{color:#e0b9ff}.grammar-token.kind-adverb .token-kind{color:#e8d48f}
+.grammar-token-arrow{align-self:center;color:#7893b1;font-size:14px;padding-top:3px}
+.grammar-breakdown-translation{border-top:1px solid #ffffff12;padding-top:10px;font-size:12px;line-height:1.75;color:#c8d7e8}
+.grammar-breakdown-translation b{color:#8de9d6}
+.grammar-breakdown-legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.grammar-legend-chip{font-size:9px;padding:5px 7px;border-radius:8px;border:1px solid #354b65;color:#c1d0e4;background:#122035}
+.grammar-breakdown.is-animating .grammar-token{animation:grammarTokenIn .52s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--token-i,0)*160ms)}
+@keyframes grammarTokenIn{0%{opacity:.1;transform:translateY(13px) scale(.94);filter:blur(2px)}65%{opacity:1;transform:translateY(-2px) scale(1.02);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:560px){.grammar-breakdown{padding:11px}.grammar-token-row{gap:6px}.grammar-token{min-width:48px;padding:7px}.grammar-token .token-jp{font-size:15px}.grammar-breakdown-play{width:100%}}
+@media(prefers-reduced-motion:reduce){.grammar-breakdown.is-animating .grammar-token{animation:none!important}}
+</style>
+
+<style id="sirjo-background-animation-fix">
+/* Final fix: animate the BODY background itself so it cannot be hidden behind the page. */
+html{background:#06131d!important;min-height:100%;}
+body{
+  isolation:isolate!important; position:relative!important;
+  background-color:#06131d!important;
+  background-image:linear-gradient(125deg,#06131d 0%,#0b3345 18%,#07545b 34%,#25204c 52%,#174875 70%,#07504b 86%,#06131d 100%)!important;
+  background-size:420% 420%!important;
+  background-position:0% 50%!important;
+  background-attachment:fixed!important;
+  animation:siBackgroundColorTravel 22s ease-in-out infinite alternate!important;
+}
+@keyframes siBackgroundColorTravel{
+  0%{background-position:0% 50%;filter:brightness(.88) saturate(92%)}
+  28%{background-position:45% 0%;filter:brightness(1.02) saturate(105%)}
+  62%{background-position:100% 58%;filter:brightness(.94) saturate(100%)}
+  100%{background-position:25% 100%;filter:brightness(1.01) saturate(108%)}
+}
+/* Keep the extra overlays subtle; the animated body gradient remains the visible base. */
+body:after{opacity:.22!important;mix-blend-mode:screen!important;}
+#si-animated-backdrop{z-index:-1!important;opacity:0!important;}
+body>.color-fog-layer{z-index:-1!important;opacity:.18!important;}
+body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.color-fog-layer):not(.jp-parallax-wall){position:relative;z-index:2}
+@media(max-width:680px){body{background-attachment:scroll!important}}
+@media(prefers-reduced-motion:reduce){body{animation:siBackgroundColorTravel 36s ease-in-out infinite alternate!important}}
 </style>
 </head>
 <body>
+<div id="si-animated-backdrop" aria-hidden="true"></div>
+<div class="color-fog-layer" id="color-fog-layer" aria-hidden="true"></div>
 <div class="jp-parallax-wall" id="jp-parallax-wall" aria-hidden="true">
   <span class="jp-float" style="left:5%;top:12%;--jp-size:clamp(54px,9vw,112px);--jp-opacity:.13;--jp-color:#55e0c0;--duration:8.5s;--tilt:-8deg">あ</span>
   <span class="jp-float" style="left:77%;top:8%;--jp-size:clamp(62px,10vw,128px);--jp-opacity:.12;--jp-color:#8d83ff;--duration:10s;--tilt:9deg">カ</span>
@@ -582,7 +907,7 @@ input,textarea,.select,select{border-radius:14px!important;border-color:#91add52
 
   <section id="kana-screen" class="screen">
     <div class="panel section">
-      <div class="section-head"><div><div class="section-title">Kana practice</div><div class="section-desc">Tap any character to hear its pronunciation</div></div><button class="small-btn" id="kana-home">← Home</button></div>
+      <div class="section-head"><div><div class="section-title">Kana practice</div><div class="section-desc">Tap to hear pronunciation · Hold any kana for 300 ms to open handwriting practice</div></div><button class="small-btn" id="kana-home">← Home</button></div>
       <div class="kana-tabs"><button class="active" data-kana="hiragana">Hiragana · ひらがな</button><button data-kana="katakana">Katakana · カタカナ</button></div>
       <p class="kana-caption">প্রথমে অক্ষর ও Romaji মিলিয়ে দেখো। Quiz mode-এ অক্ষরের উচ্চারণ চিনে উত্তর দাও।</p>
       <section class="write-practice" aria-label="Kana handwriting practice">
@@ -619,6 +944,8 @@ input,textarea,.select,select{border-radius:14px!important;border-color:#91add52
   
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
 
 <script>
 const grammarData = [
@@ -671,7 +998,7 @@ function generateGrammarQuestions(selectedLesson='all'){
   const pick=a=>a[Math.floor(Math.random()*a.length)];
   const shuffleLocal=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
   const lessons=selectedLesson==='all'?[1,2,3,4,5,6,7,8,9,10]:[Number(selectedLesson)];
-  const q=(l,full,blank,answer,bn,explanation,options)=>({l,j:full,blank,correctAnswer:answer,b:bn,u:explanation,explanation,options,type:'grammar'});
+  const q=(l,full,blank,answer,bn,explanation,options)=>({l,j:full,question:blank,blank,correctAnswer:answer,b:bn,u:explanation,explanation,options,type:'grammar'});
   const bank=[];
   const person=pick([{jp:'わたし',bn:'আমি'},{jp:'ミラーさん',bn:'মি. মিলার'},{jp:'サントスさん',bn:'মি. সান্তোস'},{jp:'グプタさん',bn:'মি. গুপ্ত'}]);
   const other=pick([{jp:'ミラーさん',bn:'মি. মিলার'},{jp:'サントスさん',bn:'মি. সান্তোস'},{jp:'グプタさん',bn:'মি. গুপ্ত'},{jp:'たなかさん',bn:'মি. তানাকা'}].filter(p=>p.jp!==person.jp));
@@ -1445,7 +1772,33 @@ function updateLoginView(){const quick=$('quick-login');if(quick){quick.hidden=!
   $('login-error').textContent='';}
 function openLogin(edit=false){editingProfile=!!edit;showScreen('login-screen');updateLoginView();}
 function renderProfile(){if(!account)return;$('profile-summary').textContent=account.name;$('home-profile-name').textContent=account.name;$('home-profile-picture').src=account.picture||'';$('home-profile-picture').alt=`${account.name}'s profile picture`;$('home-profile-meta').textContent=account.createdAt?`Profile created · ${new Date(account.createdAt).toLocaleDateString()}`:'Profile saved on this device';const quick=$('quick-login');if(quick){quick.hidden=false;$('quick-login-avatar').src=account.picture||'';$('quick-login-avatar').alt=`${account.name}'s avatar`;$('quick-login-name').textContent=account.name;}}
-function enterApp(){writeStore(authKey,true);showScreen('home-screen');renderStats();renderProfile();renderProgressGain();}
+let welcomeTtsAttempted=false;
+function choosePreferredFemaleVoice(lang){
+  if(!('speechSynthesis'in window))return null;
+  const voices=speechSynthesis.getVoices()||[],prefix=String(lang||'').toLowerCase().split('-')[0];
+  const pool=voices.filter(v=>String(v.lang||'').toLowerCase().startsWith(prefix));
+  if(!pool.length)return null;
+  const femaleHints=/(female|woman|kyoko|haruka|nanami|ayumi|sayaka|mizuki|sakura|o-ren|eren|zira|aria|jenny|samantha|victoria|karen|susan|ava|allison|joanna|google.*(日本語|japanese)|microsoft.*(nanami|haruka|sayaka))/i;
+  const likelyFemale=pool.find(v=>femaleHints.test(`${v.name||''} ${v.voiceURI||''}`));
+  if(likelyFemale)return likelyFemale;
+  // Prefer an online/natural voice as a best-effort fallback; browser APIs do not expose voice gender.
+  return pool.find(v=>/natural|online|premium|enhanced/i.test(`${v.name||''} ${v.voiceURI||''}`))||pool[0];
+}
+if('speechSynthesis'in window)speechSynthesis.addEventListener?.('voiceschanged',()=>{});
+function speakEnglishLine(line){
+ if(!('speechSynthesis'in window)||!window.SpeechSynthesisUtterance)return;
+ try{
+  speechSynthesis.cancel();
+  const speak=()=>{try{const u=new SpeechSynthesisUtterance(line);u.lang='en-US';u.rate=.94;u.pitch=1.08;const voice=choosePreferredFemaleVoice('en-US');if(voice)u.voice=voice;speechSynthesis.speak(u)}catch(_){}};
+  // Some browsers populate their voice list asynchronously; wait briefly before choosing the best female-sounding English voice.
+  const voices=speechSynthesis.getVoices()||[];
+  if(voices.some(v=>String(v.lang||'').toLowerCase().startsWith('en'))){speak();return}
+  let done=false;const finish=()=>{if(done)return;done=true;speechSynthesis.removeEventListener?.('voiceschanged',finish);clearTimeout(wait);speak()};
+  speechSynthesis.addEventListener?.('voiceschanged',finish,{once:true});const wait=setTimeout(finish,650);
+ }catch(_){}
+}
+function speakWelcome(){if(welcomeTtsAttempted)return;const username=String(account?.name||$('profile-name')?.value||'Learner').trim()||'Learner';speakEnglishLine(`Let's learn Japanese N5, ${username}!`);welcomeTtsAttempted=!!(window.speechSynthesis&&(speechSynthesis.speaking||speechSynthesis.pending))}
+function enterApp(){writeStore(authKey,true);showScreen('home-screen');renderStats();renderProfile();renderProgressGain();speakWelcome();}
 $('profile-picture').addEventListener('change',()=>{
   const file=$('profile-picture').files?.[0];if(!file)return;
   if(!file.type.startsWith('image/')){$('login-error').textContent='একটি image file নির্বাচন করো।';$('profile-picture').value='';return;}
@@ -1466,7 +1819,7 @@ function applyPrefs(){
 }
 function savePrefs(){writeStore(storageKeys.prefs,prefs);applyPrefs()}
 function showToast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.remove('show'),2300)}
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');document.body.classList.toggle('login-mode',id==='login-screen');window.scrollTo({top:0,behavior:prefs.reducedMotion?'auto':'smooth'})}
+function showScreen(id){const alreadyActive=$(id);const same=!!(alreadyActive&&alreadyActive.classList.contains('active'));document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));if(alreadyActive)alreadyActive.classList.add('active');document.body.classList.toggle('login-mode',id==='login-screen');if(!same)window.scrollTo({top:0,behavior:prefs.reducedMotion?'auto':'smooth'})}
 function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function playSound(type){
   if(!prefs.sound)return;
@@ -1506,10 +1859,68 @@ function signalMistake({haptic=true}={}){
   if(app){app.classList.remove('error-shake');void app.offsetWidth;app.classList.add('error-shake');clearTimeout(errorShakeTimer);errorShakeTimer=setTimeout(()=>app.classList.remove('error-shake'),430);}
   if(haptic)vibrate('wrong');
 }
+let ttsHighlightTarget=null,ttsFallbackTimer=null,ttsActiveUtterance=null;
+function clearTtsWordHighlight(restore=true){
+  if(ttsFallbackTimer){clearInterval(ttsFallbackTimer);ttsFallbackTimer=null}
+  if(ttsHighlightTarget){
+    const el=ttsHighlightTarget;
+    // Restore only if the target still contains this TTS run's generated word spans.
+    // If loadQuestion() has already rendered a new prompt into the same element, never overwrite it.
+    const stillOwnsHighlight=el.querySelector('.tts-word')&&el.dataset.ttsOriginalHtml!=null;
+    if(restore&&el.isConnected&&stillOwnsHighlight){el.innerHTML=el.dataset.ttsOriginalHtml;delete el.dataset.ttsOriginalHtml}
+    else if(el.dataset.ttsOriginalHtml!=null)delete el.dataset.ttsOriginalHtml;
+    el.classList.remove('tts-word-active');ttsHighlightTarget=null;
+  }
+  ttsActiveUtterance=null;
+}
 function speakJapaneseWord(text,onDone=null){
-  let finished=false;const finish=()=>{if(finished)return;finished=true;if(typeof onDone==='function')onDone()};
+  text=String(text??'');
+  let finished=false;const finish=()=>{if(finished)return;finished=true;clearTtsWordHighlight(true);if(typeof onDone==='function')onDone()};
   if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance){showToast('Japanese TTS is not available in this browser.');if(onDone)setTimeout(finish,250);return}
-  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=.86;u.onend=finish;u.onerror=finish;const voices=speechSynthesis.getVoices();const ja=voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith('ja'));if(ja)u.voice=ja;speechSynthesis.speak(u)}catch(_){showToast('Could not play Japanese audio.');finish()}
+  try{
+    speechSynthesis.cancel();clearTtsWordHighlight(true);
+    const u=new SpeechSynthesisUtterance(text);ttsActiveUtterance=u;u.lang='ja-JP';u.rate=.86;
+    const norm=v=>String(v||'').normalize('NFKC').replace(/[\s　]+/g,'').replace(/[。！？!?、，,.・「」『』]/g,'');
+    const wanted=norm(text);
+    // Find a leaf containing exactly the utterance. Never replace a whole card/guide row,
+    // because doing so destroys its layout, labels, or speaker button.
+    const leaves=[];
+    const addLeaf=el=>{if(el&&el.nodeType===1&&!el.children.length&&norm(el.textContent)===wanted&&String(el.textContent||'').trim())leaves.push(el)};
+    for(const btn of document.querySelectorAll('[data-speak-guide]')){
+      if(norm(btn.dataset.speakGuide)!==wanted)continue;
+      const example=btn.closest('.guide-example');
+      const generated=btn.closest('.generated-japanese-line');
+      addLeaf(example?.querySelector('.guide-jp'));
+      addLeaf(generated?.querySelector('.generated-japanese'));
+    }
+    addLeaf(document.getElementById('question-text'));
+    document.querySelectorAll('.generated-japanese,.guide-jp,.option > span:last-child').forEach(addLeaf);
+    // Prefer visible answer options in Bangla -> Japanese mode, then the first exact text leaf.
+    let target=leaves.find(el=>el.closest('.option')&&el.getClientRects().length)||leaves.find(el=>el.id==='question-text')||leaves.find(el=>el.classList.contains('generated-japanese')||el.classList.contains('guide-jp'))||leaves[0]||null;
+    let segments=[];
+    if(target){
+      const originalHtml=target.innerHTML,displayText=target.textContent;
+      let parts=[];
+      try{if(typeof Intl!=='undefined'&&Intl.Segmenter){const seg=new Intl.Segmenter('ja',{granularity:'word'});parts=[...seg.segment(displayText)].map(x=>({text:x.segment,start:x.index,end:x.index+x.segment.length,isWord:!!x.isWordLike}));}}catch(_){}
+      if(!parts.length){let pos=0;for(const ch of displayText){parts.push({text:ch,start:pos,end:pos+ch.length,isWord:/[ぁ-んァ-ヶ一-龯A-Za-z0-9]/.test(ch)});pos+=ch.length}}
+      target.dataset.ttsOriginalHtml=originalHtml;target.classList.add('tts-word-active');target.replaceChildren();
+      segments=parts.filter(x=>x.text.length).map((part,i)=>{const span=document.createElement('span');span.className='tts-word';span.textContent=part.text;span.dataset.ttsIndex=String(i);target.appendChild(span);return {...part,el:span,index:i,wordLike:part.isWord||/[ぁ-んァ-ヶ一-龯A-Za-z0-9]/.test(part.text)}});
+      ttsHighlightTarget=target;
+    }
+    const wordSegments=segments.filter(x=>x.wordLike);
+    const activateAt=charIndex=>{
+      if(!wordSegments.length)return null;
+      let chosen=wordSegments.find(x=>charIndex>=x.start&&charIndex<x.end);
+      if(!chosen)chosen=wordSegments.find(x=>x.start>=charIndex);
+      if(!chosen)chosen=wordSegments[wordSegments.length-1];
+      segments.forEach(x=>x.el.classList.toggle('speaking',x===chosen));return chosen;
+    };
+    let gotBoundary=false,fallbackIndex=0,lastBoundaryAt=0;
+    if(wordSegments.length){const avg=Math.max(180,Math.min(420,(text.length*125)/Math.max(1,wordSegments.length)));ttsFallbackTimer=setInterval(()=>{if(gotBoundary&&Date.now()-lastBoundaryAt<650)return;if(fallbackIndex<wordSegments.length){activateAt(wordSegments[fallbackIndex].start);fallbackIndex++}else{clearInterval(ttsFallbackTimer);ttsFallbackTimer=null}},avg)}
+    u.onboundary=e=>{if(Number.isFinite(e.charIndex)){gotBoundary=true;lastBoundaryAt=Date.now();const active=activateAt(e.charIndex);if(active){const idx=wordSegments.indexOf(active);fallbackIndex=Math.max(fallbackIndex,idx+1)}}};
+    u.onend=finish;u.onerror=finish;
+    const ja=choosePreferredFemaleVoice('ja-JP');if(ja)u.voice=ja;speechSynthesis.speak(u)
+  }catch(_){showToast('Could not play Japanese audio.');finish()}
 }
 function grammarFullAnswer(item){
   if(!item)return '';
@@ -1612,7 +2023,7 @@ function startQuiz({retest=false,restore=null,kana=false}={}){
 }
 function currentItem(){return state.list[state.index]}
 function loadQuestion(){
-  clearInterval(state.timer);state.grammarAnswerRevealed=false;state.isAnswered=false;state.timeLeft=state.mode==='grammar'?40:(Number(prefs.timer)||0);
+  clearInterval(state.timer);if('speechSynthesis'in window){try{speechSynthesis.cancel()}catch(_){}}clearTtsWordHighlight(true);state.grammarAnswerRevealed=false;state.isAnswered=false;state.advanceTriggered=false;state.timeLeft=state.mode==='grammar'?40:(Number(prefs.timer)||0);
   const item=currentItem();if(!item){showResults();return}
   const isKana=state.mode==='kana'||state.kanaRun,isGrammar=state.mode==='grammar';
   state.questionDirection=state.mode==='hardest'?(Math.random()<.5?'jp-bn':'bn-jp'):state.mode;const direction=state.questionDirection;
@@ -1628,8 +2039,11 @@ function loadQuestion(){
   if(isKana)distractors=shuffle(kanaData[state.kanaType].map(k=>k.romaji).filter(x=>x!==correct)).slice(0,3);
   else if(isGrammar)distractors=shuffle((item.displayOptions||item.options||[]).filter(x=>x!==correct)).slice(0,3);
   else{const pool=state.mode==='hardest'?vocabData.filter(v=>v.l===item.l&&v.j!==item.j):vocabData.filter(v=>v.j!==item.j);distractors=shuffle([...new Set(pool.map(v=>v[key]).filter(x=>x!==correct))]).slice(0,3)}
-  let opts=isGrammar&&item.displayOptions?[...item.displayOptions]:shuffle([correct,...distractors]);while(opts.length<4)opts.push('—');opts=shuffle(opts).slice(0,4);$('options-container').innerHTML='';
-  opts.forEach((opt,i)=>{const b=document.createElement('button');b.className='option';b.innerHTML=`<span class="option-letter">${String.fromCharCode(65+i)}</span><span></span>`;b.lastElementChild.textContent=opt;b.addEventListener('click',()=>checkAnswer(b,opt,correct));$('options-container').appendChild(b)});
+  const optionPool=isGrammar?(item.displayOptions||item.options||[]):distractors;
+  let opts=[...new Set([String(correct??''),...optionPool.map(x=>String(x??'')).filter(x=>x.trim())])].filter(x=>x.trim());
+  if(opts.length<4){const fallback=isGrammar?generateGrammarQuestions(String(item.l)).flatMap(q=>q.options||[]):vocabData.filter(v=>v.l===item.l).flatMap(v=>[v.j,v.b]);for(const candidate of shuffle([...new Set(fallback.map(x=>String(x??'')).filter(Boolean))])){if(!opts.includes(candidate))opts.push(candidate);if(opts.length>=4)break}}
+  opts=shuffle(opts).slice(0,4);if(!opts.includes(String(correct)))opts[0]=String(correct);$('options-container').innerHTML='';
+  opts.forEach((opt,i)=>{const b=document.createElement('button');b.className='option';b.type='button';b.innerHTML=`<span class="option-letter">${String.fromCharCode(65+i)}</span><span></span>`;b.lastElementChild.textContent=opt;let holdTimer=null,holdStart=0,holdFrame=0,finishedHold=false;const HOLD_MS=190;const clearHold=()=>{if(holdTimer)clearTimeout(holdTimer);if(holdFrame)cancelAnimationFrame(holdFrame);holdTimer=null;holdFrame=0;b.classList.remove('hold-arming');b.style.setProperty('--hold-progress','0');};const animateHold=()=>{if(!holdStart||state.isAnswered)return;const elapsed=Date.now()-holdStart;b.style.setProperty('--hold-progress',String(Math.min(1,elapsed/HOLD_MS)));if(elapsed<HOLD_MS)holdFrame=requestAnimationFrame(animateHold)};const beginHold=e=>{if(state.isAnswered||b.disabled||e.button!==undefined&&e.button!==0)return;finishedHold=false;holdStart=Date.now();b.classList.add('hold-arming');b.style.setProperty('--hold-progress','0');holdTimer=setTimeout(()=>{finishedHold=true;clearHold();b.style.setProperty('--hold-progress','1');b.classList.add('hold-confirmed');checkAnswer(b,opt,correct);setTimeout(()=>b.classList.remove('hold-confirmed'),500)},HOLD_MS);holdFrame=requestAnimationFrame(animateHold)};const endHold=()=>{if(holdTimer&&!finishedHold)clearHold();holdStart=0;};b.addEventListener('pointerdown',beginHold);b.addEventListener('pointerup',endHold);b.addEventListener('pointerleave',endHold);b.addEventListener('pointercancel',endHold);b.addEventListener('contextmenu',e=>e.preventDefault());b.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.repeat){e.preventDefault();beginHold({button:0})}});b.addEventListener('keyup',e=>{if(e.key==='Enter'||e.key===' ')endHold()});$('options-container').appendChild(b)});
   $('answered-live').textContent=`${state.answeredThisRun} answered`;$('timer-badge').classList.toggle('hidden',!(isGrammar||prefs.timer));$('timer-badge').classList.remove('danger');$('timer-text').textContent=(isGrammar||prefs.timer)?`${state.timeLeft}s`:'Off';
   if(isGrammar||prefs.timer)state.timer=setInterval(()=>{state.timeLeft--;$('timer-text').textContent=`${state.timeLeft}s`;if(state.timeLeft<=3&&state.timeLeft>0){$('timer-badge').classList.add('danger');playSound('tick')}if(state.timeLeft<=0){clearInterval(state.timer);handleTimeout()}},1000);
   if(prefs.autoSpeech&&!isKana&&!isGrammar&&direction!=='bn-jp')setTimeout(()=>{if(!state.isAnswered&&document.getElementById('quiz-screen').classList.contains('active'))speakJapaneseWord(item.j)},350);
@@ -1681,8 +2095,7 @@ function markAnswered(correct,timeout=false){
       if(explanation){const exp=document.createElement('div');exp.className='grammar-answer-translation';exp.textContent=explanation;$('sub-text').appendChild(exp)}
       $('question-text').closest('.question-card').classList.add('answer-revealed','wrong-answer-revealed');
       $('speech-btn').textContent='▶ সম্পূর্ণ উত্তর শুনুন';
-      // Japanese TTS reads the entire corrected sentence only; it does not read the question.
-      speakJapaneseWord(String(fullAnswer||right));
+      // The shared answer-TTS handler below reads the corrected sentence once.
       $('options-container').style.display='none';
       $('feedback').textContent=timeout?'সময় শেষ! সম্পূর্ণ উত্তর ও particle দেখো।':'ভুল হয়েছে—সম্পূর্ণ উত্তর ও particle দেখো।';
     }else $('feedback').textContent=timeout?'সময় শেষ! সঠিক উত্তরটি দেখো।':'ভুল হয়েছে—সঠিক উত্তরটি দেখো।';
@@ -1691,14 +2104,20 @@ function markAnswered(correct,timeout=false){
   [...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;const label=btn.lastElementChild.textContent;if(label=== (state.mode==='grammar'?(item.correctAnswer||item.b):(state.questionDirection==='bn-jp'?item.j:item.b)))btn.classList.add('correct')});
   $('score-live').textContent=`Score ${state.score}`;$('answered-live').textContent=`${state.answeredThisRun} answered`;
   if(!state.isRetest&&!state.kanaRun&&state.mode!=='grammar')saveStats();else if(state.mode==='grammar')saveStats();
-  if(state.mode!=='grammar')speakJapaneseWord(item.j);
   saveSession();
-  if(state.mode==='grammar'&&correct){
-    // Wait for the complete Japanese answer audio before moving to the next question.
-    let advanced=false;const advance=()=>{if(advanced)return;advanced=true;clearTimeout(grammarAdvanceFallback);if(state.isAnswered&&state.index<state.list.length)nextQuestion()};
-    const grammarAdvanceFallback=setTimeout(advance,15000);
-    speakJapaneseWord(grammarFullAnswer(item)||String(item.correctAnswer||item.b||''),advance);
-  }else setTimeout(nextQuestion,state.mode==='grammar'?5200:(correct?850:1450));
+  // Advance exactly once, after answer TTS ends. A bounded fallback handles unavailable/stuck TTS.
+  const answeredIndex=state.index;
+  let advanced=false;
+  const advance=()=>{
+    if(advanced||!state.isAnswered||state.index!==answeredIndex)return;
+    advanced=true;clearTimeout(advanceFallback);state.advanceTriggered=true;nextQuestion();
+  };
+  const advanceFallback=setTimeout(advance, 30000);
+  const answerSpeech=state.mode==='grammar'
+    ? (grammarFullAnswer(item)||String(item.correctAnswer||item.b||''))
+    : (state.questionDirection==='bn-jp'?String(item.j||''):String(item.j||''));
+  if(answerSpeech.trim())speakJapaneseWord(answerSpeech,advance);
+  else setTimeout(advance,500);
 }
 function checkAnswer(btn,selected,correct){if(state.isAnswered)return;const ok=selected===correct;btn.classList.add(ok?'correct':'wrong');markAnswered(ok,false)}
 function handleTimeout(){if(state.isAnswered)return;const item=currentItem();const correct=state.mode==='grammar'?(item.correctAnswer||item.b):(state.questionDirection==='bn-jp'?item.j:item.b);[...$('options-container').querySelectorAll('button')].forEach(btn=>{btn.disabled=true;if(btn.lastElementChild.textContent===correct)btn.classList.add('correct')});markAnswered(false,true)}
@@ -1947,7 +2366,12 @@ function endWrite(e){if(!writeDrawing)return;if(drawFrame){cancelAnimationFrame(
 writeCanvas.addEventListener('pointerup',endWrite);writeCanvas.addEventListener('pointercancel',endWrite);writeCanvas.addEventListener('lostpointercapture',endWrite);
 $('write-undo').addEventListener('click',()=>{if(userStrokeHistory.length){userStrokeHistory.pop();redrawUserStrokes();$('write-stage').classList.toggle('has-ink',writeInk);$('write-feedback').textContent='Last stroke undone.';$('write-ink-status').textContent=userStrokeHistory.length+' stroke(s)';}else if(snappedKanaStrokeIds.size){const last=[...snappedKanaStrokeIds].pop();snappedKanaStrokeIds.delete(last);const svg=$('write-stage').querySelector('.stroke-tutorial-svg');const path=svg&&Array.from(svg.querySelectorAll('.kana-silhouette')).find(x=>x.__kanaStrokeId===last||x.getAttribute('data-stroke-id')===last);if(path){path.style.opacity='.425';path.style.filter='none';}$('write-feedback').textContent='Last snapped stroke undone.';$('write-ink-status').textContent=snappedKanaStrokeIds.size+' matched';}else{$('write-feedback').textContent='Nothing to undo yet.';}vibrate('tap')});$('write-clear').addEventListener('click',()=>{clearWrite();$('write-progress-label').textContent='Canvas cleared';$('write-ink-status').textContent='0 strokes';vibrate('tap')});$('write-replay').addEventListener('click',()=>{replayKanaTutorial();vibrate('tap')});$('write-guide-toggle').addEventListener('click',()=>{const stage=$('write-stage'),hidden=stage.classList.toggle('guide-hidden');$('write-guide-toggle').textContent=hidden?'Show guide':'Hide guide';$('write-guide-toggle').setAttribute('aria-pressed',String(!hidden));stage.querySelectorAll('.kana-silhouette').forEach(p=>{p.style.opacity=hidden?'0':'.425'});const guide=$('write-guide');if(!stage.querySelector('.kana-silhouette')){guide.style.visibility=hidden?'hidden':'visible';guide.style.opacity=hidden?'0':'.425'}$('write-feedback').textContent=hidden?'Guide hidden — try writing the character from memory.':'Faint guide shown — trace the shape at your own pace.';vibrate('tap')});$('write-next').addEventListener('click',()=>{writeIndex++;renderWriteTarget();vibrate('navigate')});$('write-prev').addEventListener('click',()=>{writeIndex--;renderWriteTarget();vibrate('navigate')});
 if('ResizeObserver'in window){writeResizeObserver=new ResizeObserver(()=>resizeWriteCanvas());writeResizeObserver.observe($('write-stage'))}else window.addEventListener('resize',resizeWriteCanvas);
-function renderKana(){const list=kanaData[state.kanaType];writeIndex=0;renderWriteTarget();$('kana-grid').innerHTML='';list.forEach(k=>{const b=document.createElement('button');b.className='kana-cell';b.innerHTML=`<div class="kana-char"></div><div class="kana-romaji"></div>`;b.querySelector('.kana-char').textContent=k.char;b.querySelector('.kana-romaji').textContent=k.romaji;b.addEventListener('click',()=>{playSound('tap');speakJapaneseWord(k.char);vibrate('tap')});$('kana-grid').appendChild(b)})}
+let kanaHoldModalReady=false;
+function closeKanaWriteModal(){const modal=$('kana-write-modal');if(!modal)return;modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+function setupKanaWriteModal(){if(kanaHoldModalReady)return;kanaHoldModalReady=true;const section=document.querySelector('#kana-screen .write-practice');if(!section)return;const modal=document.createElement('div');modal.id='kana-write-modal';modal.setAttribute('aria-hidden','true');modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Kana handwriting practice');modal.addEventListener('pointerdown',e=>{if(e.target===modal)closeKanaWriteModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeKanaWriteModal()});const bar=document.createElement('div');bar.className='kana-write-modal-head';const label=document.createElement('span');label.textContent='KANA HANDWRITING STUDIO';const close=document.createElement('button');close.type='button';close.className='small-btn';close.textContent='✕ Close';close.addEventListener('click',closeKanaWriteModal);bar.append(label,close);document.body.appendChild(modal);modal.appendChild(bar);modal.appendChild(section);}
+function openKanaWriteModal(index){setupKanaWriteModal();const list=writeList();writeIndex=((index%list.length)+list.length)%list.length;renderWriteTarget();const modal=$('kana-write-modal');modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(()=>{resizeWriteCanvas();},40);}
+function renderKana(){const list=kanaData[state.kanaType];setupKanaWriteModal();$('kana-grid').innerHTML='';list.forEach((k,index)=>{const b=document.createElement('button');b.className='kana-cell';b.type='button';b.innerHTML=`<div class="kana-char"></div><div class="kana-romaji"></div>`;b.querySelector('.kana-char').textContent=k.char;b.querySelector('.kana-romaji').textContent=k.romaji;let holdTimer=0,held=false,suppressClick=false;const clearHold=()=>{if(holdTimer)clearTimeout(holdTimer);holdTimer=0;b.classList.remove('hold-arming')};b.addEventListener('pointerdown',e=>{if(e.button!==undefined&&e.button!==0)return;held=false;b.classList.add('hold-arming');holdTimer=setTimeout(()=>{holdTimer=0;held=true;suppressClick=true;b.classList.remove('hold-arming');openKanaWriteModal(index);setTimeout(()=>{suppressClick=false},650)},300)});['pointerup','pointercancel','pointerleave'].forEach(type=>b.addEventListener(type,clearHold));b.addEventListener('contextmenu',e=>e.preventDefault());b.addEventListener('click',()=>{if(held||suppressClick){held=false;return}playSound('tap');speakJapaneseWord(k.char);vibrate('tap')});$('kana-grid').appendChild(b)});}
+
 
 // Study-only grammar guide for Minna no Nihongo Lessons 1–10.
 const grammarGuideData=[{"lesson":1,"title":"পরিচয় ও ‘হওয়া’ বোঝানো","intro":"এই Lesson-এ নিজের পরিচয়, পেশা/জাতীয়তা বলা, প্রশ্ন করা এবং ‘ও/এর’ সম্পর্ক বোঝানো শেখা হবে।","rules":[["N1 は N2 です — পরিচয় বলা","N1 は N2 です","は (wa) বাক্যের মূল বিষয় দেখায়; です (desu) ভদ্র বাক্যের শেষে এসে ‘হয়/আছি’ অর্থ দেয়। জাপানিতে は লেখা হলেও particle হিসেবে wa পড়তে হয়।","わたしは シルジョです。","Watashi wa Sirjo desu.","আমি সিরজো।"],["N1 は N2 じゃありません — না বলা","N1 は N2 じゃありません","ভদ্রভাবে ‘নই/নয়’ বলতে noun বা পরিচয়ের পরে じゃありません ব্যবহার হয়। আরও আনুষ্ঠানিক রূপ ではありません।","わたしは せんせいじゃありません。","Watashi wa sensei ja arimasen.","আমি শিক্ষক নই।"],["N1 は N2 ですか — হ্যাঁ/না প্রশ্ন","N1 は N2 ですか","বাক্যের শেষে か যোগ করলে সাধারণত প্রশ্ন হয়। প্রশ্নে কণ্ঠস্বর বাড়ানো বাধ্যতামূলক নয়; か-ই প্রশ্ন বোঝায়।","ミラーさんは がくせいですか。","Miraa-san wa gakusei desu ka.","মিলার কি ছাত্র?"],["N1 も N2 です — ‘এছাড়াও/ও’","N1 も N2 です","একই তথ্য অন্য কারও ক্ষেত্রেও সত্য হলে は-এর বদলে も (mo) ব্যবহার হয়; অর্থ ‘ও/এছাড়াও’।","わたしも がくせいです。","Watashi mo gakusei desu.","আমিও ছাত্র/ছাত্রী।"],["N1 の N2 — সম্পর্ক/মালিকানা","N1 の N2","の (no) দুটি noun-কে যুক্ত করে। এটি মালিকানা, পরিচয়, প্রতিষ্ঠান বা কোনো কিছুর সঙ্গে সম্পর্ক বোঝাতে পারে।","これは わたしの ほんです。","Kore wa watashi no hon desu.","এটি আমার বই।"],["だれ／どなた — কে?","N は だれですか。／どなたですか。","মানুষের পরিচয় জানতে だれ (dare) বলা হয়। どなた (donata) একই অর্থের আরও ভদ্র রূপ। নামের সঙ্গে さん ব্যবহার করা ভদ্রতা।","あのひとは どなたですか。","Ano hito wa donata desu ka.","ওই ব্যক্তিটি কে?"],["なんさい／おいくつ — বয়স","N は なんさいですか。","বয়স জানতে なんさい (nansai) বলা হয়। おいくつ (oikutsu) আরও ভদ্র; উত্তরে সংখ্যা + さい ব্যবহার করা যায়।","たなかさんは おいくつですか。","Tanaka-san wa oikutsu desu ka.","তানাকা-সানের বয়স কত?"]]},{"lesson":2,"title":"বস্তু দেখানো ও বর্ণনা","intro":"কোনো জিনিস কী, কার, কোন জিনিসটি—এসব জানতে これ・それ・あれ এবং この・その・あの শেখা হবে।","rules":[["これ／それ／あれ — এই/সেই/ওই বস্তু","これ／それ／あれ は N です","これ (kore) বক্তার কাছে, それ (sore) শ্রোতার কাছে, あれ (are) দুজনের থেকেই দূরের বস্তুকে বোঝায়। এগুলো noun ছাড়াই একা দাঁড়াতে পারে।","これは じしょです。","Kore wa jisho desu.","এটি অভিধান।"],["この／その／あの + noun","この N／その N／あの N","এই শব্দগুলোর পরে অবশ্যই noun লাগে। このほん = এই বই; この একা ‘এই বস্তু’ হিসেবে ব্যবহার করা যায় না—সেক্ষেত্রে これ।","このほんは わたしのです。","Kono hon wa watashi no desu.","এই বইটি আমার।"],["そうです／そうじゃありません","はい、そうです。／いいえ、そうじゃありません。","কোনো বক্তব্য ঠিক হলে そうです (‘হ্যাঁ, তাই’) এবং ভুল হলে そうじゃありません (‘না, তা নয়’) বলা যায়।","これは ほんですか。はい、そうです。","Kore wa hon desu ka. Hai, sou desu.","এটি কি বই? হ্যাঁ, তাই।"],["N1 の N2 — কোন ধরনের/কার জিনিস","N1 の N2","の শুধু মালিকানা নয়; শ্রেণি, দেশ, প্রতিষ্ঠান বা বিষয়ও বোঝায়—যেমন にほんごの ほん (জাপানি ভাষার বই)।","これは にほんごの ほんです。","Kore wa nihongo no hon desu.","এটি জাপানি ভাষার বই।"],["なん／なに — কী?","これは なんですか。","কোনো বস্তু কী তা জানতে なん (nan) ব্যবহার হয়। পরের শব্দের ধ্বনি অনুযায়ী なに (nani)-ও হয়; N5-এ প্রচলিত প্রশ্ন これはなんですか।","それは なんですか。","Sore wa nan desu ka.","ওটা কী?"],["この／その／あの — কোনটি বেছে জিজ্ঞেস করা","どの N／どれ","একাধিক বস্তুর মধ্যে কোনটি জানতে noun-এর আগে どの (dono), আর noun ছাড়া どれ (dore) ব্যবহার হয়।","ミラーさんの かばんは どれですか。","Miraa-san no kaban wa dore desu ka.","মিলারের ব্যাগ কোনটি?"],["だれの — কার?","これは だれの N ですか。","কোনো জিনিস কার তা জানতে だれの (dare no) ব্যবহার হয়।","これは だれの かさですか。","Kore wa dare no kasa desu ka.","এটি কার ছাতা?"]]},{"lesson":3,"title":"স্থান, দিক ও দাম","intro":"জায়গা কোথায়, কোন প্রতিষ্ঠানে, এবং কোনো জিনিসের দাম কত—তা জিজ্ঞেস করা শিখবে।","rules":[["ここ／そこ／あそこ — এখানে/সেখানে/ওখানে","ここ／そこ／あそこ は N です","এগুলো স্থান বোঝায়: ここ বক্তার কাছে, そこ শ্রোতার কাছে, あそこ দুজনের থেকে দূরের জায়গা।","ここは きょうしつです。","Koko wa kyoushitsu desu.","এখানে শ্রেণিকক্ষ।"],["N は place です — কোথায় আছে/কোথায় অবস্থিত","N は place です","কোনো দোকান, অফিস বা সুবিধা কোথায় তা জানাতে N-এর পরে は এবং স্থান বোঝানো শব্দ ব্যবহার করা হয়।","トイレは あそこです。","Toire wa asoko desu.","টয়লেট ওখানে।"],["どこ／どちら — কোথায়?","N は どこですか。","কোনো জায়গা কোথায় জানতে どこ (doko)। どちら (dochira) আরও ভদ্রভাবে স্থান বা দিক জিজ্ঞেস করতে পারে।","うけつけは どこですか。","Uketsuke wa doko desu ka.","রিসেপশন কোথায়?"],["N1 の N2 — প্রতিষ্ঠানের/দেশের পরিচয়","N1 の N2","দেশ, কোম্পানি বা প্রতিষ্ঠানের নামের পরে の দিয়ে সম্পর্ক দেখানো যায়।","IMCは どこの かいしゃですか。","IMC wa doko no kaisha desu ka.","IMC কোন দেশের/কোন জায়গার কোম্পানি?"],["いくらですか — দাম কত?","N は いくらですか。","কোনো জিনিসের দাম জানতে いくら (ikura) ব্যবহার হয়। দাম সাধারণত 円 (えん, en) দিয়ে বলা হয়।","このかばんは いくらですか。","Kono kaban wa ikura desu ka.","এই ব্যাগের দাম কত?"],["こちら／そちら／あちら — ভদ্রভাবে স্থান/দিক","こちら／そちら／あちら／どちら","ここ・そこ・あそこ・どこ-এর ভদ্র রূপ। দোকান বা অফিসে পথ/অবস্থান বোঝাতে কাজে লাগে।","じむしょは こちらです。","Jimusho wa kochira desu.","অফিস এদিকে/এখানে।"]]},{"lesson":4,"title":"সময় ও দৈনন্দিন ক্রিয়া","intro":"সময় বলা, কাজ কখন হয়, কখন থেকে কখন পর্যন্ত, এবং ভদ্র present/past verb form শিখবে।","rules":[["সময় + に — নির্দিষ্ট সময়ে","Time に Vます","ঘড়ির নির্দিষ্ট সময়ে কাজ হওয়া বোঝাতে সময়ের পরে に (ni) বসে। きょう・あした-এর মতো আপেক্ষিক সময়ের শব্দের পরে সাধারণত に লাগে না।","まいあさ 6じに おきます。","Maiasa roku-ji ni okimasu.","প্রতিদিন সকালে ছয়টায় উঠি।"],["Vます — ভদ্র বর্তমান/ভবিষ্যৎ","Vます","ます-রূপ অভ্যাস, নিয়মিত কাজ বা ভবিষ্যৎ কাজ বোঝায়; অর্থ সময়-প্রসঙ্গ থেকে বোঝা যায়।","まいにち にほんごを べんきょうします。","Mainichi nihongo o benkyou shimasu.","প্রতিদিন জাপানি পড়ি।"],["Vません — না করা","Vません","ます-এর negative রূপ ません; ভদ্রভাবে ‘করি না/করব না’ বোঝায়।","にちようびは はたらきません。","Nichiyoubi wa hatarakimasen.","রবিবার কাজ করি না।"],["Vました／Vませんでした — অতীত","Vました／Vませんでした","গত/সম্পন্ন কাজের জন্য ました; অতীতে কাজ না হলে ませんでした।","きのう はたらきました。","Kinou hatarakimashita.","গতকাল কাজ করেছি।"],["から～まで — থেকে～পর্যন্ত","Time から Time まで","সময় বা সীমার শুরুতে から (kara), শেষ সীমায় まで (made) বসে। একসঙ্গে বা আলাদাভাবেও ব্যবহার করা যায়।","9じから 5じまで はたらきます。","Ku-ji kara go-ji made hatarakimasu.","নয়টা থেকে পাঁচটা পর্যন্ত কাজ করি।"],["なんじ／なんようび — কয়টা/কোন বার","なんじですか。／なんようびですか。","সময় জানতে なんじ (nanji), সপ্তাহের দিন জানতে なんようび (nanyoubi)।","いま なんじですか。","Ima nanji desu ka.","এখন কয়টা বাজে?"]]},{"lesson":5,"title":"যাওয়া, আসা ও যাতায়াত","intro":"কোথায় যাওয়া/আসা/ফেরা, কী দিয়ে যাতায়াত, কার সঙ্গে যাওয়া এবং কখন—এসব শেখা হবে।","rules":[["Place へ 行きます／来ます／帰ります","Place へ V","へ (e) গন্তব্যের দিক বোঝায়; particle হিসেবে へ লেখা হলেও e উচ্চারণ হয়। 行きます = যাই, 来ます = আসি, 帰ります = ফিরি।","がっこうへ いきます。","Gakkou e ikimasu.","স্কুলে যাই।"],["Transport で — যানবাহনে","Transport で V","কোন যানবাহন বা মাধ্যম দিয়ে কাজ হচ্ছে তা বোঝাতে で (de) বসে। হাঁটা বোঝাতে あるいて (aruite) হলে সাধারণত で লাগে না।","でんしゃで いきます。","Densha de ikimasu.","ট্রেনে যাই।"],["Person と — কার সঙ্গে","Person と V","কারও সঙ্গে কাজ করা বোঝাতে ব্যক্তির পরে と (to) বসে।","ともだちと にほんへ いきます。","Tomodachi to Nihon e ikimasu.","বন্ধুর সঙ্গে জাপানে যাই।"],["いつ — কখন?","いつ Vますか。","কাজের সময় জানতে いつ (itsu) ব্যবহার হয়। নির্দিষ্ট সময় উল্লেখ করলে সময়ের পরে に লাগতে পারে।","いつ にほんへ いきますか。","Itsu Nihon e ikimasu ka.","কখন জাপানে যাবেন?"],["どこへも／だれとも + negative","どこへも Vません。／だれとも Vません。","কোনো জায়গায়ই না গেলে どこへも + negative; কারও সঙ্গেই না হলে だれとも + negative ব্যবহার হয়।","きのうは どこへも いきませんでした。","Kinou wa doko e mo ikimasen deshita.","গতকাল কোথাও যাইনি।"],["よ — নতুন তথ্য জোর দিয়ে বলা","Sentence よ","বাক্যের শেষে よ দিয়ে শ্রোতাকে নতুন তথ্য জানানো বা কথায় জোর দেওয়া হয়। ভদ্রতা ও স্বর অনুযায়ী ব্যবহার করতে হয়।","このバスは とうきょうへ いきますよ。","Kono basu wa Toukyou e ikimasu yo.","এই বাস টোকিও যায় কিন্তু/জেনে রাখুন।"]]},{"lesson":6,"title":"কাজ করা, আমন্ত্রণ ও প্রস্তাব","intro":"কোনো কাজের object, কাজের স্থান, কাউকে আমন্ত্রণ এবং একসঙ্গে কিছু করার প্রস্তাব শিখবে।","rules":[["N を Vます — কাজের object","N を Vます","যে জিনিসের ওপর সরাসরি কাজ করা হয়, তার পরে を (o) বসে। を লেখা হলেও particle হিসেবে o উচ্চারণ হয়।","パンを たべます。","Pan o tabemasu.","রুটি খাই।"],["Place で Vます — কাজের স্থান","Place で Vます","কোনো কাজ কোথায় হচ্ছে তা বোঝাতে স্থানের পরে で (de) বসে। মনে রাখো: で = কাজের স্থান/মাধ্যম; に = অবস্থান/গন্তব্য/সময়ের মতো ভিন্ন ব্যবহার।","としょかんで べんきょうします。","Toshokan de benkyou shimasu.","লাইব্রেরিতে পড়াশোনা করি।"],["なにをしますか — কী করবেন?","なにを Vますか。","কোন কাজ বা কী জিনিস নিয়ে কাজ হবে জানতে なにを (nani o) ব্যবহার করা হয়।","きょう なにを しますか。","Kyou nani o shimasu ka.","আজ কী করবেন?"],["Vませんか — আমন্ত্রণ","Vませんか。","কাউকে ভদ্রভাবে একসঙ্গে কিছু করতে আমন্ত্রণ জানাতে ませんか ব্যবহার হয়। আক্ষরিক negative হলেও এটি প্রস্তাব/আমন্ত্রণ।","いっしょに えいがを みませんか。","Issho ni eiga o mimasen ka.","একসঙ্গে সিনেমা দেখবেন?"],["Vましょう — চলুন করি","Vましょう。","একসঙ্গে কাজ শুরু করার প্রস্তাব বা সম্মতি জানাতে ましょう ব্যবহার হয়।","ちょっと やすみましょう。","Chotto yasumimashou.","চলুন একটু বিশ্রাম নিই।"],["何で／だれと — কী দিয়ে/কার সঙ্গে","なにで／だれと","কাজের মাধ্যম জানতে なにで (nani de), সঙ্গী জানতে だれと (dare to) ব্যবহার হয়।","なにで きりますか。","Nani de kirimasu ka.","কী দিয়ে কাটবেন?"]]},{"lesson":7,"title":"মাধ্যম, দেওয়া-নেওয়া ও ইতিমধ্যে করা কাজ","intro":"কোনো কাজ কী দিয়ে করা হয়, কাউকে কিছু দেওয়া/ধার দেওয়া/শেখানো, কারও কাছ থেকে পাওয়া এবং কাজ ইতিমধ্যে শেষ হয়েছে কি না—এসব শেখা হবে।","rules":[["N で V — উপকরণ বা মাধ্যম","N で V","কোনো কাজ করার যন্ত্র, উপকরণ, ভাষা বা মাধ্যম বোঝাতে で (de) ব্যবহার হয়। এটি কাজের স্থান বোঝানো で-এর একই particle, কিন্তু অর্থ বাক্যের প্রসঙ্গ অনুযায়ী বদলায়।","はしで ごはんを たべます。","Hashi de gohan o tabemasu.","চপস্টিক দিয়ে ভাত খাই।"],["Word は ～語で 何ですか — অন্য ভাষায় কী?","「Word」は ～ごで なんですか。","একটি শব্দ বা বাক্য অন্য ভাষায় কীভাবে বলা হয় জানতে ～語 (go, ভাষা) + で + なんですか ব্যবহার হয়।","「ありがとう」は えいごで なんですか。","‘Arigatou’ wa eigo de nan desu ka.","‘আরিগাতো’ ইংরেজিতে কী?"],["N1 に N2 を あげます — কাউকে কিছু দেওয়া","Person に Thing を あげます","যে ব্যক্তি কিছু পায় তার পরে に; যে জিনিস দেওয়া হয় তার পরে を। あげます মানে অন্য কাউকে দেওয়া।","きむらさんに はなを あげました。","Kimura-san ni hana o agemashita.","কিমুরা-সানকে ফুল দিয়েছিলাম।"],["N1 に／から N2 を もらいます — কারও কাছ থেকে পাওয়া","Person に／から Thing を もらいます","যার কাছ থেকে পাওয়া যায় তার পরে に বা から বসতে পারে। প্রতিষ্ঠান/সংস্থা থেকে পাওয়া বোঝালে から বিশেষভাবে স্বাভাবিক।","やまださんから はなを もらいました。","Yamada-san kara hana o moraimashita.","ইয়ামাদা-সানের কাছ থেকে ফুল পেয়েছিলাম।"],["かします／かります／おしえます／ならいます","Person に Thing を Vます","かします = ধার দেওয়া, かります = ধার নেওয়া, おしえます = শেখানো/তথ্য জানানো, ならいます = কারও কাছ থেকে শেখা। কে দেয়/পায়/শেখায় তা particle দিয়ে চেনা জরুরি।","せんせいに にほんごを ならいます。","Sensei ni nihongo o naraimasu.","শিক্ষকের কাছ থেকে জাপানি শিখি।"],["もう Vました — ইতিমধ্যে সম্পন্ন","もう Vましたか。","もう মানে ‘ইতিমধ্যে/already’। কাজ শেষ হয়েছে কি না জানতে もう～ましたか; ইতিবাচক উত্তর はい、もう～ました, আর কাজ বাকি থাকলে いいえ、まだです বলা যায়।","もう ひるごはんを たべましたか。","Mou hirugohan o tabemashita ka.","ইতিমধ্যে দুপুরের খাবার খেয়েছ?"]]},{"lesson":8,"title":"い-adjective ও な-adjective","intro":"কোনো মানুষ, জায়গা বা জিনিস কেমন—তা বর্ণনা, adjective-এর negative form এবং মতামত জানানো শেখা হবে।","rules":[["い-adjective + です","N は い-adj です","অনেক adjective-এর শেষে い থাকে: たかい (দামি/উঁচু), おもしろい (মজার)। noun বর্ণনা না করলেও বাক্যে সরাসরি です-এর আগে বসে।","このほんは おもしろいです。","Kono hon wa omoshiroi desu.","এই বইটি মজার।"],["い-adjective negative: ～くないです","い-adj থেকে い বাদ + くないです","সাধারণ い-adjective-কে negative করতে শেষের い বাদ দিয়ে くないです যোগ হয়। ব্যতিক্রম いい → よくないです।","このへやは ひろくないです。","Kono heya wa hirokunai desu.","এই ঘরটি প্রশস্ত নয়।"],["な-adjective + です","N は な-adj です","な-adjective বাক্যের শেষে です-এর আগে সাধারণত な নেয় না: しずかです, しんせつです।","このまちは しずかです。","Kono machi wa shizuka desu.","এই শহর শান্ত।"],["な-adjective negative: じゃありません","な-adj + じゃありません","な-adjective-এর negative করতে adjective-এর পরে じゃありません (বা বেশি আনুষ্ঠানিক ではありません) বসে।","このまちは にぎやかじゃありません。","Kono machi wa nigiyaka ja arimasen.","এই শহর জমজমাট নয়।"],["Adjective + noun","な-adj な N ／ い-adj N","noun-এর আগে な-adjective হলে な রাখতে হয়: しずかなまち। い-adjective হলে শেষের い থাকে: たかいやま।","しんせつな せんせいです。","Shinsetsu na sensei desu.","তিনি একজন দয়ালু শিক্ষক।"],["とても／あまり — খুব/খুব একটা নয়","とても + affirmative ／ あまり + negative","とても (totemo) মানে খুব; あまり (amari) সাধারণত negative বাক্যের সঙ্গে ‘খুব একটা নয়’ অর্থে ব্যবহৃত হয়।","このほんは とても おもしろいです。","Kono hon wa totemo omoshiroi desu.","এই বইটি খুব মজার।"],["S1 が、S2 — কিন্তু","S1 が、S2","দুটি বাক্য যুক্ত করে contrast বা ‘কিন্তু’ বোঝাতে が ব্যবহার হয়। এখানে が subject marker নয়, conjunction।","このレストランは おいしいですが、たかいです。","Kono resutoran wa oishii desu ga, takai desu.","এই রেস্তোরাঁর খাবার সুস্বাদু, কিন্তু দামি।"],["どうですか／どんな N — কেমন?","N は どうですか。／どんな N ですか。","どうですか কোনো অভিজ্ঞতা/বিষয় কেমন জানতে; どんな + noun কোনো কিছুর ধরন বা বৈশিষ্ট্য জানতে ব্যবহৃত হয়।","にほんのせいかつは どうですか。","Nihon no seikatsu wa dou desu ka.","জাপানের জীবনযাপন কেমন?"]]},{"lesson":9,"title":"পছন্দ, বোঝা ও কারণ বলা","intro":"পছন্দ-অপছন্দ, দক্ষতা, কোনো কিছু বোঝা/থাকা, পরিমাণের adverb এবং কারণ ব্যাখ্যা শেখা হবে।","rules":[["N が すきです／きらいです — পছন্দ/অপছন্দ","N が すきです／きらいです","পছন্দ বা অপছন্দের বিষয়ের পরে সাধারণত が বসে। すきです = পছন্দ; きらいです = অপছন্দ।","わたしは おんがくが すきです。","Watashi wa ongaku ga suki desu.","আমি গান/সংগীত পছন্দ করি।"],["N が わかります — বুঝি","N が わかります","যে ভাষা বা বিষয় বোঝা যায় তার পরে が ব্যবহৃত হয়। ‘কিছু বুঝি’ বোঝাতে わかります; ‘জানি’ বোঝাতে しっています ভিন্নভাবে ব্যবহৃত হয়।","にほんごが すこし わかります。","Nihongo ga sukoshi wakarimasu.","আমি জাপানি একটু বুঝি।"],["N が あります — আছে/রয়েছে","N が あります","এই Lesson-এ あります কোনো কিছুর অস্তিত্ব/সম্পদ বা কোনো কিছু থাকা বোঝাতে আসতে পারে; অবস্থান বিস্তারিতভাবে Lesson 10-এ শেখা হয়।","じかんが あります。","Jikan ga arimasu.","সময় আছে।"],["じょうず／へた — দক্ষ/অদক্ষ","N が じょうずです／へたです","কোনো কাজে দক্ষতা বা অদক্ষতা বোঝাতে じょうず (jouzu) ও へた (heta) ব্যবহৃত হয়; নিজের সম্পর্কে じょうず বললে প্রসঙ্গভেদে অহংকারী শোনাতে পারে, তাই বিনয়ীভাবে বলা ভালো।","たなかさんは りょうりが じょうずです。","Tanaka-san wa ryouri ga jouzu desu.","তানাকা রান্নায় দক্ষ।"],["よく／だいたい／たくさん／すこし","Adverb + verb/adjective","よく = ভালোভাবে/প্রায়ই, だいたい = মোটামুটি, たくさん = অনেক, すこし = একটু। এগুলো কাজের মাত্রা বা পরিমাণ বোঝায়।","えいごが よく わかります。","Eigo ga yoku wakarimasu.","ইংরেজি ভালো বুঝি।"],["あまり／ぜんぜん + negative","あまり／ぜんぜん + negative","あまり = খুব একটা নয়; ぜんぜん = একেবারেই নয়। সাধারণত negative verb/adjective-এর সঙ্গে ব্যবহার হয়।","おさけは あまり のみません。","Osake wa amari nomimasen.","মদ/অ্যালকোহল খুব একটা পান করি না।"],["S1 から、S2 — কারণ","Reason から、result","একটি বাক্যের শেষে から যোগ করলে সেটি পরের বাক্যের কারণ বোঝায়। বাংলায় ‘কারণ/যেহেতু… তাই…’।","じかんが ありませんから、テレビを みません。","Jikan ga arimasen kara, terebi o mimasen.","সময় নেই বলে টিভি দেখি না।"],["どうして — কেন?","どうして S か。","কারণ জানতে どうして (doushite) ব্যবহার হয়। উত্তরে কারণের বাক্যের শেষে から যোগ করা যায়।","どうして きませんでしたか。びょうきでしたから。","Doushite kimasen deshita ka. Byouki deshita kara.","কেন আসেননি? অসুস্থ ছিলাম বলে।"]]},{"lesson":10,"title":"অস্তিত্ব, অবস্থান ও চারপাশের জিনিস","intro":"কোনো জায়গায় মানুষ/প্রাণী বা বস্তু কোথায় আছে, অবস্থানসূচক শব্দ এবং অসম্পূর্ণ তালিকা দেওয়া শেখা হবে।","rules":[["N が あります／います — অস্তিত্ব","N が あります／います","প্রাণহীন বস্তু বা উদ্ভিদের অস্তিত্ব বোঝাতে あります; মানুষ ও প্রাণীর জন্য います। এই বাক্যে যে জিনিস/ব্যক্তি আছে তার পরে が বসে।","つくえが あります。ねこが います。","Tsukue ga arimasu. Neko ga imasu.","একটি টেবিল আছে। একটি বিড়াল আছে।"],["Place に N が あります／います — কোথাও কিছু আছে","Place に N が あります／います","কোনো নির্দিষ্ট স্থানে কী আছে বোঝাতে স্থান + に, তারপর বস্তু/ব্যক্তি + が এবং あります/います ব্যবহার হয়।","わたしのへやに つくえが あります。","Watashi no heya ni tsukue ga arimasu.","আমার ঘরে একটি টেবিল আছে।"],["N は Place に あります／います — জিনিস/ব্যক্তি কোথায়","N は Place に あります／います","যে বস্তু বা ব্যক্তির অবস্থান বলা হচ্ছে তাকে は দিয়ে বিষয় করা হয়; তারপর স্থানের সঙ্গে に বসে।","ねこは いすのしたに います。","Neko wa isu no shita ni imasu.","বিড়ালটি চেয়ারের নিচে আছে।"],["N1 の অবস্থান — উপরে/নিচে/পাশে","N1 の うえ／した／まえ／うしろ／みぎ／ひだり／なか／そと／となり／ちかく／あいだ","কোনো কিছুর তুলনায় অবস্থান বলতে প্রথমে reference noun, তার পরে の এবং অবস্থানসূচক শব্দ ব্যবহার হয়।","ほんは つくえのうえに あります。","Hon wa tsukue no ue ni arimasu.","বইটি টেবিলের উপরে আছে।"],["N1 や N2 (など) — উদাহরণসহ তালিকা","N1 や N2 など","কয়েকটি উদাহরণ উল্লেখ করে ‘ইত্যাদি’ বোঝাতে や এবং など ব্যবহার হয়। と সাধারণত সম্পূর্ণ/নির্দিষ্ট তালিকা বোঝায়; や আংশিক তালিকা।","はこのなかに てがみや しゃしんなどが あります。","Hako no naka ni tegami ya shashin nado ga arimasu.","বাক্সে চিঠি, ছবি ইত্যাদি আছে।"],["どこ／なに／だれ — কোথায়/কী/কে","Place に なに／だれ が ありますか／いますか","কোনো স্থানে কী আছে জানতে なに; কে আছে জানতে だれ ব্যবহার হয়। জড় বস্তু হলে あります, মানুষ/প্রাণী হলে います।","れいぞうこのなかに なにが ありますか。","Reizouko no naka ni nani ga arimasu ka.","ফ্রিজের ভেতরে কী আছে?"],["N は どこに ありますか／いますか — অবস্থান জিজ্ঞেস","N は どこに ありますか／いますか","আগে থেকে জানা কোনো বস্তু/ব্যক্তি কোথায় তা জানতে noun + は + どこに এবং সঠিক existence verb ব্যবহার হয়।","ポストは どこに ありますか。","Posuto wa doko ni arimasu ka.","চিঠির বাক্স কোথায় আছে?"],["স্থান নিশ্চিত করা/পুনরাবৃত্তি করে জিজ্ঞেস","～ですか。","কথোপকথনে শোনা দোকান বা জায়গার নাম পুনরাবৃত্তি করে ～ですか বলা হলে সেটি নিশ্চিত হওয়া বা ‘আপনি কি … বলছেন?’ ধরনের প্রতিক্রিয়া হতে পারে। স্বর ও প্রসঙ্গ অর্থ নির্ধারণ করে।","アジアストアですか。","Ajia Sutoa desu ka.","এশিয়া স্টোর? / আপনি কি এশিয়া স্টোর বলছেন?"]]}];
@@ -1958,7 +2382,84 @@ function renderGrammarGuide(){
  const ruleCount=chosen.reduce((n,x)=>n+x.rules.length,0);
  $('grammar-guide-count').textContent=`${chosen.length} Lessons · ${ruleCount} rules`;
  $('grammar-guide-content').innerHTML=chosen.map(lesson=>`<section class="panel guide-lesson" id="guide-lesson-${lesson.lesson}"><div class="guide-lesson-head"><div class="guide-lesson-num">L${lesson.lesson}</div><div><div class="guide-lesson-title">Lesson ${lesson.lesson} · ${guideEscape(lesson.title)}</div><div class="guide-lesson-intro">${guideEscape(lesson.intro)}</div></div><span class="guide-count">${lesson.rules.length} rules</span></div>${lesson.rules.map((r,i)=>`<article class="guide-rule" data-guide-rule-card="${lesson.lesson}-${i}"><div class="guide-rule-title"><span class="guide-rule-badge">✦ RULE ${i+1}</span><span>${guideEscape(r[0])}</span></div><div class="guide-pattern">${guideEscape(r[1])}</div><div class="guide-explain">${guideEscape(r[2])}</div><div class="guide-example"><div class="guide-example-head"><div class="guide-jp">${guideEscape(r[3])}</div><button type="button" class="sentence-tts" data-speak-guide="${guideEscape(r[3])}" aria-label="Play example pronunciation" title="Japanese pronunciation">🔊 শুনুন</button></div><div class="guide-romaji">${guideEscape(r[4])}</div><div class="guide-bn">${guideEscape(r[5])}</div></div><div class="rule-example-practice"><div class="rule-practice-title">✦ এই Rule অনুযায়ী ১০টি নতুন Sentence</div><div class="rule-practice-hint">প্রতিটি বাক্য এই Rule-এর structure মেনে তৈরি। Japanese, Romaji ও বাংলা অর্থ একসঙ্গে দেখো; একই সেটে কোনো বাক্য বা নাম পুনরাবৃত্তি হবে না।</div><div class="rule-practice-actions"><button type="button" class="primary" data-generate-sentences="${lesson.lesson}-${i}">↻ নতুন ১০টি Sentence তৈরি করো</button></div><ol class="generated-sentences" data-generated-sentences="${lesson.lesson}-${i}"><li class="generated-placeholder">Button চাপলে এখানে ১০টি sentence দেখা যাবে।</li></ol></div></article>`).join('')}</section>`).join('');
+ enhanceGrammarGuideCards();
 }
+
+function grammarTokenKind(token,nextToken='',previousToken=''){
+ const t=String(token||'').trim();
+ if(!t)return 'word';
+ if(['は','も','の','が','を','に','で','へ','と','や','から','まで','より'].includes(t))return 'particle';
+ if(['か','ね','よ'].includes(t))return 'question';
+ if(['です','でした','じゃありません','ではありません','ます','ません','ました','ませんでした','ください','たい','ています','ている'].includes(t))return 'ending';
+ if(['ます','ません','ました','ませんでした'].includes(nextToken))return 'verb';
+ if(['これ','それ','あれ','この','その','あの','ここ','そこ','あそこ','どこ','こちら','そちら','あちら','どちら','だれ','どなた','なに','なん','いつ','どうして'].includes(t))return 'pronoun';
+ if(['とても','あまり','ぜんぜん','よく','だいたい','たくさん','すこし','まいにち','まいあさ','きょう','あした','きのう','もう'].includes(t))return 'adverb';
+ if(/(おもしろい|たかい|ひろい|ひろくない|おいしい|しずか|にぎやか|しんせつ|すき|きらい|じょうず|へた|げんき|ゆうめい|べんり|きれい|あつい|さむい|あたらしい|ふるい|おおきい|ちいさい|やさしい|むずかしい|いそがしい|たのしい|いい|よくない)$/.test(t))return 'adjective';
+ if(nextToken&&(['は','も','の','が','を','に','で','へ','と','や','から','まで','です','でした','じゃありません','ではありません'].includes(nextToken)))return 'noun';
+ if(['noun','word'].includes(t))return 'word';
+ return 'word';
+}
+function grammarTokenLabel(kind,token,nextToken=''){
+ if(kind==='particle')return 'Particle / কণা';
+ if(kind==='question')return 'প্রশ্ন কণা';
+ if(kind==='ending')return 'Grammar ending';
+ if(kind==='verb')return 'Verb stem / ক্রিয়ামূল';
+ if(kind==='noun')return 'Noun / বিশেষ্য';
+ if(kind==='pronoun')return 'Pronoun / নির্দেশক শব্দ';
+ if(kind==='adjective')return 'Adjective / বিশেষণ';
+ if(kind==='adverb')return 'Adverb / ক্রিয়া-বিশেষণ';
+ return 'শব্দ / Noun・অন্যান্য';
+}
+function splitGrammarSentence(sentence){
+ const particles=new Set(['は','も','の','が','を','に','で','へ','と','や','から','まで','より','か','ね','よ']);
+ const endings=['じゃありません','ではありません','ませんでした','ません','ました','でした','ください','でしょう','です','ます'];
+ const result=[];
+ const chunks=String(sentence||'').split(/(\s+|[。、！？])/).filter(Boolean);
+ for(const chunk of chunks){
+  if(/^\s+$/.test(chunk)||/^[。、！？]$/.test(chunk)){if(chunk.trim())result.push({text:chunk,kind:'word'});continue;}
+  let i=0,buf='';
+  while(i<chunk.length){
+   let matchedEnding=endings.find(e=>chunk.startsWith(e,i));
+   if(matchedEnding){if(buf){result.push({text:buf,kind:'word'});buf='';}result.push({text:matchedEnding,kind:'ending'});i+=matchedEnding.length;continue;}
+   const rest=chunk.slice(i);const particle=[...particles].sort((a,b)=>b.length-a.length).find(x=>rest.startsWith(x));
+   // Avoid treating an initial は as a particle in a word such as はこ or はたらく.
+   if(particle && (i>0 || ['か','ね','よ'].includes(particle))){
+    if(buf){result.push({text:buf,kind:'word'});buf='';}
+    result.push({text:particle,kind:['か','ね','よ'].includes(particle)?'question':'particle'});i+=particle.length;continue;
+   }
+   buf+=chunk[i];i++;
+  }
+  if(buf)result.push({text:buf,kind:'word'});
+ }
+ // Verb stem just before a polite verb ending gets a dedicated label.
+ result.forEach((t,i)=>{if(t.kind==='word')t.kind=grammarTokenKind(t.text,result[i+1]?.text||'',result[i-1]?.text||'')});
+ return result;
+}
+function enhanceGrammarGuideCards(){
+ document.querySelectorAll('#grammar-guide-content .guide-rule').forEach(card=>{
+  if(card.querySelector('.grammar-breakdown'))return;
+  const jp=card.querySelector('.guide-jp');if(!jp)return;
+  const sentence=jp.textContent.trim(),tokens=splitGrammarSentence(sentence);
+  const breakdown=document.createElement('section');breakdown.className='grammar-breakdown';
+  const head=document.createElement('div');head.className='grammar-breakdown-head';
+  const copy=document.createElement('div');copy.innerHTML='<div class="grammar-breakdown-title">🧩 বাক্যটি অংশে ভাগ করে শেখো</div><div class="grammar-breakdown-subtitle">প্রতিটি রঙের অংশে ট্যাপ না করেও শব্দের ধরন দেখা যাবে। ▶ চাপলে বাক্যটি ধাপে ধাপে তৈরি হবে।</div>';
+  const play=document.createElement('button');play.type='button';play.className='grammar-breakdown-play';play.textContent='▶ ধাপে ধাপে দেখাও';play.setAttribute('data-animate-breakdown','');head.append(copy,play);
+  const row=document.createElement('div');row.className='grammar-token-row';row.setAttribute('aria-label','Sentence parts');
+  tokens.forEach((t,i)=>{
+   if(/^\s+$/.test(t.text))return;
+   const chip=document.createElement('div');chip.className='grammar-token kind-'+t.kind;chip.style.setProperty('--token-i',String(i));
+   const word=document.createElement('span');word.className='token-jp';word.textContent=t.text;
+   const label=document.createElement('span');label.className='token-kind';label.textContent=grammarTokenLabel(t.kind,t.text,tokens[i+1]?.text||'');chip.append(word,label);row.appendChild(chip);
+   if(i<tokens.length-1){const arrow=document.createElement('span');arrow.className='grammar-token-arrow';arrow.textContent='→';row.appendChild(arrow)}
+  });
+  const translation=document.createElement('div');translation.className='grammar-breakdown-translation';
+  const explain=card.querySelector('.guide-explain')?.textContent||'';
+  translation.innerHTML='<b>কীভাবে বুঝবে?</b> '+guideEscape(explain)+'<div class="grammar-breakdown-legend"><span class="grammar-legend-chip">সবুজ = Particle</span><span class="grammar-legend-chip">নীল = Verb stem</span><span class="grammar-legend-chip">বেগুনি = Grammar ending</span><span class="grammar-legend-chip">সোনালি = Question marker</span><span class="grammar-legend-chip">ধূসর-নীল = Noun</span><span class="grammar-legend-chip">বেগুনি-গোলাপি = Adjective</span><span class="grammar-legend-chip">বাদামি = Adverb</span><span class="grammar-legend-chip">নীল-ধূসর = Pronoun</span></div>';
+  breakdown.append(head,row,translation);
+  const example=card.querySelector('.guide-example');if(example)example.insertAdjacentElement('afterend',breakdown);else card.appendChild(breakdown);
+ });
+}
+
 const guideSentenceChoices={
  'わたし':['わたし','たなかさん','やまださん','ミラーさん','キムラさん','サトウさん'],
  'にほんご':['にほんご','えいご','かんこくご','ちゅうごくご'],
@@ -2319,8 +2820,8 @@ $('quiz-home').addEventListener('click',goHome);$('results-home').addEventListen
 $('speech-btn').addEventListener('click',()=>{const item=currentItem();if(item){if(state.mode==='grammar')speakGrammarQuestion(item);else speakJapaneseWord(item.j)}vibrate('tap')});
 $('skip-btn').addEventListener('click',()=>{if(!state.isAnswered){handleTimeout()}});
 $('retest-btn').addEventListener('click',startRetest);
-$('again-btn').addEventListener('click',()=>{if(state.kanaRun){state.mode='kana';showScreen('kana-screen');renderKana()}else startQuiz()});
-$('open-grammar-guide').addEventListener('click',openGrammarGuide);$('grammar-guide-home').addEventListener('click',goHome);$('grammar-guide-bottom-home').addEventListener('click',goHome);$('grammar-guide-filter').addEventListener('change',renderGrammarGuide);$('grammar-guide-content').addEventListener('click',e=>{const speaker=e.target.closest('[data-speak-guide]');if(speaker){speakJapaneseWord(speaker.dataset.speakGuide);vibrate('tap');return;}const button=e.target.closest('[data-generate-sentences]');if(button){generateRuleSentences(button.dataset.generateSentences);vibrate('tap');}});
+$('again-btn').addEventListener('click',()=>{speakEnglishLine('Let’s start practicing again!');if(state.kanaRun){state.mode='kana';showScreen('kana-screen');renderKana()}else startQuiz()});
+$('open-grammar-guide').addEventListener('click',openGrammarGuide);$('grammar-guide-home').addEventListener('click',goHome);$('grammar-guide-bottom-home').addEventListener('click',goHome);$('grammar-guide-filter').addEventListener('change',renderGrammarGuide);$('grammar-guide-content').addEventListener('click',e=>{const speaker=e.target.closest('[data-speak-guide]');if(speaker){speakJapaneseWord(speaker.dataset.speakGuide);vibrate('tap');return;}const animate=e.target.closest('[data-animate-breakdown]');if(animate){const box=animate.closest('.grammar-breakdown');box.classList.remove('is-animating');void box.offsetWidth;box.classList.add('is-animating');setTimeout(()=>box.classList.remove('is-animating'),Math.max(900,box.querySelectorAll('.grammar-token').length*160+650));vibrate('tap');return;}const button=e.target.closest('[data-generate-sentences]');if(button){generateRuleSentences(button.dataset.generateSentences);vibrate('tap');}});
 $('settings-open').addEventListener('click',()=>{showScreen('settings-screen');renderProfile();vibrate('tap')});
 $('edit-profile').addEventListener('click',()=>openLogin(true));
 $('home-edit-profile').addEventListener('click',()=>openLogin(true));$('home-profile-picture').addEventListener('click',()=>openLogin(true));$('home-profile-picture').style.cursor='pointer';
@@ -2350,13 +2851,127 @@ document.addEventListener('click',e=>{
 document.querySelectorAll('select').forEach(el=>el.addEventListener('change',()=>{playSound('tap');vibrate('tap')}));
 document.addEventListener('click',e=>{if(e.target.closest('input,select,textarea'))vibrate('tap')});
 window.addEventListener('beforeunload',()=>{if(state.list.length&&state.index<state.list.length)saveSession()});
-applyPrefs();renderStats();renderKana();
-if(account&&readStore(authKey,false)){renderProfile();showScreen('home-screen');renderProgressGain()}else{editingProfile=false;updateLoginView();showScreen('login-screen')}
+applyPrefs();renderStats();renderKana();animateJapaneseWallpaper();
+document.addEventListener('pointerdown',()=>{if(!welcomeTtsAttempted&&account&&readStore(authKey,false))speakWelcome()},{once:true,passive:true});
+if(account&&readStore(authKey,false)){renderProfile();showScreen('home-screen');renderProgressGain();speakWelcome()}else{editingProfile=false;updateLoginView();showScreen('login-screen')}
 $('stat-words').title=`${vocabData.length} entries; ${new Set(vocabData.map(v=>v.j)).size} distinct headwords`;
 const savedSession=readStore(storageKeys.session,null);if(savedSession&&savedSession.list&&savedSession.index<savedSession.list.length){$('continue-btn').hidden=false}
 
 // Speed presets scale only the Japanese glyph animation; learning/quiz timing stays untouched.
-function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;const factor=({fast:1,faster:.72,ultra:.48})[prefs.wallpaperSpeed||'faster']||.72;wall.querySelectorAll('.jp-float').forEach(el=>{const base=parseFloat(el.style.getPropertyValue('--duration'))||9;el.style.animationDuration=`${Math.max(2.5,base*factor)}s`})}
+const jpGlyphSets=[
+ ['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','ひ','の','ま','ゆ','り'],
+ ['ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','ヒ','ノ','マ','ユ','リ'],
+ ['日','本','語','学','校','生','先','友','時','間','人','月','火','水','木','金','土','年','大','小','上','下','山','川']
+];
+// Random ambient palette transitions happen gradually and independently from word motion.
+(function startAmbientColorFlow(){
+ const palette=[
+  ['#102f68','#174f65','#35205f'],['#123f80','#087e83','#452878'],
+  ['#1d3f86','#126d8a','#3c246b'],['#0b526d','#164c91','#502b80'],
+  ['#1c3470','#087f79','#392a75'],['#154a76','#176b9c','#4a2d79'],
+  ['#143b79','#0b666c','#31245e'],['#214b91','#087b83','#4c3183']
+ ];
+ let last=-1;
+ const shift=()=>{
+   let next=Math.floor(Math.random()*palette.length);if(next===last)next=(next+1+Math.floor(Math.random()*(palette.length-1)))%palette.length;last=next;
+   const root=document.documentElement,colors=palette[next];
+   root.style.setProperty('--ambient-a',colors[0]);root.style.setProperty('--ambient-b',colors[1]);root.style.setProperty('--ambient-c',colors[2]);
+   window.__ambientColorTimer=setTimeout(shift,8500+Math.random()*7500);
+ };
+ shift();
+})();
+function animateJapaneseWallpaper(){
+ const wall=$('jp-parallax-wall');if(!wall)return;
+ const sets=[
+  ['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','ひ','の','ま','ゆ','り','日本語','勉強','こんにちは','ありがとう','学生','学校','毎日','練習','言葉','友だち','শিখি','জাপানি','অনুশীলন','ভাষা','শুভেচ্ছা','ধন্যবাদ','শিক্ষার্থী','স্কুল','প্রতিদিন','বন্ধু','বই','সময়'],
+  ['ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','ヒ','ノ','マ','ユ','リ','カタカナ','コンニチハ','ガクセイ','ガッコウ','ベンキョウ','レンシュウ','コトバ','トモダチ','জাপানি','শেখা','ভাষা','পড়াশোনা','ধন্যবাদ','বন্ধু','প্রতিদিন','সময়'],
+  ['日','本','語','学','校','生','先','友','時','間','人','月','火','水','木','金','土','年','大','小','上','下','山','川','日本語','学生','先生','勉強','言葉','練習','জাপানি','শিক্ষা','শব্দ','অনুশীলন','জীবন','স্বপ্ন','ভালো','নতুন','জ্ঞান','সাফল্য']
+ ];
+ const colors=['#70f0d7','#9d91ff','#82caff','#a8e7ff','#ffb7d5','#ffc98f','#c4f28b','#f5a8ff','#7ce7f4','#ffd86f','#b6bfff','#f6f0ff'];
+ // Generate 400 distinct animation keyframes; each visible wallpaper word receives its own motion.
+ if(!document.getElementById('jp-192-motion-keyframes')){
+   const motionStyle=document.createElement('style');motionStyle.id='jp-192-motion-keyframes';let css='';
+   for(let n=0;n<400;n++){
+     const a=(n*37)%31-15,b=(n*19)%35-17,r1=(n*13)%37-18,r2=(n*7)%41-20;
+     const s1=(.72+((n*3)%17)*.025).toFixed(3),s2=(1.01+((n*5)%15)*.025).toFixed(3),s3=(.78+((n*7)%13)*.035).toFixed(3);
+     const hue=(n*29)%160, bend=(n*11)%25-12, skew=(n*17)%19-9;
+     const path=(n%8);
+     let p1=`translate3d(${-b}px,${a-8}px,0) rotate(${r2}deg) scale(${s2})`,p2=`translate3d(${b+7}px,${-a-5}px,0) rotate(${-r1}deg) scale(${s3})`,p3=`translate3d(${a-5}px,${b+8}px,0) rotate(${r2+4}deg) scale(${s2})`;
+     if(path===1){p1=`translate3d(${a+12}px,${-b-10}px,0) rotate(${r1+28}deg) scale(${s2})`;p2=`translate3d(${-a-8}px,${b+12}px,0) rotate(${-r2-20}deg) scale(${s1})`}
+     if(path===2){p1=`translate3d(${bend}px,${-Math.abs(a)-8}px,0) rotate(${r2}deg) scale(${s2})`;p2=`translate3d(${-bend}px,${Math.abs(b)+6}px,0) rotate(${-r1}deg) scale(${s3})`}
+     if(path===3){p1=`translate3d(${skew}px,${bend}px,0) rotate(${r1+45}deg) scale(${s1})`;p2=`translate3d(${-skew}px,${-bend}px,0) rotate(${r2-45}deg) scale(${s2})`}
+     if(path===4){p1=`translate3d(${a*1.6}px,${b*.4}px,0) rotate(${r2+90}deg) scale(${s2})`;p2=`translate3d(${-a*1.4}px,${-b*.6}px,0) rotate(${r1-90}deg) scale(${s3})`}
+     if(path===5){p1=`translate3d(${b*.5}px,${a*1.4}px,0) rotate(${r1-32}deg) scale(${s3})`;p2=`translate3d(${-b*.7}px,${-a*1.2}px,0) rotate(${r2+32}deg) scale(${s2})`}
+     if(path===6){p1=`translate3d(${a-18}px,${b+14}px,0) rotate(${r1+12}deg) scale(${s2})`;p2=`translate3d(${-a+15}px,${-b-12}px,0) rotate(${r2-12}deg) scale(${s1})`}
+     if(path===7){p1=`translate3d(${Math.sin(n)*18}px,${Math.cos(n)*17}px,0) rotate(${r2+65}deg) scale(${s2})`;p2=`translate3d(${Math.cos(n)*-16}px,${Math.sin(n)*-19}px,0) rotate(${r1-65}deg) scale(${s3})`}
+     css+=`@keyframes jpWordMotion${n}{0%,100%{transform:translate3d(${a}px,${b}px,0) rotate(${r1}deg) scale(${s1});opacity:var(--jp-opacity,.1);filter:hue-rotate(${hue}deg) drop-shadow(0 0 5px currentColor)}23%{transform:${p1};opacity:calc(var(--jp-opacity,.1)*1.75);filter:hue-rotate(${hue+37}deg) drop-shadow(0 0 ${9+(n%17)}px currentColor)}51%{transform:${p2};opacity:calc(var(--jp-opacity,.1)*1.35);filter:hue-rotate(${hue+79}deg) drop-shadow(0 0 ${7+(n%19)}px currentColor)}77%{transform:${p3};opacity:calc(var(--jp-opacity,.1)*1.7);filter:hue-rotate(${hue+121}deg) drop-shadow(0 0 ${11+(n%15)}px currentColor)}}`;
+   }
+   motionStyle.textContent=css;document.head.appendChild(motionStyle);
+ }
+ let existing=[...wall.querySelectorAll('.jp-float')];
+ const mobile=window.matchMedia('(max-width:600px)').matches,cols=mobile?5:12,rows=mobile?36:16,total=cols*rows;
+ if(existing.length>total){existing.slice(total).forEach(el=>el.remove());existing=existing.slice(0,total)}
+ for(let i=existing.length;i<total;i++){const el=document.createElement('span');el.className='jp-float';el.setAttribute('aria-hidden','true');wall.appendChild(el);existing.push(el)}
+ existing.forEach((el,i)=>{
+   const row=Math.floor(i/cols),col=i%cols;
+   el.dataset.glyphIndex=String(i);
+   el.style.left=(col*(100/cols)+.2)+'%';el.style.top=(row*(100/rows))+'%';
+   el.style.setProperty('--tilt',((i%7)-3)*1.15+'deg');el.style.setProperty('--glyph-seq',String(i+1));el.style.setProperty('--ripple-duration',(3.6+(i%43)*.11).toFixed(2)+'s');el.style.setProperty('--ripple-delay',(-((i*.23)%5)).toFixed(2)+'s');
+   el.style.setProperty('--jp-opacity',(.055+Math.random()*.07).toFixed(3));
+   el.style.setProperty('--jp-color',colors[Math.floor(Math.random()*colors.length)]);
+   el.style.setProperty('--jp-size',`clamp(${mobile?11:14}px, ${(mobile?1.9:2.1)+(i%5)*.32}vw, ${mobile?24:36}px)`);
+   const motionIndex=Math.floor(Math.random()*400);el.dataset.motion=String(motionIndex);
+   el.style.setProperty('--duration',(7+Math.random()*13).toFixed(2)+'s');el.style.setProperty('--delay',(-Math.random()*12).toFixed(2)+'s');
+   el.style.animation=`jpWordMotion${motionIndex} ${(7+Math.random()*13).toFixed(2)}s cubic-bezier(${(.18+Math.random()*.42).toFixed(2)},${(Math.random()*.28).toFixed(2)},${(.35+Math.random()*.4).toFixed(2)},1) ${(-Math.random()*12).toFixed(2)}s infinite alternate`;
+   el.style.marginLeft='0px';el.style.marginTop='0px';el.style.setProperty('--float-x',`${((i%5)-2)*3}px`);const initialSet=sets[Math.floor(Math.random()*sets.length)];el.textContent=initialSet[Math.floor(Math.random()*initialSet.length)];
+ });
+ // Each word changes on its own random schedule; no synchronized wallpaper-wide swaps.
+ if(window.__jpWordTimers){window.__jpWordTimers.forEach(clearTimeout)}
+ window.__jpWordTimers=[];
+ const randomizeOneWord=(el)=>{
+   if(!el.isConnected||prefs.parallax===false)return;
+   const chosenSet=sets[Math.floor(Math.random()*sets.length)];
+   const oldOpacity=parseFloat(el.style.getPropertyValue('--jp-opacity'))||.1;
+   const nextOpacity=(.045+Math.random()*.09).toFixed(3);
+   const nextColor=colors[Math.floor(Math.random()*colors.length)];
+   const nextMotion=Math.floor(Math.random()*400);
+   const duration=5.5+Math.random()*17.5;
+   el.style.setProperty('--jp-color',nextColor);
+   el.style.setProperty('--jp-opacity',nextOpacity);
+   el.style.setProperty('--duration',duration.toFixed(2)+'s');
+   el.textContent=chosenSet[Math.floor(Math.random()*chosenSet.length)];
+   el.dataset.motion=String(nextMotion);
+   el.style.animation=`jpWordMotion${nextMotion} ${duration.toFixed(2)}s cubic-bezier(${(.2+Math.random()*.35).toFixed(2)},${(.08+Math.random()*.22).toFixed(2)},${(.35+Math.random()*.4).toFixed(2)},1) ${(-Math.random()*6).toFixed(2)}s infinite alternate`;
+   try{el.animate([{opacity:Math.max(.02,oldOpacity*.35),filter:'blur(3px) brightness(1.2)',letterSpacing:'-.04em'},{opacity:Number(nextOpacity),filter:'blur(0px) brightness(1)',letterSpacing:'.02em'}],{duration:950+Math.random()*1900,easing:'cubic-bezier(.16,1,.3,1)'});}catch(_){}
+   const timer=setTimeout(()=>randomizeOneWord(el),2200+Math.random()*11500);
+   window.__jpWordTimers.push(timer);
+ };
+ [...wall.querySelectorAll('.jp-float')].forEach((el)=>{
+   const timer=setTimeout(()=>randomizeOneWord(el),Math.random()*6500);
+   window.__jpWordTimers.push(timer);
+ });
+}
+function replayWallpaperEntrance(){
+ const wall=$('jp-parallax-wall');if(!wall||prefs.parallax===false)return;
+ wall.classList.remove('wallpaper-reentry');void wall.offsetWidth;wall.classList.add('wallpaper-reentry');
+ wall.querySelectorAll('.jp-float').forEach((el,i)=>{
+   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||prefs.reducedMotion)return;
+   try{el.animate([
+    {opacity:0,filter:'blur(7px) brightness(1.8)',transform:`translate3d(0,${18+(i%9)*4}px,0) rotate(${(i%2?1:-1)*22}deg) scale(.25)`},
+    {opacity:Math.min(.34,.09+(i%5)*.045),filter:'blur(0) brightness(1.6)',transform:`translate3d(0,${-8-(i%11)*2}px,0) rotate(${(i%7)-3}deg) scale(1.25)`},
+    {opacity:parseFloat(el.style.getPropertyValue('--jp-opacity'))||.1,filter:'brightness(1)',transform:'translate3d(0,0,0) rotate(0deg) scale(1)'}
+   ],{duration:1150+(i%17)*43,delay:(i%23)*19,easing:'cubic-bezier(.16,1,.3,1)',composite:'add'});}catch(_){}
+ });
+ clearTimeout(window.__jpWallRevealTimer);window.__jpWallRevealTimer=setTimeout(()=>wall.classList.remove('wallpaper-reentry'),2100);
+}
+let wallpaperResizeFrame=0;window.addEventListener('resize',()=>{if(wallpaperResizeFrame)cancelAnimationFrame(wallpaperResizeFrame);wallpaperResizeFrame=requestAnimationFrame(()=>{wallpaperResizeFrame=0;animateJapaneseWallpaper()})},{passive:true});
+window.addEventListener('pageshow',()=>{animateJapaneseWallpaper();replayWallpaperEntrance()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){animateJapaneseWallpaper();replayWallpaperEntrance()}});
+['retest-btn','again-btn','start-btn','continue-btn'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>{animateJapaneseWallpaper();replayWallpaperEntrance()}));
+window.addEventListener('load',()=>{animateJapaneseWallpaper();replayWallpaperEntrance()},{once:true});
+animateJapaneseWallpaper();
+/* Certificate feature removed as requested. */
+function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;const factor=({fast:.72,faster:.48,ultra:.32})[prefs.wallpaperSpeed||'faster']||.48;wall.querySelectorAll('.jp-float').forEach(el=>{const base=parseFloat(el.dataset.baseDuration||el.style.getPropertyValue('--duration'))||9;el.dataset.baseDuration=String(base);el.style.animationDuration=`${Math.max(1.7,base*factor)}s`})}
 // Adaptive Japanese live wallpaper: mouse on PC, touch on phones, orientation/motion sensors when permitted.
 (()=>{
  const wall=$('jp-parallax-wall'); if(!wall)return;
@@ -2365,7 +2980,7 @@ function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;
  const reduced=()=>!!prefs.reducedMotion||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const setStatus=(label,kind='fallback')=>{if(status){status.textContent=label;status.dataset.state=kind}};
  const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
- const paint=()=>{chars.forEach((el,i)=>{const depth=.055+(i%4)*.027;const x=clamp(tx,-600,600)*depth;const y=clamp(ty,-600,600)*depth+clamp(sy,-1500,1500)*(.008+(i%3)*.004);el.style.setProperty('--px',`${x}px`);el.style.setProperty('--py',`${y}px`);/* margin offsets are not overwritten by the float keyframes' transform/translate */el.style.marginLeft=`${x}px`;el.style.marginTop=`${y}px`;});raf=0};
+ const paint=()=>{chars.forEach((el,i)=>{const depth=.006+(i%4)*.002;const x=clamp(tx,-220,220)*depth;const y=clamp(ty,-220,220)*depth+clamp(sy,-1500,1500)*(.0004+(i%3)*.0003);el.style.setProperty('--px',`${x}px`);el.style.setProperty('--py',`${y}px`);/* margin offsets are not overwritten by the float keyframes' transform/translate */el.style.marginLeft=`${x}px`;el.style.marginTop=`${y}px`;});raf=0};
  const schedule=()=>{if(!raf&&!reduced()&&prefs.parallax!==false)raf=requestAnimationFrame(paint)};
  const pointerPosition=(x,y)=>{tx=x-window.innerWidth/2;ty=y-window.innerHeight/2;schedule()};
  window.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen'){lastPointer=Date.now();pointerPosition(e.clientX,e.clientY)}},{passive:true});
@@ -2375,8 +2990,8 @@ function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;
  window.addEventListener('touchstart',e=>{const t=e.touches&&e.touches[0];if(t){touchStart={x:t.clientX,y:t.clientY};pointerPosition(t.clientX,t.clientY)}},{passive:true});
  window.addEventListener('touchmove',e=>{const t=e.touches&&e.touches[0];if(t)pointerPosition(t.clientX,t.clientY)},{passive:true});
  window.addEventListener('touchend',()=>{touchStart=null},{passive:true});
- const onOrientation=e=>{if(e.gamma==null||e.beta==null)return;orientationSeen=Date.now();sensorActive=true;tx=clamp(e.gamma,-35,35)*13;ty=clamp(e.beta-35,-35,35)*12;setStatus('Phone orientation sensor active','active');schedule()};
- const onMotion=e=>{if(Date.now()-orientationSeen<1200)return;const a=e.accelerationIncludingGravity;if(!a)return;const x=a.x,y=a.y;if(x==null||y==null)return;sensorActive=true;tx=clamp(x,-9,9)*42;ty=clamp(y,-9,9)*42;setStatus('Motion sensor active','active');schedule()};
+ const onOrientation=e=>{if(e.gamma==null||e.beta==null)return;orientationSeen=Date.now();sensorActive=true;tx=clamp(e.gamma,-25,25)*3.2;ty=clamp(e.beta-35,-25,25)*3.0;setStatus('Phone orientation sensor active','active');schedule()};
+ const onMotion=e=>{if(Date.now()-orientationSeen<1200)return;const a=e.accelerationIncludingGravity;if(!a)return;const x=a.x,y=a.y;if(x==null||y==null)return;sensorActive=true;tx=clamp(x,-9,9)*7;ty=clamp(y,-9,9)*7;setStatus('Motion sensor active','active');schedule()};
  const attachSensors=()=>{if(sensorAttempted)return;sensorAttempted=true;
    const listen=()=>{let attached=false;
      if('DeviceOrientationEvent'in window){window.addEventListener('deviceorientation',onOrientation,{passive:true});attached=true}
@@ -2400,5 +3015,6 @@ function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;
  if(prefs.parallax===false)setStatus('Wallpaper paused in settings','fallback');else setStatus('Mouse / touch parallax ready','fallback');
 })();
 </script>
+
 </body>
 </html>
