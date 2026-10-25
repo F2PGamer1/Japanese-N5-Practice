@@ -3290,3 +3290,16 @@ body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.c
 @media(max-width:360px){.vocab-read-words-two-col{gap:5px!important;padding:6px!important}.vocab-read-words-two-col .vocab-read-word{padding:7px 6px!important}.vocab-read-words-two-col .vocab-read-jp{font-size:16px!important}.vocab-read-words-two-col .vocab-tts-btn{font-size:9px!important;padding:0 5px!important}}
 @media(prefers-reduced-motion:reduce){#si-animated-backdrop:before{animation:none!important}}
 </style>
+
+
+<style id="sirjo-select-text-visibility-fix">
+/* Fix native dropdowns: keep option text readable in the open menu and selected value. */
+select, select:focus, select:active { color:#f4f8ff !important; -webkit-text-fill-color:#f4f8ff !important; background-color:rgba(7,15,28,.92) !important; text-shadow:none !important; opacity:1 !important; }
+select option, select optgroup { color:#f4f8ff !important; background-color:#101a2a !important; -webkit-text-fill-color:#f4f8ff !important; text-shadow:none !important; opacity:1 !important; }
+select option:checked, select option:hover { color:#ffffff !important; background-color:#245b68 !important; }
+select:disabled, select option:disabled { color:#aab7c8 !important; -webkit-text-fill-color:#aab7c8 !important; }
+/* Also keep text visible in any native/custom selection control. */
+input, textarea { color:#f4f8ff !important; -webkit-text-fill-color:#f4f8ff; }
+::selection { color:#ffffff; background:#286777; }
+@media (forced-colors: active) { select, select option { forced-color-adjust:auto; } }
+</style>
