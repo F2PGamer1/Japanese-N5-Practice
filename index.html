@@ -813,6 +813,133 @@ body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.c
   body, #si-animated-backdrop { animation: none !important; }
 }
 </style>
+
+<style id="sirjo-grammar-guide-mobile-fix-v2">
+/* Grammar guide: legible, touch-friendly and reliable step reveal on desktop + mobile. */
+.grammar-breakdown{position:relative;border-color:#31566a!important;background:linear-gradient(145deg,#0b202c,#10182d 62%,#17162e)!important;box-shadow:inset 0 1px #ffffff0a,0 8px 24px #0002}
+.grammar-breakdown-title{font-size:14px!important;letter-spacing:.1px}
+.grammar-breakdown-subtitle{font-size:12px!important;max-width:62ch}
+.grammar-token-row{align-items:stretch!important;gap:7px!important}
+.grammar-token{flex:0 1 auto;min-width:56px;max-width:100%;overflow-wrap:anywhere;word-break:normal;touch-action:manipulation}
+.grammar-token .token-kind{font-size:10px!important;line-height:1.45;letter-spacing:0!important}
+.grammar-token-arrow{display:flex;align-items:center;justify-content:center;min-width:10px}
+.grammar-breakdown-play{min-height:42px!important;padding:9px 13px!important;font-size:12px!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.grammar-breakdown-play:disabled{opacity:.75;cursor:wait}
+.grammar-breakdown-translation{font-size:13px!important;line-height:1.85!important}
+.grammar-breakdown-legend{gap:7px!important}
+.grammar-legend-chip{font-size:10px!important;line-height:1.5}
+@media(max-width:680px), (pointer:coarse){
+ .grammar-breakdown{padding:12px!important;margin-top:12px!important;border-radius:15px!important;overflow:visible!important}
+ .grammar-breakdown-head{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+ .grammar-breakdown-head>div:first-child{min-width:0;width:100%}
+ .grammar-breakdown-play{width:100%!important;min-height:44px!important;font-size:13px!important}
+ .grammar-token-row{display:flex!important;flex-wrap:wrap!important;align-items:stretch!important;gap:7px!important}
+ .grammar-token{min-width:calc(33.333% - 7px)!important;max-width:100%!important;flex:1 1 calc(33.333% - 7px)!important;padding:8px 6px!important}
+ .grammar-token .token-jp{font-size:16px!important;overflow-wrap:anywhere}
+ .grammar-token .token-kind{font-size:10px!important}
+ .grammar-token-arrow{min-width:8px!important;font-size:12px!important;padding:0!important}
+ .grammar-breakdown-translation{font-size:13px!important;line-height:1.9!important}
+ .grammar-legend-chip{font-size:10px!important}
+}
+@media(max-width:360px){.grammar-token{min-width:calc(50% - 7px)!important;flex-basis:calc(50% - 7px)!important}.grammar-token-arrow{display:none!important}}
+</style>
+
+
+<style id="sirjo-next-level-study-ui">
+/* Polished study UI: clearer hierarchy, calmer gradients, readable Japanese and tap targets. */
+.vocabulary-reading-launch{margin:0 0 16px;padding:17px 19px;display:flex;align-items:center;gap:14px;border:1px solid #5ff0ce2e;border-radius:20px;background:radial-gradient(ellipse at 0 0,#55e0c019,transparent 52%),linear-gradient(135deg,#102b35f5,#12182bf5 65%,#201b38f2);box-shadow:0 14px 36px #0002}
+.vocab-read-icon{width:52px;height:52px;flex:0 0 52px;border-radius:16px;display:grid;place-items:center;font-family:'Noto Sans JP',sans-serif;font-size:25px;font-weight:900;color:#071b24;background:linear-gradient(135deg,#5ff0ce,#82b9ff 60%,#b7a1ff);box-shadow:0 8px 22px #55e0c01d}
+.vocabulary-reading-copy{flex:1;min-width:0}.vocabulary-reading-launch .primary{width:auto;min-width:170px;margin:0;flex-shrink:0}
+.vocab-reader-hero{position:relative;overflow:hidden;padding:clamp(20px,4vw,32px);margin-bottom:14px;background:radial-gradient(ellipse at 90% 0,#5ff0ce20,transparent 45%),radial-gradient(ellipse at 0 100%,#a69bff18,transparent 50%),linear-gradient(145deg,#14253b,#0b1426)}
+.vocab-reader-hero h2{margin:4px 0 9px;font-size:clamp(24px,4vw,34px);letter-spacing:-.6px}.vocab-reader-hero p{max-width:68ch;color:var(--muted);font-size:13px;line-height:1.85;margin:0}
+.vocab-reader-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.vocab-reader-stats>div{min-width:120px;padding:10px 13px;border:1px solid #9ab5d524;border-radius:13px;background:#ffffff06;display:flex;flex-direction:column;gap:3px}.vocab-reader-stats strong{font-size:20px;color:#a8f5e3}.vocab-reader-stats span{font-size:11px;color:var(--muted)}
+.vocab-reader-controls{padding:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:16px}.vocab-control-label{font-size:10px;font-weight:900;letter-spacing:1.1px;color:#9bb3d2;margin-top:3px}.vocab-reading-search{width:100%;min-height:46px;border-radius:13px;border:1px solid #829fc53a;background:#081321;color:#edf5ff;padding:11px 14px;font:inherit;outline:none}.vocab-reading-search:focus{border-color:#5ff0ce99;box-shadow:0 0 0 3px #5ff0ce13}.vocab-reader-note{font-size:11px;line-height:1.7;color:var(--muted);margin:2px 0 0}
+.vocabulary-reading-content{display:grid;gap:14px}.vocab-read-lesson{overflow:hidden;border:1px solid #8ea9d226;border-radius:20px;background:linear-gradient(145deg,#101e31,#0a1424);box-shadow:0 12px 30px #0002}.vocab-read-lesson-head{display:flex;align-items:center;gap:12px;padding:15px 17px;border-bottom:1px solid #ffffff0d;background:linear-gradient(110deg,#55e0c00b,#a69bff0b)}.vocab-read-lesson-number{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#5ff0ce,#88baff);color:#071821;font-weight:950}.vocab-read-lesson-title{font-size:16px;font-weight:900}.vocab-read-lesson-sub{font-size:11px;color:var(--muted);margin-top:3px}.vocab-read-words{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:12px}.vocab-read-word{min-width:0;border:1px solid #9cb8d21c;border-radius:14px;padding:12px;background:linear-gradient(145deg,#ffffff05,#ffffff02);display:flex;flex-direction:column;gap:5px}.vocab-read-jp{font-family:'Noto Sans JP',sans-serif;font-size:22px;line-height:1.55;color:#e8f3ff;overflow-wrap:anywhere}.vocab-read-kanji{font-family:'Noto Sans JP',sans-serif;color:#91e9d5;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.vocab-read-romaji{font-size:11px;color:#a9b8d0;overflow-wrap:anywhere}.vocab-read-bn{font-size:13px;line-height:1.65;color:#f2f6ff;overflow-wrap:anywhere}.vocab-read-index{font-size:10px;color:#7890ae;margin-top:2px}.vocab-reader-empty{padding:25px 16px;text-align:center;color:var(--muted);border:1px dashed #829fc54a;border-radius:16px;line-height:1.8}
+.vocab-read-word{position:relative;padding:12px 12px 10px}.vocab-read-word-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.vocab-read-index{font-variant-numeric:tabular-nums;color:#9ab1cc;font-weight:800}.vocab-tts-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;padding:0 10px;border:1px solid #55e0c055;border-radius:10px;background:#55e0c012;color:#9ef4df;font-size:11px;font-weight:800;cursor:pointer;touch-action:manipulation}.vocab-tts-btn:active{transform:scale(.97)}.vocab-read-jp{font-weight:750}.vocab-reader-pagination{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:14px;margin-top:10px;border:1px solid #8ea9d226;border-radius:15px;background:#ffffff04}.vocab-reader-pagination button{min-height:40px;padding:0 14px;border:1px solid #829fc53a;border-radius:11px;background:#101c2e;color:#eef5ff;font-weight:750}.vocab-reader-pagination button:disabled{opacity:.35}.vocab-reader-page-label{font-size:12px;color:#b8c7dc;font-weight:750;font-variant-numeric:tabular-nums}
+@media(max-width:650px){.vocab-tts-btn{min-height:38px;padding:0 11px}.vocab-read-word-top{align-items:center}.vocab-reader-pagination{gap:8px;padding:11px}}
+
+/* Grammar guide refinements */
+#grammar-guide-screen .guide-intro{border:1px solid #5ff0ce26;box-shadow:0 14px 38px #0002}#grammar-guide-screen .guide-rule{padding:clamp(13px,2vw,19px);border-radius:18px!important;background:linear-gradient(145deg,#101e31,#0a1424)!important}#grammar-guide-screen .guide-pattern{font-size:clamp(16px,2.4vw,19px);line-height:1.8;border-color:#5ff0ce25;background:linear-gradient(110deg,#55e0c012,#a69bff0d)}#grammar-guide-screen .guide-explain{font-size:14px;line-height:1.95}#grammar-guide-screen .guide-example{border:1px solid #a69bff24;border-left:3px solid var(--accent2);border-radius:12px;background:linear-gradient(120deg,#a69bff0d,#55e0c008);padding:14px}#grammar-guide-screen .guide-jp{font-size:clamp(18px,2.8vw,22px);line-height:1.9;overflow-wrap:anywhere}#grammar-guide-screen .guide-romaji{font-size:12px;line-height:1.8}#grammar-guide-screen .guide-bn{font-size:14px;line-height:1.9}#grammar-guide-screen .rule-example-practice{border-radius:15px!important}#grammar-guide-screen .grammar-breakdown{border-radius:16px!important}#grammar-guide-screen .grammar-token{border-radius:12px!important;box-shadow:inset 0 1px #ffffff0a}
+@media(max-width:650px){.vocabulary-reading-launch{align-items:stretch;flex-wrap:wrap;padding:14px}.vocabulary-reading-copy{flex:1 1 calc(100% - 70px)}.vocabulary-reading-launch .primary{width:100%;min-height:46px}.vocab-read-words{grid-template-columns:minmax(0,1fr);padding:10px}.vocab-read-word{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px}.vocab-read-jp{grid-column:1;font-size:22px}.vocab-read-kanji{grid-column:2;grid-row:1;align-self:center;text-align:right}.vocab-read-romaji{grid-column:1/-1}.vocab-read-bn{grid-column:1/-1}.vocab-read-index{grid-column:1/-1}.vocab-reader-controls{padding:13px}.vocab-read-lesson-head{padding:13px}.vocab-read-lesson-title{font-size:15px}}
+@media(max-width:360px){.vocab-read-jp{font-size:20px}.vocab-read-word{padding:10px}.vocab-read-kanji{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.vocab-read-lesson,.vocab-read-word{animation:none!important;transition:none!important}}
+</style>
+
+<style id="sirjo-grammar-study-route">
+.grammar-study-route{margin-top:17px;padding-top:15px;border-top:1px solid #ffffff13}.grammar-study-route-title{font-size:12px;font-weight:900;letter-spacing:.2px;color:#baf7e8;margin-bottom:10px}.grammar-study-route-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.grammar-study-route-steps>div{min-width:0;padding:11px;border:1px solid #8ea9d222;border-radius:13px;background:linear-gradient(145deg,#ffffff07,#ffffff02);display:flex;flex-direction:column;gap:5px}.grammar-study-route-steps b{font-size:10px;color:#5ff0ce;letter-spacing:1px}.grammar-study-route-steps strong{font-size:12px;color:#eef6ff}.grammar-study-route-steps span{font-size:10px;line-height:1.6;color:var(--muted)}@media(max-width:560px){.grammar-study-route-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.grammar-study-route-steps>div{padding:10px}.grammar-study-route-steps strong{font-size:12px}}
+</style>
+
+
+<style id="sirjo-original-ui-transparency-only">
+/* Keep the restored design and geometry. Make matte surfaces genuinely see-through. */
+:root{--sirjo-glass-surface:rgba(10,20,36,.16);--sirjo-glass-surface-soft:rgba(10,20,36,.10);--sirjo-glass-border:rgba(190,235,255,.22)}
+.panel,.section,.home-profile,.progress-gain-panel,.grammar-progress-panel,
+.grammar-guide-launch,.vocabulary-reading-launch,.vocab-reader-hero,.vocab-reader-controls,
+.vocab-read-lesson,.vocab-read-word,.guide-intro,.guide-toolbar,.guide-lesson,
+.guide-card,.guide-rule,.guide-example,.rule-example-practice,.grammar-breakdown,
+.grammar-study-route-steps>div,.lesson-card,.stat-card,.stat,.stats,.mode,.setting,
+.question-card,.quiz-panel,.quiz-card,.result-card,.result-stat,.result-grid,
+.write-practice,.write-guide,.write-target-row,.write-progress-row,.sentence-card,
+.generated-sentence,.grammar-token,.grammar-legend-chip,.quiz-chip,.tip,
+.vocab-reader-note,.vocab-reader-empty,.vocab-read-lesson-head,.vocab-read-words,
+.progress-gain-grid>*,.settings-grid>*,.kana-grid>*,.options>*,.quick-login,
+.login-wrap,.login-card,.profile-card,.profile-edit,.modal,.dialog,.toast,
+.question-tools,.quiz-footer,.quiz-top,.select-wrap,.lesson-progress,
+.lesson-progress-ring,.vocab-reader-stats,.vocab-control-label,.guide-count,
+.guide-pattern,.guide-explain,.guide-example-head,.grammar-guide-launch-copy,
+#login-screen .login-wrap,.topbar{
+ background-color:var(--sirjo-glass-surface)!important;
+ background-image:none!important;
+ border-color:var(--sirjo-glass-border)!important;
+ -webkit-backdrop-filter:blur(12px) saturate(125%);
+ backdrop-filter:blur(12px) saturate(125%);
+}
+/* Small nested controls stay lighter, not opaque/matte. */
+.progress-gain-grid>*,.settings-grid>*,.kana-grid>*,.options>*,.mode,.stat,
+.lesson-progress,.lesson-progress-ring,.grammar-token,.grammar-legend-chip,.quiz-chip,
+.guide-rule,.guide-example,.vocab-read-word,.vocab-tts-btn,.icon-btn,.small-btn,
+.select-wrap select,input,textarea,.secondary,.text-btn,.quiz-option,.sentence-tts,
+.guide-toolbar button,.question-tools button,.quiz-footer button{
+ background-color:var(--sirjo-glass-surface-soft)!important;
+ border-color:var(--sirjo-glass-border)!important;
+}
+/* Fix low-contrast button labels while preserving the existing primary-action colors. */
+button,.small-btn,.secondary,.text-btn,.icon-btn,.quiz-option,.mode,.vocab-tts-btn,
+.sentence-tts,.guide-toolbar button,.question-tools button,.quiz-footer button,
+#login-screen button,.select-wrap select{
+ color:#f5fbff!important;
+ text-shadow:0 1px 3px rgba(0,0,0,.72);
+ -webkit-text-fill-color:currentColor;
+}
+.primary,.primary *,.primary:before,.primary:after{
+ color:#07131d!important;text-shadow:none!important;-webkit-text-fill-color:#07131d!important;
+}
+button:disabled{opacity:.78}
+input,textarea,select,.login-input,.vocab-reading-search{color:#f5fbff!important;caret-color:#8bffe4}
+input::placeholder,textarea::placeholder{color:rgba(235,245,255,.72)!important;opacity:1}
+/* Keep existing shapes and layouts; only improve edge definition and focus visibility. */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+ outline:2px solid #8bffe4!important;outline-offset:2px
+}
+@media(min-width:900px){
+ .panel,.section,.home-profile,.vocab-read-word,.vocab-read-lesson,.topbar{
+  -webkit-backdrop-filter:blur(15px) saturate(135%);backdrop-filter:blur(15px) saturate(135%)
+ }
+}
+@media(max-width:700px){
+ :root{--sirjo-glass-surface:rgba(10,20,36,.22);--sirjo-glass-surface-soft:rgba(10,20,36,.15)}
+ .panel,.section,.home-profile,.vocab-read-word,.vocab-read-lesson,.topbar,
+ .grammar-progress-panel,.grammar-guide-launch,.vocabulary-reading-launch{
+  -webkit-backdrop-filter:blur(8px) saturate(120%);backdrop-filter:blur(8px) saturate(120%)
+ }
+ button,.small-btn,.secondary,.primary,.icon-btn,.quiz-option,.vocab-tts-btn{min-height:40px}
+}
+@media(prefers-reduced-transparency:reduce){
+ .panel,.section,.home-profile,.vocab-read-word,.vocab-read-lesson,.topbar{
+  background-color:rgba(12,25,42,.72)!important;-webkit-backdrop-filter:none;backdrop-filter:none
+ }
+}
+</style>
 </head>
 <body>
 <div id="si-animated-backdrop" aria-hidden="true"></div>
@@ -879,6 +1006,12 @@ body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.c
       <div class="grammar-guide-launch-copy"><div class="grammar-guide-launch-title">📚 Grammar Guide · Lesson 1–10</div><div class="grammar-guide-launch-desc">প্রতিটি Lesson-এর grammar rule, সহজ বাংলা ব্যাখ্যা, sentence pattern, উদাহরণ, Romaji ও বাংলা অর্থ—আলাদা করে পড়ো।</div></div>
       <button class="primary" id="open-grammar-guide" type="button">Grammar শিখি ↗</button>
     </section>
+    <section class="panel vocabulary-reading-launch" aria-label="Vocabulary reading only">
+      <div class="vocab-read-icon" aria-hidden="true">あ</div>
+      <div class="vocabulary-reading-copy"><div class="grammar-guide-launch-title">📖 Vocabulary Reading · Lesson 1–10</div><div class="grammar-guide-launch-desc">সব Lesson-এর vocabulary আলাদা করে পড়ো—Japanese, Romaji, বাংলা অর্থ ও থাকলে Kanji। এটি শুধু পড়ার জন্য; এখানে quiz বা test শুরু হবে না।</div></div>
+      <button class="primary" id="open-vocabulary-reading" type="button">শুধু Vocabulary পড়ি ↗</button>
+    </section>
+
     <div class="layout">
       <section class="panel section">
         <div class="section-head"><div><div class="section-title">Start a practice</div></div><span class="pill">N5 · Beginner</span></div>
@@ -914,10 +1047,18 @@ body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.c
 
   <section id="grammar-guide-screen" class="screen">
     <div class="quiz-top"><button class="small-btn" id="grammar-guide-home" type="button">← Dashboard</button><span class="quiz-chip">MINNA NO NIHONGO · N5</span></div>
-    <section class="panel guide-intro"><div class="eyebrow">STUDY MODE</div><h2>Grammar Guide <span class="gradient-text">Lesson 1–10</span></h2><p>এখানে Grammar Test নয়—নিয়মগুলো আগে ভালোভাবে বুঝে শেখার জন্য আলাদা Study Guide। প্রতিটি নিয়মে Japanese pattern, সহজ বাংলা ব্যাখ্যা, উদাহরণ, Romaji এবং বাংলা অর্থ দেওয়া আছে।</p></section>
+    <section class="panel guide-intro"><div class="eyebrow">STUDY MODE</div><h2>Grammar Guide <span class="gradient-text">Lesson 1–10</span></h2><p>এখানে Grammar Test নয়—নিয়মগুলো আগে ভালোভাবে বুঝে শেখার জন্য আলাদা Study Guide। প্রতিটি নিয়মে Japanese pattern, সহজ বাংলা ব্যাখ্যা, উদাহরণ, Romaji এবং বাংলা অর্থ দেওয়া আছে।</p><div class="grammar-study-route" aria-label="Grammar শেখার ধাপ"><div class="grammar-study-route-title">একটি Rule শেখার সেরা ক্রম</div><div class="grammar-study-route-steps"><div><b>01</b><strong>Pattern পড়ো</strong><span>কোন অংশ কোথায় বসে দেখো</span></div><div><b>02</b><strong>বাংলা ব্যাখ্যা</strong><span>কেন ব্যবহার হয় বুঝে নাও</span></div><div><b>03</b><strong>Sentence ভাঙো</strong><span>রঙিন অংশ ও অ্যানিমেশন দেখো</span></div><div><b>04</b><strong>উদাহরণ পড়ো</strong><span>Romaji ও বাংলা অর্থ মিলিয়ে নাও</span></div></div></div></section>
     <div class="guide-toolbar"><div class="select-wrap"><select class="select" id="grammar-guide-filter" aria-label="Lesson বেছে নাও"><option value="all">সব Lesson · 1–10</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option><option value="9">Lesson 9</option><option value="10">Lesson 10</option></select></div><span class="pill" id="grammar-guide-count">10 Lessons · 0 rules</span></div>
     <div id="grammar-guide-content"></div>
     <button class="secondary" id="grammar-guide-bottom-home" type="button">← Dashboard-এ ফিরে যাও</button>
+  </section>
+
+  <section id="vocabulary-reading-screen" class="screen">
+    <div class="quiz-top"><button class="small-btn" id="vocabulary-reading-home" type="button">← Dashboard</button><span class="quiz-chip">READING ONLY · N5</span></div>
+    <section class="panel vocab-reader-hero"><div class="eyebrow">VOCABULARY LIBRARY</div><h2>Vocabulary <span class="gradient-text">Reading Room</span></h2><p>প্রতিটি Lesson-এর শব্দ এক জায়গায় পড়ো। Japanese শব্দ, Romaji, বাংলা অর্থ এবং ডেটায় থাকলে Kanji দেখানো হবে। এই স্ক্রিনে কোনো quiz বা score নেই—শুধু পড়ার জন্য।</p><div class="vocab-reader-stats"><div><strong id="vocab-reader-count">0</strong><span>শব্দ দেখানো হচ্ছে</span></div><div><strong>10</strong><span>Lessons</span></div></div></section>
+    <section class="panel vocab-reader-controls"><label class="vocab-control-label" for="vocab-reading-lesson">LESSON বেছে নাও</label><div class="select-wrap"><select class="select" id="vocab-reading-lesson"><option value="all">সব Lesson · 1–10</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option><option value="9">Lesson 9</option><option value="10">Lesson 10</option></select></div><label class="vocab-control-label" for="vocab-reading-search">শব্দ খুঁজে পড়ো</label><input class="vocab-reading-search" id="vocab-reading-search" type="search" placeholder="Japanese / Romaji / বাংলা লিখে খুঁজুন…" autocomplete="off"><p class="vocab-reader-note">শব্দগুলো Lesson অনুযায়ী সাজানো। কোনো শব্দ না পেলে বানান বা Romaji-এর অংশ লিখে খুঁজে দেখো।</p></section>
+    <div id="vocabulary-reading-content" class="vocabulary-reading-content"></div>
+    <button class="secondary" id="vocabulary-reading-bottom-home" type="button">← Dashboard-এ ফিরে যাও</button>
   </section>
 
   <section id="quiz-screen" class="screen">
@@ -2416,6 +2557,27 @@ function openKanaWriteModal(index){setupKanaWriteModal();const list=writeList();
 function renderKana(){const list=kanaData[state.kanaType];setupKanaWriteModal();$('kana-grid').innerHTML='';list.forEach((k,index)=>{const b=document.createElement('button');b.className='kana-cell';b.type='button';b.innerHTML=`<div class="kana-char"></div><div class="kana-romaji"></div>`;b.querySelector('.kana-char').textContent=k.char;b.querySelector('.kana-romaji').textContent=k.romaji;let holdTimer=0,held=false,suppressClick=false;const clearHold=()=>{if(holdTimer)clearTimeout(holdTimer);holdTimer=0;b.classList.remove('hold-arming')};b.addEventListener('pointerdown',e=>{if(e.button!==undefined&&e.button!==0)return;held=false;b.classList.add('hold-arming');holdTimer=setTimeout(()=>{holdTimer=0;held=true;suppressClick=true;b.classList.remove('hold-arming');openKanaWriteModal(index);setTimeout(()=>{suppressClick=false},650)},300)});['pointerup','pointercancel','pointerleave'].forEach(type=>b.addEventListener(type,clearHold));b.addEventListener('contextmenu',e=>e.preventDefault());b.addEventListener('click',()=>{if(held||suppressClick){held=false;return}playSound('tap');speakJapaneseWord(k.char);vibrate('tap')});$('kana-grid').appendChild(b)});}
 
 
+// Reading-only vocabulary library: all words in each selected Lesson, numbered, two-column reading layout.
+function renderVocabularyReading(){
+ const lesson=$('vocab-reading-lesson')?.value||'all';
+ const query=String($('vocab-reading-search')?.value||'').trim().toLocaleLowerCase();
+ const all=vocabData.filter(w=>(lesson==='all'||String(w.l)===lesson)&&(!query||[w.j,w.u,w.b,w.k].some(v=>String(v||'').toLocaleLowerCase().includes(query))));
+ $('vocab-reader-count').textContent=all.length;
+ const root=$('vocabulary-reading-content');
+ if(!all.length){root.innerHTML='<div class="vocab-reader-empty">এই Lesson বা সার্চে কোনো শব্দ পাওয়া যায়নি।<br>অন্য Lesson বেছে নাও অথবা সার্চের শব্দ বদলাও।</div>';return;}
+ const groups=lesson==='all'?[...new Set(all.map(w=>w.l))].sort((a,b)=>a-b).map(l=>({lesson:l,words:all.filter(w=>w.l===l)})):[{lesson:Number(lesson),words:all}];
+ root.innerHTML=groups.map(g=>{
+  const rows=Math.ceil(g.words.length/2);
+  const cards=g.words.map((w,i)=>`<article class="vocab-read-word"><div class="vocab-read-word-top"><div class="vocab-read-index">#${i+1} / ${g.words.length}</div><button class="vocab-tts-btn" type="button" data-vocab-speak="${guideEscape(w.j||'')}" aria-label="Japanese উচ্চারণ শুনুন: ${guideEscape(w.j||'')}" title="Japanese উচ্চারণ শুনুন">▶ শুনুন</button></div><div class="vocab-read-jp" lang="ja">${guideEscape(w.j||'—')}</div>${w.k?`<div class="vocab-read-kanji" lang="ja">${guideEscape(w.k)}</div>`:''}<div class="vocab-read-romaji">${guideEscape(w.u||'')}</div><div class="vocab-read-bn">${guideEscape(w.b||'')}</div></article>`).join('');
+  return `<section class="vocab-read-lesson"><header class="vocab-read-lesson-head"><div class="vocab-read-lesson-number">L${g.lesson}</div><div><div class="vocab-read-lesson-title">Lesson ${g.lesson}</div><div class="vocab-read-lesson-sub">${g.words.length}টি vocabulary · দুই কলামে সম্পূর্ণ Lesson · Reading only</div></div></header><div class="vocab-read-words vocab-read-words-two-col" style="--vocab-rows:${rows}">${cards}</div></section>`;
+ }).join('');
+}
+$('vocabulary-reading-content').addEventListener('click',e=>{
+ const speak=e.target.closest('[data-vocab-speak]');
+ if(speak){speakJapaneseWord(speak.dataset.vocabSpeak);vibrate('tap');return;}
+});
+function openVocabularyReading(){showScreen('vocabulary-reading-screen');renderVocabularyReading();vibrate('navigate')}
+
 // Study-only grammar guide for Minna no Nihongo Lessons 1–10.
 const grammarGuideData=[{"lesson":1,"title":"পরিচয় ও ‘হওয়া’ বোঝানো","intro":"এই Lesson-এ নিজের পরিচয়, পেশা/জাতীয়তা বলা, প্রশ্ন করা এবং ‘ও/এর’ সম্পর্ক বোঝানো শেখা হবে।","rules":[["N1 は N2 です — পরিচয় বলা","N1 は N2 です","は (wa) বাক্যের মূল বিষয় দেখায়; です (desu) ভদ্র বাক্যের শেষে এসে ‘হয়/আছি’ অর্থ দেয়। জাপানিতে は লেখা হলেও particle হিসেবে wa পড়তে হয়।","わたしは シルジョです。","Watashi wa Sirjo desu.","আমি সিরজো।"],["N1 は N2 じゃありません — না বলা","N1 は N2 じゃありません","ভদ্রভাবে ‘নই/নয়’ বলতে noun বা পরিচয়ের পরে じゃありません ব্যবহার হয়। আরও আনুষ্ঠানিক রূপ ではありません।","わたしは せんせいじゃありません。","Watashi wa sensei ja arimasen.","আমি শিক্ষক নই।"],["N1 は N2 ですか — হ্যাঁ/না প্রশ্ন","N1 は N2 ですか","বাক্যের শেষে か যোগ করলে সাধারণত প্রশ্ন হয়। প্রশ্নে কণ্ঠস্বর বাড়ানো বাধ্যতামূলক নয়; か-ই প্রশ্ন বোঝায়।","ミラーさんは がくせいですか。","Miraa-san wa gakusei desu ka.","মিলার কি ছাত্র?"],["N1 も N2 です — ‘এছাড়াও/ও’","N1 も N2 です","একই তথ্য অন্য কারও ক্ষেত্রেও সত্য হলে は-এর বদলে も (mo) ব্যবহার হয়; অর্থ ‘ও/এছাড়াও’।","わたしも がくせいです。","Watashi mo gakusei desu.","আমিও ছাত্র/ছাত্রী।"],["N1 の N2 — সম্পর্ক/মালিকানা","N1 の N2","の (no) দুটি noun-কে যুক্ত করে। এটি মালিকানা, পরিচয়, প্রতিষ্ঠান বা কোনো কিছুর সঙ্গে সম্পর্ক বোঝাতে পারে।","これは わたしの ほんです。","Kore wa watashi no hon desu.","এটি আমার বই।"],["だれ／どなた — কে?","N は だれですか。／どなたですか。","মানুষের পরিচয় জানতে だれ (dare) বলা হয়। どなた (donata) একই অর্থের আরও ভদ্র রূপ। নামের সঙ্গে さん ব্যবহার করা ভদ্রতা।","あのひとは どなたですか。","Ano hito wa donata desu ka.","ওই ব্যক্তিটি কে?"],["なんさい／おいくつ — বয়স","N は なんさいですか。","বয়স জানতে なんさい (nansai) বলা হয়। おいくつ (oikutsu) আরও ভদ্র; উত্তরে সংখ্যা + さい ব্যবহার করা যায়।","たなかさんは おいくつですか。","Tanaka-san wa oikutsu desu ka.","তানাকা-সানের বয়স কত?"]]},{"lesson":2,"title":"বস্তু দেখানো ও বর্ণনা","intro":"কোনো জিনিস কী, কার, কোন জিনিসটি—এসব জানতে これ・それ・あれ এবং この・その・あの শেখা হবে।","rules":[["これ／それ／あれ — এই/সেই/ওই বস্তু","これ／それ／あれ は N です","これ (kore) বক্তার কাছে, それ (sore) শ্রোতার কাছে, あれ (are) দুজনের থেকেই দূরের বস্তুকে বোঝায়। এগুলো noun ছাড়াই একা দাঁড়াতে পারে।","これは じしょです。","Kore wa jisho desu.","এটি অভিধান।"],["この／その／あの + noun","この N／その N／あの N","এই শব্দগুলোর পরে অবশ্যই noun লাগে। このほん = এই বই; この একা ‘এই বস্তু’ হিসেবে ব্যবহার করা যায় না—সেক্ষেত্রে これ।","このほんは わたしのです。","Kono hon wa watashi no desu.","এই বইটি আমার।"],["そうです／そうじゃありません","はい、そうです。／いいえ、そうじゃありません。","কোনো বক্তব্য ঠিক হলে そうです (‘হ্যাঁ, তাই’) এবং ভুল হলে そうじゃありません (‘না, তা নয়’) বলা যায়।","これは ほんですか。はい、そうです。","Kore wa hon desu ka. Hai, sou desu.","এটি কি বই? হ্যাঁ, তাই।"],["N1 の N2 — কোন ধরনের/কার জিনিস","N1 の N2","の শুধু মালিকানা নয়; শ্রেণি, দেশ, প্রতিষ্ঠান বা বিষয়ও বোঝায়—যেমন にほんごの ほん (জাপানি ভাষার বই)।","これは にほんごの ほんです。","Kore wa nihongo no hon desu.","এটি জাপানি ভাষার বই।"],["なん／なに — কী?","これは なんですか。","কোনো বস্তু কী তা জানতে なん (nan) ব্যবহার হয়। পরের শব্দের ধ্বনি অনুযায়ী なに (nani)-ও হয়; N5-এ প্রচলিত প্রশ্ন これはなんですか।","それは なんですか。","Sore wa nan desu ka.","ওটা কী?"],["この／その／あの — কোনটি বেছে জিজ্ঞেস করা","どの N／どれ","একাধিক বস্তুর মধ্যে কোনটি জানতে noun-এর আগে どの (dono), আর noun ছাড়া どれ (dore) ব্যবহার হয়।","ミラーさんの かばんは どれですか。","Miraa-san no kaban wa dore desu ka.","মিলারের ব্যাগ কোনটি?"],["だれの — কার?","これは だれの N ですか。","কোনো জিনিস কার তা জানতে だれの (dare no) ব্যবহার হয়।","これは だれの かさですか。","Kore wa dare no kasa desu ka.","এটি কার ছাতা?"]]},{"lesson":3,"title":"স্থান, দিক ও দাম","intro":"জায়গা কোথায়, কোন প্রতিষ্ঠানে, এবং কোনো জিনিসের দাম কত—তা জিজ্ঞেস করা শিখবে।","rules":[["ここ／そこ／あそこ — এখানে/সেখানে/ওখানে","ここ／そこ／あそこ は N です","এগুলো স্থান বোঝায়: ここ বক্তার কাছে, そこ শ্রোতার কাছে, あそこ দুজনের থেকে দূরের জায়গা।","ここは きょうしつです。","Koko wa kyoushitsu desu.","এখানে শ্রেণিকক্ষ।"],["N は place です — কোথায় আছে/কোথায় অবস্থিত","N は place です","কোনো দোকান, অফিস বা সুবিধা কোথায় তা জানাতে N-এর পরে は এবং স্থান বোঝানো শব্দ ব্যবহার করা হয়।","トイレは あそこです。","Toire wa asoko desu.","টয়লেট ওখানে।"],["どこ／どちら — কোথায়?","N は どこですか。","কোনো জায়গা কোথায় জানতে どこ (doko)। どちら (dochira) আরও ভদ্রভাবে স্থান বা দিক জিজ্ঞেস করতে পারে।","うけつけは どこですか。","Uketsuke wa doko desu ka.","রিসেপশন কোথায়?"],["N1 の N2 — প্রতিষ্ঠানের/দেশের পরিচয়","N1 の N2","দেশ, কোম্পানি বা প্রতিষ্ঠানের নামের পরে の দিয়ে সম্পর্ক দেখানো যায়।","IMCは どこの かいしゃですか。","IMC wa doko no kaisha desu ka.","IMC কোন দেশের/কোন জায়গার কোম্পানি?"],["いくらですか — দাম কত?","N は いくらですか。","কোনো জিনিসের দাম জানতে いくら (ikura) ব্যবহার হয়। দাম সাধারণত 円 (えん, en) দিয়ে বলা হয়।","このかばんは いくらですか。","Kono kaban wa ikura desu ka.","এই ব্যাগের দাম কত?"],["こちら／そちら／あちら — ভদ্রভাবে স্থান/দিক","こちら／そちら／あちら／どちら","ここ・そこ・あそこ・どこ-এর ভদ্র রূপ। দোকান বা অফিসে পথ/অবস্থান বোঝাতে কাজে লাগে।","じむしょは こちらです。","Jimusho wa kochira desu.","অফিস এদিকে/এখানে।"]]},{"lesson":4,"title":"সময় ও দৈনন্দিন ক্রিয়া","intro":"সময় বলা, কাজ কখন হয়, কখন থেকে কখন পর্যন্ত, এবং ভদ্র present/past verb form শিখবে।","rules":[["সময় + に — নির্দিষ্ট সময়ে","Time に Vます","ঘড়ির নির্দিষ্ট সময়ে কাজ হওয়া বোঝাতে সময়ের পরে に (ni) বসে। きょう・あした-এর মতো আপেক্ষিক সময়ের শব্দের পরে সাধারণত に লাগে না।","まいあさ 6じに おきます。","Maiasa roku-ji ni okimasu.","প্রতিদিন সকালে ছয়টায় উঠি।"],["Vます — ভদ্র বর্তমান/ভবিষ্যৎ","Vます","ます-রূপ অভ্যাস, নিয়মিত কাজ বা ভবিষ্যৎ কাজ বোঝায়; অর্থ সময়-প্রসঙ্গ থেকে বোঝা যায়।","まいにち にほんごを べんきょうします。","Mainichi nihongo o benkyou shimasu.","প্রতিদিন জাপানি পড়ি।"],["Vません — না করা","Vません","ます-এর negative রূপ ません; ভদ্রভাবে ‘করি না/করব না’ বোঝায়।","にちようびは はたらきません。","Nichiyoubi wa hatarakimasen.","রবিবার কাজ করি না।"],["Vました／Vませんでした — অতীত","Vました／Vませんでした","গত/সম্পন্ন কাজের জন্য ました; অতীতে কাজ না হলে ませんでした।","きのう はたらきました。","Kinou hatarakimashita.","গতকাল কাজ করেছি।"],["から～まで — থেকে～পর্যন্ত","Time から Time まで","সময় বা সীমার শুরুতে から (kara), শেষ সীমায় まで (made) বসে। একসঙ্গে বা আলাদাভাবেও ব্যবহার করা যায়।","9じから 5じまで はたらきます。","Ku-ji kara go-ji made hatarakimasu.","নয়টা থেকে পাঁচটা পর্যন্ত কাজ করি।"],["なんじ／なんようび — কয়টা/কোন বার","なんじですか。／なんようびですか。","সময় জানতে なんじ (nanji), সপ্তাহের দিন জানতে なんようび (nanyoubi)।","いま なんじですか。","Ima nanji desu ka.","এখন কয়টা বাজে?"]]},{"lesson":5,"title":"যাওয়া, আসা ও যাতায়াত","intro":"কোথায় যাওয়া/আসা/ফেরা, কী দিয়ে যাতায়াত, কার সঙ্গে যাওয়া এবং কখন—এসব শেখা হবে।","rules":[["Place へ 行きます／来ます／帰ります","Place へ V","へ (e) গন্তব্যের দিক বোঝায়; particle হিসেবে へ লেখা হলেও e উচ্চারণ হয়। 行きます = যাই, 来ます = আসি, 帰ります = ফিরি।","がっこうへ いきます。","Gakkou e ikimasu.","স্কুলে যাই।"],["Transport で — যানবাহনে","Transport で V","কোন যানবাহন বা মাধ্যম দিয়ে কাজ হচ্ছে তা বোঝাতে で (de) বসে। হাঁটা বোঝাতে あるいて (aruite) হলে সাধারণত で লাগে না।","でんしゃで いきます。","Densha de ikimasu.","ট্রেনে যাই।"],["Person と — কার সঙ্গে","Person と V","কারও সঙ্গে কাজ করা বোঝাতে ব্যক্তির পরে と (to) বসে।","ともだちと にほんへ いきます。","Tomodachi to Nihon e ikimasu.","বন্ধুর সঙ্গে জাপানে যাই।"],["いつ — কখন?","いつ Vますか。","কাজের সময় জানতে いつ (itsu) ব্যবহার হয়। নির্দিষ্ট সময় উল্লেখ করলে সময়ের পরে に লাগতে পারে।","いつ にほんへ いきますか。","Itsu Nihon e ikimasu ka.","কখন জাপানে যাবেন?"],["どこへも／だれとも + negative","どこへも Vません。／だれとも Vません。","কোনো জায়গায়ই না গেলে どこへも + negative; কারও সঙ্গেই না হলে だれとも + negative ব্যবহার হয়।","きのうは どこへも いきませんでした。","Kinou wa doko e mo ikimasen deshita.","গতকাল কোথাও যাইনি।"],["よ — নতুন তথ্য জোর দিয়ে বলা","Sentence よ","বাক্যের শেষে よ দিয়ে শ্রোতাকে নতুন তথ্য জানানো বা কথায় জোর দেওয়া হয়। ভদ্রতা ও স্বর অনুযায়ী ব্যবহার করতে হয়।","このバスは とうきょうへ いきますよ。","Kono basu wa Toukyou e ikimasu yo.","এই বাস টোকিও যায় কিন্তু/জেনে রাখুন।"]]},{"lesson":6,"title":"কাজ করা, আমন্ত্রণ ও প্রস্তাব","intro":"কোনো কাজের object, কাজের স্থান, কাউকে আমন্ত্রণ এবং একসঙ্গে কিছু করার প্রস্তাব শিখবে।","rules":[["N を Vます — কাজের object","N を Vます","যে জিনিসের ওপর সরাসরি কাজ করা হয়, তার পরে を (o) বসে। を লেখা হলেও particle হিসেবে o উচ্চারণ হয়।","パンを たべます。","Pan o tabemasu.","রুটি খাই।"],["Place で Vます — কাজের স্থান","Place で Vます","কোনো কাজ কোথায় হচ্ছে তা বোঝাতে স্থানের পরে で (de) বসে। মনে রাখো: で = কাজের স্থান/মাধ্যম; に = অবস্থান/গন্তব্য/সময়ের মতো ভিন্ন ব্যবহার।","としょかんで べんきょうします。","Toshokan de benkyou shimasu.","লাইব্রেরিতে পড়াশোনা করি।"],["なにをしますか — কী করবেন?","なにを Vますか。","কোন কাজ বা কী জিনিস নিয়ে কাজ হবে জানতে なにを (nani o) ব্যবহার করা হয়।","きょう なにを しますか。","Kyou nani o shimasu ka.","আজ কী করবেন?"],["Vませんか — আমন্ত্রণ","Vませんか。","কাউকে ভদ্রভাবে একসঙ্গে কিছু করতে আমন্ত্রণ জানাতে ませんか ব্যবহার হয়। আক্ষরিক negative হলেও এটি প্রস্তাব/আমন্ত্রণ।","いっしょに えいがを みませんか。","Issho ni eiga o mimasen ka.","একসঙ্গে সিনেমা দেখবেন?"],["Vましょう — চলুন করি","Vましょう。","একসঙ্গে কাজ শুরু করার প্রস্তাব বা সম্মতি জানাতে ましょう ব্যবহার হয়।","ちょっと やすみましょう。","Chotto yasumimashou.","চলুন একটু বিশ্রাম নিই।"],["何で／だれと — কী দিয়ে/কার সঙ্গে","なにで／だれと","কাজের মাধ্যম জানতে なにで (nani de), সঙ্গী জানতে だれと (dare to) ব্যবহার হয়।","なにで きりますか。","Nani de kirimasu ka.","কী দিয়ে কাটবেন?"]]},{"lesson":7,"title":"মাধ্যম, দেওয়া-নেওয়া ও ইতিমধ্যে করা কাজ","intro":"কোনো কাজ কী দিয়ে করা হয়, কাউকে কিছু দেওয়া/ধার দেওয়া/শেখানো, কারও কাছ থেকে পাওয়া এবং কাজ ইতিমধ্যে শেষ হয়েছে কি না—এসব শেখা হবে।","rules":[["N で V — উপকরণ বা মাধ্যম","N で V","কোনো কাজ করার যন্ত্র, উপকরণ, ভাষা বা মাধ্যম বোঝাতে で (de) ব্যবহার হয়। এটি কাজের স্থান বোঝানো で-এর একই particle, কিন্তু অর্থ বাক্যের প্রসঙ্গ অনুযায়ী বদলায়।","はしで ごはんを たべます。","Hashi de gohan o tabemasu.","চপস্টিক দিয়ে ভাত খাই।"],["Word は ～語で 何ですか — অন্য ভাষায় কী?","「Word」は ～ごで なんですか。","একটি শব্দ বা বাক্য অন্য ভাষায় কীভাবে বলা হয় জানতে ～語 (go, ভাষা) + で + なんですか ব্যবহার হয়।","「ありがとう」は えいごで なんですか。","‘Arigatou’ wa eigo de nan desu ka.","‘আরিগাতো’ ইংরেজিতে কী?"],["N1 に N2 を あげます — কাউকে কিছু দেওয়া","Person に Thing を あげます","যে ব্যক্তি কিছু পায় তার পরে に; যে জিনিস দেওয়া হয় তার পরে を। あげます মানে অন্য কাউকে দেওয়া।","きむらさんに はなを あげました。","Kimura-san ni hana o agemashita.","কিমুরা-সানকে ফুল দিয়েছিলাম।"],["N1 に／から N2 を もらいます — কারও কাছ থেকে পাওয়া","Person に／から Thing を もらいます","যার কাছ থেকে পাওয়া যায় তার পরে に বা から বসতে পারে। প্রতিষ্ঠান/সংস্থা থেকে পাওয়া বোঝালে から বিশেষভাবে স্বাভাবিক।","やまださんから はなを もらいました。","Yamada-san kara hana o moraimashita.","ইয়ামাদা-সানের কাছ থেকে ফুল পেয়েছিলাম।"],["かします／かります／おしえます／ならいます","Person に Thing を Vます","かします = ধার দেওয়া, かります = ধার নেওয়া, おしえます = শেখানো/তথ্য জানানো, ならいます = কারও কাছ থেকে শেখা। কে দেয়/পায়/শেখায় তা particle দিয়ে চেনা জরুরি।","せんせいに にほんごを ならいます。","Sensei ni nihongo o naraimasu.","শিক্ষকের কাছ থেকে জাপানি শিখি।"],["もう Vました — ইতিমধ্যে সম্পন্ন","もう Vましたか。","もう মানে ‘ইতিমধ্যে/already’। কাজ শেষ হয়েছে কি না জানতে もう～ましたか; ইতিবাচক উত্তর はい、もう～ました, আর কাজ বাকি থাকলে いいえ、まだです বলা যায়।","もう ひるごはんを たべましたか。","Mou hirugohan o tabemashita ka.","ইতিমধ্যে দুপুরের খাবার খেয়েছ?"]]},{"lesson":8,"title":"い-adjective ও な-adjective","intro":"কোনো মানুষ, জায়গা বা জিনিস কেমন—তা বর্ণনা, adjective-এর negative form এবং মতামত জানানো শেখা হবে।","rules":[["い-adjective + です","N は い-adj です","অনেক adjective-এর শেষে い থাকে: たかい (দামি/উঁচু), おもしろい (মজার)। noun বর্ণনা না করলেও বাক্যে সরাসরি です-এর আগে বসে।","このほんは おもしろいです。","Kono hon wa omoshiroi desu.","এই বইটি মজার।"],["い-adjective negative: ～くないです","い-adj থেকে い বাদ + くないです","সাধারণ い-adjective-কে negative করতে শেষের い বাদ দিয়ে くないです যোগ হয়। ব্যতিক্রম いい → よくないです।","このへやは ひろくないです。","Kono heya wa hirokunai desu.","এই ঘরটি প্রশস্ত নয়।"],["な-adjective + です","N は な-adj です","な-adjective বাক্যের শেষে です-এর আগে সাধারণত な নেয় না: しずかです, しんせつです।","このまちは しずかです。","Kono machi wa shizuka desu.","এই শহর শান্ত।"],["な-adjective negative: じゃありません","な-adj + じゃありません","な-adjective-এর negative করতে adjective-এর পরে じゃありません (বা বেশি আনুষ্ঠানিক ではありません) বসে।","このまちは にぎやかじゃありません。","Kono machi wa nigiyaka ja arimasen.","এই শহর জমজমাট নয়।"],["Adjective + noun","な-adj な N ／ い-adj N","noun-এর আগে な-adjective হলে な রাখতে হয়: しずかなまち। い-adjective হলে শেষের い থাকে: たかいやま।","しんせつな せんせいです。","Shinsetsu na sensei desu.","তিনি একজন দয়ালু শিক্ষক।"],["とても／あまり — খুব/খুব একটা নয়","とても + affirmative ／ あまり + negative","とても (totemo) মানে খুব; あまり (amari) সাধারণত negative বাক্যের সঙ্গে ‘খুব একটা নয়’ অর্থে ব্যবহৃত হয়।","このほんは とても おもしろいです。","Kono hon wa totemo omoshiroi desu.","এই বইটি খুব মজার।"],["S1 が、S2 — কিন্তু","S1 が、S2","দুটি বাক্য যুক্ত করে contrast বা ‘কিন্তু’ বোঝাতে が ব্যবহার হয়। এখানে が subject marker নয়, conjunction।","このレストランは おいしいですが、たかいです。","Kono resutoran wa oishii desu ga, takai desu.","এই রেস্তোরাঁর খাবার সুস্বাদু, কিন্তু দামি।"],["どうですか／どんな N — কেমন?","N は どうですか。／どんな N ですか。","どうですか কোনো অভিজ্ঞতা/বিষয় কেমন জানতে; どんな + noun কোনো কিছুর ধরন বা বৈশিষ্ট্য জানতে ব্যবহৃত হয়।","にほんのせいかつは どうですか。","Nihon no seikatsu wa dou desu ka.","জাপানের জীবনযাপন কেমন?"]]},{"lesson":9,"title":"পছন্দ, বোঝা ও কারণ বলা","intro":"পছন্দ-অপছন্দ, দক্ষতা, কোনো কিছু বোঝা/থাকা, পরিমাণের adverb এবং কারণ ব্যাখ্যা শেখা হবে।","rules":[["N が すきです／きらいです — পছন্দ/অপছন্দ","N が すきです／きらいです","পছন্দ বা অপছন্দের বিষয়ের পরে সাধারণত が বসে। すきです = পছন্দ; きらいです = অপছন্দ।","わたしは おんがくが すきです。","Watashi wa ongaku ga suki desu.","আমি গান/সংগীত পছন্দ করি।"],["N が わかります — বুঝি","N が わかります","যে ভাষা বা বিষয় বোঝা যায় তার পরে が ব্যবহৃত হয়। ‘কিছু বুঝি’ বোঝাতে わかります; ‘জানি’ বোঝাতে しっています ভিন্নভাবে ব্যবহৃত হয়।","にほんごが すこし わかります。","Nihongo ga sukoshi wakarimasu.","আমি জাপানি একটু বুঝি।"],["N が あります — আছে/রয়েছে","N が あります","এই Lesson-এ あります কোনো কিছুর অস্তিত্ব/সম্পদ বা কোনো কিছু থাকা বোঝাতে আসতে পারে; অবস্থান বিস্তারিতভাবে Lesson 10-এ শেখা হয়।","じかんが あります。","Jikan ga arimasu.","সময় আছে।"],["じょうず／へた — দক্ষ/অদক্ষ","N が じょうずです／へたです","কোনো কাজে দক্ষতা বা অদক্ষতা বোঝাতে じょうず (jouzu) ও へた (heta) ব্যবহৃত হয়; নিজের সম্পর্কে じょうず বললে প্রসঙ্গভেদে অহংকারী শোনাতে পারে, তাই বিনয়ীভাবে বলা ভালো।","たなかさんは りょうりが じょうずです。","Tanaka-san wa ryouri ga jouzu desu.","তানাকা রান্নায় দক্ষ।"],["よく／だいたい／たくさん／すこし","Adverb + verb/adjective","よく = ভালোভাবে/প্রায়ই, だいたい = মোটামুটি, たくさん = অনেক, すこし = একটু। এগুলো কাজের মাত্রা বা পরিমাণ বোঝায়।","えいごが よく わかります。","Eigo ga yoku wakarimasu.","ইংরেজি ভালো বুঝি।"],["あまり／ぜんぜん + negative","あまり／ぜんぜん + negative","あまり = খুব একটা নয়; ぜんぜん = একেবারেই নয়। সাধারণত negative verb/adjective-এর সঙ্গে ব্যবহার হয়।","おさけは あまり のみません。","Osake wa amari nomimasen.","মদ/অ্যালকোহল খুব একটা পান করি না।"],["S1 から、S2 — কারণ","Reason から、result","একটি বাক্যের শেষে から যোগ করলে সেটি পরের বাক্যের কারণ বোঝায়। বাংলায় ‘কারণ/যেহেতু… তাই…’।","じかんが ありませんから、テレビを みません。","Jikan ga arimasen kara, terebi o mimasen.","সময় নেই বলে টিভি দেখি না।"],["どうして — কেন?","どうして S か。","কারণ জানতে どうして (doushite) ব্যবহার হয়। উত্তরে কারণের বাক্যের শেষে から যোগ করা যায়।","どうして きませんでしたか。びょうきでしたから。","Doushite kimasen deshita ka. Byouki deshita kara.","কেন আসেননি? অসুস্থ ছিলাম বলে।"]]},{"lesson":10,"title":"অস্তিত্ব, অবস্থান ও চারপাশের জিনিস","intro":"কোনো জায়গায় মানুষ/প্রাণী বা বস্তু কোথায় আছে, অবস্থানসূচক শব্দ এবং অসম্পূর্ণ তালিকা দেওয়া শেখা হবে।","rules":[["N が あります／います — অস্তিত্ব","N が あります／います","প্রাণহীন বস্তু বা উদ্ভিদের অস্তিত্ব বোঝাতে あります; মানুষ ও প্রাণীর জন্য います। এই বাক্যে যে জিনিস/ব্যক্তি আছে তার পরে が বসে।","つくえが あります。ねこが います。","Tsukue ga arimasu. Neko ga imasu.","একটি টেবিল আছে। একটি বিড়াল আছে।"],["Place に N が あります／います — কোথাও কিছু আছে","Place に N が あります／います","কোনো নির্দিষ্ট স্থানে কী আছে বোঝাতে স্থান + に, তারপর বস্তু/ব্যক্তি + が এবং あります/います ব্যবহার হয়।","わたしのへやに つくえが あります。","Watashi no heya ni tsukue ga arimasu.","আমার ঘরে একটি টেবিল আছে।"],["N は Place に あります／います — জিনিস/ব্যক্তি কোথায়","N は Place に あります／います","যে বস্তু বা ব্যক্তির অবস্থান বলা হচ্ছে তাকে は দিয়ে বিষয় করা হয়; তারপর স্থানের সঙ্গে に বসে।","ねこは いすのしたに います。","Neko wa isu no shita ni imasu.","বিড়ালটি চেয়ারের নিচে আছে।"],["N1 の অবস্থান — উপরে/নিচে/পাশে","N1 の うえ／した／まえ／うしろ／みぎ／ひだり／なか／そと／となり／ちかく／あいだ","কোনো কিছুর তুলনায় অবস্থান বলতে প্রথমে reference noun, তার পরে の এবং অবস্থানসূচক শব্দ ব্যবহার হয়।","ほんは つくえのうえに あります。","Hon wa tsukue no ue ni arimasu.","বইটি টেবিলের উপরে আছে।"],["N1 や N2 (など) — উদাহরণসহ তালিকা","N1 や N2 など","কয়েকটি উদাহরণ উল্লেখ করে ‘ইত্যাদি’ বোঝাতে や এবং など ব্যবহার হয়। と সাধারণত সম্পূর্ণ/নির্দিষ্ট তালিকা বোঝায়; や আংশিক তালিকা।","はこのなかに てがみや しゃしんなどが あります。","Hako no naka ni tegami ya shashin nado ga arimasu.","বাক্সে চিঠি, ছবি ইত্যাদি আছে।"],["どこ／なに／だれ — কোথায়/কী/কে","Place に なに／だれ が ありますか／いますか","কোনো স্থানে কী আছে জানতে なに; কে আছে জানতে だれ ব্যবহার হয়। জড় বস্তু হলে あります, মানুষ/প্রাণী হলে います।","れいぞうこのなかに なにが ありますか。","Reizouko no naka ni nani ga arimasu ka.","ফ্রিজের ভেতরে কী আছে?"],["N は どこに ありますか／いますか — অবস্থান জিজ্ঞেস","N は どこに ありますか／いますか","আগে থেকে জানা কোনো বস্তু/ব্যক্তি কোথায় তা জানতে noun + は + どこに এবং সঠিক existence verb ব্যবহার হয়।","ポストは どこに ありますか。","Posuto wa doko ni arimasu ka.","চিঠির বাক্স কোথায় আছে?"],["স্থান নিশ্চিত করা/পুনরাবৃত্তি করে জিজ্ঞেস","～ですか。","কথোপকথনে শোনা দোকান বা জায়গার নাম পুনরাবৃত্তি করে ～ですか বলা হলে সেটি নিশ্চিত হওয়া বা ‘আপনি কি … বলছেন?’ ধরনের প্রতিক্রিয়া হতে পারে। স্বর ও প্রসঙ্গ অর্থ নির্ধারণ করে।","アジアストアですか。","Ajia Sutoa desu ka.","এশিয়া স্টোর? / আপনি কি এশিয়া স্টোর বলছেন?"]]}];
 function guideEscape(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
@@ -2456,6 +2618,10 @@ function grammarTokenLabel(kind,token,nextToken=''){
 function splitGrammarSentence(sentence){
  const particles=new Set(['は','も','の','が','を','に','で','へ','と','や','から','まで','より','か','ね','よ']);
  const endings=['じゃありません','ではありません','ませんでした','ません','ました','でした','ください','でしょう','です','ます'];
+ // Beginner vocabulary guard: protect common complete words/names before looking for attached particles.
+ // This prevents false splits such as たのしい -> た + の + しい and たなかさん -> たな + か.
+ const lexicalWords=['こんにちは','こんばんは','ありがとうございます','たなかさん','やまださん','きむらさん','ミラーさん','シルジョ','はたらきます','はたらく','はこ','たのしい','たのしくない','おもしろい','おいしい','ひろくない','ひろい','たかい','やさしい','むずかしい','いそがしい','あたらしい','ふるい','おおきい','ちいさい','しずか','にぎやか','しんせつ','ゆうめい','べんり','きれい','げんき','じょうず','へた','すき','きらい','にほんご','えいご','かんこくご','ちゅうごくご','ひるごはん','あさごはん','ばんごはん','おんがく','じかん','てがみ','しゃしん','れいぞうこ','としょかん','きょうしつ','じむしょ','せいかつ','びょうき','おさけ','テレビ','ポスト','アジアストア','やすみましょう','きります','きませんでした','おきます','なんさい','おいくつ','どなた','こちら','そちら','あちら','なんようび','かいしゃ','きのう','たべました','のみません','あります','ありません','います','いません','わたし','あなた','あのひと','この','その','あの','これ','それ','あれ','ここ','そこ','あそこ','どこ','どちら','だれ','どなた','なに','なん','ともだち','がくせい','せんせい','かいしゃいん','いしゃ','ぎんこういん','ほん','じしょ','ざっし','しんぶん','ノート','かばん','かさ','とけい','ねこ','いぬ','つくえ','いす','がっこう','にほん','えいが','スポーツ','サッカー','コーヒー','みず','おちゃ','パン','レストラン','りょうり','えき','ぎんこう','びょういん','へや','まち','せんせい','にほんのせいかつ'];
+ const lexicalSorted=[...new Set(lexicalWords)].sort((a,b)=>b.length-a.length);
  const result=[];
  const chunks=String(sentence||'').split(/(\s+|[。、！？])/).filter(Boolean);
  for(const chunk of chunks){
@@ -2464,9 +2630,14 @@ function splitGrammarSentence(sentence){
   while(i<chunk.length){
    let matchedEnding=endings.find(e=>chunk.startsWith(e,i));
    if(matchedEnding){if(buf){result.push({text:buf,kind:'word'});buf='';}result.push({text:matchedEnding,kind:'ending'});i+=matchedEnding.length;continue;}
+   const lexical=lexicalSorted.find(w=>chunk.startsWith(w,i));
+   if(lexical){if(buf){result.push({text:buf,kind:'word'});buf='';}const next=chunk.slice(i+lexical.length);result.push({text:lexical,kind:grammarTokenKind(lexical,next[0]||'', '')});i+=lexical.length;continue;}
    const rest=chunk.slice(i);const particle=[...particles].sort((a,b)=>b.length-a.length).find(x=>rest.startsWith(x));
-   // Avoid treating an initial は as a particle in a word such as はこ or はたらく.
-   if(particle && (i>0 || ['か','ね','よ'].includes(particle))){
+   // Question/final particles are only marked when they occur at the end of this chunk.
+   // This prevents false labels inside names such as たなかさん (Tanaka-san).
+   const finalParticle=['か','ね','よ'].includes(particle||'') && i+particle.length===chunk.length;
+   // は at the start of words such as はこ / はたらく is lexical, not a topic particle.
+   if(particle && ((i>0 && !['か','ね','よ'].includes(particle)) || finalParticle)){
     if(buf){result.push({text:buf,kind:'word'});buf='';}
     result.push({text:particle,kind:['か','ね','よ'].includes(particle)?'question':'particle'});i+=particle.length;continue;
    }
@@ -2486,7 +2657,7 @@ function enhanceGrammarGuideCards(){
   const breakdown=document.createElement('section');breakdown.className='grammar-breakdown';
   const head=document.createElement('div');head.className='grammar-breakdown-head';
   const copy=document.createElement('div');copy.innerHTML='<div class="grammar-breakdown-title">🧩 বাক্যটি অংশে ভাগ করে শেখো</div><div class="grammar-breakdown-subtitle">প্রতিটি রঙের অংশে ট্যাপ না করেও শব্দের ধরন দেখা যাবে। ▶ চাপলে বাক্যটি ধাপে ধাপে তৈরি হবে।</div>';
-  const play=document.createElement('button');play.type='button';play.className='grammar-breakdown-play';play.textContent='▶ ধাপে ধাপে দেখাও';play.setAttribute('data-animate-breakdown','');head.append(copy,play);
+  const play=document.createElement('button');play.type='button';play.className='grammar-breakdown-play';play.textContent='▶ ধাপে ধাপে শেখো';play.setAttribute('data-animate-breakdown','');play.setAttribute('aria-label','বাক্যের অংশ একে একে দেখাও');head.append(copy,play);
   const row=document.createElement('div');row.className='grammar-token-row';row.setAttribute('aria-label','Sentence parts');
   tokens.forEach((t,i)=>{
    if(/^\s+$/.test(t.text))return;
@@ -2501,6 +2672,32 @@ function enhanceGrammarGuideCards(){
   breakdown.append(head,row,translation);
   const example=card.querySelector('.guide-example');if(example)example.insertAdjacentElement('afterend',breakdown);else card.appendChild(breakdown);
  });
+}
+
+function animateGrammarBreakdown(box,button){
+ if(!box)return;
+ const tokens=[...box.querySelectorAll('.grammar-token')];
+ if(!tokens.length)return;
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ box.classList.remove('is-animating');
+ // Reset with inline styles so the sequence also works on mobile browsers where CSS animation
+ // can be suppressed by battery/accessibility settings. WAAPI is supported by modern mobile browsers.
+ tokens.forEach((token)=>{token.style.opacity='0';token.style.transform='translateY(9px) scale(.97)';token.style.filter='none';});
+ if(button){button.disabled=true;button.textContent='⏳ বাক্য তৈরি হচ্ছে…';}
+ const duration=reduced?80:320, gap=reduced?130:220;
+ tokens.forEach((token,index)=>{
+  const delay=index*gap;
+  if(typeof token.animate==='function'){
+   token.animate([{opacity:0,transform:'translateY(9px) scale(.97)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration,delay,easing:'cubic-bezier(.2,.8,.2,1)',fill:'forwards'});
+  }else{
+   setTimeout(()=>{token.style.opacity='1';token.style.transform='translateY(0) scale(1)';},delay);
+  }
+ });
+ const total=(tokens.length-1)*gap+duration+80;
+ setTimeout(()=>{
+  tokens.forEach(token=>{token.style.opacity='1';token.style.transform='none';token.style.filter='none';});
+  if(button){button.disabled=false;button.textContent='↻ আবার দেখো';}
+ },total);
 }
 
 const guideSentenceChoices={
@@ -2864,7 +3061,7 @@ $('speech-btn').addEventListener('click',()=>{const item=currentItem();if(item){
 $('skip-btn').addEventListener('click',()=>{if(!state.isAnswered){handleTimeout()}});
 $('retest-btn').addEventListener('click',startRetest);
 $('again-btn').addEventListener('click',()=>{speakEnglishLine('Let’s start practicing again!');if(state.kanaRun){state.mode='kana';showScreen('kana-screen');renderKana()}else startQuiz()});
-$('open-grammar-guide').addEventListener('click',openGrammarGuide);$('grammar-guide-home').addEventListener('click',goHome);$('grammar-guide-bottom-home').addEventListener('click',goHome);$('grammar-guide-filter').addEventListener('change',renderGrammarGuide);$('grammar-guide-content').addEventListener('click',e=>{const speaker=e.target.closest('[data-speak-guide]');if(speaker){speakJapaneseWord(speaker.dataset.speakGuide);vibrate('tap');return;}const animate=e.target.closest('[data-animate-breakdown]');if(animate){const box=animate.closest('.grammar-breakdown');box.classList.remove('is-animating');void box.offsetWidth;box.classList.add('is-animating');setTimeout(()=>box.classList.remove('is-animating'),Math.max(900,box.querySelectorAll('.grammar-token').length*160+650));vibrate('tap');return;}const button=e.target.closest('[data-generate-sentences]');if(button){generateRuleSentences(button.dataset.generateSentences);vibrate('tap');}});
+$('open-grammar-guide').addEventListener('click',openGrammarGuide);$('open-vocabulary-reading').addEventListener('click',openVocabularyReading);$('vocabulary-reading-home').addEventListener('click',goHome);$('vocabulary-reading-bottom-home').addEventListener('click',goHome);$('vocab-reading-lesson').addEventListener('change',renderVocabularyReading);$('vocab-reading-search').addEventListener('input',renderVocabularyReading);$('grammar-guide-home').addEventListener('click',goHome);$('grammar-guide-bottom-home').addEventListener('click',goHome);$('grammar-guide-filter').addEventListener('change',renderGrammarGuide);$('grammar-guide-content').addEventListener('click',e=>{const speaker=e.target.closest('[data-speak-guide]');if(speaker){speakJapaneseWord(speaker.dataset.speakGuide);vibrate('tap');return;}const animate=e.target.closest('[data-animate-breakdown]');if(animate){const box=animate.closest('.grammar-breakdown');animateGrammarBreakdown(box,animate);vibrate('tap');return;}const button=e.target.closest('[data-generate-sentences]');if(button){generateRuleSentences(button.dataset.generateSentences);vibrate('tap');}});
 $('settings-open').addEventListener('click',()=>{showScreen('settings-screen');renderProfile();vibrate('tap')});
 $('edit-profile').addEventListener('click',()=>openLogin(true));
 $('home-edit-profile').addEventListener('click',()=>openLogin(true));$('home-profile-picture').addEventListener('click',()=>openLogin(true));$('home-profile-picture').style.cursor='pointer';
@@ -3061,3 +3258,35 @@ function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;
 
 </body>
 </html>
+
+<style id="sirjo-vocab-two-column-and-dark-animated-theme-v2">
+/* Low-glare animated background: deep navy/teal with a restrained violet undertone. */
+html,body{background:#03070f!important;color:#e2eaf5!important}
+body{background-image:none!important;animation:none!important;isolation:isolate!important}
+#si-animated-backdrop{position:fixed!important;inset:0!important;display:block!important;z-index:0!important;opacity:1!important;pointer-events:none!important;overflow:hidden!important;background:linear-gradient(125deg,#03070f 0%,#061522 27%,#08252d 48%,#101126 72%,#03070f 100%)!important}
+#si-animated-backdrop:before{content:"";position:absolute;inset:-25%;background:linear-gradient(125deg,#03070f 0%,#071c29 24%,#0a2a31 42%,#11142b 63%,#071a25 82%,#03070f 100%);background-size:260% 260%;animation:siDarkAmbientDrift 48s ease-in-out infinite alternate;will-change:background-position;opacity:.82}
+#si-animated-backdrop:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 12% 18%,#0b3b4630,transparent 45%),radial-gradient(ellipse at 86% 82%,#25204724,transparent 42%);opacity:.5}
+@keyframes siDarkAmbientDrift{0%{background-position:0% 35%}50%{background-position:60% 70%}100%{background-position:100% 45%}}
+body>.app,body>#toast,body>#login-screen,body>:not(#si-animated-backdrop):not(.color-fog-layer):not(.jp-parallax-wall){position:relative;z-index:2}
+.topbar,.panel,.stat,.mode,.setting,.question-card,.result-stat,.tip,.write-practice,.guide-lesson,.generated-sentence,.sentence-card,.grammar-progress-panel,.grammar-guide-launch,.progress-gain-panel,.guide-intro,.guide-toolbar,#login-screen .login-wrap,.vocab-read-lesson,.vocab-reader-controls,.vocab-reader-hero{background-color:#080f1bdc!important;background-image:linear-gradient(135deg,#0b1825e8,#080e19ed 62%,#111126df)!important;border-color:#253547a8!important;box-shadow:0 14px 38px #0005,inset 0 1px #ffffff08!important;backdrop-filter:blur(8px) saturate(105%)!important;-webkit-backdrop-filter:blur(8px) saturate(105%)!important}
+.vocab-read-lesson-head{background:linear-gradient(110deg,#0b30371c,#17162d30)!important}
+.vocab-read-lesson-number{background:linear-gradient(135deg,#173a43,#242344)!important;color:#b8d9dc!important;border:1px solid #38535f!important}
+.vocab-read-word{background:#070e18!important;border-color:#223143!important;box-shadow:inset 0 1px #ffffff04!important}
+.vocab-read-jp{color:#dce8f4!important}.vocab-read-kanji{color:#80c8ba!important}.vocab-read-romaji{color:#92a5bb!important}.vocab-read-bn{color:#d6e0ec!important}.vocab-read-index{color:#71859d!important}
+.vocab-tts-btn{background:#0b242b!important;border-color:#28515a!important;color:#9ad6cc!important}
+.vocab-read-words-two-col{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(var(--vocab-rows),auto)!important;grid-auto-flow:column!important;align-items:stretch!important;gap:8px!important;padding:12px!important}
+.vocab-read-words-two-col .vocab-read-word{min-width:0;align-self:start}
+.vocab-read-words-two-col .vocab-read-jp{font-size:20px;line-height:1.45;overflow-wrap:anywhere}
+@media(max-width:650px){
+ #si-animated-backdrop:before{animation-duration:64s;opacity:.72}
+ .vocab-read-words-two-col{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(var(--vocab-rows),auto)!important;gap:6px!important;padding:8px!important}
+ .vocab-read-words-two-col .vocab-read-word{display:flex!important;flex-direction:column!important;gap:5px!important;padding:9px 8px!important;border-radius:11px!important}
+ .vocab-read-words-two-col .vocab-read-word-top{align-items:center!important;gap:4px!important}
+ .vocab-read-words-two-col .vocab-read-jp{font-size:18px!important;line-height:1.4!important;grid-column:auto!important}
+ .vocab-read-words-two-col .vocab-read-kanji,.vocab-read-words-two-col .vocab-read-romaji,.vocab-read-words-two-col .vocab-read-bn,.vocab-read-words-two-col .vocab-read-index{grid-column:auto!important;grid-row:auto!important;text-align:left!important}
+ .vocab-read-words-two-col .vocab-read-bn{font-size:12px!important;line-height:1.5!important}
+ .vocab-read-words-two-col .vocab-tts-btn{min-height:30px!important;padding:0 7px!important;font-size:10px!important;white-space:nowrap}
+}
+@media(max-width:360px){.vocab-read-words-two-col{gap:5px!important;padding:6px!important}.vocab-read-words-two-col .vocab-read-word{padding:7px 6px!important}.vocab-read-words-two-col .vocab-read-jp{font-size:16px!important}.vocab-read-words-two-col .vocab-tts-btn{font-size:9px!important;padding:0 5px!important}}
+@media(prefers-reduced-motion:reduce){#si-animated-backdrop:before{animation:none!important}}
+</style>
