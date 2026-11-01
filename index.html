@@ -615,6 +615,22 @@ body{
 body:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}
 body.reduce-motion:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}
 @media(prefers-reduced-motion:reduce){body:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}}
+
+/* Refined touch-friendly lesson selector */
+.lesson-picker{position:relative;border:1px solid rgba(111,231,218,.28);border-radius:18px;background:linear-gradient(145deg,rgba(12,31,52,.98),rgba(10,25,43,.96));color:var(--text);box-shadow:0 12px 30px rgba(0,0,0,.18);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.lesson-picker:focus-within,.lesson-picker.open{border-color:#55e0c0;box-shadow:0 0 0 3px rgba(85,224,192,.10),0 14px 34px rgba(0,0,0,.22)}
+.lesson-picker-head{min-height:62px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;font-weight:800;background:linear-gradient(100deg,rgba(34,112,120,.22),rgba(62,69,130,.16));user-select:none}
+.lesson-picker-head:before{content:"▦";display:grid;place-items:center;width:36px;height:36px;flex:0 0 36px;border-radius:11px;background:rgba(85,224,192,.13);color:#75f0d4;font-size:18px}
+#lesson-picker-summary{flex:1;line-height:1.35}.lesson-picker-head>span:last-child{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.06);transition:transform .2s}.lesson-picker.open .lesson-picker-head>span:last-child{transform:rotate(180deg)}
+.lesson-picker-options{padding:13px;border-top:1px solid rgba(255,255,255,.08);background:rgba(3,12,25,.24)}.lesson-picker-options[hidden]{display:none!important}
+.lesson-choice{display:flex;align-items:center;gap:11px;min-height:48px;padding:9px 12px;border:1px solid rgba(145,174,205,.18);border-radius:13px;background:rgba(255,255,255,.035);color:var(--text);font-size:13px;font-weight:650;cursor:pointer;transition:all .16s;user-select:none}
+.lesson-choice:active{transform:scale(.98)}.lesson-choice input{width:20px;height:20px;accent-color:#55e0c0;flex:0 0 auto;cursor:pointer}
+.all-choice{margin-bottom:11px;background:linear-gradient(100deg,rgba(30,131,117,.24),rgba(31,92,115,.18));border-color:rgba(85,224,192,.28);font-weight:850}
+.lesson-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.lesson-choice:has(input:checked){border-color:#55e0c0;background:linear-gradient(110deg,rgba(26,117,103,.32),rgba(28,78,105,.27));box-shadow:inset 0 0 0 1px rgba(85,224,192,.10);color:#eafffa}
+.lesson-choice:has(input:checked) span:after{content:"  ✓";color:#75f0d4;font-weight:900}
+.lesson-multi-select[hidden]{display:none!important}
+@media(max-width:520px){.lesson-picker-head{min-height:60px;padding:12px}.lesson-picker-options{padding:10px}.lesson-choice-grid{gap:7px}.lesson-choice{min-height:46px;padding:8px 9px;font-size:12px;border-radius:11px}}
+
 </style>
 
 <style id="sirjo-blue-teal-violet-fog-fix">
@@ -946,6 +962,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
  }
 }
 </style>
+
+<style id="lesson-multiselect-style">
+.lesson-multi-select{min-height:150px;height:auto;padding:8px 12px;line-height:1.7;cursor:pointer} .lesson-multi-select option{padding:5px 8px;border-radius:6px} .lesson-multi-select option:checked{background:linear-gradient(var(--accent, #14b8a6),var(--accent, #14b8a6));color:#fff} .lesson-multi-select:focus{outline:2px solid var(--accent,#14b8a6);outline-offset:2px}
+</style>
 </head>
 <body>
 <div id="si-animated-backdrop" aria-hidden="true"></div>
@@ -1028,7 +1048,15 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
           <button class="mode" data-mode="kana"><span class="mode-icon">か</span><span class="mode-name">Kana quiz</span></button><button class="mode" data-mode="grammar"><span class="mode-icon">文</span><span class="mode-name">Grammar test</span></button><button class="mode" data-mode="hardest"><span class="mode-icon">⚡</span><span class="mode-name">Hardest mode</span></button>
         </div>
         <label class="field-label" for="lesson-select">LESSON</label>
-        <div class="select-wrap"><select class="select" id="lesson-select"><option value="all">All lessons · 1–10</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option><option value="9">Lesson 9</option><option value="10">Lesson 10</option></select></div>
+        <div class="lesson-picker" id="lesson-picker" aria-describedby="lesson-multi-help">
+          <div class="lesson-picker-head"><span id="lesson-picker-summary">All lessons · 1–10</span><span aria-hidden="true">⌄</span></div>
+          <div class="lesson-picker-options" id="lesson-picker-options" hidden>
+            <label class="lesson-choice all-choice"><input type="checkbox" id="lesson-all" checked><span>All Lessons · 1–10</span></label>
+            <div class="lesson-choice-grid"><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="1"><span>Lesson 1</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="2"><span>Lesson 2</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="3"><span>Lesson 3</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="4"><span>Lesson 4</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="5"><span>Lesson 5</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="6"><span>Lesson 6</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="7"><span>Lesson 7</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="8"><span>Lesson 8</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="9"><span>Lesson 9</span></label><label class="lesson-choice"><input type="checkbox" class="lesson-check" value="10"><span>Lesson 10</span></label></div>
+          </div>
+        </div>
+        <select class="select lesson-multi-select" id="lesson-select" multiple hidden aria-hidden="true"><option value="all" selected>All lessons · 1–10</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option><option value="9">Lesson 9</option><option value="10">Lesson 10</option></select>
+        <div class="tip" id="lesson-multi-help" style="margin-top:8px">এক বা একাধিক Lesson-এর পাশে টিক দাও। All Lessons নির্বাচন করলে সব Lesson অন্তর্ভুক্ত হবে।</div>
         <div id="grammar-direction-wrap" hidden>
           <label class="field-label" for="grammar-direction">GRAMMAR TEST TYPE</label>
           <div class="select-wrap"><select class="select" id="grammar-direction">
@@ -1182,12 +1210,16 @@ const grammarData = [
 ];
 
 
+function selectedLessonNumbers(selectedLesson='all'){
+  if(Array.isArray(selectedLesson)) return selectedLesson.includes('all')||!selectedLesson.length?[1,2,3,4,5,6,7,8,9,10]:selectedLesson.map(Number).filter(n=>n>=1&&n<=10);
+  return selectedLesson==='all'?[1,2,3,4,5,6,7,8,9,10]:[Number(selectedLesson)];
+}
 function generateGrammarQuestions(selectedLesson='all'){
   // Curated beginner-safe patterns from Minna no Nihongo I, Lessons 1–10.
   // Japanese examples intentionally use kana / beginner-friendly spellings.
   const pick=a=>a[Math.floor(Math.random()*a.length)];
   const shuffleLocal=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
-  const lessons=selectedLesson==='all'?[1,2,3,4,5,6,7,8,9,10]:[Number(selectedLesson)];
+  const lessons=selectedLessonNumbers(selectedLesson);
   const q=(l,full,blank,answer,bn,explanation,options)=>({l,j:full,question:blank,blank,correctAnswer:answer,b:bn,u:explanation,explanation,options,type:'grammar'});
   const bank=[];
   const person=pick([{jp:'わたし',bn:'আমি'},{jp:'ミラーさん',bn:'মি. মিলার'},{jp:'サントスさん',bn:'মি. সান্তোস'},{jp:'グプタさん',bn:'মি. গুপ্ত'}]);
@@ -1308,7 +1340,7 @@ function generateGrammarQuestions(selectedLesson='all'){
 
 function prepareGrammarQuestions(selectedLesson='all', direction='q1'){
   const shuffleLocal=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
-  const lessons=selectedLesson==='all'?[1,2,3,4,5,6,7,8,9,10]:[Number(selectedLesson)];
+  const lessons=selectedLessonNumbers(selectedLesson);
   const base=generateGrammarQuestions(selectedLesson).filter(q=>q.type!=='kana');
   const q1=base.map(q=>({...q,question:q.blank||q.j,correctAnswer:q.correctAnswer||q.b,displayOptions:shuffleLocal([...new Set([q.correctAnswer||q.b,...(q.options||[]).filter(x=>x!==(q.correctAnswer||q.b))])].slice(0,4)),testKind:'q1',examLabel:'問題1 · 文の文法1',answerDisplay:q.correctAnswer||q.b}));
 
@@ -1383,14 +1415,14 @@ const vocabData = [
             // Lesson 1
             { l:1, j:'わたし', u:'Watashi', b:'আমি', k:'' },
             { l:1, j:'あなた', u:'Anata', b:'তুমি', k:'' },
-            { l:1, j:'あの ひと', u:'Anohito', b:'সে', k:'' },
-            { l:1, j:'～さん', u:'~san', b:'জনাব', k:'' },
+            { l:1, j:'あの ひと', u:'Anohito', b:'সেই ব্যক্তি; ওই লোক (প্রসঙ্গভেদে তিনি/সে)', k:'' },
+            { l:1, j:'～さん', u:'~san', b:'নাম/পদবির পরে সম্মানসূচক সম্বোধন: জনাব/মি./মিস (লিঙ্গনিরপেক্ষ)', k:'' },
             { l:1, j:'～ちゃん', u:'~chan', b:'শিশুর নামের সাথে যুক্ত হয়', k:'' },
             { l:1, j:'～じん', u:'~jin', b:'জাতীয়তা বোঝাতে যুক্ত হয়', k:'' },
-            { l:1, j:'せんせい', u:'Sensei', b:'শিক্ষক', k:'先生' },
+            { l:1, j:'せんせい', u:'Sensei', b:'শিক্ষক; ডাক্তার বা অন্য বিশেষজ্ঞকেও সম্মান করে সম্বোধন', k:'先生' },
             { l:1, j:'きょうし', u:'Kyoushi', b:'শিক্ষক (পেশা)', k:'教師' },
-            { l:1, j:'がくせい', u:'Gakusei', b:'ছাত্র', k:'学生' },
-            { l:1, j:'かいしゃいん', u:'Kaishain', b:'কোম্পানীর কর্মকর্তা', k:'会社員' },
+            { l:1, j:'がくせい', u:'Gakusei', b:'শিক্ষার্থী; ছাত্র/ছাত্রী', k:'学生' },
+            { l:1, j:'かいしゃいん', u:'Kaishain', b:'কোম্পানির কর্মচারী/কর্মকর্তা; বেসরকারি প্রতিষ্ঠানে চাকরিজীবী', k:'会社員' },
             { l:1, j:'しゃいん', u:'Shain', b:'কর্মকর্তা', k:'社員' },
             { l:1, j:'ぎんこう', u:'Ginkou', b:'ব্যাংক', k:'銀行' },
             { l:1, j:'ぎんこういん', u:'Ginkouin', b:'ব্যাংক কর্মকর্তা', k:'銀行員' },
@@ -1398,16 +1430,16 @@ const vocabData = [
             { l:1, j:'けんきゅうしゃ', u:'Kenkyuusha', b:'গবেষক', k:'研究者' },
             { l:1, j:'だいがく', u:'Daigaku', b:'বিশ্ববিদ্যালয়', k:'大学' },
             { l:1, j:'びょういん', u:'Byouin', b:'হাসপাতাল', k:'病院' },
-            { l:1, j:'だれ (どなた)', u:'Donata', b:'কে', k:'' },
+            { l:1, j:'だれ (どなた)', u:'Donata', b:'কে?; どなた হলো এর বেশি ভদ্র রূপ', k:'' },
             { l:1, j:'～さい', u:'~sai', b:'--বছর (বয়স)', k:'' },
             { l:1, j:'なんさい', u:'Nansai', b:'কত বছর বয়স', k:'何歳' },
             { l:1, j:'はい', u:'Hai', b:'হ্যাঁ', k:'' },
             { l:1, j:'いいえ', u:'Iie', b:'না', k:'' },
             { l:1, j:'はじめまして', u:'Hajimemashite', b:'প্রথম সাক্ষাতে শুভেচ্ছা', k:'' },
             { l:1, j:'～からきました', u:'~karakimashita', b:'-- থেকে এসেছি', k:'' },
-            { l:1, j:'どうぞよろしく', u:'Douzoyoroshiku', b:'পরিচিত হয়ে ভালো লাগলো', k:'' },
+            { l:1, j:'どうぞよろしく', u:'Douzoyoroshiku', b:'প্রথম পরিচয়ে ব্যবহৃত বিনয়ী অভিব্যক্তি: আপনার সঙ্গে পরিচিত হয়ে আনন্দিত;よろしくお願いします-এর মতো সরাসরি একার্থক নয়', k:'' },
             { l:1, j:'しつれいですが', u:'Shitsureidesuga', b:'মাফ করবেন (জিজ্ঞাসার আগে)', k:'' },
-            { l:1, j:'おなまえは？', u:'Onamae wa?', b:'আপনার নাম কি?', k:'' },
+            { l:1, j:'おなまえは？', u:'Onamae wa?', b:'আপনার নাম কী? (ভদ্রভাবে নাম জানতে চাওয়া)', k:'' },
             { l:1, j:'こちらは～さんです', u:'Kochira wa ~san desu', b:'ইনি জনাব...', k:'' },
             { l:1, j:'アメリカ', u:'Amerika', b:'আমেরিকা', k:'' },
             { l:1, j:'イギリス', u:'Igirisu', b:'ইংল্যান্ড', k:'' },
@@ -1428,7 +1460,7 @@ const vocabData = [
             { l:1, j:'れい', u:'Rei', b:'উদাহরণ', k:'' },
             { l:1, j:'おはようございます', u:'Ohayougozaimasu', b:'শুভসকাল', k:'' },
             { l:1, j:'こんにちは', u:'Konnichiwa', b:'হ্যালো (দিনের বেলা)', k:'' },
-            { l:1, j:'こんばんわ', u:'Konbanwa', b:'হ্যালো (রাতের বেলা)', k:'' },
+            { l:1, j:'こんばんは', u:'Konbanwa', b:'শুভ সন্ধ্যা; সন্ধ্যা/রাতে দেখা হলে বলা অভিবাদন (প্রসঙ্গভেদে হ্যালো)', k:'' },
             { l:1, j:'おやすみなさい', u:'Oyasuminasai', b:'শুভরাত', k:'' },
             { l:1, j:'さようなら', u:'Sayounara', b:'বিদায়', k:'' },
             { l:1, j:'ありがとうございます', u:'Arigatougozaimasu', b:'ধন্যবাদ', k:'' },
@@ -2185,7 +2217,8 @@ function renderStats(){
 }
 function saveStats(){stats.learned=[...learned];writeStore(storageKeys.stats,stats);writeStore(storageKeys.learned,[...learned]);renderStats()}
 function activePool(){
-  let pool=state.selectedLesson==='all'?[...vocabData]:vocabData.filter(v=>v.l===Number(state.selectedLesson));
+  const selected=selectedLessonNumbers(state.selectedLesson);
+  let pool=selected.length===10?[...vocabData]:vocabData.filter(v=>selected.includes(v.l));
   if(state.mode==='kana')return pool;
   return pool;
 }
@@ -2195,7 +2228,7 @@ function saveSession(){
 }
 function startQuiz({retest=false,restore=null,kana=false}={}){
   clearInterval(state.timer);if('speechSynthesis'in window)speechSynthesis.cancel();
-  state.mode=kana?'kana':state.mode;state.selectedLesson=$('lesson-select').value;state.isRetest=retest;state.kanaRun=kana;
+  state.mode=kana?'kana':state.mode;state.selectedLesson=[...$('lesson-select').selectedOptions].map(o=>o.value);if(!state.selectedLesson.length)state.selectedLesson=['all'];state.isRetest=retest;state.kanaRun=kana;
   if(restore){Object.assign(state,restore);state.isRetest=!!restore.isRetest}
   else{
     let pool=state.mode==='grammar'?prepareGrammarQuestions(state.selectedLesson,state.grammarDirection):activePool();
@@ -3079,9 +3112,18 @@ function generateRuleSentences(key){
  if(button){button.innerHTML='✓ ১০টি Sentence তৈরি হয়েছে · আবার তৈরি করো';button.classList.add('generated');}
 }
 function openGrammarGuide(){renderGrammarGuide();showScreen('grammar-guide-screen');vibrate('navigate')}
+const lessonSelect=$('lesson-select'),lessonAll=$('lesson-all'),lessonChecks=[...document.querySelectorAll('.lesson-check')],lessonSummary=$('lesson-picker-summary');
+const lessonPicker=$('lesson-picker'),lessonPickerHead=lessonPicker.querySelector('.lesson-picker-head'),lessonPickerOptions=$('lesson-picker-options');
+lessonPickerHead.setAttribute('role','button');lessonPickerHead.setAttribute('tabindex','0');lessonPickerHead.setAttribute('aria-expanded','false');lessonPickerHead.setAttribute('aria-controls','lesson-picker-options');
+function toggleLessonPicker(force){const open=typeof force==='boolean'?force:lessonPickerOptions.hidden;lessonPickerOptions.hidden=!open;lessonPicker.classList.toggle('open',open);lessonPickerHead.setAttribute('aria-expanded',String(open));}
+lessonPickerHead.addEventListener('click',()=>toggleLessonPicker());lessonPickerHead.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleLessonPicker();}});
+function syncLessonPicker(values){const all=!values||!values.length||values.includes('all');lessonAll.checked=all;lessonChecks.forEach(c=>c.checked=!all&&values.includes(c.value));[...lessonSelect.options].forEach(o=>o.selected=all?o.value==='all':values.includes(o.value));const chosen=lessonChecks.filter(c=>c.checked).map(c=>c.value);lessonSummary.textContent=all?'All lessons · 1–10':chosen.length===1?'Lesson '+chosen[0]:chosen.length+' lessons selected';}
+lessonAll.addEventListener('change',()=>syncLessonPicker(lessonAll.checked?['all']:[]));
+lessonChecks.forEach(c=>c.addEventListener('change',()=>{const chosen=lessonChecks.filter(x=>x.checked).map(x=>x.value);syncLessonPicker(chosen.length?chosen:['all']);if(chosen.length===10)syncLessonPicker(['all']);}));
+
 document.querySelectorAll('[data-mode]').forEach(btn=>btn.addEventListener('click',()=>{state.mode=btn.dataset.mode;document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b===btn));const grammarMode=state.mode==='grammar';$('grammar-direction-wrap').hidden=!grammarMode;$('question-limit').options[2].textContent=grammarMode?'All questions in selected format':'All words in selected lesson';const allLessonOption=$('lesson-select').options[0];allLessonOption.textContent=grammarMode?'All grammar lessons · 1–10':'All lessons · 1–10';[...$('lesson-select').options].forEach(o=>{if(o.value!=='all')o.disabled=false});if(state.mode==='kana'){showScreen('kana-screen');renderKana()}else showScreen('home-screen');vibrate('tap')}));
 $('start-btn').addEventListener('click',()=>{state.mode=document.querySelector('[data-mode].active').dataset.mode;state.grammarDirection=$('grammar-direction').value;if(state.mode==='kana'){state.kanaRun=true;showScreen('kana-screen');renderKana()}else startQuiz()});
-$('continue-btn').addEventListener('click',()=>{const s=readStore(storageKeys.session,null);if(s){state.mode=s.mode;state.grammarDirection=s.grammarDirection||'particle';$('grammar-direction').value=state.grammarDirection;$('grammar-direction-wrap').hidden=state.mode!=='grammar';state.selectedLesson=s.selectedLesson;startQuiz({restore:s})}});
+$('continue-btn').addEventListener('click',()=>{const s=readStore(storageKeys.session,null);if(s){state.mode=s.mode;state.grammarDirection=s.grammarDirection||'particle';$('grammar-direction').value=state.grammarDirection;$('grammar-direction-wrap').hidden=state.mode!=='grammar';state.selectedLesson=Array.isArray(s.selectedLesson)?s.selectedLesson:[s.selectedLesson||'all'];syncLessonPicker(state.selectedLesson);startQuiz({restore:s})}});
 $('quiz-home').addEventListener('click',goHome);$('results-home').addEventListener('click',goHome);$('kana-home').addEventListener('click',goHome);$('settings-home').addEventListener('click',goHome);
 $('speech-btn').addEventListener('click',()=>{const item=currentItem();if(item){if(state.mode==='grammar')speakGrammarQuestion(item);else speakJapaneseWord(item.j)}vibrate('tap')});
 $('skip-btn').addEventListener('click',()=>{if(!state.isAnswered){handleTimeout()}});
@@ -3281,6 +3323,35 @@ function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;
  if(prefs.parallax===false)setStatus('Wallpaper paused in settings','fallback');else setStatus('Mouse / touch parallax ready','fallback');
 })();
 </script>
+
+
+<style id="vocabulary-reading-comfort-refinement">
+/* Reading comfort: preserve the existing vocabulary and layout, improve legibility only. */
+.vocabulary-reading-content{gap:18px}
+.vocab-read-lesson{border-color:#5fe4ca30;background:linear-gradient(145deg,#122238,#0b1527);box-shadow:0 14px 34px #0003}
+.vocab-read-lesson-head{padding:17px 19px;background:linear-gradient(105deg,#55e0c014,#9b8cff12)}
+.vocab-read-lesson-number{width:46px;height:46px;font-size:16px;box-shadow:0 5px 18px #55e0c022}
+.vocab-read-lesson-title{font-size:17px;letter-spacing:.1px}
+.vocab-read-lesson-sub{font-size:12px;line-height:1.6}
+.vocab-read-words{gap:11px;padding:14px}
+.vocab-read-word{padding:14px 14px 12px;border-color:#9cb8d22a;border-radius:16px;background:linear-gradient(145deg,#ffffff08,#ffffff03);gap:7px;transition:border-color .18s,transform .18s,background .18s}
+.vocab-read-word:focus-within{border-color:#5fe4ca80;background:#55e0c00b}
+.vocab-read-jp{font-size:clamp(23px,3vw,27px);line-height:1.7;letter-spacing:.02em;color:#f2f7ff}
+.vocab-read-kanji{font-size:13px;line-height:1.7;color:#9df0dc}
+.vocab-read-romaji{font-size:12px;line-height:1.65;color:#b8c8df;letter-spacing:.02em}
+.vocab-read-bn{font-size:14px;line-height:1.85;color:#f5f7fc;overflow-wrap:anywhere}
+.vocab-read-index{font-size:11px;color:#9aacc5}
+.vocab-tts-btn{min-height:38px;padding:0 12px;font-size:12px}
+.vocab-reader-pagination{padding:16px;gap:12px}
+@media(max-width:620px){
+ .vocab-read-words{grid-template-columns:minmax(0,1fr);gap:10px;padding:11px}
+ .vocab-read-word{padding:14px 15px}
+ .vocab-read-jp{font-size:25px;line-height:1.75}
+ .vocab-read-bn{font-size:14px;line-height:1.9}
+ .vocab-read-lesson-head{padding:14px}
+}
+@media(min-width:621px) and (max-width:900px){.vocab-read-words{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
 
 </body>
 </html>
