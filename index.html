@@ -1033,7 +1033,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     </section>
     <section class="panel vocabulary-reading-launch" aria-label="Vocabulary reading only">
       <div class="vocab-read-icon" aria-hidden="true">あ</div>
-      <div class="vocabulary-reading-copy"><div class="grammar-guide-launch-title">📖 Vocabulary Reading · Lesson 1–25</div><div class="grammar-guide-launch-desc">সব Lesson-এর vocabulary আলাদা করে পড়ো—Japanese, Romaji, বাংলা অর্থ ও থাকলে Kanji। এটি শুধু পড়ার জন্য; এখানে quiz বা test শুরু হবে না।</div></div>
+      <div class="vocabulary-reading-copy"><div class="grammar-guide-launch-title">📖 Vocabulary Reading · Lesson 1–23</div><div class="grammar-guide-launch-desc">সব Lesson-এর vocabulary আলাদা করে পড়ো—Japanese, Romaji, বাংলা অর্থ ও থাকলে Kanji। এটি শুধু পড়ার জন্য; এখানে quiz বা test শুরু হবে না।</div></div>
       <button class="primary" id="open-vocabulary-reading" type="button">শুধু Vocabulary পড়ি ↗</button>
     </section>
 
@@ -1102,7 +1102,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
         <div id="vocab-audio-repeat-count-wrap"><label class="vocab-audio-label" for="vocab-audio-repeat-count">Loop সংখ্যা</label><select class="select" id="vocab-audio-repeat-count"><option value="1">১ বার</option><option value="2" selected>২ বার</option><option value="3">৩ বার</option><option value="5">৫ বার</option><option value="10">১০ বার</option><option value="20">২০ বার</option><option value="50">৫০ বার</option><option value="100">১০০ বার</option></select></div>
         <div id="vocab-audio-minutes-wrap" hidden><label class="vocab-audio-label" for="vocab-audio-minutes">সময়</label><select class="select" id="vocab-audio-minutes"><option value="5">৫ মিনিট</option><option value="10" selected>১০ মিনিট</option><option value="15">১৫ মিনিট</option><option value="20">২০ মিনিট</option><option value="30">৩০ মিনিট</option><option value="60">৬০ মিনিট</option></select></div>
         <div><label class="vocab-audio-label" for="vocab-audio-speed">Playback Speed</label><select class="select" id="vocab-audio-speed"><option value="1" selected>1× · Normal</option><option value="1.5">1.5× · Fast</option><option value="2">2× · Very Fast</option></select></div>
+        <label class="vocab-audio-check screen-off-reading-option"><input type="checkbox" id="screen-off-reading-toggle" checked> Screen-off reading (experimental)</label>
       </div>
+      <p class="vocab-audio-note">Screen lock-এ চলা browser ও Android-এর support-এর ওপর নির্ভরশীল। কিছু ফোনে screen off করলে browser TTS থেমে যেতে পারে।</p>
       <div class="vocab-audio-actions"><button class="primary" id="vocab-audio-start" type="button">▶ Japanese + বাংলা শুনতে শুরু করো</button><button class="secondary" id="vocab-audio-stop" type="button" disabled>■ Stop</button></div>
       <div class="vocab-audio-status" id="vocab-audio-status" aria-live="polite">প্রথমে Lesson বেছে নিয়ে Start চাপো।</div>
       <div class="vocab-audio-progress"><div id="vocab-audio-progress-fill"></div></div><div class="vocab-audio-timeline" id="vocab-audio-timeline" aria-live="off">সময়: 00:00 · প্রস্তুত</div>
@@ -2521,7 +2523,7 @@ const state = {
   isAnswered:false, timer:null, timeLeft:10, startedAt:0, answeredThisRun:0,
   runCorrect:0, isRetest:false, kanaType:'hiragana', kanaRun:false, questionDirection:'jp-bn'
 };
-const defaultPrefs = {sound:true,vibrate:true,autoSpeech:true,timer:10,reducedMotion:false,parallax:true,wallpaperSpeed:'faster',accent:0};
+const defaultPrefs = {sound:true,vibrate:true,autoSpeech:true,timer:10,reducedMotion:false,parallax:true,wallpaperSpeed:'faster',screenOffReading:true,accent:0};
 const storageKeys = {stats:'n5master_stats_v2',prefs:'n5master_prefs_v2',session:'n5master_session_v2',learned:'n5master_learned_v2'};
 function readStore(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(_){return fallback}}
 function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(_){showToast('Browser storage unavailable; progress may not persist.')}}
@@ -2591,7 +2593,7 @@ $('login-form').addEventListener('submit',e=>{
 function applyPrefs(){
   const a=accents[prefs.accent%accents.length];document.documentElement.style.setProperty('--accent',a.a);document.documentElement.style.setProperty('--accent2',a.b);
   document.body.classList.toggle('reduce-motion',!!prefs.reducedMotion);
-  $('sound-toggle').checked=!!prefs.sound;$('vibrate-toggle').checked=!!prefs.vibrate;$('auto-speech-toggle').checked=!!prefs.autoSpeech;$('timer-setting').value=String(prefs.timer);$('motion-toggle').checked=!!prefs.reducedMotion;if($('parallax-toggle'))$('parallax-toggle').checked=prefs.parallax!==false;if($('wallpaper-speed'))$('wallpaper-speed').value=prefs.wallpaperSpeed||'faster';const wall=$('jp-parallax-wall');if(wall){wall.classList.toggle('parallax-off',prefs.parallax===false);wall.style.display=prefs.parallax===false?'none':'';applyWallpaperSpeed();}
+  $('sound-toggle').checked=!!prefs.sound;$('vibrate-toggle').checked=!!prefs.vibrate;$('auto-speech-toggle').checked=!!prefs.autoSpeech;$('timer-setting').value=String(prefs.timer);$('motion-toggle').checked=!!prefs.reducedMotion;if($('parallax-toggle'))$('parallax-toggle').checked=prefs.parallax!==false;if($('wallpaper-speed'))$('wallpaper-speed').value=prefs.wallpaperSpeed||'faster';if($('screen-off-reading-toggle'))$('screen-off-reading-toggle').checked=prefs.screenOffReading!==false;const wall=$('jp-parallax-wall');if(wall){wall.classList.toggle('parallax-off',prefs.parallax===false);wall.style.display=prefs.parallax===false?'none':'';applyWallpaperSpeed();}
 }
 function savePrefs(){writeStore(storageKeys.prefs,prefs);applyPrefs()}
 function showToast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.remove('show'),2300)}
@@ -3697,6 +3699,7 @@ $('timer-setting').addEventListener('change',e=>{prefs.timer=Number(e.target.val
 $('motion-toggle').addEventListener('change',e=>{prefs.reducedMotion=e.target.checked;savePrefs()});
 $('parallax-toggle').addEventListener('change',e=>{prefs.parallax=e.target.checked;savePrefs();if(prefs.parallax){showToast('Japanese parallax enabled ✦');window.dispatchEvent(new PointerEvent('pointermove',{clientX:window.innerWidth*.72,clientY:window.innerHeight*.35,pointerType:'mouse'}))}else showToast('Japanese wallpaper paused')});
 $('wallpaper-speed').addEventListener('change',e=>{prefs.wallpaperSpeed=e.target.value;savePrefs();showToast('Wallpaper speed: '+e.target.options[e.target.selectedIndex].text)});
+$('screen-off-reading-toggle')?.addEventListener('change',e=>{prefs.screenOffReading=e.target.checked;savePrefs();if(window.navigator.mediaSession){showToast(prefs.screenOffReading?'Screen-off reading option enabled.':'Screen-off reading option disabled.')}else if(prefs.screenOffReading){showToast('এই browser Media Session support করে না; screen-off playback নিশ্চিত নয়।')}});
 $('progress-gain-dismiss').addEventListener('click',()=>{try{localStorage.removeItem(pendingProgressKey)}catch(_){}renderProgressGain()});
 $('reset-progress').addEventListener('click',()=>{if(confirm('Reset all saved quiz statistics and progress on this device?')){stats={answered:0,correct:0,best:0,completed:0,lessons:{},learned:[],grammarAnswered:0,grammarCorrect:0};learned.clear();try{localStorage.removeItem(storageKeys.session);localStorage.removeItem(storageKeys.learned)}catch(_){}saveStats();showToast('Saved statistics reset.')}})
 document.querySelectorAll('[data-kana]').forEach(btn=>btn.addEventListener('click',()=>{state.kanaType=btn.dataset.kana;document.querySelectorAll('[data-kana]').forEach(b=>b.classList.toggle('active',b===btn));renderKana();vibrate('tap')}));
@@ -3957,12 +3960,32 @@ input, textarea { color:#f4f8ff !important; -webkit-text-fill-color:#f4f8ff; }
 </style>
 
 <style id="vocabulary-audio-player-style">
-.vocab-audio-panel{margin:14px 0;padding:clamp(16px,3vw,24px)}.vocab-audio-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.vocab-audio-heading h3{font-size:21px;margin:7px 0 5px}.vocab-audio-heading p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}.vocab-audio-label{display:block;font-size:11px;color:#b9c9dc;font-weight:800;margin:15px 0 8px}.vocab-audio-lessons{border:1px solid var(--line);border-radius:14px;padding:10px;background:#081321}.vocab-audio-check{display:flex;align-items:center;gap:8px;min-height:38px;padding:7px 9px;border:1px solid #ffffff12;border-radius:10px;background:#ffffff05;font-size:12px;color:#dce7f5}.vocab-audio-check input{width:17px;height:17px;accent-color:var(--accent);flex:0 0 auto}.vocab-audio-check.all{margin-bottom:8px;background:#55e0c012;border-color:#55e0c044;font-weight:800}.vocab-audio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.vocab-audio-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.vocab-audio-settings [hidden]{display:none!important}.vocab-audio-settings .vocab-audio-label{margin-top:12px}.vocab-audio-actions{display:grid;grid-template-columns:1fr .55fr;gap:8px}.vocab-audio-actions button{margin-top:14px}.vocab-audio-actions button:disabled{opacity:.45;cursor:not-allowed}.vocab-audio-status{margin-top:12px;padding:11px 12px;border:1px solid #55e0c02a;border-radius:12px;background:#55e0c008;color:#a9c4d0;font-size:12px;line-height:1.6;min-height:42px}.vocab-audio-progress{height:9px;border-radius:20px;background:#26354a;overflow:hidden;margin-top:12px;position:relative;box-shadow:inset 0 1px 3px #0008}.vocab-audio-progress>div{height:100%;width:0;background:linear-gradient(90deg,#35d6bd,#7b8cff,#bd83ff);background-size:220% 100%;border-radius:20px;transition:width .12s linear;position:relative;box-shadow:0 0 12px #62e8d477}.vocab-audio-progress>div:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,#ffffff99 48%,transparent 72%);background-size:220% 100%;animation:vocabAudioShimmer 1.5s linear infinite}.vocab-audio-panel.is-playing .vocab-audio-progress>div{animation:vocabAudioGradient 2.2s linear infinite}.vocab-audio-panel.is-playing .vocab-audio-status{border-color:#55e0c077;box-shadow:0 0 18px #55e0c018}.vocab-audio-panel.is-playing .vocab-audio-heading .pill{animation:vocabAudioPulse 1.5s ease-in-out infinite}@keyframes vocabAudioShimmer{from{background-position:120% 0}to{background-position:-120% 0}}@keyframes vocabAudioGradient{to{background-position:220% 0}}@keyframes vocabAudioPulse{50%{box-shadow:0 0 0 5px #55e0c014;filter:brightness(1.25)}}.vocab-audio-check:has(input:checked){border-color:#55e0c077;background:#55e0c010}.vocab-audio-timeline{margin-top:7px;font-size:11px;color:#a9b8d0;font-variant-numeric:tabular-nums;display:flex;justify-content:space-between;gap:8px}.vocab-audio-timeline strong{color:#e7f6ff}@media(max-width:430px){.vocab-audio-settings{grid-template-columns:1fr}.vocab-audio-actions{grid-template-columns:1fr}.vocab-audio-actions button{margin-top:8px}.vocab-audio-heading h3{font-size:18px}}
+.vocab-audio-panel{margin:14px 0;padding:clamp(16px,3vw,24px)}.vocab-audio-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.vocab-audio-heading h3{font-size:21px;margin:7px 0 5px}.vocab-audio-heading p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}.vocab-audio-label{display:block;font-size:11px;color:#b9c9dc;font-weight:800;margin:15px 0 8px}.vocab-audio-lessons{border:1px solid var(--line);border-radius:14px;padding:10px;background:#081321}.vocab-audio-check{display:flex;align-items:center;gap:8px;min-height:38px;padding:7px 9px;border:1px solid #ffffff12;border-radius:10px;background:#ffffff05;font-size:12px;color:#dce7f5}.vocab-audio-check input{width:17px;height:17px;accent-color:var(--accent);flex:0 0 auto}.vocab-audio-check.all{margin-bottom:8px;background:#55e0c012;border-color:#55e0c044;font-weight:800}.vocab-audio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.vocab-audio-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.vocab-audio-settings [hidden]{display:none!important}.vocab-audio-settings .vocab-audio-label{margin-top:12px}.vocab-audio-actions{display:grid;grid-template-columns:1fr .55fr;gap:8px}.vocab-audio-actions button{margin-top:14px}.vocab-audio-actions button:disabled{opacity:.45;cursor:not-allowed}.vocab-audio-status{margin-top:12px;padding:11px 12px;border:1px solid #55e0c02a;border-radius:12px;background:#55e0c008;color:#a9c4d0;font-size:12px;line-height:1.6;min-height:42px}.vocab-audio-progress{height:9px;border-radius:20px;background:#26354a;overflow:hidden;margin-top:12px;position:relative;box-shadow:inset 0 1px 3px #0008}.vocab-audio-progress>div{height:100%;width:0;background:linear-gradient(90deg,#35d6bd,#7b8cff,#bd83ff);background-size:220% 100%;border-radius:20px;transition:width .12s linear;position:relative;box-shadow:0 0 12px #62e8d477}.vocab-audio-progress>div:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,#ffffff99 48%,transparent 72%);background-size:220% 100%;animation:vocabAudioShimmer 1.5s linear infinite}.vocab-audio-panel.is-playing .vocab-audio-progress>div{animation:vocabAudioGradient 2.2s linear infinite}.vocab-audio-panel.is-playing .vocab-audio-status{border-color:#55e0c077;box-shadow:0 0 18px #55e0c018}.vocab-audio-panel.is-playing .vocab-audio-heading .pill{animation:vocabAudioPulse 1.5s ease-in-out infinite}@keyframes vocabAudioShimmer{from{background-position:120% 0}to{background-position:-120% 0}}@keyframes vocabAudioGradient{to{background-position:220% 0}}@keyframes vocabAudioPulse{50%{box-shadow:0 0 0 5px #55e0c014;filter:brightness(1.25)}}.vocab-audio-check:has(input:checked){border-color:#55e0c077;background:#55e0c010}.vocab-audio-timeline{margin-top:7px;font-size:11px;color:#a9b8d0;font-variant-numeric:tabular-nums;display:flex;justify-content:space-between;gap:8px}.vocab-audio-timeline strong{color:#e7f6ff}.screen-off-reading-option{grid-column:1/-1;cursor:pointer}.vocab-audio-note{margin:8px 2px 0;color:var(--muted);font-size:11px;line-height:1.55}
+/* Mobile performance: limit expensive effects and skip off-screen card rendering. */
+.vocab-read-word{content-visibility:auto;contain-intrinsic-size:auto 112px}
+@media(max-width:768px){body{background:var(--bg)}.panel{box-shadow:0 8px 28px #0003}.vocab-audio-progress>div:after{animation:none}.vocab-audio-panel.is-playing .vocab-audio-progress>div{animation:none}.vocab-audio-panel.is-playing .vocab-audio-heading .pill{animation:none}}
+@media (max-width:430px){.vocab-audio-settings{grid-template-columns:1fr}.vocab-audio-actions{grid-template-columns:1fr}.vocab-audio-actions button{margin-top:8px}.vocab-audio-heading h3{font-size:18px}}
+@media (prefers-reduced-motion:reduce){.vocab-audio-progress>div,.vocab-audio-progress>div:after,.vocab-audio-heading .pill{animation:none!important;transition:none!important}}
+</style>
+<style id="sirjo-no-select-performance">
+/* Prevent accidental text highlighting/copy on the app UI; form controls remain editable. */
+html,body,body *{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+input,textarea,select,[contenteditable="true"],[contenteditable="true"] *{ -webkit-user-select:text;user-select:text;-webkit-touch-callout:default }
+@media(hover:none){button,.small-btn,.icon-btn,.vocab-tts-btn{outline-offset:2px}}
+body.is-backgrounded .animated,body.is-backgrounded [class*="animation"],body.is-backgrounded #si-animated-backdrop:before{animation-play-state:paused!important}
 </style>
 <script id="vocabulary-audio-player-script">
 (()=>{
  const $=id=>document.getElementById(id);let active=false,groups=[],groupIndex=0,wordIndex=0,lessonLoop=0,deadline=0,runTimer=null,timelineTimer=null,startedAt=0,completed=0,total=0,segmentStarted=0,segmentDuration=0,segmentFraction=0;
  const panel=$('vocab-audio-panel');
+ const mediaSession=()=>{try{
+  if(!navigator.mediaSession||prefs.screenOffReading===false)return;
+  navigator.mediaSession.metadata=new MediaMetadata({title:'Japanese N5 Vocabulary',artist:'SiRJ0 Vocabulary',album:'Lesson '+(currentGroup()?.lesson||'1–25')});
+  navigator.mediaSession.playbackState=active?'playing':'none';
+  navigator.mediaSession.setActionHandler('play',()=>{if(active)speechSynthesis.resume()});
+  navigator.mediaSession.setActionHandler('pause',()=>{if(active)speechSynthesis.pause()});
+  navigator.mediaSession.setActionHandler('stop',()=>stop('Lock-screen control থেকে Audio বন্ধ করা হয়েছে।'));
+ }catch(_){}}
  const status=msg=>{$('vocab-audio-status').textContent=msg};
  const formatTime=ms=>{const sec=Math.max(0,Math.floor(ms/1000));return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')};
  const currentGroup=()=>groups[groupIndex];
@@ -3988,7 +4011,7 @@ input, textarea { color:#f4f8ff !important; -webkit-text-fill-color:#f4f8ff; }
  $('vocab-audio-repeat-mode').addEventListener('change',e=>{const mode=e.target.value;$('vocab-audio-repeat-count-wrap').hidden=mode!=='loops';$('vocab-audio-minutes-wrap').hidden=mode!=='minutes'});
  function stop(message='Audio playback বন্ধ করা হয়েছে।'){
   active=false;clearTimeout(runTimer);clearInterval(timelineTimer);runTimer=null;timelineTimer=null;segmentStarted=0;segmentFraction=0;panel.classList.remove('is-playing');
-  if('speechSynthesis'in window)speechSynthesis.cancel();$('vocab-audio-start').disabled=false;$('vocab-audio-stop').disabled=true;
+  if('speechSynthesis'in window)speechSynthesis.cancel();try{if(navigator.mediaSession)navigator.mediaSession.playbackState='none'}catch(_){}$('vocab-audio-start').disabled=false;$('vocab-audio-stop').disabled=true;
   if(message)status(message);updateTimeline();
  }
  function speak(text,lang,onend,onerror){
@@ -4021,12 +4044,23 @@ input, textarea { color:#f4f8ff !important; -webkit-text-fill-color:#f4f8ff; }
   groups=selected.map(lesson=>({lesson,words:vocabData.filter(w=>String(w.l)===lesson&&String(w.j||'').trim()&&String(w.b||'').trim())})).filter(g=>g.words.length);
   if(!groups.length){status('নির্বাচিত Lesson-এ শোনানোর মতো vocabulary পাওয়া যায়নি।');return}
   stop('নতুন Audio session প্রস্তুত হচ্ছে।');active=true;groupIndex=0;wordIndex=0;lessonLoop=0;completed=0;total=groups.reduce((n,g)=>n+g.words.length,0);startedAt=Date.now();deadline=Date.now()+Number($('vocab-audio-minutes').value)*60000;
-  panel.classList.add('is-playing');$('vocab-audio-start').disabled=true;$('vocab-audio-stop').disabled=false;
+  panel.classList.add('is-playing');$('vocab-audio-start').disabled=true;$('vocab-audio-stop').disabled=false;mediaSession();
   status(`${selected.map(x=>'L'+x).join(', ')} · ${total}টি শব্দ · Speed ${$('vocab-audio-speed').value}× · প্রতিটি Lesson নির্ধারিত সংখ্যক বার শেষ করে পরের Lesson-এ যাবে।`);
   speechSynthesis.cancel();timelineTimer=setInterval(updateTimeline,60);updateTimeline();nextWord();
  });
  $('vocab-audio-stop').addEventListener('click',()=>stop());
  $('vocab-audio-speed').addEventListener('change',()=>{if(active)status(`Playback speed ${$('vocab-audio-speed').value}× করা হয়েছে। পরের শব্দ থেকে নতুন speed কার্যকর হবে।`);updateTimeline()});
- document.addEventListener('visibilitychange',()=>{});window.addEventListener('pagehide',()=>{if(active)stop('পৃষ্ঠা বন্ধ হওয়ায় Audio বন্ধ হয়েছে।')});syncLessons();updateTimeline();
+ document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('is-backgrounded',document.hidden);if(document.hidden){if(active&&prefs.screenOffReading!==false)mediaSession();}else if(active){try{if(speechSynthesis.paused)speechSynthesis.resume()}catch(_){}}});
+ window.addEventListener('pagehide',()=>{if(active)stop('পৃষ্ঠা বন্ধ হওয়ায় Audio বন্ধ হয়েছে।')});
+ if($('screen-off-reading-toggle'))$('screen-off-reading-toggle').checked=prefs.screenOffReading!==false;
+ syncLessons();updateTimeline();
+})();
+</script>
+<script id="sirjo-ui-selection-guard">
+(()=>{
+ const editable='input,textarea,select,[contenteditable="true"]';
+ document.addEventListener('copy',e=>{if(!e.target.closest(editable))e.preventDefault()});
+ document.addEventListener('cut',e=>{if(!e.target.closest(editable))e.preventDefault()});
+ document.addEventListener('contextmenu',e=>{if(!e.target.closest(editable))e.preventDefault()});
 })();
 </script>
