@@ -1091,6 +1091,23 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="quiz-top"><button class="small-btn" id="vocabulary-reading-home" type="button">← Dashboard</button><span class="quiz-chip">READING ONLY · N5</span></div>
     <section class="panel vocab-reader-hero"><div class="eyebrow">VOCABULARY LIBRARY</div><h2>Vocabulary <span class="gradient-text">Reading Room</span></h2><p>প্রতিটি Lesson-এর শব্দ এক জায়গায় পড়ো। Japanese শব্দ, Romaji, বাংলা অর্থ এবং ডেটায় থাকলে Kanji দেখানো হবে। এই স্ক্রিনে কোনো quiz বা score নেই—শুধু পড়ার জন্য।</p><div class="vocab-reader-stats"><div><strong id="vocab-reader-count">0</strong><span>শব্দ দেখানো হচ্ছে</span></div><div><strong>10</strong><span>Lessons</span></div></div></section>
     <section class="panel vocab-reader-controls"><label class="vocab-control-label" for="vocab-reading-lesson">LESSON বেছে নাও</label><div class="select-wrap"><select class="select" id="vocab-reading-lesson"><option value="all">সব Lesson · 1–10</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option><option value="9">Lesson 9</option><option value="10">Lesson 10</option></select></div><label class="vocab-control-label" for="vocab-reading-search">শব্দ খুঁজে পড়ো</label><input class="vocab-reading-search" id="vocab-reading-search" type="search" placeholder="Japanese / Romaji / বাংলা লিখে খুঁজুন…" autocomplete="off"><p class="vocab-reader-note">শব্দগুলো Lesson অনুযায়ী সাজানো। কোনো শব্দ না পেলে বানান বা Romaji-এর অংশ লিখে খুঁজে দেখো।</p></section>
+    <section class="panel vocab-reader-controls vocab-audio-panel" id="vocab-audio-panel">
+      <div class="vocab-audio-heading"><div><div class="eyebrow">AUDIO LEARNING</div><h3>Vocabulary Audio Player</h3><p>প্রতিটি শব্দের Japanese উচ্চারণের পর বাংলা অর্থ শুনবে।</p></div><span class="pill">JP → বাংলা</span></div>
+      <div class="vocab-audio-label">কোন কোন Lesson শুনবে?</div>
+      <div class="vocab-audio-lessons">
+        <label class="vocab-audio-check all"><input type="checkbox" id="vocab-audio-all" checked> সব Lesson · 1–10</label>
+        <div class="vocab-audio-grid"><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="1"> Lesson 1</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="2"> Lesson 2</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="3"> Lesson 3</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="4"> Lesson 4</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="5"> Lesson 5</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="6"> Lesson 6</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="7"> Lesson 7</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="8"> Lesson 8</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="9"> Lesson 9</label><label class="vocab-audio-check"><input type="checkbox" class="vocab-audio-lesson" value="10"> Lesson 10</label></div>
+      </div>
+      <div class="vocab-audio-settings">
+        <div><label class="vocab-audio-label" for="vocab-audio-repeat-mode">Playback mode</label><select class="select" id="vocab-audio-repeat-mode"><option value="loops">কতবার Loop করবে</option><option value="minutes">কত মিনিট চলবে</option><option value="unlimited">Unlimited Loop</option></select></div>
+        <div id="vocab-audio-repeat-count-wrap"><label class="vocab-audio-label" for="vocab-audio-repeat-count">Loop সংখ্যা</label><select class="select" id="vocab-audio-repeat-count"><option value="1">১ বার</option><option value="2" selected>২ বার</option><option value="3">৩ বার</option><option value="5">৫ বার</option><option value="10">১০ বার</option><option value="20">২০ বার</option><option value="50">৫০ বার</option><option value="100">১০০ বার</option></select></div>
+        <div id="vocab-audio-minutes-wrap" hidden><label class="vocab-audio-label" for="vocab-audio-minutes">সময়</label><select class="select" id="vocab-audio-minutes"><option value="5">৫ মিনিট</option><option value="10" selected>১০ মিনিট</option><option value="15">১৫ মিনিট</option><option value="20">২০ মিনিট</option><option value="30">৩০ মিনিট</option><option value="60">৬০ মিনিট</option></select></div>
+        <div><label class="vocab-audio-label" for="vocab-audio-speed">Playback Speed</label><select class="select" id="vocab-audio-speed"><option value="1" selected>1× · Normal</option><option value="1.5">1.5× · Fast</option><option value="2">2× · Very Fast</option></select></div>
+      </div>
+      <div class="vocab-audio-actions"><button class="primary" id="vocab-audio-start" type="button">▶ Japanese + বাংলা শুনতে শুরু করো</button><button class="secondary" id="vocab-audio-stop" type="button" disabled>■ Stop</button></div>
+      <div class="vocab-audio-status" id="vocab-audio-status" aria-live="polite">প্রথমে Lesson বেছে নিয়ে Start চাপো।</div>
+      <div class="vocab-audio-progress"><div id="vocab-audio-progress-fill"></div></div><div class="vocab-audio-timeline" id="vocab-audio-timeline" aria-live="off">সময়: 00:00 · প্রস্তুত</div>
+    </section>
     <div id="vocabulary-reading-content" class="vocabulary-reading-content"></div>
     <button class="secondary" id="vocabulary-reading-bottom-home" type="button">← Dashboard-এ ফিরে যাও</button>
   </section>
@@ -3400,3 +3417,78 @@ input, textarea { color:#f4f8ff !important; -webkit-text-fill-color:#f4f8ff; }
 ::selection { color:#ffffff; background:#286777; }
 @media (forced-colors: active) { select, select option { forced-color-adjust:auto; } }
 </style>
+
+<style id="vocabulary-audio-player-style">
+.vocab-audio-panel{margin:14px 0;padding:clamp(16px,3vw,24px)}.vocab-audio-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.vocab-audio-heading h3{font-size:21px;margin:7px 0 5px}.vocab-audio-heading p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}.vocab-audio-label{display:block;font-size:11px;color:#b9c9dc;font-weight:800;margin:15px 0 8px}.vocab-audio-lessons{border:1px solid var(--line);border-radius:14px;padding:10px;background:#081321}.vocab-audio-check{display:flex;align-items:center;gap:8px;min-height:38px;padding:7px 9px;border:1px solid #ffffff12;border-radius:10px;background:#ffffff05;font-size:12px;color:#dce7f5}.vocab-audio-check input{width:17px;height:17px;accent-color:var(--accent);flex:0 0 auto}.vocab-audio-check.all{margin-bottom:8px;background:#55e0c012;border-color:#55e0c044;font-weight:800}.vocab-audio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.vocab-audio-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.vocab-audio-settings [hidden]{display:none!important}.vocab-audio-settings .vocab-audio-label{margin-top:12px}.vocab-audio-actions{display:grid;grid-template-columns:1fr .55fr;gap:8px}.vocab-audio-actions button{margin-top:14px}.vocab-audio-actions button:disabled{opacity:.45;cursor:not-allowed}.vocab-audio-status{margin-top:12px;padding:11px 12px;border:1px solid #55e0c02a;border-radius:12px;background:#55e0c008;color:#a9c4d0;font-size:12px;line-height:1.6;min-height:42px}.vocab-audio-progress{height:9px;border-radius:20px;background:#26354a;overflow:hidden;margin-top:12px;position:relative;box-shadow:inset 0 1px 3px #0008}.vocab-audio-progress>div{height:100%;width:0;background:linear-gradient(90deg,#35d6bd,#7b8cff,#bd83ff);background-size:220% 100%;border-radius:20px;transition:width .12s linear;position:relative;box-shadow:0 0 12px #62e8d477}.vocab-audio-progress>div:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,#ffffff99 48%,transparent 72%);background-size:220% 100%;animation:vocabAudioShimmer 1.5s linear infinite}.vocab-audio-panel.is-playing .vocab-audio-progress>div{animation:vocabAudioGradient 2.2s linear infinite}.vocab-audio-panel.is-playing .vocab-audio-status{border-color:#55e0c077;box-shadow:0 0 18px #55e0c018}.vocab-audio-panel.is-playing .vocab-audio-heading .pill{animation:vocabAudioPulse 1.5s ease-in-out infinite}@keyframes vocabAudioShimmer{from{background-position:120% 0}to{background-position:-120% 0}}@keyframes vocabAudioGradient{to{background-position:220% 0}}@keyframes vocabAudioPulse{50%{box-shadow:0 0 0 5px #55e0c014;filter:brightness(1.25)}}.vocab-audio-check:has(input:checked){border-color:#55e0c077;background:#55e0c010}.vocab-audio-timeline{margin-top:7px;font-size:11px;color:#a9b8d0;font-variant-numeric:tabular-nums;display:flex;justify-content:space-between;gap:8px}.vocab-audio-timeline strong{color:#e7f6ff}@media(max-width:430px){.vocab-audio-settings{grid-template-columns:1fr}.vocab-audio-actions{grid-template-columns:1fr}.vocab-audio-actions button{margin-top:8px}.vocab-audio-heading h3{font-size:18px}}
+</style>
+<script id="vocabulary-audio-player-script">
+(()=>{
+ const $=id=>document.getElementById(id);let active=false,groups=[],groupIndex=0,wordIndex=0,lessonLoop=0,deadline=0,runTimer=null,timelineTimer=null,startedAt=0,completed=0,total=0,segmentStarted=0,segmentDuration=0,segmentFraction=0;
+ const panel=$('vocab-audio-panel');
+ const status=msg=>{$('vocab-audio-status').textContent=msg};
+ const formatTime=ms=>{const sec=Math.max(0,Math.floor(ms/1000));return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')};
+ const currentGroup=()=>groups[groupIndex];
+ const updateTimeline=()=>{
+  if(!$('vocab-audio-timeline'))return;
+  const elapsed=startedAt?Date.now()-startedAt:0,group=currentGroup(),mode=$('vocab-audio-repeat-mode').value;
+  const limit=mode==='unlimited'?'∞':mode==='minutes'?formatTime(Math.max(0,deadline-Date.now())):String($('vocab-audio-repeat-count').value);
+  $('vocab-audio-timeline').textContent=`সময় ${formatTime(elapsed)} · Lesson ${group?group.lesson:'—'} · Repeat ${mode==='minutes'?'বাকি '+limit:lessonLoop+1+'/'+limit} · ${completed}/${total} শব্দ · ${$('vocab-audio-speed').value}×`;
+  if(active&&group){
+   const fraction=segmentStarted?Math.min(1,Math.max(segmentFraction,(Date.now()-segmentStarted)/Math.max(1,segmentDuration))):0;
+   const modeNow=$('vocab-audio-repeat-mode').value;
+   const loopsPerLesson=modeNow==='loops'?Math.max(1,Number($('vocab-audio-repeat-count').value)||1):1;
+   const completedBefore=groups.slice(0,groupIndex).reduce((sum,g)=>sum+g.words.length*loopsPerLesson,0);
+   const progressNow=completedBefore+(lessonLoop*Math.max(1,group.words.length))+wordIndex+fraction;
+   const planned=groups.reduce((sum,g)=>sum+g.words.length*loopsPerLesson,0);
+   const percent=progressNow/Math.max(1,planned)*100;
+   $('vocab-audio-progress-fill').style.width=Math.min(100,percent)+'%';
+  }
+ };
+ const syncLessons=()=>{const all=$('vocab-audio-all').checked;document.querySelectorAll('.vocab-audio-lesson').forEach(c=>{c.disabled=all;if(all)c.checked=false});};
+ $('vocab-audio-all').addEventListener('change',syncLessons);
+ document.querySelectorAll('.vocab-audio-lesson').forEach(c=>c.addEventListener('change',()=>{const checks=[...document.querySelectorAll('.vocab-audio-lesson')];$('vocab-audio-all').checked=checks.every(x=>!x.checked);syncLessons()}));
+ $('vocab-audio-repeat-mode').addEventListener('change',e=>{const mode=e.target.value;$('vocab-audio-repeat-count-wrap').hidden=mode!=='loops';$('vocab-audio-minutes-wrap').hidden=mode!=='minutes'});
+ function stop(message='Audio playback বন্ধ করা হয়েছে।'){
+  active=false;clearTimeout(runTimer);clearInterval(timelineTimer);runTimer=null;timelineTimer=null;segmentStarted=0;segmentFraction=0;panel.classList.remove('is-playing');
+  if('speechSynthesis'in window)speechSynthesis.cancel();$('vocab-audio-start').disabled=false;$('vocab-audio-stop').disabled=true;
+  if(message)status(message);updateTimeline();
+ }
+ function speak(text,lang,onend,onerror){
+  if(!text){onend();return}
+  const speed=Number($('vocab-audio-speed').value)||1,baseRate=lang==='ja-JP'?.86:.92;
+  const u=new SpeechSynthesisUtterance(String(text));u.lang=lang;u.rate=Math.min(2,baseRate*speed);
+  if(lang==='bn-BD'&&typeof choosePreferredFemaleVoice==='function'){const female=choosePreferredFemaleVoice('bn-BD');if(female)u.voice=female;}
+  u.onstart=()=>{segmentStarted=Date.now();segmentFraction=0;segmentDuration=Math.max(550,(String(text).length*165)/Math.max(.5,u.rate));updateTimeline()};
+  u.onboundary=e=>{if(segmentDuration>0&&e.charIndex>=0){segmentFraction=Math.min(.92,e.charIndex/Math.max(1,String(text).length));updateTimeline()}};
+  u.onend=()=>{segmentFraction=1;updateTimeline();segmentStarted=0;onend()};u.onerror=()=>{segmentStarted=0;onerror()};speechSynthesis.speak(u);
+ }
+ function advanceWord(){if(!active)return;wordIndex++;completed++;segmentStarted=0;segmentFraction=0;runTimer=setTimeout(nextWord,180)}
+ function nextWord(){
+  if(!active)return;
+  if($('vocab-audio-repeat-mode').value==='minutes'&&Date.now()>=deadline){stop('নির্ধারিত সময় শেষ। Audio session সম্পন্ন হয়েছে।');return}
+  let group=currentGroup();
+  if(!group){if($('vocab-audio-repeat-mode').value==='unlimited'){groupIndex=0;group=groups[0];lessonLoop=0;wordIndex=0}else{stop('সব নির্বাচিত Lesson সম্পন্ন হয়েছে।');return}}
+  if(wordIndex>=group.words.length){wordIndex=0;lessonLoop++;const mode=$('vocab-audio-repeat-mode').value,repeatLimit=mode==='minutes'?1:Number($('vocab-audio-repeat-count').value);
+   if(mode==='loops'&&lessonLoop>=repeatLimit||mode==='minutes'){groupIndex++;lessonLoop=0;if(groupIndex>=groups.length){if(mode==='unlimited'||mode==='minutes')groupIndex=0;else{ $('vocab-audio-progress-fill').style.width='100%';stop(`সম্পন্ন! ${groups.length}টি Lesson শেষ হয়েছে। মোট ${completed}টি শব্দ শোনানো হয়েছে।`);return}}group=currentGroup();}
+  }
+  const item=currentGroup().words[wordIndex],mode=$('vocab-audio-repeat-mode').value;
+  const repeatLabel=mode==='unlimited'?'∞':mode==='minutes'?'সময়ভিত্তিক':`${lessonLoop+1}/${$('vocab-audio-repeat-count').value}`;
+  status(`▶ Lesson ${currentGroup().lesson} · Repeat ${repeatLabel} · শব্দ ${wordIndex+1}/${currentGroup().words.length} · ${item.j} — ${item.b}`);segmentStarted=0;segmentFraction=0;updateTimeline();
+  speak(item.j,'ja-JP',()=>{if(!active)return;speak(item.b,'bn-BD',advanceWord,()=>{if(!active)return;advanceWord()})},()=>{if(!active)return;speak(item.b,'bn-BD',advanceWord,()=>{if(!active)return;advanceWord()})});
+ }
+ $('vocab-audio-start').addEventListener('click',()=>{
+  if(!('speechSynthesis'in window)||!window.SpeechSynthesisUtterance){status('এই Browser-এ Text-to-Speech সমর্থিত নয়। Chrome/Android browser ব্যবহার করে দেখো।');return}
+  const selected=$('vocab-audio-all').checked?Array.from({length:10},(_,i)=>String(i+1)):[...document.querySelectorAll('.vocab-audio-lesson:checked')].map(c=>c.value);
+  if(!selected.length){status('অন্তত একটি Lesson নির্বাচন করো।');return}
+  groups=selected.map(lesson=>({lesson,words:vocabData.filter(w=>String(w.l)===lesson&&String(w.j||'').trim()&&String(w.b||'').trim())})).filter(g=>g.words.length);
+  if(!groups.length){status('নির্বাচিত Lesson-এ শোনানোর মতো vocabulary পাওয়া যায়নি।');return}
+  stop('নতুন Audio session প্রস্তুত হচ্ছে।');active=true;groupIndex=0;wordIndex=0;lessonLoop=0;completed=0;total=groups.reduce((n,g)=>n+g.words.length,0);startedAt=Date.now();deadline=Date.now()+Number($('vocab-audio-minutes').value)*60000;
+  panel.classList.add('is-playing');$('vocab-audio-start').disabled=true;$('vocab-audio-stop').disabled=false;
+  status(`${selected.map(x=>'L'+x).join(', ')} · ${total}টি শব্দ · Speed ${$('vocab-audio-speed').value}× · প্রতিটি Lesson নির্ধারিত সংখ্যক বার শেষ করে পরের Lesson-এ যাবে।`);
+  speechSynthesis.cancel();timelineTimer=setInterval(updateTimeline,60);updateTimeline();nextWord();
+ });
+ $('vocab-audio-stop').addEventListener('click',()=>stop());
+ $('vocab-audio-speed').addEventListener('change',()=>{if(active)status(`Playback speed ${$('vocab-audio-speed').value}× করা হয়েছে। পরের শব্দ থেকে নতুন speed কার্যকর হবে।`);updateTimeline()});
+ document.addEventListener('visibilitychange',()=>{});window.addEventListener('pagehide',()=>{if(active)stop('পৃষ্ঠা বন্ধ হওয়ায় Audio বন্ধ হয়েছে।')});syncLessons();updateTimeline();
+})();
+</script>
