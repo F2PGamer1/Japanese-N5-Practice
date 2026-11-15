@@ -965,6 +965,16 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <style id="lesson-multiselect-style">
 .lesson-multi-select{min-height:150px;height:auto;padding:8px 12px;line-height:1.7;cursor:pointer} .lesson-multi-select option{padding:5px 8px;border-radius:6px} .lesson-multi-select option:checked{background:linear-gradient(var(--accent, #14b8a6),var(--accent, #14b8a6));color:#fff} .lesson-multi-select:focus{outline:2px solid var(--accent,#14b8a6);outline-offset:2px}
 </style>
+<style id="kanji-stroke-practice-fix">
+/* Kanji handwriting canvas fix: fill the stage and accept mouse, touch and stylus input. */
+#kanji-write-stage{position:relative;min-height:260px;height:clamp(260px,58vw,430px);max-height:65vh;overflow:hidden;isolation:isolate;touch-action:none;cursor:crosshair}
+#kanji-write-stage #kanji-write-guide{position:absolute;inset:0;display:grid;place-items:center;z-index:1;font-family:'Noto Sans JP',sans-serif;font-size:clamp(150px,35vw,300px);font-weight:600;line-height:1;color:rgba(223,249,243,.19)!important;pointer-events:none;user-select:none}
+#kanji-write-stage #kanji-write-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:2;touch-action:none;pointer-events:auto;cursor:crosshair}
+#kanji-write-stage .write-hint{z-index:3;pointer-events:none}
+#kanji-write-stage.guide-hidden #kanji-write-guide{opacity:0!important}
+#kanji-write-stage.guide-animate #kanji-write-guide{animation:kanjiGuidePulse 1.4s ease-in-out 1}
+@media(max-width:520px){#kanji-write-stage{height: min(68vh,390px);min-height:250px}}
+</style>
 </head>
 <body>
 <div id="si-animated-backdrop" aria-hidden="true"></div>
@@ -1037,6 +1047,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <button class="primary" id="open-vocabulary-reading" type="button">শুধু Vocabulary পড়ি ↗</button>
     </section>
 
+    <section class="panel kanji-launch" aria-label="Kanji Master Lesson 3 to 12">
+      <div class="kanji-launch-mark">漢</div><div class="kanji-launch-copy"><div class="grammar-guide-launch-title">漢字 Kanji Master · Lesson 3–12</div><div class="grammar-guide-launch-desc">১৪৫টি Kanji-এর Hiragana reading, Romaji উচ্চারণ, বাংলা অর্থ, আলাদা Test এবং Stroke Practice। Vocabulary ও Grammar থেকে সম্পূর্ণ আলাদা।</div></div><button class="primary" id="open-kanji-master" type="button">Kanji শিখি ↗</button>
+    </section>
+
     <div class="layout">
       <section class="panel section">
         <div class="section-head"><div><div class="section-title">Start a practice</div></div><span class="pill">N5 · Beginner</span></div>
@@ -1104,13 +1118,44 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
         <div><label class="vocab-audio-label" for="vocab-audio-speed">Playback Speed</label><select class="select" id="vocab-audio-speed"><option value="1" selected>1× · Normal</option><option value="1.5">1.5× · Fast</option><option value="2">2× · Very Fast</option></select></div>
         <label class="vocab-audio-check screen-off-reading-option"><input type="checkbox" id="screen-off-reading-toggle" checked> Screen-off reading (experimental)</label>
       </div>
-      <p class="vocab-audio-note">Screen lock-এ চলা browser ও Android-এর support-এর ওপর নির্ভরশীল। কিছু ফোনে screen off করলে browser TTS থেমে যেতে পারে।</p>
+      <p class="vocab-audio-note">বাংলা: Internet থাকলে Google Online Bengali TTS চালানোর চেষ্টা হবে। Google-এর অডিও সার্ভার অনুপলব্ধ হলে ডিভাইসে Bengali Voice থাকলে সেটি ব্যবহার হবে। PC-তে Offline Bengali Voice না থাকলে বাংলা TTS নাও চলতে পারে। Screen lock playback browser ও Android support-এর ওপর নির্ভরশীল।</p>
       <div class="vocab-audio-actions"><button class="primary" id="vocab-audio-start" type="button">▶ Japanese + বাংলা শুনতে শুরু করো</button><button class="secondary" id="vocab-audio-stop" type="button" disabled>■ Stop</button></div>
       <div class="vocab-audio-status" id="vocab-audio-status" aria-live="polite">প্রথমে Lesson বেছে নিয়ে Start চাপো।</div>
       <div class="vocab-audio-progress"><div id="vocab-audio-progress-fill"></div></div><div class="vocab-audio-timeline" id="vocab-audio-timeline" aria-live="off">সময়: 00:00 · প্রস্তুত</div>
     </section>
     <div id="vocabulary-reading-content" class="vocabulary-reading-content"></div>
     <button class="secondary" id="vocabulary-reading-bottom-home" type="button">← Dashboard-এ ফিরে যাও</button>
+  </section>
+
+  <section id="kanji-screen" class="screen">
+    <div class="panel section kanji-shell">
+      <div class="section-head"><div><div class="section-title">漢字 Kanji Master</div><div class="section-desc">Lesson 3–12 · আলাদা Kanji Learning, Test ও Handwriting Studio</div></div><button class="small-btn" id="kanji-home" type="button">← Home</button></div>
+      <div class="kanji-stats"><div><b id="kanji-total">145</b><span>Total Kanji</span></div><div><b id="kanji-learned">0</b><span>Reviewed</span></div><div><b id="kanji-best">0%</b><span>Best test</span></div></div>
+      <div class="kanji-tabs" role="tablist"><button class="active" data-kanji-tab="learn">📚 Learn</button><button data-kanji-tab="test">✓ Test</button><button data-kanji-tab="write">✍ Stroke Practice</button></div>
+      <div id="kanji-learn-panel" class="kanji-panel">
+        <div class="kanji-toolbar"><label>LESSON<select id="kanji-lesson-filter" class="select"><option value="all">All Lessons · 3–12</option></select></label><label>SEARCH<input id="kanji-search" class="select" type="search" placeholder="Kanji / Romaji / বাংলা"></label></div>
+        <div class="kanji-grid" id="kanji-grid"></div>
+      </div>
+      <div id="kanji-test-panel" class="kanji-panel" hidden>
+        <div class="kanji-test-settings">
+          <div class="kanji-test-setting"><label for="kanji-test-lessons">LESSONS · একাধিক Lesson বেছে নাও</label><select id="kanji-test-lessons" class="select" multiple size="5"><option value="all" selected>All Lessons · 3–12</option></select><div class="kanji-select-actions"><button type="button" id="kanji-select-all" class="small-btn">Select all</button><button type="button" id="kanji-clear-lessons" class="small-btn">Clear</button><span id="kanji-selected-summary">সব Lesson নির্বাচিত</span></div></div>
+          <div class="kanji-test-setting"><label for="kanji-test-mode">DIFFICULTY</label><select id="kanji-test-mode" class="select"><option value="normal">Normal · সহজ শুরু</option><option value="hard" selected>Hard · কঠিন অনুশীলন</option><option value="expert">Expert · উল্টো দিক থেকেও</option></select><label for="kanji-test-count">QUESTION COUNT</label><select id="kanji-test-count" class="select"><option value="10">10 Questions</option><option value="20">20 Questions</option><option value="30">30 Questions</option><option value="50">50 Questions</option><option value="all">All selected Kanji</option></select></div>
+        </div>
+        <div class="kanji-test-start" id="kanji-test-start"><div class="kanji-test-icon">漢</div><h3>Kanji Master Challenge</h3><p>একটি বা একাধিক Lesson বেছে নাও, অথবা সব Lesson নিয়ে পরীক্ষা দাও। Hard ও Expert Mode-এ Kanji দেখে অর্থ/পড়া, আবার বাংলা অর্থ বা reading দেখে Kanji চিনতে হবে। প্রতিটি প্রশ্নে ৪টি অপশন থাকবে।</p><div class="kanji-test-rules"><span>✦ Mixed question types</span><span>✦ 4 choices</span><span>✦ Wrong answer review</span></div><button class="primary" id="kanji-start-test" type="button">Start Challenge</button></div>
+        <div id="kanji-test-play" hidden><div class="kanji-test-meta"><span id="kanji-test-counter">1 / 10</span><span id="kanji-test-score">Score 0</span></div><div class="kanji-test-question"><small id="kanji-test-prompt">এই Kanji-এর বাংলা অর্থটি নির্বাচন করো</small><div id="kanji-test-glyph">一</div><div id="kanji-test-reading">いち · Ichi</div></div><div id="kanji-test-options" class="kanji-test-options"></div><div id="kanji-test-feedback" class="kanji-test-feedback" aria-live="polite"></div><button class="secondary" id="kanji-test-next" type="button" disabled>Next →</button></div>
+        <div id="kanji-test-result" class="kanji-test-start" hidden><div class="kanji-test-icon">✦</div><h3>Test completed</h3><div class="kanji-test-final" id="kanji-test-final">0 / 10</div><p id="kanji-test-summary"></p><button class="primary" id="kanji-test-again" type="button">Try Again</button></div>
+      </div>
+      <div id="kanji-write-panel" class="kanji-panel" hidden>
+        <div class="kanji-toolbar"><label>LESSON<select id="kanji-write-lesson" class="select"><option value="all">All Lessons · 3–12</option></select></label><label>CHARACTER<select id="kanji-write-select" class="select"></select></label></div>
+        <section class="write-practice kanji-write-practice"><div class="write-head"><div><div class="write-kicker">✦ KANJI DOJO / HANDWRITING</div><h3>Write the Kanji yourself</h3><p>হালকা guide দেখে কাঞ্জিটি লেখো। Guide লুকিয়ে স্মৃতি থেকেও অনুশীলন করতে পারবে।</p></div><span class="write-counter" id="kanji-write-counter">1 / 145</span></div>
+          <div class="write-target-row"><div><span class="write-target-label">KANJI · READING · ROMAJI</span><div class="kanji-write-reading" id="kanji-write-reading">一 · いち · Ichi</div><div class="kanji-write-meaning" id="kanji-write-meaning">এক</div></div><div class="write-target-actions"><button class="small-btn" id="kanji-guide-toggle" type="button">Hide guide</button><button class="small-btn" id="kanji-guide-replay" type="button">↻ Guide animation</button></div></div>
+          <div class="write-stage kanji-write-stage" id="kanji-write-stage"><div class="write-guide" id="kanji-write-guide">一</div><canvas id="kanji-write-canvas" aria-label="Kanji handwriting practice canvas"></canvas><div class="write-hint">এখানে কাঞ্জিটি লেখো · mouse / touch / stylus</div><div class="write-stage-tag">KANJI PRACTICE CANVAS</div></div>
+          <div class="write-progress-row"><span id="kanji-write-status">Ready when you are</span><span id="kanji-write-strokes">0 strokes</span></div>
+          <div class="write-controls"><button class="small-btn" id="kanji-write-prev">← Previous</button><button class="small-btn" id="kanji-write-undo">↶ Undo</button><button class="small-btn" id="kanji-write-clear">⌫ Erase all</button><button class="small-btn write-next" id="kanji-write-next">Next Kanji →</button></div>
+          <div class="write-feedback" id="kanji-write-feedback">লেখা শুরু করো। এটি freehand practice canvas; guide টি অক্ষরের আকৃতি দেখায়, নির্দিষ্ট stroke-by-stroke order নয়।</div>
+        </section>
+      </div>
+    </div>
   </section>
 
   <section id="quiz-screen" class="screen">
@@ -3911,6 +3956,209 @@ function applyWallpaperSpeed(){const wall=$('jp-parallax-wall');if(!wall)return;
 @media(min-width:621px) and (max-width:900px){.vocab-read-words{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 
+
+<style id="kanji-master-style">
+.kanji-launch{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:center;padding:20px;margin:16px 0;border:1px solid #55e0c044;border-radius:22px;background:linear-gradient(125deg,#102b32,#101a2d 58%,#17152d);box-shadow:0 15px 38px #0003}.kanji-launch-mark{width:60px;height:60px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(145deg,#55e0c02b,#8d83ff25);border:1px solid #55e0c055;color:#8af2dc;font:700 32px 'Noto Sans JP',sans-serif}.kanji-launch-copy{min-width:0}.kanji-launch .primary{grid-column:1/-1;margin:0}.kanji-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}.kanji-stats>div{padding:13px 8px;border:1px solid var(--line);border-radius:14px;background:#0b1424;text-align:center}.kanji-stats b{display:block;font-size:22px;color:#7cebd5}.kanji-stats span{font-size:10px;color:var(--muted)}.kanji-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:17px 0}.kanji-tabs button{min-height:45px;border:1px solid var(--line);border-radius:12px;background:#0b1424;color:var(--muted);font-weight:750;cursor:pointer}.kanji-tabs button.active{color:var(--accent);border-color:#55e0c077;background:#55e0c014}.kanji-toolbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.kanji-toolbar label{display:grid;gap:7px;color:#b9c8dc;font-size:10px;font-weight:800;letter-spacing:.7px}.kanji-toolbar .select{min-width:0}.kanji-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.kanji-card{position:relative;min-width:0;padding:13px 7px 12px;border:1px solid #2b3b54;border-radius:16px;background:linear-gradient(145deg,#111e30,#0b1423);text-align:center;cursor:pointer;transition:border-color .2s,transform .2s}.kanji-card:hover{border-color:#55e0c088;transform:translateY(-2px)}.kanji-card.reviewed{border-color:#55e0c066}.kanji-card-glyph{display:block!important;font-family:'Noto Sans JP','Yu Gothic','Meiryo','Hiragino Kaku Gothic ProN',sans-serif!important;font-size:clamp(36px,7vw,54px)!important;font-weight:600!important;line-height:1.35!important;color:#f4f8ff!important;-webkit-text-fill-color:#f4f8ff!important;opacity:1!important}.kanji-card-reading{display:block!important;font-size:11px;color:#8debd8!important;-webkit-text-fill-color:#8debd8!important;margin-top:7px;line-height:1.6;overflow-wrap:anywhere}.kanji-card-romaji{display:block!important;font-size:10px;color:#c1cce0!important;-webkit-text-fill-color:#c1cce0!important;margin-top:4px;line-height:1.5}.kanji-card-meaning{display:block!important;font-size:11px;color:#fff!important;-webkit-text-fill-color:#fff!important;margin-top:6px;line-height:1.45}.kanji-card-lesson{position:absolute;top:7px;right:7px;font-size:8px;color:#91a1b8;border:1px solid #ffffff16;border-radius:20px;padding:3px 6px}.kanji-card-check{position:absolute;left:8px;top:7px;color:#65e3b1;font-size:10px}
+.kanji-test-settings{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:12px;margin:14px 0}
+.kanji-test-setting{min-width:0;padding:13px;border:1px solid var(--line);border-radius:15px;background:#0b1424;display:flex;flex-direction:column;gap:8px}
+.kanji-test-setting>label{font-size:10px;font-weight:850;letter-spacing:.65px;color:#b9c8dc}
+#kanji-test-lessons{min-height:132px;padding:8px}
+#kanji-test-lessons option{padding:5px}
+.kanji-select-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.kanji-select-actions .small-btn{padding:7px 10px;font-size:10px}
+#kanji-selected-summary{font-size:10px;color:#8debd8}
+.kanji-test-rules{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:15px 0}
+.kanji-test-rules span{font-size:10px;color:#9eb4c9;border:1px solid #ffffff18;border-radius:30px;padding:6px 9px}
+#kanji-test-glyph{font-family:'Noto Sans JP','Yu Gothic','Meiryo',sans-serif}
+#kanji-test-reading{min-height:20px}
+.kanji-test-question.reverse-question #kanji-test-glyph{font-size:clamp(28px,7vw,46px);overflow-wrap:anywhere}
+.kanji-test-question.reverse-question #kanji-test-reading{display:none}
+.kanji-test-options button{font-size:clamp(13px,2vw,16px);font-weight:700;overflow-wrap:anywhere}
+.kanji-test-feedback strong{color:#fff}
+@media(max-width:600px){.kanji-test-settings{grid-template-columns:1fr}.kanji-test-setting{padding:11px}#kanji-test-lessons{min-height:118px}}
+.kanji-test-start{text-align:center;padding:26px 12px;border:1px solid var(--line);border-radius:18px;background:#0b1424}.kanji-test-start h3{margin:10px 0 6px}.kanji-test-start p{font-size:12px;line-height:1.7;color:var(--muted);max-width:470px;margin:0 auto}.kanji-test-icon{font:700 54px 'Noto Sans JP',sans-serif;color:#72ead3}.kanji-test-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin:14px 0}.kanji-test-question{text-align:center;padding:25px 12px;border:1px solid #31435b;border-radius:18px;background:radial-gradient(ellipse at 50% 0%,#55e0c018,transparent 70%),#0b1424}.kanji-test-question small{color:var(--muted)}#kanji-test-glyph{font:600 clamp(70px,18vw,110px)/1.3 'Noto Sans JP',sans-serif;margin:8px 0;color:#f4f8ff}#kanji-test-reading{font-size:13px;color:#83e8d4}.kanji-test-options{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.kanji-test-options button{min-height:55px;padding:10px;border:1px solid var(--line);border-radius:13px;background:#111d30;color:var(--text);cursor:pointer}.kanji-test-options button.correct{border-color:#49dfa0;background:#49dfa018}.kanji-test-options button.wrong{border-color:#ff7186;background:#ff718618}.kanji-test-options button:disabled{cursor:default}.kanji-test-feedback{text-align:center;min-height:36px;padding:12px;color:var(--muted);font-size:12px;line-height:1.6}.kanji-test-final{font-size:42px;font-weight:900;color:#78ead4;margin:12px}.kanji-write-reading{font-size:19px;font-weight:800;color:#72ead3;margin-top:5px}.kanji-write-meaning{font-size:12px;color:#c4d0e2;margin-top:4px}.kanji-write-stage .write-guide{color:#dff9f31c!important;clip-path:none!important}.kanji-write-stage.guide-hidden .write-guide{opacity:0!important}.kanji-write-stage.guide-animate .write-guide{animation:kanjiGuidePulse 1.4s ease-in-out 1}.kanji-write-stage canvas{z-index:2}.kanji-write-practice{margin-top:10px}.kanji-write-practice .write-feedback{font-size:11px}.kanji-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:28px 10px;border:1px dashed var(--line);border-radius:14px}@keyframes kanjiGuidePulse{0%{opacity:.03;transform:scale(.94)}45%{opacity:.48;transform:scale(1.04)}100%{opacity:.18;transform:scale(1)}}@media(max-width:520px){.kanji-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.kanji-card{padding:13px 5px}.kanji-toolbar{grid-template-columns:1fr}.kanji-test-options{grid-template-columns:1fr 1fr}.kanji-launch{grid-template-columns:52px minmax(0,1fr);padding:15px}.kanji-launch-mark{width:50px;height:50px;font-size:27px}}
+</style>
+
+<script id="kanji-master-data">
+const kanjiMasterData = [
+[3,'一','いち・いつ／ひと-','Ichi / Itsu / Hito-','এক'],[3,'二','に／ふた-','Ni / Futa-','দুই'],[3,'三','さん／みっ-','San / Mitt-','তিন'],[3,'四','し・よん／よっ-・よ-','Shi / Yon / Yott- / Yo-','চার'],[3,'五','ご／いつ-','Go / Itsu-','পাঁচ'],[3,'六','ろく／むっ-','Roku / Mutt-','ছয়'],[3,'七','しち／なな-・なの','Shichi / Nana- / Nano','সাত'],[3,'八','はち／やっ-・はっ-','Hachi / Yatt- / Hatt-','আট'],[3,'九','きゅう・く／ここと','Kyuu / Ku / Kokoto','নয়'],[3,'十','じゅう・じっ-・とお／と','Juu / Jitt- / Too / To','দশ'],[3,'百','ひゃく・びゃく・ぴゃく','Hyaku / Byaku / Pyaku','শত'],[3,'千','せん・ぜん','Sen / Zen','হাজার'],[3,'万','まん','Man','দশ হাজার'],[3,'円','えん／まる-','En / Maru-','ইয়েন / গোল'],[3,'時','とき／じ','Toki / Ji','সময় / ওক্লক'],
+[4,'日','ひ・び／にち・じつ','Hi / Bi / Nichi / Jitsu','দিন / সূর্য'],[4,'本','もと／ほん','Moto / Hon','বই / ভিত্তি'],[4,'人','ひと／にん・じん','Hito / Nin / Jin','ব্যক্তি'],[4,'月','つき／げつ・がつ','Tsuki / Getsu / Gatsu','চাঁদ / মাস'],[4,'火','ひ・び／か','Hi / Bi / Ka','আগুন'],[4,'水','みず／すい','Mizu / Sui','পানি'],[4,'木','き／もく・ぼく','Ki / Moku / Boku','গাছ'],[4,'金','きん・かね／こん','Kin / Kane / Kon','সোনা / টাকা'],[4,'土','つち／ど・と','Tsuchi / Do / To','মাটি / জমি'],[4,'曜','よう','You','সপ্তাহের দিন'],[4,'上','うえ・あが-・のぼ-／じょう','Ue / Aga- / Nobo- / Jou','উপরে'],[4,'下','した・さ-・くだ-／か・しゅ','Shita / Sa- / Kuda- / Ka / Shu','নিচে'],[4,'中','なか／ちゅう・じゅう','Naka / Chuu / Juu','মধ্যে / ভেতরে'],[4,'半','はん','Han','অর্ধেক'],
+[5,'山','やま／さん','Yama / San','পাহাড়'],[5,'川','かわ／せん','Kawa / Sen','নদী'],[5,'元','もと／げん・がん','Moto / Gen / Gan','উৎস'],[5,'気','き・け','Ki / Ke','মন / আত্মা'],[5,'天','てん','Ten','স্বর্গ'],[5,'私','わたし・わたくし／し','Watashi / Watakushi / Shi','আমি / ব্যক্তিগত'],[5,'今','いま／こん','Ima / Kon','এখন'],[5,'田','た','Ta','ধানক্ষেত'],[5,'女','おんな／じょ','Onna / Jo','নারী'],[5,'男','おとこ／だん','Otoko / Dan','পুরুষ'],[5,'見','みる／けん','Miru / Ken','দেখা'],[5,'行','いく・ゆく・おこなう／こう・ぎょう','Iku / Yuku / Okonau / Kou / Gyou','যাওয়া'],[5,'食','たべる・くう／しょく','Taberu / Kuu / Shoku','খাওয়া'],[5,'飲','のむ／いん','Nomu / In','পান করা'],
+[6,'東','ひがし／とう','Higashi / Tou','পূর্ব'],[6,'西','にし／せい・さい','Nishi / Sei / Sai','পশ্চিম'],[6,'南','みなみ／なん','Minami / Nan','দক্ষিণ'],[6,'北','きた／ほく・ほっ','Kita / Hoku / Hokk','উত্তর'],[6,'口','くち／こう・く','Kuchi / Kou / Ku','মুখ'],[6,'出','でる・だす／しゅっ・しゅつ','Deru / Dasu / Shutsu','বের হওয়া'],[6,'右','みぎ／う・ゆう','Migi / U / Yuu','ডান'],[6,'左','ひだり／さ','Hidari / Sa','বাম'],[6,'分','わける・わかれる・わかる／ぶん・ふん・ぷん','Wakeru / Wakareru / Wakaru / Bun / Fun / Pun','মিনিট / ভাগ করা'],[6,'先','さき／せん','Saki / Sen','সামনে / অগ্রবর্তী'],[6,'生','うまれる・いきる・なま／しょう・せい','Umareru / Ikiru / Nama / Shou / Sei','জন্ম / জীবন'],[6,'大','おおきい／だい・たい','Ookii / Dai / Tai','বড়'],[6,'学','まなぶ／がく・がっ','Manabu / Gaku / Gatt','শিক্ষা'],[6,'外','そと・ほか／がい','Soto / Hoka / Gai','বাইরে'],[6,'国','くに／こく・ごく','Kuni / Koku / Goku','দেশ'],
+[7,'京','きょう','Kyou','রাজধানী'],[7,'子','こ／し','Ko / Shi','শিশু / সন্তান'],[7,'小','ちいさい／しょう','Chiisai / Shou','ছোট'],[7,'会','あう／かい・え','Au / Kai / E','দেখা করা'],[7,'社','しゃ','Sha','কোম্পানি / সমাজ'],[7,'父','ちち／ふ','Chichi / Fu','বাবা'],[7,'母','はは／ぼ','Haha / Bo','মা'],[7,'高','たかい／こう','Takai / Kou','উঁচু / দামি'],[7,'校','こう','Kou','স্কুল'],[7,'毎','まい','Mai','প্রতি'],[7,'語','ご','Go','ভাষা / শব্দ'],[7,'文','ぶん','Bun','বাক্য / অক্ষর'],[7,'帰','かえる／き','Kaeru / Ki','ফিরে যাওয়া'],[7,'入','はいる・いれる／にゅう','Hairu / Ireru / Nyuu','প্রবেশ করা'],
+[8,'員','いん','In','সদস্য'],[8,'新','あたらしい／しん','Atarashii / Shin','নতুন'],[8,'聞','きく／ぶん・もん','Kiku / Bun / Mon','শোনা'],[8,'作','つくる／さく','Tsukuru / Saku','তৈরি করা'],[8,'仕','つかえる／し','Tsukaeru / Shi','সেবা করা'],[8,'事','こと／じ','Koto / Ji','বিষয় / কাজ'],[8,'電','でん','Den','বিদ্যুৎ'],[8,'車','くるま／しゃ','Kuruma / Sha','গাড়ি'],[8,'休','やすむ／きゅう','Yasumu / Kyuu','বিশ্রাম নেওয়া'],[8,'言','いう／げん・こと','Iu / Gen / Koto','বলা'],[8,'読','よむ／どく','Yomu / Doku','পড়া'],[8,'思','おもう／し','Omou / Shi','চিন্তা করা'],[8,'次','つぎ／じ','Tsugi / Ji','পরবর্তী'],[8,'何','なに・なん／か','Nani / Nan / Ka','কী'],
+[9,'午','ご','Go','দুপুর'],[9,'後','あと・うしろ／ご・こう','Ato / Ushiro / Go / Kou','পরে / পেছনে'],[9,'前','まえ／ぜん','Mae / Zen','আগে'],[9,'名','な／めい','Na / Mei','নাম'],[9,'白','しろい／はく','Shiroi / Haku','সাদা'],[9,'雨','あめ／う','Ame / U','বৃষ্টি'],[9,'書','かく／しょ','Kaku / Sho','লেখা'],[9,'友','とも／ゆう','Tomo / Yuu','বন্ধু'],[9,'間','あいだ・ま／かん・けん','Aida / Ma / Kan / Ken','মধ্যে'],[9,'家','いえ・や／か','Ie / Ya / Ka','ঘর / বাড়ি'],[9,'話','はなす・はなし／わ','Hanasu / Hanashi / Wa','কথা বলা'],[9,'少','すくない・すこし／しょう','Sukunai / Sukoshi / Shou','অল্প'],[9,'古','ふるい／こ','Furui / Ko','পুরোনো'],[9,'知','しる／ち','Shiru / Chi','জানা'],[9,'来','くる・きたる・こ／らい','Kuru / Kitaru / Ko / Rai','আসা'],
+[10,'住','すむ／じゅう','Sumu / Juu','বসবাস করা'],[10,'正','ただしい／しょう','Tadashii / Shou','সঠিক'],[10,'年','とし／ねん','Toshi / Nen','বছর'],[10,'売','うる／ばい','Uru / Bai','বিক্রি করা'],[10,'買','かう／ばい','Kau / Bai','কেনা'],[10,'町','まち／ちょう','Machi / Chou','শহর'],[10,'長','ながい／ちょう','Nagai / Chou','লম্বা'],[10,'道','みち／どう','Michi / Dou','রাস্তা'],[10,'雪','ゆき／せつ','Yuki / Setsu','বরফ'],[10,'立','たつ／りつ・た','Tatsu / Ritsu / Ta','দাঁড়ানো'],[10,'自','じ','Ji','নিজে'],[10,'夜','よる・よ／や','Yoru / Yo / Ya','রাত'],[10,'朝','あさ／ちょう','Asa / Chou','সকাল'],[10,'持','もつ／じ','Motsu / Ji','ধরে রাখা'],
+[11,'手','て／しゅ','Te / Shu','হাত'],[11,'紙','かみ／し','Kami / Shi','কাগজ'],[11,'好','すきな・このむ／こう','Sukina / Konomu / Kou','পছন্দ'],[11,'近','ちかい／きん','Chikai / Kin','কাছে'],[11,'明','あかるい／めい','Akarui / Mei','উজ্জ্বল'],[11,'病','やまい／びょう','Yamai / Byou','অসুস্থতা'],[11,'院','いん','In','প্রতিষ্ঠান'],[11,'映','うつす・うつる／えい','Utsusu / Utsuru / Ei','প্রতিফলন / প্রজেক্ট করা'],[11,'画','が・かく','Ga / Kaku','ছবি'],[11,'歌','うたう／うた','Utau / Uta','গান গাওয়া'],[11,'市','いち／し','Ichi / Shi','শহর'],[11,'所','ところ／しょ','Tokoro / Sho','স্থান'],[11,'勉','つとめる／べん','Tsutomeru / Ben','চেষ্টা করা'],[11,'強','つよい／きょう・ごう','Tsuyoi / Kyou / Gou','শক্ত / শক্তিশালী'],[11,'有','ある／ゆう','Aru / Yuu','থাকা / উপস্থিতি'],[11,'旅','たび／りょ','Tabi / Ryo','ভ্রমণ'],
+[12,'昔','むかし','Mukashi','প্রাচীনকাল'],[12,'々','くりかえし','Kurikaeshi','পুনরাবৃত্তি প্রতীক'],[12,'神','かみ／しん・こう','Kami / Shin / Kou','ঈশ্বর'],[12,'早','はやい／そう','Hayai / Sou','তাড়াতাড়ি'],[12,'起','おきる／き','Okiru / Ki','ঘুম থেকে ওঠা'],[12,'牛','うし／ぎゅう','Ushi / Gyuu','গরু'],[12,'使','つかう／し','Tsukau / Shi','ব্যবহার করা'],[12,'働','はたらく／どう','Hataraku / Dou','কাজ করা'],[12,'連','つれる／れん','Tsureru / Ren','সাথে নিয়ে যাওয়া / যুক্ত করা'],[12,'別','わかれる／べつ','Wakareru / Betsu','আলাদা হওয়া'],[12,'度','ど','Do','বার / ডিগ্রি'],[12,'赤','あかい／せき・あか','Akai / Seki / Aka','লাল'],[12,'青','あおい／せい・あお','Aoi / Sei / Ao','নীল'],[12,'色','いろ／しょく・いろ','Iro / Shoku / Iro','রঙ']
+] .map(([l,k,r,u,b])=>({l,k,r,u,b}));
+</script>
+
+<script id="kanji-master-script">
+(()=>{
+ const $=id=>document.getElementById(id);if(!$('kanji-screen'))return;
+ const KEY='sirjo_kanji_master_progress_v1';let saved={reviewed:[],best:0};try{saved={...saved,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(_){}
+ let activeTab='learn',testItems=[],testIndex=0,testScore=0,testWrong=[],testAnswered=false,writeItem=null,writeIndex=0,ink=[],drawing=false,lastPoint=null,ctx=null;
+ const lessons=[...new Set(kanjiMasterData.map(x=>x.l))];
+ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(_){}};
+ const listFor=lesson=>kanjiMasterData.filter(x=>lesson==='all'||String(x.l)===String(lesson));
+ function fillLessons(){['kanji-lesson-filter','kanji-test-lesson','kanji-write-lesson'].forEach(id=>{const el=$(id);lessons.forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent='Lesson '+l;el.append(o)})})}
+ function updateStats(){$('kanji-total').textContent=kanjiMasterData.length;$('kanji-learned').textContent=saved.reviewed.length;$('kanji-best').textContent=(saved.best||0)+'%'}
+ function renderCards(){const lesson=$('kanji-lesson-filter').value,q=$('kanji-search').value.trim().toLocaleLowerCase();const rows=listFor(lesson).filter(x=>!q||[x.k,x.r,x.u,x.b,String(x.l)].some(v=>v.toLocaleLowerCase().includes(q)));const root=$('kanji-grid');root.innerHTML='';if(!rows.length){root.innerHTML='<div class="kanji-empty">কোনো Kanji পাওয়া যায়নি।</div>';return}rows.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='kanji-card'+(saved.reviewed.includes(x.k)?' reviewed':'');b.innerHTML=`<span class="kanji-card-lesson">L${x.l}</span>${saved.reviewed.includes(x.k)?'<span class="kanji-card-check">✓</span>':''}<div class="kanji-card-glyph"></div><div class="kanji-card-reading"></div><div class="kanji-card-romaji"></div><div class="kanji-card-meaning"></div>`;b.querySelector('.kanji-card-glyph').textContent=x.k;b.querySelector('.kanji-card-reading').textContent=x.r;b.querySelector('.kanji-card-romaji').textContent=x.u;b.querySelector('.kanji-card-meaning').textContent=x.b;b.addEventListener('click',()=>{if(!saved.reviewed.includes(x.k))saved.reviewed.push(x.k);save();updateStats();b.classList.add('reviewed');b.querySelector('.kanji-card-check')||(b.insertAdjacentHTML('afterbegin','<span class="kanji-card-check">✓</span>'));$('kanji-write-lesson').value=String(x.l);updateWriteList();selectWriteItem(x);switchTab('write')});root.append(b)})}
+ function switchTab(tab){activeTab=tab;document.querySelectorAll('[data-kanji-tab]').forEach(b=>b.classList.toggle('active',b.dataset.kanjiTab===tab));['learn','test','write'].forEach(t=>{$('kanji-'+t+'-panel').hidden=t!==tab});if(tab==='write'){requestAnimationFrame(resizeCanvas)}}
+ document.querySelectorAll('[data-kanji-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.kanjiTab)));
+ function updateWriteList(){const lesson=$('kanji-write-lesson').value;const rows=listFor(lesson);const sel=$('kanji-write-select');const prior=writeItem?.k;sel.innerHTML='';rows.forEach(x=>{const o=document.createElement('option');o.value=x.k;o.textContent=`${x.k} · ${x.u}`;sel.append(o)});const target=rows.find(x=>x.k===prior)||rows[0];if(target){sel.value=target.k;selectWriteItem(target)}}
+ function selectWriteItem(x){writeItem=x;const rows=listFor($('kanji-write-lesson').value);writeIndex=Math.max(0,rows.findIndex(y=>y.k===x.k));$('kanji-write-select').value=x.k;$('kanji-write-guide').textContent=x.k;$('kanji-write-reading').textContent=x.k+' · '+x.r+' · '+x.u;$('kanji-write-meaning').textContent=x.b;$('kanji-write-counter').textContent=(writeIndex+1)+' / '+rows.length;clearInk();$('kanji-write-status').textContent='Ready when you are'}
+ function moveWrite(delta){const rows=listFor($('kanji-write-lesson').value);if(!rows.length)return;writeIndex=(writeIndex+delta+rows.length)%rows.length;selectWriteItem(rows[writeIndex])}
+ function resizeCanvas(){
+  const canvas=$('kanji-write-canvas'),stage=$('kanji-write-stage');if(!canvas||!stage)return;
+  const rect=stage.getBoundingClientRect();if(rect.width<2||rect.height<2)return;
+  const ratio=Math.max(1,window.devicePixelRatio||1);
+  canvas.width=Math.round(rect.width*ratio);canvas.height=Math.round(rect.height*ratio);
+  ctx=canvas.getContext('2d');ctx.setTransform(ratio,0,0,ratio,0,0);
+  ctx.lineWidth=Math.max(3,Math.min(7,rect.width*.012));ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle='#62e8d0';ctx.fillStyle='#62e8d0';ctx.shadowColor='rgba(98,232,208,.35)';ctx.shadowBlur=1.5;
+  redrawInk();
+ }
+ function redrawInk(){
+  const canvas=$('kanji-write-canvas');if(!ctx||!canvas)return;
+  const ratio=Math.max(1,window.devicePixelRatio||1);
+  ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.restore();
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+  ink.forEach(path=>{if(!path.length)return;ctx.beginPath();ctx.moveTo(path[0].x,path[0].y);if(path.length===1){ctx.arc(path[0].x,path[0].y,ctx.lineWidth/2,0,Math.PI*2);ctx.fill()}else{path.slice(1).forEach(pt=>ctx.lineTo(pt.x,pt.y));ctx.stroke()}});
+ }
+ function clearInk(){ink=[];drawing=false;lastPoint=null;redrawInk();$('kanji-write-strokes').textContent='0 strokes';$('kanji-write-stage').classList.remove('drawing','guide-animate');$('kanji-write-status').textContent='Ready when you are'}
+ function point(e){const r=$('kanji-write-canvas').getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+ const canvas=$('kanji-write-canvas');
+ canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();canvas.setPointerCapture?.(e.pointerId);drawing=true;lastPoint=point(e);ink.push([lastPoint]);$('kanji-write-stage').classList.add('drawing');$('kanji-write-strokes').textContent=ink.length+' strokes';redrawInk()});
+ canvas.addEventListener('pointermove',e=>{if(!drawing)return;e.preventDefault();const pt=point(e),path=ink[ink.length-1];path.push(pt);if(ctx&&lastPoint){ctx.beginPath();ctx.moveTo(lastPoint.x,lastPoint.y);ctx.lineTo(pt.x,pt.y);ctx.stroke()}lastPoint=pt});
+ function finishStroke(){if(!drawing)return;drawing=false;lastPoint=null;$('kanji-write-stage').classList.remove('drawing');$('kanji-write-status').textContent='Nice practice — keep going!'}
+ canvas.addEventListener('pointerup',finishStroke);canvas.addEventListener('pointercancel',finishStroke);canvas.addEventListener('lostpointercapture',finishStroke);
+ $('kanji-guide-toggle').addEventListener('click',()=>{const st=$('kanji-write-stage'),hide=!st.classList.contains('guide-hidden');st.classList.toggle('guide-hidden',hide);$('kanji-guide-toggle').textContent=hide?'Show guide':'Hide guide'});
+ $('kanji-guide-replay').addEventListener('click',()=>{const st=$('kanji-write-stage');st.classList.remove('guide-animate');void st.offsetWidth;st.classList.add('guide-animate');$('kanji-write-feedback').textContent='Guide animation চলছে — অক্ষরের আকৃতি দেখায়, প্রকৃত stroke order নয়।'});
+ $('kanji-write-clear').addEventListener('click',clearInk);
+ $('kanji-write-undo').addEventListener('click',()=>{ink.pop();redrawInk();$('kanji-write-strokes').textContent=ink.length+' strokes';$('kanji-write-status').textContent=ink.length?'Last stroke undone':'Ready when you are'});
+ $('kanji-write-prev').addEventListener('click',()=>moveWrite(-1));$('kanji-write-next').addEventListener('click',()=>moveWrite(1));
+ $('kanji-write-select').addEventListener('change',()=>{const x=kanjiMasterData.find(x=>x.k===$('kanji-write-select').value);if(x)selectWriteItem(x)});
+ $('kanji-write-lesson').addEventListener('change',updateWriteList);
+ if('ResizeObserver' in window){const ro=new ResizeObserver(()=>{if(activeTab==='write')resizeCanvas()});ro.observe($('kanji-write-stage'))}
+ function selectedTestLessons(){
+  const sel=$('kanji-test-lessons');
+  const vals=[...sel.selectedOptions].map(o=>o.value);
+  if(!vals.length||vals.includes('all'))return lessons.slice();
+  return vals.map(Number).filter(n=>lessons.includes(n));
+ }
+ function updateTestSelectionSummary(){
+  const chosen=selectedTestLessons();
+  $('kanji-selected-summary').textContent=chosen.length===lessons.length?'সব Lesson নির্বাচিত':chosen.length?chosen.map(n=>'L'+n).join(', ')+' · '+chosen.length+' Lessons':'একটি Lesson নির্বাচন করো';
+ }
+ function fillTestLessons(){
+  const sel=$('kanji-test-lessons');
+  lessons.forEach(l=>{const o=document.createElement('option');o.value=String(l);o.textContent='Lesson '+l;sel.append(o)});
+  sel.addEventListener('change',()=>{
+   const all=sel.querySelector('option[value="all"]');
+   if(all&&all.selected&&sel.selectedOptions.length>1)all.selected=false;
+   if(![...sel.selectedOptions].length&&all)all.selected=true;
+   updateTestSelectionSummary();resetTestView();
+  });
+  $('kanji-select-all').addEventListener('click',()=>{[...sel.options].forEach(o=>o.selected=true);updateTestSelectionSummary();resetTestView()});
+  $('kanji-clear-lessons').addEventListener('click',()=>{[...sel.options].forEach(o=>o.selected=false);sel.options[0].selected=true;updateTestSelectionSummary();resetTestView()});
+  updateTestSelectionSummary();
+ }
+ function resetTestView(){$('kanji-test-start').hidden=false;$('kanji-test-play').hidden=true;$('kanji-test-result').hidden=true}
+ function buildQuestion(x,pool,mode){
+  let kinds=mode==='normal'?['meaning','reading']:mode==='hard'?['meaning','reading','romaji','reverseMeaning']:['meaning','reading','romaji','reverseMeaning','reverseReading'];
+  const kind=kinds[Math.floor(Math.random()*kinds.length)];
+  const reverse=kind.startsWith('reverse');
+  let prompt='',question='',correct='',field='',label='';
+  if(kind==='meaning'){prompt='এই Kanji-এর বাংলা অর্থ নির্বাচন করো';question=x.k;correct=x.b;field='b';label='বাংলা অর্থ'}
+  else if(kind==='reading'){prompt='এই Kanji-এর সঠিক Hiragana reading নির্বাচন করো';question=x.k;correct=x.r;field='r';label='Hiragana reading'}
+  else if(kind==='romaji'){prompt='এই Kanji-এর সঠিক Romaji reading নির্বাচন করো';question=x.k;correct=x.u;field='u';label='Romaji'}
+  else if(kind==='reverseMeaning'){prompt='বাংলা অর্থ দেখে সঠিক Kanji নির্বাচন করো';question=x.b;correct=x.k;field='k';label='Kanji'}
+  else {prompt='Hiragana reading দেখে সঠিক Kanji নির্বাচন করো';question=x.r;correct=x.k;field='k';label='Kanji'}
+  const candidates=pool.filter(y=>y.k!==x.k&&String(y[field])!==String(correct));
+  const unique=[];const seen=new Set([String(correct)]);
+  for(const y of shuffle(candidates)){const v=String(y[field]);if(!seen.has(v)){seen.add(v);unique.push(v)}if(unique.length===3)break}
+  // If the selected lesson set is small, use the full course as a safe distractor fallback.
+  if(unique.length<3){for(const y of shuffle(kanjiMasterData.filter(y=>y.k!==x.k))){const v=String(y[field]);if(!seen.has(v)){seen.add(v);unique.push(v)}if(unique.length===3)break}}
+  return {x,kind,prompt,question,correct,field,label,options:shuffle([correct,...unique])};
+ }
+ function startTest(){
+  document.querySelector('.kanji-test-review')?.remove();
+  const chosen=selectedTestLessons();
+  if(!chosen.length){$('kanji-selected-summary').textContent='কমপক্ষে একটি Lesson নির্বাচন করো';return}
+  const pool=shuffle(kanjiMasterData.filter(x=>chosen.includes(x.l)));
+  const n=$('kanji-test-count').value==='all'?pool.length:Math.min(pool.length,Number($('kanji-test-count').value));
+  const mode=$('kanji-test-mode').value;
+  testItems=pool.slice(0,n).map(x=>buildQuestion(x,pool,mode));testIndex=0;testScore=0;testWrong=[];
+  $('kanji-test-start').hidden=true;$('kanji-test-result').hidden=true;$('kanji-test-play').hidden=false;renderQuestion();
+ }
+ function renderQuestion(){
+  testAnswered=false;const q=testItems[testIndex],x=q.x;
+  $('kanji-test-counter').textContent=(testIndex+1)+' / '+testItems.length;
+  $('kanji-test-score').textContent='Score '+testScore;
+  $('kanji-test-prompt').textContent=q.prompt;
+  $('kanji-test-glyph').textContent=q.question;
+  const box=$('kanji-test-glyph').parentElement;
+  box.classList.toggle('reverse-question',q.kind.startsWith('reverse'));
+  $('kanji-test-reading').textContent=q.kind.startsWith('reverse')?'':'　';
+  $('kanji-test-feedback').textContent='';
+  $('kanji-test-next').disabled=true;
+  $('kanji-test-next').textContent=testIndex===testItems.length-1?'See Results':'Next →';
+  const root=$('kanji-test-options');root.innerHTML='';
+  q.options.forEach(value=>{
+   const b=document.createElement('button');b.type='button';b.textContent=value;
+   b.addEventListener('click',()=>answer(b,value,q));root.append(b);
+  });
+ }
+ function answer(btn,value,q){
+  if(testAnswered)return;testAnswered=true;
+  const buttons=[...$('kanji-test-options').children];buttons.forEach(b=>b.disabled=true);
+  const correct=String(value)===String(q.correct);
+  if(correct){testScore++;btn.classList.add('correct');$('kanji-test-feedback').textContent='✓ সঠিক উত্তর! '+q.x.k+' · '+q.x.r+' · '+q.x.u+' · '+q.x.b}
+  else{btn.classList.add('wrong');const good=buttons.find(b=>b.textContent===q.correct);good?.classList.add('correct');testWrong.push(q.x);$('kanji-test-feedback').textContent='সঠিক উত্তর: '+q.correct+' · '+q.x.k+' / '+q.x.r+' / '+q.x.u+' / '+q.x.b}
+  $('kanji-test-score').textContent='Score '+testScore;$('kanji-test-next').disabled=false;
+ }
+ function finishTest(){
+  const pct=Math.round(testScore/testItems.length*100);saved.best=Math.max(saved.best||0,pct);save();updateStats();
+  $('kanji-test-play').hidden=true;$('kanji-test-result').hidden=false;
+  $('kanji-test-final').textContent=testScore+' / '+testItems.length;
+  const modeName={normal:'Normal',hard:'Hard',expert:'Expert'}[$('kanji-test-mode').value];
+  $('kanji-test-summary').textContent=modeName+' Mode · Accuracy '+pct+'% · ভুল উত্তর '+testWrong.length+'টি। '+(pct>=90?'Excellent!':pct>=70?'ভালো হয়েছে—ভুল Kanji-গুলো আবার অনুশীলন করো।':'ভুল হওয়া Kanji-গুলো Learn section-এ আবার দেখে চেষ্টা করো।');
+  if(testWrong.length){
+   const review=document.createElement('div');review.className='kanji-test-review';
+   const heading=document.createElement('b');heading.textContent='ভুল হওয়া Kanji — আবার দেখে নাও';review.append(heading);
+   [...new Map(testWrong.map(x=>[x.k,x])).values()].forEach(x=>{const row=document.createElement('div');row.textContent=`${x.k} · ${x.r} · ${x.u} · ${x.b} (Lesson ${x.l})`;review.append(row)});
+   $('kanji-test-summary').after(review);
+  }
+ }
+ $('kanji-start-test').addEventListener('click',startTest);
+ $('kanji-test-next').addEventListener('click',()=>{if(!testAnswered)return;if(testIndex<testItems.length-1){testIndex++;renderQuestion()}else finishTest()});
+ $('kanji-test-again').addEventListener('click',()=>{document.querySelector('.kanji-test-review')?.remove();resetTestView()});
+ $('kanji-test-count').addEventListener('change',resetTestView);$('kanji-test-mode').addEventListener('change',resetTestView);
+ $('kanji-lesson-filter').addEventListener('change',renderCards);$('kanji-search').addEventListener('input',renderCards);
+ const navigateKanjiScreen=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const target=$(id);if(target)target.classList.add('active');document.body.classList.toggle('login-mode',id==='login-screen');window.scrollTo({top:0,behavior:'auto'});};
+ $('open-kanji-master').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();navigateKanjiScreen('kanji-screen');updateStats();renderCards();updateWriteList();switchTab('learn')});
+ $('kanji-home').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();navigateKanjiScreen('home-screen')});
+ fillLessons();fillTestLessons();updateStats();renderCards();updateWriteList();window.addEventListener('resize',()=>{if(activeTab==='write')resizeCanvas()});
+})();
+</script>
+<script id="kanji-navigation-fallback">
+(()=>{
+ const open=document.getElementById('open-kanji-master');
+ const home=document.getElementById('kanji-home');
+ const navigate=id=>{
+   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+   const screen=document.getElementById(id);
+   if(screen)screen.classList.add('active');
+   document.body.classList.remove('login-mode');
+   window.scrollTo({top:0,behavior:'auto'});
+ };
+ open?.addEventListener('click',()=>navigate('kanji-screen'));
+ home?.addEventListener('click',()=>navigate('home-screen'));
+})();
+</script>
+
 </body>
 </html>
 
@@ -4009,19 +4257,62 @@ body.is-backgrounded .animated,body.is-backgrounded [class*="animation"],body.is
  $('vocab-audio-all').addEventListener('change',syncLessons);
  document.querySelectorAll('.vocab-audio-lesson').forEach(c=>c.addEventListener('change',()=>{const checks=[...document.querySelectorAll('.vocab-audio-lesson')];$('vocab-audio-all').checked=checks.every(x=>!x.checked);syncLessons()}));
  $('vocab-audio-repeat-mode').addEventListener('change',e=>{const mode=e.target.value;$('vocab-audio-repeat-count-wrap').hidden=mode!=='loops';$('vocab-audio-minutes-wrap').hidden=mode!=='minutes'});
+ const bengaliAudio=new Audio();bengaliAudio.preload='auto';bengaliAudio.setAttribute('playsinline','');
+ let bengaliAudioActive=false;
  function stop(message='Audio playback বন্ধ করা হয়েছে।'){
   active=false;clearTimeout(runTimer);clearInterval(timelineTimer);runTimer=null;timelineTimer=null;segmentStarted=0;segmentFraction=0;panel.classList.remove('is-playing');
-  if('speechSynthesis'in window)speechSynthesis.cancel();try{if(navigator.mediaSession)navigator.mediaSession.playbackState='none'}catch(_){}$('vocab-audio-start').disabled=false;$('vocab-audio-stop').disabled=true;
+  if('speechSynthesis'in window)speechSynthesis.cancel();try{bengaliAudio.pause();bengaliAudio.removeAttribute('src');bengaliAudio.load();bengaliAudioActive=false}catch(_){}try{if(navigator.mediaSession)navigator.mediaSession.playbackState='none'}catch(_){}$('vocab-audio-start').disabled=false;$('vocab-audio-stop').disabled=true;
   if(message)status(message);updateTimeline();
  }
- function speak(text,lang,onend,onerror){
+ function speakLocal(text,lang,onend,onerror){
   if(!text){onend();return}
   const speed=Number($('vocab-audio-speed').value)||1,baseRate=lang==='ja-JP'?.86:.92;
   const u=new SpeechSynthesisUtterance(String(text));u.lang=lang;u.rate=Math.min(2,baseRate*speed);
-  if(lang==='bn-BD'&&typeof choosePreferredFemaleVoice==='function'){const female=choosePreferredFemaleVoice('bn-BD');if(female)u.voice=female;}
+  if(lang==='bn-BD'&&typeof choosePreferredFemaleVoice==='function'){const voice=choosePreferredFemaleVoice('bn-BD');if(voice)u.voice=voice;}
   u.onstart=()=>{segmentStarted=Date.now();segmentFraction=0;segmentDuration=Math.max(550,(String(text).length*165)/Math.max(.5,u.rate));updateTimeline()};
   u.onboundary=e=>{if(segmentDuration>0&&e.charIndex>=0){segmentFraction=Math.min(.92,e.charIndex/Math.max(1,String(text).length));updateTimeline()}};
   u.onend=()=>{segmentFraction=1;updateTimeline();segmentStarted=0;onend()};u.onerror=()=>{segmentStarted=0;onerror()};speechSynthesis.speak(u);
+ }
+ function speakBengaliOnline(text,onend,onerror){
+  const clean=String(text||'').trim();if(!clean){onend();return}
+  // Use Google's gtx audio endpoint directly in an audio element. Do not fetch()
+  // this cross-origin MP3: translate.google.com does not provide CORS headers.
+  // Try the current translate.googleapis.com host first, then Google's translate host.
+  const q=encodeURIComponent(clean);
+  const urls=[
+   'https://translate.googleapis.com/translate_tts?client=gtx&sl=auto&tl=bn&dt=t&q='+q,
+   'https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&sl=auto&tl=bn&dt=t&q='+q
+  ];
+  bengaliAudioActive=true;bengaliAudio.pause();bengaliAudio.removeAttribute('src');bengaliAudio.load();
+  bengaliAudio.playbackRate=Number($('vocab-audio-speed').value)||1;
+  segmentStarted=Date.now();segmentFraction=0;segmentDuration=Math.max(900,clean.length*190/bengaliAudio.playbackRate);updateTimeline();
+  let settled=false,index=0;
+  const cleanup=()=>{bengaliAudio.onended=null;bengaliAudio.onerror=null;bengaliAudio.onplaying=null;bengaliAudio.onloadedmetadata=null};
+  const failOrRetry=()=>{
+   if(settled)return;
+   index++;
+   if(index<urls.length){loadAndPlay();return}
+   settled=true;cleanup();bengaliAudioActive=false;segmentStarted=0;onerror();
+  };
+  bengaliAudio.onplaying=()=>{segmentStarted=Date.now();updateTimeline()};
+  bengaliAudio.onended=()=>{if(settled)return;settled=true;cleanup();bengaliAudioActive=false;segmentFraction=1;segmentStarted=0;updateTimeline();onend()};
+  bengaliAudio.onerror=failOrRetry;
+  function loadAndPlay(){
+   bengaliAudio.pause();bengaliAudio.src=urls[index];bengaliAudio.load();
+   const play=bengaliAudio.play();
+   if(play&&typeof play.catch==='function')play.catch(failOrRetry);
+  }
+  loadAndPlay();
+ }
+ function speak(text,lang,onend,onerror){
+  if(!text){onend();return}
+  if(lang==='bn-BD'){
+   const localVoice=typeof choosePreferredFemaleVoice==='function'?choosePreferredFemaleVoice('bn-BD'):null;
+   if(navigator.onLine!==false){speakBengaliOnline(text,onend,()=>{if(localVoice){status('Online Bengali TTS পাওয়া যায়নি; Local Bengali Voice ব্যবহার করা হচ্ছে।');speakLocal(text,'bn-BD',onend,onerror)}else{status('Online Bengali TTS সংযোগ ব্যর্থ এবং এই ডিভাইসে Offline Bengali Voice নেই। Internet সংযোগ পরীক্ষা করো।');onerror()}});return}
+   if(localVoice){status('Offline mode: ডিভাইসের Local Bengali Voice ব্যবহার হচ্ছে।');speakLocal(text,'bn-BD',onend,onerror);return}
+   status('তুমি Offline আছো এবং এই ডিভাইসে Bengali Voice ইনস্টল নেই। বাংলা অর্থ শোনাতে Internet বা Bengali TTS Voice প্রয়োজন।');onerror();return;
+  }
+  speakLocal(text,lang,onend,onerror);
  }
  function advanceWord(){if(!active)return;wordIndex++;completed++;segmentStarted=0;segmentFraction=0;runTimer=setTimeout(nextWord,180)}
  function nextWord(){
