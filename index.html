@@ -1051,6 +1051,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="kanji-launch-mark">漢</div><div class="kanji-launch-copy"><div class="grammar-guide-launch-title">漢字 Kanji Master · Lesson 3–12</div><div class="grammar-guide-launch-desc">১৪৫টি Kanji-এর Hiragana reading, Romaji উচ্চারণ, বাংলা অর্থ, আলাদা Test এবং Stroke Practice। Vocabulary ও Grammar থেকে সম্পূর্ণ আলাদা।</div></div><button class="primary" id="open-kanji-master" type="button">Kanji শিখি ↗</button>
     </section>
 
+    <section class="panel grammar-guide-launch kaiwa-launch" aria-label="Kaiwa and Listening Studio">
+      <div class="kaiwa-launch-mark">会話</div><div class="grammar-guide-launch-copy"><div class="grammar-guide-launch-title">🎧 Kaiwa & Listening Studio · Lesson 1–10</div><div class="grammar-guide-launch-desc">Random dialogue, বড় Listening Passage, sentence builder, বাংলা অর্থ, Romaji, Japanese ও Bengali TTS এবং microphone pronunciation practice।</div></div><button class="primary" id="open-kaiwa-studio" type="button">Kaiwa শুরু করি ↗</button>
+    </section>
+
     <div class="layout">
       <section class="panel section">
         <div class="section-head"><div><div class="section-title">Start a practice</div></div><span class="pill">N5 · Beginner</span></div>
@@ -1131,30 +1135,52 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="panel section kanji-shell">
       <div class="section-head"><div><div class="section-title">漢字 Kanji Master</div><div class="section-desc">Lesson 3–12 · আলাদা Kanji Learning, Test ও Handwriting Studio</div></div><button class="small-btn" id="kanji-home" type="button">← Home</button></div>
       <div class="kanji-stats"><div><b id="kanji-total">145</b><span>Total Kanji</span></div><div><b id="kanji-learned">0</b><span>Reviewed</span></div><div><b id="kanji-best">0%</b><span>Best test</span></div></div>
-      <div class="kanji-tabs" role="tablist"><button class="active" data-kanji-tab="learn">📚 Learn</button><button data-kanji-tab="test">✓ Test</button><button data-kanji-tab="write">✍ Stroke Practice</button></div>
+      <div class="kanji-tabs" role="tablist"><button class="active" data-kanji-tab="learn">📚 Learn</button><button data-kanji-tab="test">✓ Kanji Exam</button><button data-kanji-tab="jlpt">🎓 JLPT Kanji Exam</button><button data-kanji-tab="write">✍ Stroke Practice</button></div>
       <div id="kanji-learn-panel" class="kanji-panel">
         <div class="kanji-toolbar"><label>LESSON<select id="kanji-lesson-filter" class="select"><option value="all">All Lessons · 3–12</option></select></label><label>SEARCH<input id="kanji-search" class="select" type="search" placeholder="Kanji / Romaji / বাংলা"></label></div>
         <div class="kanji-grid" id="kanji-grid"></div>
       </div>
       <div id="kanji-test-panel" class="kanji-panel" hidden>
         <div class="kanji-test-settings">
-          <div class="kanji-test-setting"><label for="kanji-test-lessons">LESSONS · একাধিক Lesson বেছে নাও</label><select id="kanji-test-lessons" class="select" multiple size="5"><option value="all" selected>All Lessons · 3–12</option></select><div class="kanji-select-actions"><button type="button" id="kanji-select-all" class="small-btn">Select all</button><button type="button" id="kanji-clear-lessons" class="small-btn">Clear</button><span id="kanji-selected-summary">সব Lesson নির্বাচিত</span></div></div>
-          <div class="kanji-test-setting"><label for="kanji-test-mode">DIFFICULTY</label><select id="kanji-test-mode" class="select"><option value="normal">Normal · সহজ শুরু</option><option value="hard" selected>Hard · কঠিন অনুশীলন</option><option value="expert">Expert · উল্টো দিক থেকেও</option></select><label for="kanji-test-count">QUESTION COUNT</label><select id="kanji-test-count" class="select"><option value="10">10 Questions</option><option value="20">20 Questions</option><option value="30">30 Questions</option><option value="50">50 Questions</option><option value="all">All selected Kanji</option></select></div>
+          <div class="kanji-test-setting"><label for="kanji-test-lessons">LESSONS · Single বা Multiple Lesson</label><select id="kanji-test-lessons" class="select" multiple size="5"><option value="all" selected>All Lessons · 3–12</option></select><div class="kanji-select-actions"><button type="button" id="kanji-select-all" class="small-btn">Select all</button><button type="button" id="kanji-clear-lessons" class="small-btn">Clear</button><span id="kanji-selected-summary">সব Lesson নির্বাচিত</span></div></div>
+          <div class="kanji-test-setting"><label for="kanji-test-direction">EXAM STYLE · প্রশ্নের ধরন</label><select id="kanji-test-direction" class="select"><option value="kanji-jp">Kanji দেওয়া থাকবে → Japanese (Hiragana) উত্তর</option><option value="jp-kanji">Japanese (Hiragana) দেওয়া থাকবে → Kanji উত্তর</option></select><label for="kanji-test-count">QUESTION COUNT</label><select id="kanji-test-count" class="select"><option value="10">10 Questions</option><option value="20">20 Questions</option><option value="30">30 Questions</option><option value="50">50 Questions</option><option value="all">All selected Kanji</option></select></div>
         </div>
-        <div class="kanji-test-start" id="kanji-test-start"><div class="kanji-test-icon">漢</div><h3>Kanji Master Challenge</h3><p>একটি বা একাধিক Lesson বেছে নাও, অথবা সব Lesson নিয়ে পরীক্ষা দাও। Hard ও Expert Mode-এ Kanji দেখে অর্থ/পড়া, আবার বাংলা অর্থ বা reading দেখে Kanji চিনতে হবে। প্রতিটি প্রশ্নে ৪টি অপশন থাকবে।</p><div class="kanji-test-rules"><span>✦ Mixed question types</span><span>✦ 4 choices</span><span>✦ Wrong answer review</span></div><button class="primary" id="kanji-start-test" type="button">Start Challenge</button></div>
+        <div class="kanji-test-start" id="kanji-test-start"><div class="kanji-test-icon">漢</div><h3>Kanji Lesson Exam</h3><p>একটি Lesson, একাধিক Lesson অথবা সব Lesson নির্বাচন করো। Kanji দেখে Japanese Hiragana reading নির্বাচন, অথবা Hiragana দেখে সঠিক Kanji নির্বাচন—দুই ধরনের পরীক্ষা থেকে একটি বেছে নাও। উত্তরের পর বাংলা অর্থ, Hiragana ও Romaji দেখা যাবে।</p><div class="kanji-test-rules"><span>✦ Two exam directions</span><span>✦ 4 choices</span><span>✦ Answer explanation</span></div><button class="primary" id="kanji-start-test" type="button">Start Kanji Exam</button></div>
         <div id="kanji-test-play" hidden><div class="kanji-test-meta"><span id="kanji-test-counter">1 / 10</span><span id="kanji-test-score">Score 0</span></div><div class="kanji-test-question"><small id="kanji-test-prompt">এই Kanji-এর বাংলা অর্থটি নির্বাচন করো</small><div id="kanji-test-glyph">一</div><div id="kanji-test-reading">いち · Ichi</div></div><div id="kanji-test-options" class="kanji-test-options"></div><div id="kanji-test-feedback" class="kanji-test-feedback" aria-live="polite"></div><button class="secondary" id="kanji-test-next" type="button" disabled>Next →</button></div>
         <div id="kanji-test-result" class="kanji-test-start" hidden><div class="kanji-test-icon">✦</div><h3>Test completed</h3><div class="kanji-test-final" id="kanji-test-final">0 / 10</div><p id="kanji-test-summary"></p><button class="primary" id="kanji-test-again" type="button">Try Again</button></div>
+      </div>
+      <div id="kanji-jlpt-panel" class="kanji-panel" hidden>
+        <div class="jlpt-exam-intro"><div class="jlpt-exam-mark">JLPT</div><div><h3>JLPT Kanji Practice Exam</h3><p>আলাদা JLPT-style exam section। বর্তমান Master-এর Lesson 3–12 Kanji bank দিয়ে reading ও Kanji recognition practice হবে।</p></div></div>
+        <div class="kanji-test-settings">
+          <div class="kanji-test-setting"><label for="jlpt-kanji-direction">QUESTION STYLE</label><select id="jlpt-kanji-direction" class="select"><option value="mixed">Mixed · Reading + Kanji recognition</option><option value="kanji-jp">Kanji → Japanese reading</option><option value="jp-kanji">Japanese reading → Kanji</option></select></div>
+          <div class="kanji-test-setting"><label for="jlpt-kanji-count">QUESTION COUNT</label><select id="jlpt-kanji-count" class="select"><option value="10">10 Questions</option><option value="20">20 Questions</option><option value="30">30 Questions</option><option value="50">50 Questions</option><option value="all">All available Kanji</option></select></div>
+        </div>
+        <div class="kanji-test-start" id="jlpt-kanji-start"><div class="kanji-test-icon">試</div><h3>JLPT Kanji Challenge</h3><p>Kanji reading এবং Hiragana থেকে সঠিক Kanji বেছে নেওয়ার অনুশীলন। প্রতিটি উত্তরের পর বাংলা অর্থ, Hiragana ও Romaji দেখা যাবে।</p><div class="kanji-test-rules"><span>✦ JLPT-style format</span><span>✦ 4 choices</span><span>✦ Wrong answer review</span></div><button class="primary" id="jlpt-kanji-start-btn" type="button">Start JLPT Exam</button></div>
+        <div id="jlpt-kanji-play" hidden><div class="kanji-test-meta"><span id="jlpt-kanji-counter">1 / 10</span><span id="jlpt-kanji-score">Score 0</span></div><div class="kanji-test-question"><small id="jlpt-kanji-prompt"></small><div id="jlpt-kanji-glyph">一</div><div id="jlpt-kanji-reading"></div></div><div id="jlpt-kanji-options" class="kanji-test-options"></div><div id="jlpt-kanji-feedback" class="kanji-test-feedback" aria-live="polite"></div><button class="secondary" id="jlpt-kanji-next" type="button" disabled>Next →</button></div>
+        <div id="jlpt-kanji-result" class="kanji-test-start" hidden><div class="kanji-test-icon">✦</div><h3>JLPT Exam Completed</h3><div class="kanji-test-final" id="jlpt-kanji-final">0 / 10</div><p id="jlpt-kanji-summary"></p><button class="primary" id="jlpt-kanji-again" type="button">Try Again</button></div>
+        <div class="jlpt-data-note">Note: এই HTML-এ Kanji-গুলোর official JLPT N5–N1 level mapping নেই। তাই কোনো Kanji-কে অনুমান করে level দেওয়া হয়নি; এই আলাদা section-এ বর্তমানে থাকা Lesson 3–12 Kanji দিয়ে JLPT-style practice হবে।</div>
       </div>
       <div id="kanji-write-panel" class="kanji-panel" hidden>
         <div class="kanji-toolbar"><label>LESSON<select id="kanji-write-lesson" class="select"><option value="all">All Lessons · 3–12</option></select></label><label>CHARACTER<select id="kanji-write-select" class="select"></select></label></div>
         <section class="write-practice kanji-write-practice"><div class="write-head"><div><div class="write-kicker">✦ KANJI DOJO / HANDWRITING</div><h3>Write the Kanji yourself</h3><p>হালকা guide দেখে কাঞ্জিটি লেখো। Guide লুকিয়ে স্মৃতি থেকেও অনুশীলন করতে পারবে।</p></div><span class="write-counter" id="kanji-write-counter">1 / 145</span></div>
           <div class="write-target-row"><div><span class="write-target-label">KANJI · READING · ROMAJI</span><div class="kanji-write-reading" id="kanji-write-reading">一 · いち · Ichi</div><div class="kanji-write-meaning" id="kanji-write-meaning">এক</div></div><div class="write-target-actions"><button class="small-btn" id="kanji-guide-toggle" type="button">Hide guide</button><button class="small-btn" id="kanji-guide-replay" type="button">↻ Guide animation</button></div></div>
-          <div class="write-stage kanji-write-stage" id="kanji-write-stage"><div class="write-guide" id="kanji-write-guide">一</div><canvas id="kanji-write-canvas" aria-label="Kanji handwriting practice canvas"></canvas><div class="write-hint">এখানে কাঞ্জিটি লেখো · mouse / touch / stylus</div><div class="write-stage-tag">KANJI PRACTICE CANVAS</div></div>
+          <div class="write-stage kanji-write-stage" id="kanji-write-stage"><div class="write-guide" id="kanji-write-guide" aria-hidden="true">一</div><div class="kanji-snap-glyph" id="kanji-snap-glyph" aria-hidden="true">一</div><div class="kanji-stroke-mini" id="kanji-stroke-mini" aria-label="Kanji stroke order animation"><div class="kanji-stroke-mini-label">STROKE ORDER</div><div class="kanji-stroke-mini-view" id="kanji-stroke-mini-view">漢</div><button type="button" id="kanji-stroke-mini-replay" class="kanji-stroke-mini-replay">↻ Replay</button></div><canvas id="kanji-write-canvas" aria-label="Kanji handwriting practice canvas"></canvas><div class="write-hint">হালকা Kanji guide অনুসরণ করে লেখো · mouse / touch / stylus</div><div class="write-stage-tag">KANJI PRACTICE CANVAS</div></div><div class="kanji-stroke-panel"><div class="kanji-stroke-head"><strong>正しい Stroke Pattern · আসল Stroke Order</strong><span id="kanji-stroke-count">লোড হচ্ছে…</span></div><div id="kanji-stroke-view" class="kanji-stroke-view"><span class="stroke-loading">এই Kanji-এর stroke pattern প্রস্তুত হচ্ছে…</span></div><div class="kanji-stroke-actions"><button class="small-btn" id="kanji-stroke-replay" type="button">▶ Stroke animation</button><span id="kanji-stroke-note">KanjiVG source · CC BY-SA · প্রতিটি stroke-এর ক্রম নম্বরসহ</span></div></div>
           <div class="write-progress-row"><span id="kanji-write-status">Ready when you are</span><span id="kanji-write-strokes">0 strokes</span></div>
           <div class="write-controls"><button class="small-btn" id="kanji-write-prev">← Previous</button><button class="small-btn" id="kanji-write-undo">↶ Undo</button><button class="small-btn" id="kanji-write-clear">⌫ Erase all</button><button class="small-btn write-next" id="kanji-write-next">Next Kanji →</button></div>
           <div class="write-feedback" id="kanji-write-feedback">লেখা শুরু করো। এটি freehand practice canvas; guide টি অক্ষরের আকৃতি দেখায়, নির্দিষ্ট stroke-by-stroke order নয়।</div>
         </section>
       </div>
+    </div>
+  </section>
+
+  <section id="kaiwa-studio-screen" class="screen">
+    <div class="panel section kaiwa-shell">
+      <div class="section-head"><div><div class="section-title">会話 Kaiwa & Listening Studio</div><div class="section-desc">Lesson-wise Japanese conversation, listening passage ও speaking practice</div></div><button class="small-btn" id="kaiwa-home" type="button">← Home</button></div>
+      <div class="kaiwa-controls"><label>LESSON<select class="select" id="kaiwa-lesson"></select></label><label>CONTENT<select class="select" id="kaiwa-mode"><option value="dialogue">Big Kaiwa · Dialogue</option><option value="passage">Listening Passage</option><option value="sentence">Random Sentence</option></select></label><button class="primary" id="kaiwa-generate" type="button">⟳ নতুন Random Content তৈরি করো</button></div>
+      <div class="kaiwa-card" id="kaiwa-content" aria-live="polite"><div class="kaiwa-empty">Lesson নির্বাচন করে Random Content তৈরি করো।</div></div>
+      <div class="kaiwa-actions"><button class="secondary" id="kaiwa-play-jp" type="button">▶ Japanese TTS</button><button class="secondary" id="kaiwa-play-bn" type="button">▶ বাংলা TTS</button><button class="secondary" id="kaiwa-stop" type="button">■ Stop</button></div>
+      <div class="kaiwa-practice" id="kaiwa-practice"><div class="kaiwa-practice-head"><div><strong>🎙️ Speaking & Role-play Practice</strong><p>তুমি একটি চরিত্রের কথা বলবে; TTS অন্য চরিত্রের উত্তর দেবে। Passage mode-এ microphone দিয়ে বাক্য ধরে উচ্চারণ অনুশীলন করবে।</p></div><span id="kaiwa-mic-status">Ready</span></div><div class="kaiwa-practice-controls"><label>YOUR ROLE<select id="kaiwa-role" class="select"><option value="A">Character A</option><option value="B">Character B</option></select></label><button class="primary" id="kaiwa-mic" type="button">🎙️ Start Mic Practice</button></div><div class="kaiwa-transcript" id="kaiwa-transcript">Microphone practice শুরু করলে এখানে তোমার বলা Japanese দেখা যাবে।</div><div class="kaiwa-score" id="kaiwa-score"></div></div>
+      <div class="kaiwa-footnote">Voice support: Japanese/Bengali voice ও microphone recognition browser/device-এর support, internet/secure context এবং permission-এর ওপর নির্ভর করে। Mic-এর interim speech recognition এলে কথার সঙ্গে সঙ্গে মিল থাকা অক্ষর সবুজ এবং অমিল অক্ষর লাল হবে; final line-এ কম মিল হলে পুরো line লাল হবে। Similarity কেবল আনুমানিক text-match, accent বা phonetic pronunciation score নয়।</div>
     </div>
   </section>
 
@@ -4002,10 +4028,10 @@ const kanjiMasterData = [
  const lessons=[...new Set(kanjiMasterData.map(x=>x.l))];
  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(_){}};
  const listFor=lesson=>kanjiMasterData.filter(x=>lesson==='all'||String(x.l)===String(lesson));
- function fillLessons(){['kanji-lesson-filter','kanji-test-lesson','kanji-write-lesson'].forEach(id=>{const el=$(id);lessons.forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent='Lesson '+l;el.append(o)})})}
+ function fillLessons(){['kanji-lesson-filter','kanji-write-lesson'].forEach(id=>{const el=$(id);if(!el)return;lessons.forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent='Lesson '+l;el.append(o)})})}
  function updateStats(){$('kanji-total').textContent=kanjiMasterData.length;$('kanji-learned').textContent=saved.reviewed.length;$('kanji-best').textContent=(saved.best||0)+'%'}
- function renderCards(){const lesson=$('kanji-lesson-filter').value,q=$('kanji-search').value.trim().toLocaleLowerCase();const rows=listFor(lesson).filter(x=>!q||[x.k,x.r,x.u,x.b,String(x.l)].some(v=>v.toLocaleLowerCase().includes(q)));const root=$('kanji-grid');root.innerHTML='';if(!rows.length){root.innerHTML='<div class="kanji-empty">কোনো Kanji পাওয়া যায়নি।</div>';return}rows.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='kanji-card'+(saved.reviewed.includes(x.k)?' reviewed':'');b.innerHTML=`<span class="kanji-card-lesson">L${x.l}</span>${saved.reviewed.includes(x.k)?'<span class="kanji-card-check">✓</span>':''}<div class="kanji-card-glyph"></div><div class="kanji-card-reading"></div><div class="kanji-card-romaji"></div><div class="kanji-card-meaning"></div>`;b.querySelector('.kanji-card-glyph').textContent=x.k;b.querySelector('.kanji-card-reading').textContent=x.r;b.querySelector('.kanji-card-romaji').textContent=x.u;b.querySelector('.kanji-card-meaning').textContent=x.b;b.addEventListener('click',()=>{if(!saved.reviewed.includes(x.k))saved.reviewed.push(x.k);save();updateStats();b.classList.add('reviewed');b.querySelector('.kanji-card-check')||(b.insertAdjacentHTML('afterbegin','<span class="kanji-card-check">✓</span>'));$('kanji-write-lesson').value=String(x.l);updateWriteList();selectWriteItem(x);switchTab('write')});root.append(b)})}
- function switchTab(tab){activeTab=tab;document.querySelectorAll('[data-kanji-tab]').forEach(b=>b.classList.toggle('active',b.dataset.kanjiTab===tab));['learn','test','write'].forEach(t=>{$('kanji-'+t+'-panel').hidden=t!==tab});if(tab==='write'){requestAnimationFrame(resizeCanvas)}}
+ function renderCards(){const lesson=$('kanji-lesson-filter').value,q=$('kanji-search').value.trim().toLocaleLowerCase();const rows=listFor(lesson).filter(x=>!q||[x.k,x.r,x.u,x.b,String(x.l)].some(v=>v.toLocaleLowerCase().includes(q)));const root=$('kanji-grid');root.innerHTML='';if(!rows.length){root.innerHTML='<div class="kanji-empty">কোনো Kanji পাওয়া যায়নি।</div>';return}rows.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='kanji-card'+(saved.reviewed.includes(x.k)?' reviewed':'');b.innerHTML=`<span class="kanji-card-lesson">L${x.l}</span>${saved.reviewed.includes(x.k)?'<span class="kanji-card-check">✓</span>':''}<div class="kanji-card-glyph"></div><div class="kanji-info-line"><small>HIRAGANA</small><div class="kanji-card-reading"></div></div><div class="kanji-info-line"><small>ROMAJI</small><div class="kanji-card-romaji"></div></div><div class="kanji-info-line"><small>বাংলা অর্থ</small><div class="kanji-card-meaning"></div></div>`;b.querySelector('.kanji-card-glyph').textContent=x.k;b.querySelector('.kanji-card-reading').textContent=x.r;b.querySelector('.kanji-card-romaji').textContent=x.u;b.querySelector('.kanji-card-meaning').textContent=x.b;b.addEventListener('click',()=>{if(!saved.reviewed.includes(x.k))saved.reviewed.push(x.k);save();updateStats();b.classList.add('reviewed');b.querySelector('.kanji-card-check')||(b.insertAdjacentHTML('afterbegin','<span class="kanji-card-check">✓</span>'));$('kanji-write-lesson').value=String(x.l);updateWriteList();selectWriteItem(x);switchTab('write')});root.append(b)})}
+ function switchTab(tab){activeTab=tab;document.querySelectorAll('[data-kanji-tab]').forEach(b=>b.classList.toggle('active',b.dataset.kanjiTab===tab));['learn','test','jlpt','write'].forEach(t=>{$('kanji-'+t+'-panel').hidden=t!==tab});if(tab==='write'){requestAnimationFrame(resizeCanvas)}}
  document.querySelectorAll('[data-kanji-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.kanjiTab)));
  function updateWriteList(){const lesson=$('kanji-write-lesson').value;const rows=listFor(lesson);const sel=$('kanji-write-select');const prior=writeItem?.k;sel.innerHTML='';rows.forEach(x=>{const o=document.createElement('option');o.value=x.k;o.textContent=`${x.k} · ${x.u}`;sel.append(o)});const target=rows.find(x=>x.k===prior)||rows[0];if(target){sel.value=target.k;selectWriteItem(target)}}
  function selectWriteItem(x){writeItem=x;const rows=listFor($('kanji-write-lesson').value);writeIndex=Math.max(0,rows.findIndex(y=>y.k===x.k));$('kanji-write-select').value=x.k;$('kanji-write-guide').textContent=x.k;$('kanji-write-reading').textContent=x.k+' · '+x.r+' · '+x.u;$('kanji-write-meaning').textContent=x.b;$('kanji-write-counter').textContent=(writeIndex+1)+' / '+rows.length;clearInk();$('kanji-write-status').textContent='Ready when you are'}
@@ -4042,10 +4068,52 @@ const kanjiMasterData = [
  $('kanji-write-select').addEventListener('change',()=>{const x=kanjiMasterData.find(x=>x.k===$('kanji-write-select').value);if(x)selectWriteItem(x)});
  $('kanji-write-lesson').addEventListener('change',updateWriteList);
  if('ResizeObserver' in window){const ro=new ResizeObserver(()=>{if(activeTab==='write')resizeCanvas()});ro.observe($('kanji-write-stage'))}
+
+ // Real KanjiVG stroke order: source data is loaded per character from the public KanjiVG dataset.
+ let currentKanjiSvg=null,kanjiStrokeCache=new Map(),snapLocked=false;
+ async function loadKanjiStroke(x){
+  const hex=x.k.codePointAt(0).toString(16).padStart(5,'0');
+  if(kanjiStrokeCache.has(hex))return kanjiStrokeCache.get(hex);
+  const promise=(async()=>{const url=`https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${hex}.svg`;const res=await fetch(url,{mode:'cors',cache:'force-cache'});if(!res.ok)throw new Error('Stroke data not found');const raw=await res.text();const doc=new DOMParser().parseFromString(raw,'image/svg+xml');const root=doc.querySelector('svg');if(!root||doc.querySelector('parsererror'))throw new Error('Invalid stroke data');return root.outerHTML})();
+  kanjiStrokeCache.set(hex,promise);try{return await promise}catch(e){kanjiStrokeCache.delete(hex);throw e}
+ }
+ async function renderKanjiStrokes(){
+  const view=$('kanji-stroke-view'),count=$('kanji-stroke-count');if(!writeItem)return;
+  view.innerHTML='<span class="stroke-loading">আসল stroke order load হচ্ছে…</span>';count.textContent='Loading';
+  try{const raw=await loadKanjiStroke(writeItem);if(!writeItem)return;const doc=new DOMParser().parseFromString(raw,'image/svg+xml'),svg=doc.documentElement;svg.removeAttribute('width');svg.removeAttribute('height');svg.setAttribute('viewBox',svg.getAttribute('viewBox')||'0 0 109 109');svg.setAttribute('role','img');svg.setAttribute('aria-label',writeItem.k+' stroke order');
+   const paths=[...svg.querySelectorAll('path')].filter(p=>p.id&&(/-s\d+$/.test(p.id)||p.getAttribute('d')));const strokes=paths.filter(p=>/-s\d+$/.test(p.id));
+   paths.forEach(p=>{if(!p.getAttribute('d'))return;p.removeAttribute('style');p.setAttribute('pathLength','1000');p.classList.remove('stroke-animate')});
+   const group=svg.querySelector('g[id^="kvg:StrokePaths_"]')||svg.querySelector('g');const n=group?[...group.querySelectorAll('path')].filter(p=>/-s\d+$/.test(p.id)).length:strokes.length;
+   view.innerHTML='';view.appendChild(document.importNode(svg,true));currentKanjiSvg=view.querySelector('svg');const mini=$('kanji-stroke-mini-view');if(mini){mini.innerHTML='';mini.appendChild(document.importNode(svg,true))}count.textContent=n?`${n} strokes · KanjiVG`:'Stroke data';$('kanji-stroke-note').textContent='ক্রম নম্বরসহ আসল stroke path';animateKanjiStrokes();
+  }catch(e){view.innerHTML='<span class="stroke-loading">এই অক্ষরের stroke-order data এখন পাওয়া যাচ্ছে না। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করো।</span>';count.textContent='Unavailable';$('kanji-stroke-note').textContent='ভুল stroke pattern দেখানোর বদলে source unavailable দেখানো হয়েছে';}
+ }
+ function animateKanjiStrokes(){const roots=[$('kanji-stroke-view')?.querySelector('svg'),$('kanji-stroke-mini-view')?.querySelector('svg')].filter(Boolean);if(!roots.length)return;roots.forEach(svg=>{const paths=[...svg.querySelectorAll('path[id*="-s"]')];paths.forEach((p,i)=>{p.classList.remove('stroke-animate');p.style.animationDelay=(i*.16)+'s';void p.getBoundingClientRect();p.classList.add('stroke-animate')})})}
+ function compareKanjiShape(){
+  const canvas=$('kanji-write-canvas'),stage=$('kanji-write-stage');if(!canvas||!writeItem||ink.length<2||snapLocked)return;
+  const rect=stage.getBoundingClientRect(),w=96,h=96;const a=document.createElement('canvas'),b=document.createElement('canvas');a.width=b.width=w;a.height=b.height=h;const ac=a.getContext('2d'),bc=b.getContext('2d');
+  // Normalize both drawings to the same square grid; use a tolerant neighborhood overlap.
+  ac.drawImage(canvas,0,0,w,h);
+  bc.fillStyle='#fff';bc.textAlign='center';bc.textBaseline='middle';bc.font='600 74px "Noto Sans JP",sans-serif';bc.fillText(writeItem.k,w/2,h/2+2);
+  const da=ac.getImageData(0,0,w,h).data,db=bc.getImageData(0,0,w,h).data;let ua=0,ub=0,hit=0;
+  const A=new Uint8Array(w*h),B=new Uint8Array(w*h);for(let i=0;i<w*h;i++){A[i]=da[i*4+3]>30?1:0;B[i]=db[i*4+3]>30?1:0;ua+=A[i];ub+=B[i]}
+  if(ua<45||ub<45)return;for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){const i=y*w+x;if(!A[i])continue;let near=false;for(let yy=-2;yy<=2&&!near;yy++)for(let xx=-2;xx<=2;xx++)if(B[(y+yy)*w+x+xx]){near=true;break}if(near)hit++}
+  const coverage=hit/Math.max(1,ua),balance=Math.min(ua,ub)/Math.max(ua,ub),score=coverage*balance;
+  $('kanji-write-status').textContent=`Shape match · ${Math.round(score*100)}%`;
+  if(score>=.49&&coverage>=.55){snapLocked=true;stage.classList.remove('snap-success');void stage.offsetWidth;stage.classList.add('snap-success');$('kanji-snap-glyph').textContent=writeItem.k;$('kanji-write-feedback').textContent='দারুণ! তোমার আঁকা আকৃতির সঙ্গে Kanji-এর মিল পাওয়া গেছে — অক্ষরটি সুন্দরভাবে align হয়েছে।';$('kanji-write-status').textContent='✓ Shape matched';setTimeout(()=>{stage.classList.remove('snap-success');snapLocked=false},1700)}
+ }
+ // Replace guide's plain text pulse with an actual KanjiVG stroke animation button.
+ $('kanji-guide-replay').addEventListener('click',()=>{animateKanjiStrokes();$('kanji-write-feedback').textContent='আসল stroke pattern একে একে animate হচ্ছে। প্রতিটি stroke-এর ক্রম দেখো।'});
+ $('kanji-stroke-replay').addEventListener('click',animateKanjiStrokes);$('kanji-stroke-mini-replay').addEventListener('click',e=>{e.stopPropagation();animateKanjiStrokes()});
+ const originalSelectWriteItem=selectWriteItem;
+ selectWriteItem=function(x){originalSelectWriteItem(x);snapLocked=false;$('kanji-snap-glyph').textContent=x.k;renderKanjiStrokes()};
+ const originalFinishStroke=finishStroke;
+ finishStroke=function(){originalFinishStroke();compareKanjiShape()};
+ canvas.addEventListener('pointerup',()=>requestAnimationFrame(compareKanjiShape));canvas.addEventListener('pointercancel',()=>requestAnimationFrame(compareKanjiShape));
  function selectedTestLessons(){
   const sel=$('kanji-test-lessons');
   const vals=[...sel.selectedOptions].map(o=>o.value);
-  if(!vals.length||vals.includes('all'))return lessons.slice();
+  if(vals.includes('all'))return lessons.slice();
+  if(!vals.length)return [];
   return vals.map(Number).filter(n=>lessons.includes(n));
  }
  function updateTestSelectionSummary(){
@@ -4061,27 +4129,19 @@ const kanjiMasterData = [
    if(![...sel.selectedOptions].length&&all)all.selected=true;
    updateTestSelectionSummary();resetTestView();
   });
-  $('kanji-select-all').addEventListener('click',()=>{[...sel.options].forEach(o=>o.selected=true);updateTestSelectionSummary();resetTestView()});
-  $('kanji-clear-lessons').addEventListener('click',()=>{[...sel.options].forEach(o=>o.selected=false);sel.options[0].selected=true;updateTestSelectionSummary();resetTestView()});
+  $('kanji-select-all').addEventListener('click',()=>{[...sel.options].forEach(o=>o.selected=o.value!=='all');updateTestSelectionSummary();resetTestView()});
+  $('kanji-clear-lessons').addEventListener('click',()=>{[...sel.options].forEach(o=>o.selected=false);updateTestSelectionSummary();resetTestView()});
   updateTestSelectionSummary();
  }
  function resetTestView(){$('kanji-test-start').hidden=false;$('kanji-test-play').hidden=true;$('kanji-test-result').hidden=true}
- function buildQuestion(x,pool,mode){
-  let kinds=mode==='normal'?['meaning','reading']:mode==='hard'?['meaning','reading','romaji','reverseMeaning']:['meaning','reading','romaji','reverseMeaning','reverseReading'];
-  const kind=kinds[Math.floor(Math.random()*kinds.length)];
-  const reverse=kind.startsWith('reverse');
-  let prompt='',question='',correct='',field='',label='';
-  if(kind==='meaning'){prompt='এই Kanji-এর বাংলা অর্থ নির্বাচন করো';question=x.k;correct=x.b;field='b';label='বাংলা অর্থ'}
-  else if(kind==='reading'){prompt='এই Kanji-এর সঠিক Hiragana reading নির্বাচন করো';question=x.k;correct=x.r;field='r';label='Hiragana reading'}
-  else if(kind==='romaji'){prompt='এই Kanji-এর সঠিক Romaji reading নির্বাচন করো';question=x.k;correct=x.u;field='u';label='Romaji'}
-  else if(kind==='reverseMeaning'){prompt='বাংলা অর্থ দেখে সঠিক Kanji নির্বাচন করো';question=x.b;correct=x.k;field='k';label='Kanji'}
-  else {prompt='Hiragana reading দেখে সঠিক Kanji নির্বাচন করো';question=x.r;correct=x.k;field='k';label='Kanji'}
-  const candidates=pool.filter(y=>y.k!==x.k&&String(y[field])!==String(correct));
-  const unique=[];const seen=new Set([String(correct)]);
+ function buildQuestion(x,pool,direction){
+  const reverse=direction==='jp-kanji',field=reverse?'k':'r',correct=reverse?x.k:x.r;
+  const prompt=reverse?'Japanese reading দেখে সঠিক Kanji নির্বাচন করো':'এই Kanji-এর Japanese Hiragana reading নির্বাচন করো';
+  const question=reverse?x.r:x.k,candidates=pool.filter(y=>y.k!==x.k&&String(y[field])!==String(correct));
+  const unique=[],seen=new Set([String(correct)]);
   for(const y of shuffle(candidates)){const v=String(y[field]);if(!seen.has(v)){seen.add(v);unique.push(v)}if(unique.length===3)break}
-  // If the selected lesson set is small, use the full course as a safe distractor fallback.
   if(unique.length<3){for(const y of shuffle(kanjiMasterData.filter(y=>y.k!==x.k))){const v=String(y[field]);if(!seen.has(v)){seen.add(v);unique.push(v)}if(unique.length===3)break}}
-  return {x,kind,prompt,question,correct,field,label,options:shuffle([correct,...unique])};
+  return {x,kind:reverse?'reverse':'forward',prompt,question,correct,field,options:shuffle([correct,...unique])};
  }
  function startTest(){
   document.querySelector('.kanji-test-review')?.remove();
@@ -4089,8 +4149,8 @@ const kanjiMasterData = [
   if(!chosen.length){$('kanji-selected-summary').textContent='কমপক্ষে একটি Lesson নির্বাচন করো';return}
   const pool=shuffle(kanjiMasterData.filter(x=>chosen.includes(x.l)));
   const n=$('kanji-test-count').value==='all'?pool.length:Math.min(pool.length,Number($('kanji-test-count').value));
-  const mode=$('kanji-test-mode').value;
-  testItems=pool.slice(0,n).map(x=>buildQuestion(x,pool,mode));testIndex=0;testScore=0;testWrong=[];
+  const direction=$('kanji-test-direction').value;
+  testItems=pool.slice(0,n).map(x=>buildQuestion(x,pool,direction));testIndex=0;testScore=0;testWrong=[];
   $('kanji-test-start').hidden=true;$('kanji-test-result').hidden=true;$('kanji-test-play').hidden=false;renderQuestion();
  }
  function renderQuestion(){
@@ -4115,15 +4175,16 @@ const kanjiMasterData = [
   if(testAnswered)return;testAnswered=true;
   const buttons=[...$('kanji-test-options').children];buttons.forEach(b=>b.disabled=true);
   const correct=String(value)===String(q.correct);
-  if(correct){testScore++;btn.classList.add('correct');$('kanji-test-feedback').textContent='✓ সঠিক উত্তর! '+q.x.k+' · '+q.x.r+' · '+q.x.u+' · '+q.x.b}
-  else{btn.classList.add('wrong');const good=buttons.find(b=>b.textContent===q.correct);good?.classList.add('correct');testWrong.push(q.x);$('kanji-test-feedback').textContent='সঠিক উত্তর: '+q.correct+' · '+q.x.k+' / '+q.x.r+' / '+q.x.u+' / '+q.x.b}
+  if(correct){testScore++;btn.classList.add('correct')}
+  else{btn.classList.add('wrong');const good=buttons.find(b=>b.textContent===q.correct);good?.classList.add('correct');testWrong.push(q.x)}
+  const reveal=document.createElement('div');reveal.className='kanji-answer-reveal';const heading=document.createElement('b');heading.textContent=correct?'✓ সঠিক উত্তর!':'সঠিক উত্তর';const glyph=document.createElement('div');glyph.className='answer-kanji';glyph.textContent=q.x.k;const meta=document.createElement('div');meta.className='answer-meta';meta.textContent='Hiragana: '+q.x.r+' · Romaji: '+q.x.u+' · বাংলা অর্থ: '+q.x.b;reveal.append(heading,glyph,meta);$('kanji-test-feedback').replaceChildren(reveal)
   $('kanji-test-score').textContent='Score '+testScore;$('kanji-test-next').disabled=false;
  }
  function finishTest(){
   const pct=Math.round(testScore/testItems.length*100);saved.best=Math.max(saved.best||0,pct);save();updateStats();
   $('kanji-test-play').hidden=true;$('kanji-test-result').hidden=false;
   $('kanji-test-final').textContent=testScore+' / '+testItems.length;
-  const modeName={normal:'Normal',hard:'Hard',expert:'Expert'}[$('kanji-test-mode').value];
+  const modeName=$('kanji-test-direction').value==='kanji-jp'?'Kanji → Japanese':'Japanese → Kanji';
   $('kanji-test-summary').textContent=modeName+' Mode · Accuracy '+pct+'% · ভুল উত্তর '+testWrong.length+'টি। '+(pct>=90?'Excellent!':pct>=70?'ভালো হয়েছে—ভুল Kanji-গুলো আবার অনুশীলন করো।':'ভুল হওয়া Kanji-গুলো Learn section-এ আবার দেখে চেষ্টা করো।');
   if(testWrong.length){
    const review=document.createElement('div');review.className='kanji-test-review';
@@ -4132,10 +4193,48 @@ const kanjiMasterData = [
    $('kanji-test-summary').after(review);
   }
  }
+ // Separate JLPT-style exam engine, using the supplied Kanji bank only.
+ let jlptItems=[],jlptIndex=0,jlptScore=0,jlptWrong=[],jlptAnswered=false;
+ function makeJlptQuestion(x,pool,direction){
+  const reverse=direction==='jp-kanji'||(direction==='mixed'&&Math.random()<.5),field=reverse?'k':'r',correct=reverse?x.k:x.r;
+  const seen=new Set([String(correct)]),options=[];
+  for(const y of shuffle(pool.filter(y=>y.k!==x.k))){const v=String(y[field]);if(!seen.has(v)){seen.add(v);options.push(v)}if(options.length===3)break}
+  for(const y of shuffle(kanjiMasterData.filter(y=>y.k!==x.k))){const v=String(y[field]);if(!seen.has(v)){seen.add(v);options.push(v)}if(options.length===3)break}
+  return {x,correct,question:reverse?x.r:x.k,prompt:reverse?'Japanese reading দেখে সঠিক Kanji নির্বাচন করো':'Kanji দেখে সঠিক Hiragana reading নির্বাচন করো',options:shuffle([correct,...options.slice(0,3)])};
+ }
+ function startJlpt(){
+  const pool=shuffle(kanjiMasterData.slice()),count=$('jlpt-kanji-count').value,n=count==='all'?pool.length:Math.min(pool.length,Number(count));
+  jlptItems=pool.slice(0,n).map(x=>makeJlptQuestion(x,pool,$('jlpt-kanji-direction').value));jlptIndex=0;jlptScore=0;jlptWrong=[];
+  $('jlpt-kanji-start').hidden=true;$('jlpt-kanji-result').hidden=true;$('jlpt-kanji-play').hidden=false;renderJlpt();
+ }
+ function renderJlpt(){
+  jlptAnswered=false;const q=jlptItems[jlptIndex];$('jlpt-kanji-counter').textContent=(jlptIndex+1)+' / '+jlptItems.length;$('jlpt-kanji-score').textContent='Score '+jlptScore;
+  $('jlpt-kanji-prompt').textContent=q.prompt;$('jlpt-kanji-glyph').textContent=q.question;$('jlpt-kanji-reading').textContent='';
+  $('jlpt-kanji-feedback').textContent='';$('jlpt-kanji-next').disabled=true;$('jlpt-kanji-next').textContent=jlptIndex===jlptItems.length-1?'See Results':'Next →';
+  const root=$('jlpt-kanji-options');root.innerHTML='';q.options.forEach(value=>{const b=document.createElement('button');b.type='button';b.textContent=value;b.addEventListener('click',()=>answerJlpt(b,value,q));root.append(b)});
+ }
+ function answerJlpt(btn,value,q){
+  if(jlptAnswered)return;jlptAnswered=true;const buttons=[...$('jlpt-kanji-options').children];buttons.forEach(b=>b.disabled=true);
+  const correct=String(value)===String(q.correct);if(correct){jlptScore++;btn.classList.add('correct')}else{btn.classList.add('wrong');buttons.find(b=>b.textContent===q.correct)?.classList.add('correct');jlptWrong.push(q.x)}
+  const reveal=document.createElement('div');reveal.className='kanji-answer-reveal';const h=document.createElement('b');h.textContent=correct?'✓ সঠিক উত্তর!':'সঠিক উত্তর';
+  const glyph=document.createElement('div');glyph.className='answer-kanji';glyph.textContent=q.x.k;const meta=document.createElement('div');meta.className='answer-meta';meta.textContent='Hiragana: '+q.x.r+' · Romaji: '+q.x.u+' · বাংলা অর্থ: '+q.x.b;reveal.append(h,glyph,meta);
+  $('jlpt-kanji-feedback').replaceChildren(reveal);$('jlpt-kanji-score').textContent='Score '+jlptScore;$('jlpt-kanji-next').disabled=false;
+ }
+ function finishJlpt(){
+  const pct=Math.round(jlptScore/jlptItems.length*100);$('jlpt-kanji-play').hidden=true;$('jlpt-kanji-result').hidden=false;$('jlpt-kanji-final').textContent=jlptScore+' / '+jlptItems.length;
+  $('jlpt-kanji-summary').textContent='Accuracy '+pct+'% · ভুল উত্তর '+jlptWrong.length+'টি। '+(pct>=90?'Excellent!':pct>=70?'ভালো হয়েছে!':'ভুল Kanji-গুলো আবার Learn section-এ অনুশীলন করো।');
+  document.querySelector('.jlpt-kanji-review')?.remove();
+  if(jlptWrong.length){const box=document.createElement('div');box.className='kanji-test-review jlpt-kanji-review';const h=document.createElement('b');h.textContent='ভুল হওয়া Kanji';box.append(h);[...new Map(jlptWrong.map(x=>[x.k,x])).values()].forEach(x=>{const row=document.createElement('div');row.textContent=x.k+' · '+x.r+' · '+x.u+' · '+x.b+' (Lesson '+x.l+')';box.append(row)});$('jlpt-kanji-summary').after(box)}
+ }
+ $('jlpt-kanji-start-btn').addEventListener('click',startJlpt);
+ $('jlpt-kanji-next').addEventListener('click',()=>{if(!jlptAnswered)return;if(jlptIndex<jlptItems.length-1){jlptIndex++;renderJlpt()}else finishJlpt()});
+ $('jlpt-kanji-again').addEventListener('click',()=>{document.querySelector('.jlpt-kanji-review')?.remove();$('jlpt-kanji-start').hidden=false;$('jlpt-kanji-play').hidden=true;$('jlpt-kanji-result').hidden=true});
+ $('jlpt-kanji-count').addEventListener('change',()=>{$('jlpt-kanji-start').hidden=false;$('jlpt-kanji-play').hidden=true;$('jlpt-kanji-result').hidden=true});
+ $('jlpt-kanji-direction').addEventListener('change',()=>{$('jlpt-kanji-start').hidden=false;$('jlpt-kanji-play').hidden=true;$('jlpt-kanji-result').hidden=true});
  $('kanji-start-test').addEventListener('click',startTest);
  $('kanji-test-next').addEventListener('click',()=>{if(!testAnswered)return;if(testIndex<testItems.length-1){testIndex++;renderQuestion()}else finishTest()});
  $('kanji-test-again').addEventListener('click',()=>{document.querySelector('.kanji-test-review')?.remove();resetTestView()});
- $('kanji-test-count').addEventListener('change',resetTestView);$('kanji-test-mode').addEventListener('change',resetTestView);
+ $('kanji-test-count').addEventListener('change',resetTestView);$('kanji-test-direction').addEventListener('change',resetTestView);
  $('kanji-lesson-filter').addEventListener('change',renderCards);$('kanji-search').addEventListener('input',renderCards);
  const navigateKanjiScreen=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const target=$(id);if(target)target.classList.add('active');document.body.classList.toggle('login-mode',id==='login-screen');window.scrollTo({top:0,behavior:'auto'});};
  $('open-kanji-master').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();navigateKanjiScreen('kanji-screen');updateStats();renderCards();updateWriteList();switchTab('learn')});
@@ -4156,6 +4255,147 @@ const kanjiMasterData = [
  };
  open?.addEventListener('click',()=>navigate('kanji-screen'));
  home?.addEventListener('click',()=>navigate('home-screen'));
+})();
+</script>
+
+
+<style id="sirjo-kanji-snap-and-kaiwa-studio">
+#kanji-write-stage #kanji-write-guide{color:rgba(226,245,255,.13)!important;transition:opacity .25s}
+#kanji-write-stage .kanji-snap-glyph{position:absolute;inset:0;z-index:4;display:grid;place-items:center;font:600 clamp(150px,35vw,300px)/1 'Noto Sans JP',sans-serif;color:#71ead2;opacity:0;transform:scale(.72) rotate(-4deg);pointer-events:none;text-shadow:0 0 24px #55e0c077,0 0 55px #55e0c044}
+#kanji-write-stage.snap-success .kanji-snap-glyph{animation:kanjiSnapHome .95s cubic-bezier(.16,1,.3,1) forwards}
+#kanji-write-stage.snap-success #kanji-write-guide{opacity:.04!important}
+@keyframes kanjiSnapHome{0%{opacity:0;transform:scale(.72) rotate(-4deg);filter:blur(8px)}48%{opacity:.95;transform:scale(1.08) rotate(1deg);filter:blur(0)}72%{transform:scale(.97)}100%{opacity:.72;transform:scale(1);filter:drop-shadow(0 0 15px #55e0c055)}}
+.kanji-stroke-panel{margin-top:13px;padding:14px;border:1px solid #55e0c033;border-radius:16px;background:#0b142477}.kanji-stroke-head,.kanji-stroke-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.kanji-stroke-head strong{font-size:12px}.kanji-stroke-head span,.kanji-stroke-actions span{font-size:10px;color:var(--muted)}.kanji-stroke-view{min-height:110px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:12px 0}.kanji-stroke-view svg{width:min(100%,260px);height:auto;max-height:260px;background:#ffffff05;border:1px solid #ffffff12;border-radius:12px}.kanji-stroke-view .stroke-loading{font-size:11px;color:var(--muted)}.kanji-stroke-view svg path{fill:#55e0c0;fill-opacity:.13;stroke:#7cebd8;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.kanji-stroke-view svg path.stroke-animate{fill-opacity:.5;stroke:#b2fff0;stroke-width:5;stroke-dasharray:1000;stroke-dashoffset:1000;animation:kanjiStrokeDraw .9s ease forwards;filter:drop-shadow(0 0 4px #55e0c088)}@keyframes kanjiStrokeDraw{to{stroke-dashoffset:0}}.kanji-stroke-view .stroke-number{font:700 24px sans-serif;fill:#ffc86a;stroke:none} .kanji-stroke-actions{border-top:1px solid #ffffff10;padding-top:10px}
+/* Compact stroke-order animation pinned to the canvas upper-left corner. */
+#kanji-write-stage .kanji-stroke-mini{position:absolute;z-index:7;left:10px;top:10px;width:clamp(92px,19vw,126px);padding:7px;border:1px solid #72ead36b;border-radius:13px;background:rgba(5,15,26,.78);box-shadow:0 8px 25px #0007;backdrop-filter:blur(8px);display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:auto}
+.kanji-stroke-mini-label{font:800 8px/1.3 system-ui,sans-serif;letter-spacing:1px;color:#9ceedd}
+.kanji-stroke-mini-view{width:100%;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border-radius:8px;background:#ffffff08;color:#8cf2dc;font:600 46px/1 'Noto Sans JP',sans-serif}
+.kanji-stroke-mini-view svg{width:100%;height:100%;max-height:90px;background:transparent!important;border:0!important;border-radius:0!important}
+.kanji-stroke-mini-view svg path{fill:#55e0c0;fill-opacity:.13;stroke:#7cebd8;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.kanji-stroke-mini-view svg path.stroke-animate{fill-opacity:.5;stroke:#b2fff0;stroke-width:5;stroke-dasharray:1000;stroke-dashoffset:1000;animation:kanjiStrokeDraw .9s ease forwards;filter:drop-shadow(0 0 4px #55e0c088)}
+.kanji-stroke-mini-replay{width:100%;min-height:28px!important;padding:3px 5px;border:1px solid #55e0c055;border-radius:8px;background:#55e0c018;color:#a8f7e7;font-size:10px;font-weight:800;cursor:pointer}
+#kanji-write-stage .write-hint{left:145px;right:10px;text-align:right;font-size:10px}
+.kaiwa-jp .kaiwa-char{display:inline;transition:color .08s,background .08s,text-shadow .08s;border-radius:3px}
+.kaiwa-jp .kaiwa-char.heard{color:#071c18;background:#65eacb;border-radius:3px;text-shadow:none}
+.kaiwa-jp .kaiwa-char.wrong{color:#fff;background:#e34d68;border-radius:3px;text-shadow:none}
+.kaiwa-jp.kaiwa-line-speaking{outline:1px solid #62e8d077;outline-offset:4px;border-radius:5px}
+.kaiwa-jp.kaiwa-line-wrong{background:#e34d6817;box-shadow:inset 3px 0 #ff657d;padding-left:8px;border-radius:5px}
+.kaiwa-jp.kaiwa-line-correct{background:#55e0c010;box-shadow:inset 3px 0 #55e0c0;padding-left:8px;border-radius:5px}
+@media(max-width:520px){#kanji-write-stage .kanji-stroke-mini{left:7px;top:7px;width:88px;padding:5px}.kanji-stroke-mini-view{max-height:66px}.kanji-stroke-mini-view svg{max-height:66px}#kanji-write-stage .write-hint{left:103px;font-size:9px}}
+
+.kaiwa-launch{display:flex;align-items:center;gap:14px;margin:0 0 16px;padding:17px 19px}.kaiwa-launch-mark{width:55px;height:55px;flex:0 0 55px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,#55e0c0,#8d83ff);color:#071821;font:900 17px 'Noto Sans JP',sans-serif}.kaiwa-launch .primary{width:auto;min-width:160px;margin:0;flex-shrink:0}.kaiwa-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.kaiwa-controls label,.kaiwa-practice-controls label{font-size:11px;color:var(--muted);font-weight:800}.kaiwa-controls .primary{grid-column:1/-1;margin:0}.kaiwa-card{margin-top:16px;padding:clamp(15px,3vw,23px);border:1px solid #55e0c033;border-radius:18px;background:linear-gradient(145deg,#0b1c2b99,#17162c88);min-height:180px;animation:kanjiCardEnter .35s ease both}.kaiwa-title{font-size:18px;font-weight:900;color:#8cf2dc}.kaiwa-subtitle{font-size:11px;color:var(--muted);margin:5px 0 14px}.kaiwa-turn{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:12px 0;border-top:1px solid #ffffff12}.kaiwa-speaker{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#55e0c018;color:#8cf2dc;font-weight:900}.kaiwa-jp{font:600 17px/1.9 'Noto Sans JP',sans-serif;color:#f0f6ff;overflow-wrap:anywhere}.kaiwa-romaji{font-size:11px;color:#b7aaff;line-height:1.7}.kaiwa-bn{font-size:12px;color:#cbd7e8;line-height:1.8}.kaiwa-turn-tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.kaiwa-turn-tools button{padding:6px 9px;border:1px solid #55e0c033;border-radius:9px;background:#55e0c010;color:#9df2df;font-size:10px}.kaiwa-sentence{padding:14px 0;border-bottom:1px solid #ffffff12}.kaiwa-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.kaiwa-actions .secondary{margin:0}.kaiwa-practice{margin-top:16px;padding:15px;border:1px solid #8d83ff33;border-radius:16px;background:#8d83ff09}.kaiwa-practice-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.kaiwa-practice-head strong{font-size:13px}.kaiwa-practice-head p{font-size:11px;color:var(--muted);line-height:1.7;margin:5px 0}.kaiwa-practice-head>span{font-size:10px;color:#8cf2dc;white-space:nowrap}.kaiwa-practice-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end;margin-top:12px}.kaiwa-practice-controls .primary{margin:0}.kaiwa-transcript{margin-top:12px;padding:12px;border-radius:12px;background:#07101b88;color:#d8e5f4;font-size:12px;line-height:1.8;min-height:46px;overflow-wrap:anywhere}.kaiwa-score{font-size:12px;color:#8cf2dc;margin-top:8px;min-height:18px}.kaiwa-footnote{font-size:10px;color:var(--muted);line-height:1.7;margin-top:13px}.kaiwa-empty{padding:30px 10px;text-align:center;color:var(--muted);font-size:12px;line-height:1.8}
+@media(max-width:620px){.kaiwa-launch{flex-wrap:wrap}.kaiwa-launch .grammar-guide-launch-copy{flex:1 1 calc(100% - 75px)}.kaiwa-launch .primary{width:100%;min-height:46px}.kaiwa-actions{grid-template-columns:1fr}.kaiwa-controls,.kaiwa-practice-controls{grid-template-columns:1fr}.kaiwa-controls .primary{grid-column:auto}.kaiwa-jp{font-size:16px}}
+@media(prefers-reduced-motion:reduce){#kanji-write-stage.snap-success .kanji-snap-glyph,.kanji-stroke-view svg path.stroke-animate{animation:none!important;opacity:.75;stroke-dashoffset:0!important}}
+</style>
+
+
+<script id="sirjo-kaiwa-listening-studio">
+(()=>{
+ const $=id=>document.getElementById(id);if(!$('kaiwa-studio-screen'))return;
+ const lessons={
+  1:{title:'はじめまして · পরিচয়',dialogues:[
+   [['A','はじめまして。わたしはアリです。','Hajimemashite. Watashi wa Ari desu.','প্রথম পরিচয়ে ভালো লাগল। আমি আরি।'],['B','はじめまして。わたしはミナです。','Hajimemashite. Watashi wa Mina desu.','প্রথম পরিচয়ে ভালো লাগল। আমি মিনা।'],['A','ミナさんは がくせいですか。','Mina-san wa gakusei desu ka.','মিনা, আপনি কি শিক্ষার্থী?'],['B','はい、だいがくの がくせいです。','Hai, daigaku no gakusei desu.','হ্যাঁ, আমি বিশ্ববিদ্যালয়ের শিক্ষার্থী।'],['A','そうですか。わたしも がくせいです。','Sou desu ka. Watashi mo gakusei desu.','তাই নাকি! আমিও শিক্ষার্থী।'],['B','どうぞ よろしく おねがいします。','Douzo yoroshiku onegaishimasu.','আপনার সঙ্গে পরিচিত হয়ে ভালো লাগল।']],
+   [['A','おなまえは なんですか。','Onamae wa nan desu ka.','আপনার নাম কী?'],['B','わたしは ケンです。','Watashi wa Ken desu.','আমি কেন।'],['A','ケンさんは せんせいですか。','Ken-san wa sensei desu ka.','কেন, আপনি কি শিক্ষক?'],['B','いいえ、エンジニアです。','Iie, enjinia desu.','না, আমি ইঞ্জিনিয়ার।'],['A','そうですか。わたしは かいしゃいんです。','Sou desu ka. Watashi wa kaishain desu.','তাই নাকি! আমি কোম্পানির কর্মী।'],['B','よろしく おねがいします。','Yoroshiku onegaishimasu.','আপনার সহযোগিতা কামনা করছি।']]]},
+  2:{title:'これ・それ · জিনিস পরিচয়',dialogues:[
+   [['A','これは なんですか。','Kore wa nan desu ka.','এটা কী?'],['B','それは にほんごの ほんです。','Sore wa nihongo no hon desu.','ওটা জাপানি ভাষার বই।'],['A','この ほんは あなたのですか。','Kono hon wa anata no desu ka.','এই বইটি কি আপনার?'],['B','はい、わたしのです。','Hai, watashi no desu.','হ্যাঁ, আমার।'],['A','あの じしょも あなたのですか。','Ano jisho mo anata no desu ka.','ওই অভিধানটিও কি আপনার?'],['B','いいえ、ともだちのです。','Iie, tomodachi no desu.','না, বন্ধুর।']],
+   [['A','これは だれの かばんですか。','Kore wa dare no kaban desu ka.','এটি কার ব্যাগ?'],['B','わたしの かばんです。','Watashi no kaban desu.','এটি আমার ব্যাগ।'],['A','なかに なにが ありますか。','Naka ni nani ga arimasu ka.','ভেতরে কী আছে?'],['B','ほんと ノートが あります。','Hon to nooto ga arimasu.','বই ও নোটবুক আছে।'],['A','その ノートは あたらしいですね。','Sono nooto wa atarashii desu ne.','ওই নোটবুকটি নতুন, তাই না?'],['B','はい、きのう かいました。','Hai, kinou kaimashita.','হ্যাঁ, গতকাল কিনেছি।']]]},
+  3:{title:'ここ・そこ · জায়গা',dialogues:[
+   [['A','すみません。うけつけは どこですか。','Sumimasen. Uketsuke wa doko desu ka.','মাফ করবেন। রিসেপশন কোথায়?'],['B','あそこです。エレベーターの となりです。','Asoko desu. Ereb eetaa no tonari desu.','ওখানে। লিফটের পাশে।'],['A','トイレも あそこですか。','Toire mo asoko desu ka.','টয়লেটও কি ওখানে?'],['B','いいえ、トイレは ここです。','Iie, toire wa koko desu.','না, টয়লেট এখানে।'],['A','ありがとうございます。','Arigatou gozaimasu.','অনেক ধন্যবাদ।'],['B','どういたしまして。','Dou itashimashite.','স্বাগতম।']],
+   [['A','じむしょは なんがいですか。','Jimusho wa nangai desu ka.','অফিস কোন তলায়?'],['B','さんがいです。','Sangai desu.','তৃতীয় তলায়।'],['A','かいだんは どこですか。','Kaidan wa doko desu ka.','সিঁড়ি কোথায়?'],['B','エレベーターの むこうです。','Ereb eetaa no mukou desu.','লিফটের ওপাশে।'],['A','この たてものは おおきいですね。','Kono tatemono wa ookii desu ne.','এই ভবনটি বড়, তাই না?'],['B','はい、とても おおきいです。','Hai, totemo ookii desu.','হ্যাঁ, অনেক বড়।']]]},
+  4:{title:'じかん · সময় ও দৈনন্দিন কাজ',dialogues:[
+   [['A','まいあさ なんじに おきますか。','Maiasa nanji ni okimasu ka.','প্রতিদিন সকালে কয়টায় ওঠেন?'],['B','ろくじに おきます。','Rokuji ni okimasu.','ছয়টায় উঠি।'],['A','なんじに がっこうへ いきますか。','Nanji ni gakkou e ikimasu ka.','কয়টায় স্কুলে যান?'],['B','しちじはんに いきます。','Shichiji han ni ikimasu.','সাড়ে সাতটায় যাই।'],['A','よる なんじに ねますか。','Yoru nanji ni nemasu ka.','রাতে কয়টায় ঘুমান?'],['B','じゅういちじごろ ねます。','Juuichiji goro nemasu.','প্রায় এগারোটায় ঘুমাই।']],
+   [['A','きょうは なんようびですか。','Kyou wa nanyoubi desu ka.','আজ কী বার?'],['B','げつようびです。','Getsuyoubi desu.','সোমবার।'],['A','としょかんは なんじからですか。','Toshokan wa nanji kara desu ka.','লাইব্রেরি কয়টা থেকে খোলে?'],['B','くじから ごじまでです。','Kuji kara goji made desu.','নয়টা থেকে পাঁচটা পর্যন্ত।'],['A','にちようびも あいていますか。','Nichiyoubi mo aite imasu ka.','রবিবারও কি খোলা থাকে?'],['B','いいえ、やすみです。','Iie, yasumi desu.','না, বন্ধ থাকে।']]]},
+  5:{title:'いきます・きます · যাতায়াত',dialogues:[
+   [['A','あした どこへ いきますか。','Ashita doko e ikimasu ka.','আগামীকাল কোথায় যাবেন?'],['B','ともだちと こうえんへ いきます。','Tomodachi to kouen e ikimasu.','বন্ধুর সঙ্গে পার্কে যাব।'],['A','なにで いきますか。','Nani de ikimasu ka.','কীভাবে যাবেন?'],['B','バスで いきます。','Basu de ikimasu.','বাসে যাব।'],['A','なんじに いきますか。','Nanji ni ikimasu ka.','কয়টায় যাবেন?'],['B','あさ はちじに いきます。','Asa hachiji ni ikimasu.','সকাল আটটায় যাব।']],
+   [['A','きのう どこへ いきましたか。','Kinou doko e ikimashita ka.','গতকাল কোথায় গিয়েছিলেন?'],['B','えきの ちかくの みせへ いきました。','Eki no chikaku no mise e ikimashita.','স্টেশনের কাছের দোকানে গিয়েছিলাম।'],['A','だれと いきましたか。','Dare to ikimashita ka.','কার সঙ্গে গিয়েছিলেন?'],['B','かぞくと いきました。','Kazoku to ikimashita.','পরিবারের সঙ্গে গিয়েছিলাম।'],['A','なにを かいましたか。','Nani o kaimashita ka.','কী কিনেছিলেন?'],['B','パンと くだものを かいました。','Pan to kudamono o kaimashita.','রুটি ও ফল কিনেছিলাম।']]]},
+  6:{title:'たべます・のみます · খাবার',dialogues:[
+   [['A','ひるごはんに なにを たべますか。','Hirugohan ni nani o tabemasu ka.','দুপুরে কী খাবেন?'],['B','ごはんと さかなを たべます。','Gohan to sakana o tabemasu.','ভাত ও মাছ খাব।'],['A','なにを のみますか。','Nani o nomimasu ka.','কী পান করবেন?'],['B','みずを のみます。','Mizu o nomimasu.','পানি পান করব।'],['A','いっしょに たべませんか。','Issho ni tabemasen ka.','একসঙ্গে খাবেন?'],['B','いいですね。いっしょに たべましょう。','Ii desu ne. Issho ni tabemashou.','ভালো! চলুন একসঙ্গে খাই।']],
+   [['A','この レストランは どうですか。','Kono resutoran wa dou desu ka.','এই রেস্টুরেন্ট কেমন?'],['B','おいしいです。そして、やすいです。','Oishii desu. Soshite, yasui desu.','সুস্বাদু। আর সস্তাও।'],['A','おすすめは なんですか。','Osusume wa nan desu ka.','আপনার সুপারিশ কী?'],['B','カレーライスです。','Karee raisu desu.','কারি রাইস।'],['A','じゃ、それを おねがいします。','Ja, sore o onegaishimasu.','তাহলে ওটাই দিন।'],['B','かしこまりました。','Kashikomarimashita.','ঠিক আছে, বুঝেছি।']]]},
+  7:{title:'どうぐ・て-form · কাজ করা',dialogues:[
+   [['A','これは にほんごで なんですか。','Kore wa nihongo de nan desu ka.','এটিকে জাপানিতে কী বলে?'],['B','はさみです。','Hasami desu.','কাঁচি।'],['A','はさみを かして ください。','Hasami o kashite kudasai.','দয়া করে কাঁচিটি ধার দিন।'],['B','はい、どうぞ。','Hai, douzo.','হ্যাঁ, নিন।'],['A','ありがとうございます。','Arigatou gozaimasu.','ধন্যবাদ।'],['B','つかったあとで、ここに おいて ください。','Tsukatta ato de, koko ni oite kudasai.','ব্যবহারের পরে এখানে রেখে দেবেন।']],
+   [['A','この ことばの いみが わかりますか。','Kono kotoba no imi ga wakarimasu ka.','এই শব্দের অর্থ বুঝতে পারছেন?'],['B','いいえ、わかりません。','Iie, wakarimasen.','না, বুঝতে পারছি না।'],['A','じしょを つかって ください。','Jisho o tsukatte kudasai.','অভিধান ব্যবহার করুন।'],['B','はい、そうします。','Hai, sou shimasu.','হ্যাঁ, তাই করব।'],['A','いっしょに れんしゅうしましょう。','Issho ni renshuu shimashou.','চলুন একসঙ্গে অনুশীলন করি।'],['B','ありがとうございます。','Arigatou gozaimasu.','ধন্যবাদ।']]]},
+  8:{title:'けいようし · বর্ণনা',dialogues:[
+   [['A','この まちは どうですか。','Kono machi wa dou desu ka.','এই শহরটি কেমন?'],['B','しずかで、きれいです。','Shizuka de, kirei desu.','শান্ত ও সুন্দর।'],['A','ひとは おおいですか。','Hito wa ooi desu ka.','মানুষ কি বেশি?'],['B','いいえ、あまり おおくないです。','Iie, amari ookunai desu.','না, খুব বেশি নয়।'],['A','たべものは おいしいですか。','Tabemono wa oishii desu ka.','খাবার কি সুস্বাদু?'],['B','はい、とても おいしいです。','Hai, totemo oishii desu.','হ্যাঁ, খুব সুস্বাদু।']],
+   [['A','きょうは さむいですね。','Kyou wa samui desu ne.','আজ ঠান্ডা, তাই না?'],['B','そうですね。かぜも つよいです。','Sou desu ne. Kaze mo tsuyoi desu.','হ্যাঁ, বাতাসও জোরে।'],['A','あたたかい おちゃを のみませんか。','Atatakai ocha o nomimasen ka.','গরম চা পান করবেন?'],['B','いいですね。','Ii desu ne.','ভালো হবে।'],['A','この へやは あたたかいです。','Kono heya wa atatakai desu.','এই ঘরটি উষ্ণ।'],['B','はい、ここで やすみましょう。','Hai, koko de yasumimashou.','হ্যাঁ, এখানে বিশ্রাম নিই।']]]},
+  9:{title:'すき・わかります · পছন্দ ও বোঝা',dialogues:[
+   [['A','どんな おんがくが すきですか。','Donna ongaku ga suki desu ka.','কেমন গান পছন্দ?'],['B','クラシックが すきです。','Kurashikku ga suki desu.','ক্লাসিক্যাল সংগীত পছন্দ।'],['A','にほんごの うたも ききますか。','Nihongo no uta mo kikimasu ka.','জাপানি গানও শোনেন?'],['B','はい、ときどき ききます。','Hai, tokidoki kikimasu.','হ্যাঁ, মাঝে মাঝে শুনি।'],['A','にほんごが よく わかりますか。','Nihongo ga yoku wakarimasu ka.','জাপানি ভালো বোঝেন?'],['B','まだ すこしだけです。','Mada sukoshi dake desu.','এখনো অল্পই বুঝি।']],
+   [['A','しゅみは なんですか。','Shumi wa nan desu ka.','আপনার শখ কী?'],['B','しゃしんを とることです。','Shashin o toru koto desu.','ছবি তোলা।'],['A','どこで とりますか。','Doko de torimasu ka.','কোথায় ছবি তোলেন?'],['B','こうえんや うみで とります。','Kouen ya umi de torimasu.','পার্ক ও সমুদ্রের পাশে তুলি।'],['A','わたしも しゃしんが すきです。','Watashi mo shashin ga suki desu.','আমিও ছবি পছন্দ করি।'],['B','こんど いっしょに とりましょう。','Kondo issho ni torimashou.','পরেরবার একসঙ্গে তুলি।']]]},
+  10:{title:'あります・います · অস্তিত্ব ও অবস্থান',dialogues:[
+   [['A','つくえの うえに なにが ありますか。','Tsukue no ue ni nani ga arimasu ka.','টেবিলের ওপর কী আছে?'],['B','ほんと ペンが あります。','Hon to pen ga arimasu.','বই ও কলম আছে।'],['A','ねこは どこに いますか。','Neko wa doko ni imasu ka.','বিড়ালটি কোথায়?'],['B','まどの ちかくに います。','Mado no chikaku ni imasu.','জানালার কাছে আছে।'],['A','へやに だれが いますか。','Heya ni dare ga imasu ka.','ঘরে কে আছে?'],['B','いもうとが います。','Imouto ga imasu.','আমার ছোট বোন আছে।']],
+   [['A','こうえんに とりが いますね。','Kouen ni tori ga imasu ne.','পার্কে পাখি আছে, তাই না?'],['B','はい。きの うえに います。','Hai. Ki no ue ni imasu.','হ্যাঁ। গাছের ওপর আছে।'],['A','ベンチの となりに なにが ありますか。','Benchi no tonari ni nani ga arimasu ka.','বেঞ্চের পাশে কী আছে?'],['B','ちいさい かばんが あります。','Chiisai kaban ga arimasu.','একটি ছোট ব্যাগ আছে।'],['A','だれの かばんでしょうか。','Dare no kaban deshou ka.','ব্যাগটি কার হতে পারে?'],['B','こうえんの ひとの かもしれません。','Kouen no hito no kamoshiremasen.','হয়তো পার্কে আসা কারও।']]]}
+ };
+ const passages={
+  1:[['わたしは ラナです。バングラデシュじんです。ダッカに すんでいます。まいにち にほんごを べんきょうします。せんせいは とても しんせつです。クラスには がくせいが たくさん います。みんなで いっしょに にほんごを はなします。','Watashi wa Rana desu. Banguradeshujin desu. Dakka ni sunde imasu. Mainichi nihongo o benkyou shimasu. Sensei wa totemo shinsetsu desu. Kurasu ni wa gakusei ga takusan imasu. Minna de issho ni nihongo o hanashimasu.','আমি রানা। আমি বাংলাদেশি। ঢাকায় থাকি। প্রতিদিন জাপানি পড়ি। শিক্ষক খুব আন্তরিক। ক্লাসে অনেক শিক্ষার্থী আছে। সবাই মিলে জাপানি ভাষায় কথা বলি।'],['こちらは わたしの ともだちです。なまえは ミキです。ミキさんは にほんじんです。だいがくの がくせいです。せんこうは コンピューターです。えいごと にほんごを はなします。わたしたちは ときどき いっしょに べんきょうします。','Kochira wa watashi no tomodachi desu. Namae wa Miki desu. Miki-san wa nihonjin desu. Daigaku no gakusei desu. Senkou wa konpyuutaa desu. Eigo to nihongo o hanashimasu. Watashitachi wa tokidoki issho ni benkyou shimasu.','ইনি আমার বন্ধু। তাঁর নাম মিকি। মিকি জাপানি। তিনি বিশ্ববিদ্যালয়ের শিক্ষার্থী। তাঁর বিষয় কম্পিউটার। তিনি ইংরেজি ও জাপানি বলেন। আমরা মাঝে মাঝে একসঙ্গে পড়ি।']],
+  2:[['これは わたしの へやです。つくえの うえに ほんと ノートが あります。これは にほんごの じしょです。あれは ともだちの かばんです。かばんの なかに ペンと さいふが あります。まいあさ この ほんを よみます。','Kore wa watashi no heya desu. Tsukue no ue ni hon to nooto ga arimasu. Kore wa nihongo no jisho desu. Are wa tomodachi no kaban desu. Kaban no naka ni pen to saifu ga arimasu. Maiasa kono hon o yomimasu.','এটি আমার ঘর। টেবিলের ওপর বই ও নোটবুক আছে। এটি জাপানি অভিধান। ওটি বন্ধুর ব্যাগ। ব্যাগের ভেতরে কলম ও মানিব্যাগ আছে। প্রতিদিন সকালে এই বই পড়ি।']],
+  3:[['わたしの がっこうは えきの ちかくです。がっこうの まえに おおきい こうえんが あります。うけつけは いっかいです。としょかんは さんがいに あります。きょうしつは としょかんの となりです。まいあさ エレベーターで さんがいへ いきます。','Watashi no gakkou wa eki no chikaku desu. Gakkou no mae ni ookii kouen ga arimasu. Uketsuke wa ikkai desu. Toshokan wa sangai ni arimasu. Kyoushitsu wa toshokan no tonari desu. Maiasa erebeetaa de sangai e ikimasu.','আমার স্কুল স্টেশনের কাছে। স্কুলের সামনে বড় পার্ক আছে। রিসেপশন প্রথম তলায়। লাইব্রেরি তৃতীয় তলায়। শ্রেণিকক্ষ লাইব্রেরির পাশে। প্রতিদিন সকালে লিফটে তৃতীয় তলায় যাই।']],
+  4:[['わたしは まいあさ ろくじに おきます。かおを あらって、あさごはんを たべます。しちじはんに うちを でます。はちじから にほんごを べんきょうします。ひるに ともだちと ごはんを たべます。ごご ごじに うちへ かえります。よるは ほんを よんで、じゅういちじに ねます。','Watashi wa maiasa rokuji ni okimasu. Kao o aratte, asagohan o tabemasu. Shichiji han ni uchi o demasu. Hachiji kara nihongo o benkyou shimasu. Hiru ni tomodachi to gohan o tabemasu. Gogo goji ni uchi e kaerimasu. Yoru wa hon o yonde, juuichiji ni nemasu.','আমি প্রতিদিন সকালে ছয়টায় উঠি। মুখ ধুয়ে নাশতা করি। সাড়ে সাতটায় বাড়ি থেকে বের হই। আটটা থেকে জাপানি পড়ি। দুপুরে বন্ধুর সঙ্গে ভাত খাই। বিকেল পাঁচটায় বাড়ি ফিরি। রাতে বই পড়ে এগারোটায় ঘুমাই।']],
+  5:[['せんしゅうの にちようびに、かぞくと まちへ いきました。まず バスで えきまで いきました。それから でんしゃに のりました。えきの ちかくで ひるごはんを たべました。デパートで ははの プレゼントを かいました。ゆうがたに タクシーで うちへ かえりました。とても たのしい いちにちでした。','Senshuu no nichiyoubi ni, kazoku to machi e ikimashita. Mazu basu de eki made ikimashita. Sorekara densha ni norimashita. Eki no chikaku de hirugohan o tabemashita. Depaato de haha no purezento o kaimashita. Yuugata ni takushii de uchi e kaerimashita. Totemo tanoshii ichinichi deshita.','গত সপ্তাহের রবিবার পরিবারসহ শহরে গিয়েছিলাম। প্রথমে বাসে স্টেশন পর্যন্ত যাই। তারপর ট্রেনে উঠি। স্টেশনের কাছে দুপুরের খাবার খাই। ডিপার্টমেন্ট স্টোরে মায়ের উপহার কিনি। বিকেলে ট্যাক্সিতে বাড়ি ফিরি। দিনটি খুব আনন্দের ছিল।']],
+  6:[['きょうは ともだちと レストランで ひるごはんを たべます。わたしは カレーと サラダを ちゅうもんします。ともだちは さかなと ごはんを たべます。のみものは つめたい みずです。この レストランの りょうりは おいしくて、ねだんも あまり たかくありません。たべおわったら、コーヒーを のみます。','Kyou wa tomodachi to resutoran de hirugohan o tabemasu. Watashi wa karee to sarada o chuumon shimasu. Tomodachi wa sakana to gohan o tabemasu. Nomimono wa tsumetai mizu desu. Kono resutoran no ryouri wa oishikute, nedan mo amari takaku arimasen. Tabeowattara, koohii o nomimasu.','আজ বন্ধুর সঙ্গে রেস্টুরেন্টে দুপুরের খাবার খাব। আমি কারি ও সালাদ অর্ডার করব। বন্ধু মাছ ও ভাত খাবে। পানীয় ঠান্ডা পানি। এই রেস্টুরেন্টের খাবার সুস্বাদু এবং দামও খুব বেশি নয়। খাওয়া শেষ হলে কফি পান করব।']],
+  7:[['まいにち にほんごを れんしゅうしています。あさ、テキストを よんで、あたらしい ことばを ノートに かきます。わからない ことばは じしょで しらべます。ごごは おんせいを きいて、あとから まねして はなします。ときどき ともだちに しつもんします。まちがえても、もういちど れんしゅうします。','Mainichi nihongo o renshuu shite imasu. Asa, tekisuto o yonde, atarashii kotoba o nooto ni kakimasu. Wakaranai kotoba wa jisho de shirabemasu. Gogo wa onsei o kiite, ato kara mane shite hanashimasu. Tokidoki tomodachi ni shitsumon shimasu. Machigaete mo, mou ichido renshuu shimasu.','প্রতিদিন জাপানি অনুশীলন করি। সকালে পাঠ্যবই পড়ে নতুন শব্দ নোটবুকে লিখি। না-বোঝা শব্দ অভিধানে খুঁজি। বিকেলে অডিও শুনে পরে অনুকরণ করে বলি। মাঝে মাঝে বন্ধুকে প্রশ্ন করি। ভুল হলেও আবার অনুশীলন করি।']],
+  8:[['わたしの まちは あまり おおきくありません。でも、とても にぎやかで べんりです。えきの ちかくに おおきい スーパーが あります。こうえんは しずかで、きれいです。ふゆは すこし さむいですが、はるは あたたかいです。まちの ひとは しんせつです。わたしは この まちが すきです。','Watashi no machi wa amari ookiku arimasen. Demo, totemo nigiyaka de benri desu. Eki no chikaku ni ookii suupaa ga arimasu. Kouen wa shizuka de, kirei desu. Fuyu wa sukoshi samui desu ga, haru wa atatakai desu. Machi no hito wa shinsetsu desu. Watashi wa kono machi ga suki desu.','আমার শহর খুব বড় নয়। তবে বেশ প্রাণবন্ত ও সুবিধাজনক। স্টেশনের কাছে বড় সুপারমার্কেট আছে। পার্ক শান্ত ও সুন্দর। শীতকালে কিছুটা ঠান্ডা, কিন্তু বসন্ত উষ্ণ। শহরের মানুষ আন্তরিক। আমি এই শহর পছন্দ করি।']],
+  9:[['わたしの しゅみは おんがくを きくことです。とくに クラシックと ポップスが すきです。しゅうまつに へやで おんがくを ききます。ときどき にほんごの うたも ききます。ことばの いみが わからない とき、じしょで しらべます。すこしずつ うたの いみが わかるように なりました。','Watashi no shumi wa ongaku o kiku koto desu. Tokuni kurashikku to poppusu ga suki desu. Shuumatsu ni heya de ongaku o kikimasu. Tokidoki nihongo no uta mo kikimasu. Kotoba no imi ga wakaranai toki, jisho de shirabemasu. Sukoshizutsu uta no imi ga wakaru you ni narimashita.','আমার শখ গান শোনা। বিশেষ করে ক্লাসিক্যাল ও পপ গান পছন্দ। সপ্তাহান্তে ঘরে গান শুনি। মাঝে মাঝে জাপানি গানও শুনি। শব্দের অর্থ না বুঝলে অভিধানে খুঁজি। ধীরে ধীরে গানের অর্থ বুঝতে পারছি।']],
+  10:[['わたしの いえには へやが よっつ あります。リビングに ソファと テーブルが あります。テーブルの うえに はなと ざっしが あります。キッチンには ははが います。にわには いぬが います。まどの そとに ちいさい きがあります。わたしは リビングで ほんを よむのが すきです。','Watashi no ie ni wa heya ga yottsu arimasu. Ribingu ni sofa to teeburu ga arimasu. Teeburu no ue ni hana to zasshi ga arimasu. Kicchin ni wa haha ga imasu. Niwa ni wa inu ga imasu. Mado no soto ni chiisai ki ga arimasu. Watashi wa ribingu de hon o yomu no ga suki desu.','আমাদের বাড়িতে চারটি ঘর আছে। বসার ঘরে সোফা ও টেবিল আছে। টেবিলের ওপর ফুল ও ম্যাগাজিন আছে। রান্নাঘরে মা আছেন। বাগানে কুকুর আছে। জানালার বাইরে ছোট গাছ আছে। বসার ঘরে বই পড়তে আমার ভালো লাগে।']]
+ };
+
+ // Alternate lesson passages ensure the random button has more than one coherent listening text per lesson.
+ const alternatePassages={
+  2:['わたしは まいにち つくえで べんきょうします。つくえの うえに ノートと ペンが あります。ひきだしの なかに じしょが あります。これは あたらしい じしょです。となりの いすに かばんが あります。べんきょうの あとで、ほんを ほんだなに いれます。','Watashi wa mainichi tsukue de benkyou shimasu. Tsukue no ue ni nooto to pen ga arimasu. Hikidashi no naka ni jisho ga arimasu. Kore wa atarashii jisho desu. Tonari no isu ni kaban ga arimasu. Benkyou no ato de, hon o hondana ni iremasu.','আমি প্রতিদিন টেবিলে পড়াশোনা করি। টেবিলের ওপর নোটবুক ও কলম আছে। ড্রয়ারের ভেতরে অভিধান আছে। এটি নতুন অভিধান। পাশের চেয়ারে ব্যাগ আছে। পড়া শেষে বই বইয়ের তাকে রাখি।'],
+  3:['あたらしい びょういんは えきの まえに あります。ぎんこうは びょういんの となりです。ゆうびんきょくは ぎんこうの うしろです。スーパーは えきの ちかくに あります。わたしの うちは スーパーから とおくありません。まいしゅう そこで かいものを します。','Atarashii byouin wa eki no mae ni arimasu. Ginkou wa byouin no tonari desu. Yuubinkyoku wa ginkou no ushiro desu. Suupaa wa eki no chikaku ni arimasu. Watashi no uchi wa suupaa kara tooku arimasen. Maishuu soko de kaimono o shimasu.','নতুন হাসপাতাল স্টেশনের সামনে। ব্যাংক হাসপাতালের পাশে। ডাকঘর ব্যাংকের পেছনে। সুপারমার্কেট স্টেশনের কাছে। আমার বাড়ি সুপারমার্কেট থেকে দূরে নয়। প্রতি সপ্তাহে সেখানে কেনাকাটা করি।'],
+  4:['どようびは がっこうへ いきません。あさ ゆっくり おきて、コーヒーを のみます。それから へやを そうじします。ごごは ともだちに メールを かきます。よるは かぞくと ばんごはんを たべます。にちようびも やすみます。','Doyoubi wa gakkou e ikimasen. Asa yukkuri okite, koohii o nomimasu. Sorekara heya o souji shimasu. Gogo wa tomodachi ni meeru o kakimasu. Yoru wa kazoku to bangohan o tabemasu. Nichiyoubi mo yasumimasu.','শনিবার স্কুলে যাই না। সকালে ধীরে উঠি এবং কফি পান করি। তারপর ঘর পরিষ্কার করি। বিকেলে বন্ধুকে ইমেইল লিখি। রাতে পরিবারের সঙ্গে রাতের খাবার খাই। রবিবারও বিশ্রাম করি।'],
+  5:['らいしゅう、せんせいと はくぶつかんへ いきます。うちから えきまで あるきます。えきから バスに のります。はくぶつかんで にほんの れきしを べんきょうします。ひるごはんは ちかくの みせで たべます。ごご さんじごろ うちへ かえります。','Raishuu, sensei to hakubutsukan e ikimasu. Uchi kara eki made arukimasu. Eki kara basu ni norimasu. Hakubutsukan de nihon no rekishi o benkyou shimasu. Hirugohan wa chikaku no mise de tabemasu. Gogo sanji goro uchi e kaerimasu.','আগামী সপ্তাহে শিক্ষকের সঙ্গে জাদুঘরে যাব। বাড়ি থেকে স্টেশন পর্যন্ত হাঁটব। স্টেশন থেকে বাসে উঠব। জাদুঘরে জাপানের ইতিহাস পড়ব। দুপুরের খাবার কাছের দোকানে খাব। বিকেল প্রায় তিনটায় বাড়ি ফিরব।'],
+  6:['あさは パンと たまごを たべます。ぎゅうにゅうを のみます。ひるは がっこうで ともだちと うどんを たべます。よるは うちで やさいと にくを たべます。あまい ケーキも すきですが、まいにちは たべません。ときどき くだものを かいます。','Asa wa pan to tamago o tabemasu. Gyuunyuu o nomimasu. Hiru wa gakkou de tomodachi to udon o tabemasu. Yoru wa uchi de yasai to niku o tabemasu. Amai keeki mo suki desu ga, mainichi wa tabemasen. Tokidoki kudamono o kaimasu.','সকালে রুটি ও ডিম খাই। দুধ পান করি। দুপুরে স্কুলে বন্ধুর সঙ্গে উডন খাই। রাতে বাড়িতে সবজি ও মাংস খাই। মিষ্টি কেকও পছন্দ, তবে প্রতিদিন খাই না। মাঝে মাঝে ফল কিনি।'],
+  7:['あには まいあさ しんぶんを よみます。わたしは テレビで ニュースを みます。わからない ことばを ノートに かきます。せんせいに きいて、いみを おしえて もらいます。べんきょうの あとで、ノートを かばんに いれます。わすれないように まいにち ふくしゅうします。','Ani wa maiasa shinbun o yomimasu. Watashi wa terebi de nyuusu o mimasu. Wakaranai kotoba o nooto ni kakimasu. Sensei ni kiite, imi o oshiete moraimasu. Benkyou no ato de, nooto o kaban ni iremasu. Wasurenai you ni mainichi fukushuu shimasu.','আমার বড় ভাই প্রতিদিন সকালে সংবাদপত্র পড়েন। আমি টিভিতে খবর দেখি। না-বোঝা শব্দ নোটবুকে লিখি। শিক্ষককে জিজ্ঞেস করে অর্থ জেনে নিই। পড়া শেষে নোটবুক ব্যাগে রাখি। ভুলে না যাওয়ার জন্য প্রতিদিন পুনরাবৃত্তি করি।'],
+  8:['きのうは あめでした。でも、きょうは いい てんきです。そとは あたたかくて、そらが あおいです。こうえんには きれいな はなが たくさん あります。こどもたちは げんきで、たのしそうです。わたしは ベンチに すわって、しずかな じかんを すごします。','Kinou wa ame deshita. Demo, kyou wa ii tenki desu. Soto wa atatakakute, sora ga aoi desu. Kouen ni wa kirei na hana ga takusan arimasu. Kodomotachi wa genki de, tanoshisou desu. Watashi wa benchi ni suwatte, shizuka na jikan o sugoshimasu.','গতকাল বৃষ্টি ছিল। কিন্তু আজ আবহাওয়া ভালো। বাইরে উষ্ণ এবং আকাশ নীল। পার্কে অনেক সুন্দর ফুল আছে। শিশুরা প্রাণবন্ত ও আনন্দিত দেখাচ্ছে। আমি বেঞ্চে বসে শান্ত সময় কাটাই।'],
+  9:['ともだちは スポーツが すきです。とくに サッカーが すきです。わたしは スポーツが あまり じょうずでは ありません。でも、サッカーを みるのは すきです。しゅうまつに いっしょに しあいを みます。おもしろい しあいの あとは、たくさん はなします。','Tomodachi wa supootsu ga suki desu. Tokuni sakkaa ga suki desu. Watashi wa supootsu ga amari jouzu dewa arimasen. Demo, sakkaa o miru no wa suki desu. Shuumatsu ni issho ni shiai o mimasu. Omoshiroi shiai no ato wa, takusan hanashimasu.','আমার বন্ধু খেলাধুলা পছন্দ করে। বিশেষ করে ফুটবল। আমি খেলাধুলায় খুব দক্ষ নই। তবে ফুটবল দেখতে ভালো লাগে। সপ্তাহান্তে একসঙ্গে খেলা দেখি। মজার ম্যাচের পর অনেক কথা বলি।'],
+  10:['まちの こうえんに おおきい いけが あります。いけの そばに ベンチが あります。ベンチの うしろに きが たくさん あります。あさは おじいさんや おばあさんが います。こどもも います。とりは きの うえに います。ここは とても いい ところです。','Machi no kouen ni ookii ike ga arimasu. Ike no soba ni benchi ga arimasu. Benchi no ushiro ni ki ga takusan arimasu. Asa wa ojiisan ya obaasan ga imasu. Kodomo mo imasu. Tori wa ki no ue ni imasu. Koko wa totemo ii tokoro desu.','শহরের পার্কে বড় পুকুর আছে। পুকুরের পাশে বেঞ্চ আছে। বেঞ্চের পেছনে অনেক গাছ আছে। সকালে বয়স্ক নারী-পুরুষ থাকেন। শিশুরাও থাকে। পাখিরা গাছের ওপর থাকে। জায়গাটি খুব সুন্দর।']
+ };
+ Object.keys(alternatePassages).forEach(k=>passages[k].push(alternatePassages[k]));
+
+ const sentencePools={
+  1:[['わたしは がくせいです。','Watashi wa gakusei desu.','আমি শিক্ষার্থী।'],['あの ひとは せんせいです。','Ano hito wa sensei desu.','ওই ব্যক্তি শিক্ষক।'],['ミナさんは にほんじんですか。','Mina-san wa nihonjin desu ka.','মিনা কি জাপানি?']],
+  2:[['これは わたしの ほんです。','Kore wa watashi no hon desu.','এটি আমার বই।'],['その かさは だれのですか。','Sono kasa wa dare no desu ka.','ওই ছাতাটি কার?'],['あれは にほんごの じしょです。','Are wa nihongo no jisho desu.','ওটি জাপানি অভিধান।']],
+  3:[['じむしょは あそこです。','Jimusho wa asoko desu.','অফিস ওখানে।'],['トイレは どこですか。','Toire wa doko desu ka.','টয়লেট কোথায়?'],['ここは とても しずかです。','Koko wa totemo shizuka desu.','এখানে খুব শান্ত।']],
+  4:[['まいあさ はちじに べんきょうします。','Maiasa hachiji ni benkyou shimasu.','প্রতিদিন সকালে আটটায় পড়ি।'],['きょうは なんじに かえりますか。','Kyou wa nanji ni kaerimasu ka.','আজ কয়টায় ফিরবেন?'],['にちようびは やすみです。','Nichiyoubi wa yasumi desu.','রবিবার ছুটি।']],
+  5:[['あした ともだちと えきへ いきます。','Ashita tomodachi to eki e ikimasu.','আগামীকাল বন্ধুর সঙ্গে স্টেশনে যাব।'],['バスで がっこうへ いきます。','Basu de gakkou e ikimasu.','বাসে স্কুলে যাই।'],['きのう デパートで かいました。','Kinou depaato de kaimashita.','গতকাল ডিপার্টমেন্ট স্টোরে কিনেছি।']],
+  6:[['まいにち みずを たくさん のみます。','Mainichi mizu o takusan nomimasu.','প্রতিদিন অনেক পানি পান করি।'],['いっしょに ひるごはんを たべましょう。','Issho ni hirugohan o tabemashou.','চলুন একসঙ্গে দুপুরের খাবার খাই।'],['コーヒーを のみませんか。','Koohii o nomimasen ka.','কফি পান করবেন?']],
+  7:[['ここに なまえを かいて ください。','Koko ni namae o kaite kudasai.','এখানে নাম লিখুন।'],['ちょっと まって ください。','Chotto matte kudasai.','একটু অপেক্ষা করুন।'],['この ペンを かして ください。','Kono pen o kashite kudasai.','এই কলমটি ধার দিন।']],
+  8:[['この へやは とても ひろいです。','Kono heya wa totemo hiroi desu.','এই ঘরটি খুব প্রশস্ত।'],['きょうは あまり あつくないです。','Kyou wa amari atsukunai desu.','আজ খুব গরম নয়।'],['にほんごは おもしろいです。','Nihongo wa omoshiroi desu.','জাপানি ভাষা মজার।']],
+  9:[['わたしは えいがが すきです。','Watashi wa eiga ga suki desu.','আমি সিনেমা পছন্দ করি।'],['この ことばの いみが わかります。','Kono kotoba no imi ga wakarimasu.','এই শব্দের অর্থ বুঝি।'],['きょうは じかんが ありません。','Kyou wa jikan ga arimasen.','আজ সময় নেই।']],
+  10:[['つくえの うえに ほんが あります。','Tsukue no ue ni hon ga arimasu.','টেবিলের ওপর বই আছে।'],['へやに ねこが います。','Heya ni neko ga imasu.','ঘরে বিড়াল আছে।'],['こうえんに こどもが います。','Kouen ni kodomo ga imasu.','পার্কে শিশু আছে।']]
+ };
+ let current=null,recognition=null,utteranceQueue=[],micActive=false,turnIndex=0,roleCursor=0,passageCursor=0;
+ for(let i=1;i<=10;i++){const o=document.createElement('option');o.value=i;o.textContent=`Lesson ${i}`;$('kaiwa-lesson').append(o)}
+ function pick(a){return a[Math.floor(Math.random()*a.length)]}
+ function speak(text,lang,highlightEl=null){if(!('speechSynthesis'in window)){setStatus('এই browser-এ TTS নেই');return}speechSynthesis.cancel();clearKaiwaHighlights();const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=.88;const voices=speechSynthesis.getVoices();const pref=lang==='ja-JP'?['ja-JP','ja']:['bn-BD','bn-IN','bn'];u.voice=voices.find(v=>pref.includes(v.lang))||null;if(highlightEl&&lang==='ja-JP'){highlightEl.classList.add('kaiwa-line-speaking');u.onboundary=e=>{const chars=[...String(text)],spans=[...highlightEl.querySelectorAll('.kaiwa-char')];spans.forEach(c=>c.classList.remove('heard'));const start=Math.max(0,e.charIndex||0),end=Math.min(spans.length,start+Math.max(1,e.charLength||1));for(let i=start;i<end;i++)spans[i]?.classList.add('heard')};u.onend=()=>highlightEl.classList.remove('kaiwa-line-speaking')}speechSynthesis.speak(u)}
+ function setStatus(t){$('kaiwa-mic-status').textContent=t}
+ function decorateJapanese(el,text){if(!el)return;el.dataset.jpText=text;el.replaceChildren();[...text].forEach((ch,i)=>{const span=document.createElement('span');span.className='kaiwa-char';span.dataset.char=String(i);span.textContent=ch;el.append(span)})}
+ function clearKaiwaHighlights(){document.querySelectorAll('.kaiwa-jp').forEach(el=>{el.classList.remove('kaiwa-line-speaking','kaiwa-line-wrong','kaiwa-line-correct');el.querySelectorAll('.kaiwa-char').forEach(c=>c.classList.remove('heard','wrong'))})}
+ function highlightKaiwa(el,target,heard,isFinal=false,offset=0){if(!el)return;const chars=[...String(target||'')],spoken=[...String(heard||'').replace(/[\s、。！？,.!?]/g,'')],valid=chars.map((ch,i)=>/[\s、。！？,.!?]/.test(ch)?-1:i).filter(i=>i>=0);if(!el.querySelector('.kaiwa-char'))decorateJapanese(el,el.dataset.jpText||target||'');el.classList.add('kaiwa-line-speaking');el.classList.remove('kaiwa-line-wrong','kaiwa-line-correct');const spans=[...el.querySelectorAll('.kaiwa-char')];valid.forEach((targetIndex,i)=>{const sp=spans[offset+targetIndex];if(!sp)return;sp.classList.remove('heard','wrong');if(i<spoken.length){if(spoken[i]===chars[targetIndex])sp.classList.add('heard');else sp.classList.add('wrong')}});if(isFinal){const score=similarity(spoken.join(''),chars.filter(ch=>!/[\s、。！？,.!?]/.test(ch)).join(''));el.classList.remove('kaiwa-line-speaking');el.classList.add(score>=82?'kaiwa-line-correct':'kaiwa-line-wrong');return score}return null}
+ function activePrompt(){if(!current)return {target:'',el:null,response:''};if(current.type==='dialogue'){const role=$('kaiwa-role').value;let idx=roleCursor;while(idx<current.items.length&&current.items[idx][0]!==role)idx++;const t=current.items[idx];const next=current.items[idx+(role==='A'?1:-1)];return {target:t?.[1]||'',response:next?.[1]||'',el:document.querySelectorAll('.kaiwa-turn .kaiwa-jp')[idx]||null}}if(current.type==='passage'){const lines=current.items[0][0].split(/[。！？]/).filter(Boolean);const line=lines[passageCursor]||'';const full=current.items[0][0],offset=full.indexOf(line);return {target:line,response:lines[passageCursor+1]||'',el:document.querySelector('.kaiwa-sentence .kaiwa-jp'),offset:Math.max(0,offset)}}const t=current.items[0];return {target:t?.[1]||'',response:'',el:document.querySelector('.kaiwa-sentence .kaiwa-jp')}}
+ function turnHTML(t,i){return `<article class="kaiwa-turn"><div class="kaiwa-speaker">${t[0]}</div><div><div class="kaiwa-jp"></div><div class="kaiwa-romaji"></div><div class="kaiwa-bn"></div><div class="kaiwa-turn-tools"><button type="button" data-say="jp" data-index="${i}">▶ Japanese</button><button type="button" data-say="bn" data-index="${i}">▶ বাংলা</button></div></div></article>`}
+ function render(){const root=$('kaiwa-content'),lesson=Number($('kaiwa-lesson').value),mode=$('kaiwa-mode').value;turnIndex=0;roleCursor=$('kaiwa-role').value==='A'?0:1;passageCursor=0;root.innerHTML='';
+  if(mode==='dialogue'){const d=pick(lessons[lesson].dialogues);current={type:'dialogue',items:d};root.innerHTML=`<div class="kaiwa-title">${lessons[lesson].title} · Random Kaiwa</div><div class="kaiwa-subtitle">Lesson ${lesson} · ${d.length} turns · Character A / B</div>`+d.map((t,i)=>turnHTML(t,i)).join('');root.querySelectorAll('.kaiwa-turn').forEach((el,i)=>{decorateJapanese(el.querySelector('.kaiwa-jp'),d[i][1]);el.querySelector('.kaiwa-romaji').textContent=d[i][2];el.querySelector('.kaiwa-bn').textContent=d[i][3]})}
+  else if(mode==='passage'){const d=pick(passages[lesson]||passages[1]);current={type:'passage',items:[d]};root.innerHTML=`<div class="kaiwa-title">Lesson ${lesson} · Listening Passage</div><div class="kaiwa-subtitle">শুনো, অর্থ বোঝো, তারপর microphone দিয়ে পড়ে practice করো</div><div class="kaiwa-sentence"><div class="kaiwa-jp"></div><div class="kaiwa-romaji"></div><div class="kaiwa-bn"></div></div><div class="kaiwa-turn-tools"><button type="button" data-say="jp" data-index="0">▶ Passage Japanese</button><button type="button" data-say="bn" data-index="0">▶ Passage বাংলা</button></div>`;decorateJapanese(root.querySelector('.kaiwa-jp'),d[0]);root.querySelector('.kaiwa-romaji').textContent=d[1];root.querySelector('.kaiwa-bn').textContent=d[2]}
+  else{const d=pick(sentencePools[lesson]);current={type:'sentence',items:[['A',...d]]};root.innerHTML=`<div class="kaiwa-title">Lesson ${lesson} · Random Sentence</div><div class="kaiwa-sentence"><div class="kaiwa-jp"></div><div class="kaiwa-romaji"></div><div class="kaiwa-bn"></div></div>`;decorateJapanese(root.querySelector('.kaiwa-jp'),d[0]);root.querySelector('.kaiwa-romaji').textContent=d[1];root.querySelector('.kaiwa-bn').textContent=d[2]}
+  root.querySelectorAll('[data-say]').forEach(b=>b.addEventListener('click',()=>sayItem(Number(b.dataset.index),b.dataset.say)));clearKaiwaHighlights();
+  $('kaiwa-transcript').textContent='Content ready. Japanese TTS শুনে তারপর microphone practice করো।';$('kaiwa-score').textContent='';
+ }
+ function sayItem(i,which){if(!current)return;const t=current.items[i];const text=current.type==='passage'?t[which==='jp'?0:2]:current.type==='sentence'?t[which==='jp'?1:3]:t[which==='jp'?1:3];const el=current.type==='dialogue'?document.querySelectorAll('.kaiwa-turn .kaiwa-jp')[i]:document.querySelector('.kaiwa-sentence .kaiwa-jp');speak(text,which==='jp'?'ja-JP':'bn-BD',which==='jp'?el:null)}
+ $('kaiwa-generate').addEventListener('click',render);$('kaiwa-mode').addEventListener('change',render);$('kaiwa-lesson').addEventListener('change',render);
+ $('kaiwa-play-jp').addEventListener('click',()=>{if(!current)return;const lines=current.type==='passage'?current.items.map(x=>x[0]):current.type==='sentence'?current.items.map(x=>x[1]):current.items.map(x=>x[1]);speak(lines.join('。'),'ja-JP')});
+ $('kaiwa-play-bn').addEventListener('click',()=>{if(!current)return;const lines=current.type==='passage'?current.items.map(x=>x[2]):current.type==='sentence'?current.items.map(x=>x[3]):current.items.map(x=>x[3]);speak(lines.join('। '),'bn-BD')});
+ $('kaiwa-stop').addEventListener('click',()=>{if('speechSynthesis'in window)speechSynthesis.cancel();if(recognition)recognition.stop();clearKaiwaHighlights();setStatus('Stopped')});
+ function startMic(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){setStatus('Speech recognition unsupported');$('kaiwa-transcript').textContent='এই browser-এ microphone speech recognition নেই। Chrome/Edge-এর updated version ব্যবহার করে permission দাও।';return}
+  if(!current){setStatus('আগে content তৈরি করো');return}if(recognition){try{recognition.stop()}catch(_){}recognition=null}
+  recognition=new SR();recognition.lang='ja-JP';recognition.continuous=false;recognition.interimResults=true;recognition.maxAlternatives=3;micActive=true;$('kaiwa-mic').textContent='■ Stop Mic';setStatus('Listening…');$('kaiwa-transcript').textContent='এখন Japanese-এ বলো…';
+  recognition.onresult=e=>{let interim='',final='';for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal)final+=r[0].transcript;else interim+=r[0].transcript}const heard=final||interim;const active=activePrompt();$('kaiwa-transcript').textContent=heard||'শোনা হচ্ছে…';if(heard&&active.target){highlightKaiwa(active.el,active.target,heard,!!final,active.offset||0)}if(final){const norm=x=>x.replace(/[\s、。！？]/g,'');const target=active.target,response=active.response;const score=similarity(norm(final),norm(target));$('kaiwa-score').textContent=`${score>=82?'✓ ভালো মিল':'✕ আবার চেষ্টা করো'} · Similarity estimate: ${score}%`;setStatus('Result ready');if(current.type==='dialogue')roleCursor+=2;else if(current.type==='passage')passageCursor++;if(response)setTimeout(()=>speak(response,'ja-JP'),550);
+  }}
+  recognition.onerror=e=>{setStatus('Mic error: '+e.error);micActive=false;$('kaiwa-mic').textContent='🎙️ Start Mic Practice'};recognition.onend=()=>{micActive=false;$('kaiwa-mic').textContent='🎙️ Start Mic Practice';if($('kaiwa-mic-status').textContent==='Listening…')setStatus('Mic stopped')};try{recognition.start()}catch(e){setStatus('Mic could not start')}
+ }
+ function similarity(a,b){if(!a||!b)return 0;let dp=Array.from({length:a.length+1},()=>Array(b.length+1).fill(0));for(let i=0;i<=a.length;i++)dp[i][0]=i;for(let j=0;j<=b.length;j++)dp[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return Math.max(0,Math.round((1-dp[a.length][b.length]/Math.max(a.length,b.length))*100))}
+ $('kaiwa-mic').addEventListener('click',()=>{if(micActive){recognition?.stop();return}startMic()});
+ $('open-kaiwa-studio').addEventListener('click',()=>{showScreen('kaiwa-studio-screen');render()});$('kaiwa-home').addEventListener('click',()=>goHome());
+ $('kaiwa-lesson').value='1';render();
 })();
 </script>
 
@@ -4355,3 +4595,35 @@ body.is-backgrounded .animated,body.is-backgrounded [class*="animation"],body.is
  document.addEventListener('contextmenu',e=>{if(!e.target.closest(editable))e.preventDefault()});
 })();
 </script>
+
+<style id="sirjo-kanji-exam-redesign-v3">
+#kanji-screen .kanji-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#kanji-screen .kanji-tabs button{min-width:0;line-height:1.35;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+#kanji-screen .kanji-tabs button:hover{transform:translateY(-2px)}
+#kanji-screen .kanji-card{position:relative;overflow:hidden;animation:kanjiCardEnter .42s cubic-bezier(.2,.8,.2,1) both;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+#kanji-screen .kanji-card:hover{transform:translateY(-4px);border-color:#55e0c0a0;box-shadow:0 14px 32px #0004,0 0 20px #55e0c015}
+#kanji-screen .kanji-card-glyph{animation:kanjiGlyphFloat 4.5s ease-in-out infinite}
+#kanji-screen .kanji-info-line{display:flex;justify-content:space-between;align-items:baseline;gap:9px;padding-top:7px;margin-top:6px;border-top:1px solid #ffffff0c;text-align:left}
+#kanji-screen .kanji-info-line small{font-size:8px;letter-spacing:1px;color:#8295ae;font-weight:850;flex:0 0 auto}
+#kanji-screen .kanji-card-reading,#kanji-screen .kanji-card-romaji,#kanji-screen .kanji-card-meaning{margin:0;text-align:right;line-height:1.5;overflow-wrap:anywhere}
+#kanji-screen .kanji-card-reading{font-size:12px;color:#71ead2}#kanji-screen .kanji-card-romaji{font-size:11px;color:#b5aaff}#kanji-screen .kanji-card-meaning{font-size:12px;color:#e6edf8}
+#kanji-screen .kanji-test-setting{animation:kanjiCardEnter .35s ease both}
+#kanji-screen .kanji-test-question{animation:kanjiQuestionIn .42s cubic-bezier(.2,.8,.2,1) both}
+#kanji-screen .kanji-test-options button{animation:kanjiOptionIn .32s ease both;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+#kanji-screen .kanji-test-options button:hover:not(:disabled){transform:translateY(-2px);border-color:#55e0c0a0}
+#kanji-screen .kanji-answer-reveal{padding:13px 15px;margin:8px auto 0;max-width:680px;border:1px solid #55e0c055;border-radius:15px;background:linear-gradient(120deg,#55e0c012,#8d83ff0d);animation:answerRevealPop .45s cubic-bezier(.2,.8,.2,1) both}
+#kanji-screen .answer-kanji{font-family:'Noto Sans JP',sans-serif;font-size:31px;font-weight:850;color:#71ead2;margin:5px 0}
+#kanji-screen .answer-meta{font-size:12px;line-height:1.8;color:#dce8f5;overflow-wrap:anywhere}
+#kanji-screen .jlpt-exam-intro{display:flex;align-items:center;gap:15px;padding:17px;margin:0 0 15px;border:1px solid #8d83ff44;border-radius:17px;background:linear-gradient(120deg,#8d83ff12,#55e0c00a);animation:kanjiCardEnter .45s ease both}
+#kanji-screen .jlpt-exam-mark{flex:0 0 70px;height:70px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(145deg,#8d83ff,#55e0c0);color:#071421;font-size:17px;font-weight:950;box-shadow:0 8px 25px #8d83ff30}
+#kanji-screen .jlpt-exam-intro h3{margin:0 0 5px;font-size:17px}
+#kanji-screen .jlpt-exam-intro p,#kanji-screen .jlpt-data-note{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+#kanji-screen .jlpt-data-note{padding:12px 14px;margin-top:14px;border:1px solid #ffc86a33;border-radius:12px;background:#ffc86a0a}
+@keyframes kanjiCardEnter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes kanjiQuestionIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes kanjiOptionIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@keyframes answerRevealPop{0%{opacity:0;transform:scale(.94) translateY(8px)}70%{transform:scale(1.015)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes kanjiGlyphFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media(max-width:620px){#kanji-screen .kanji-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}#kanji-screen .jlpt-exam-intro{align-items:flex-start;padding:13px}#kanji-screen .jlpt-exam-mark{flex-basis:58px;height:58px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){#kanji-screen .kanji-card,#kanji-screen .kanji-card-glyph,#kanji-screen .kanji-test-setting,#kanji-screen .kanji-test-question,#kanji-screen .kanji-test-options button,#kanji-screen .kanji-answer-reveal,#kanji-screen .jlpt-exam-intro{animation:none!important;transition:none!important}}
+</style>
