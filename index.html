@@ -983,70 +983,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:560px){.n5-listening-test{padding:14px;margin-top:16px}.n5-listening-head h3{font-size:18px}.n5-listening-options{grid-template-columns:1fr}.n5-listening-controls button{flex:1 1 130px}.n5-listening-stage{padding:12px}}
 </style>
 
-
-<style id="organized-learning-layout">
-/* Consistent layout polish: preserves the existing app content and behavior. */
-#kaiwa-studio-screen .kaiwa-shell{padding:clamp(14px,2.4vw,26px);overflow:hidden}
-#kaiwa-studio-screen .section-head{align-items:center;gap:14px;margin-bottom:18px}
-#kaiwa-studio-screen .section-title{font-size:clamp(19px,2.2vw,25px);font-weight:900;letter-spacing:.1px}
-#kaiwa-studio-screen .section-desc{max-width:650px;line-height:1.65;margin-top:5px}
-#kaiwa-studio-screen .kaiwa-controls{display:grid;grid-template-columns:minmax(130px,.75fr) minmax(170px,1fr) auto;align-items:end;gap:12px;padding:14px;margin:0 0 18px;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:rgba(255,255,255,.035)}
-#kaiwa-studio-screen .kaiwa-controls label,#kaiwa-studio-screen .kaiwa-practice-controls label{display:grid;gap:7px;font-size:10px;font-weight:850;letter-spacing:1px;color:var(--muted,#9aa8b8)}
-#kaiwa-studio-screen .kaiwa-controls .select,#kaiwa-studio-screen .kaiwa-practice-controls .select{width:100%;min-width:0}
-#kaiwa-studio-screen .kaiwa-controls button{min-height:43px;white-space:normal}
-#kaiwa-studio-screen .n5-listening-test{margin:0 0 20px;padding:clamp(14px,2vw,21px);border-radius:18px}
-#kaiwa-studio-screen .n5-listening-head{align-items:center}
-#kaiwa-studio-screen .n5-listening-head h3{font-size:clamp(18px,2vw,22px);line-height:1.35}
-#kaiwa-studio-screen .n5-listening-head p{line-height:1.7;margin-top:5px}
-#kaiwa-studio-screen .n5-listening-info{gap:7px;margin:13px 0}
-#kaiwa-studio-screen .n5-listening-info span{line-height:1.5}
-#kaiwa-studio-screen .n5-listening-controls{padding-top:2px}
-#kaiwa-studio-screen .n5-listening-controls button{min-height:42px}
-#kaiwa-studio-screen .n5-listening-stage{margin-top:14px;padding:clamp(13px,2vw,20px);min-height:175px;border-radius:14px}
-#kaiwa-studio-screen .n5-listening-qtop{padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08)}
-#kaiwa-studio-screen .n5-listening-prompt{font-size:clamp(15px,1.6vw,18px);line-height:1.85;margin:14px 0}
-#kaiwa-studio-screen .n5-listening-options,#kaiwa-studio-screen .n5-listening-picture-options{gap:10px}
-#kaiwa-studio-screen .n5-listening-option{min-width:0;transition:border-color .16s ease,background .16s ease,transform .16s ease}
-#kaiwa-studio-screen .n5-listening-option:not(:disabled):hover{border-color:rgba(100,220,203,.55);background:rgba(100,220,203,.08);transform:translateY(-1px)}
-#kaiwa-studio-screen .n5-listening-option:focus-visible{outline:2px solid #69dfcf;outline-offset:2px}
-#kaiwa-studio-screen .n5-listening-option .n5-opt-text{overflow-wrap:anywhere}
-#kaiwa-studio-screen .n5-listening-picture-options .n5-listening-option{min-height:132px;gap:9px}
-#kaiwa-studio-screen .n5-picture-art{font-size:clamp(34px,4vw,46px);padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.055);min-width:76px}
-#kaiwa-studio-screen .n5-picture-label{line-height:1.5}
-#kaiwa-studio-screen .n5-listening-feedback{padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.035);line-height:1.8}
-#kaiwa-studio-screen .n5-listening-next{min-height:42px}
-#kaiwa-studio-screen .n5-listening-foot{margin-top:11px;font-variant-numeric:tabular-nums}
-#kaiwa-studio-screen .kaiwa-card{margin:0 0 13px;min-width:0}
-#kaiwa-studio-screen .kaiwa-actions{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px}
-#kaiwa-studio-screen .kaiwa-actions button{min-height:42px}
-#kaiwa-studio-screen .kaiwa-practice{margin-top:0;padding:clamp(14px,2vw,19px);border-radius:16px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)}
-#kaiwa-studio-screen .kaiwa-practice-head{align-items:flex-start;gap:12px}
-#kaiwa-studio-screen .kaiwa-practice-head p{line-height:1.7;max-width:650px}
-#kaiwa-studio-screen .kaiwa-practice-controls{display:flex;align-items:end;flex-wrap:wrap;gap:11px;margin-top:13px}
-#kaiwa-studio-screen .kaiwa-practice-controls label{min-width:150px;flex:0 1 210px}
-#kaiwa-studio-screen .kaiwa-transcript{margin-top:13px;line-height:1.8;overflow-wrap:anywhere}
-#kaiwa-studio-screen .kaiwa-footnote{margin-top:14px;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.03);line-height:1.75}
-@media(max-width:700px){
- #kaiwa-studio-screen .kaiwa-controls{grid-template-columns:1fr 1fr}
- #kaiwa-studio-screen .kaiwa-controls button{grid-column:1/-1;width:100%}
- #kaiwa-studio-screen .n5-listening-head{align-items:flex-start}
-}
-@media(max-width:480px){
- #kaiwa-studio-screen .kaiwa-shell{padding:12px}
- #kaiwa-studio-screen .kaiwa-controls{grid-template-columns:1fr;padding:11px}
- #kaiwa-studio-screen .kaiwa-controls button{grid-column:auto}
- #kaiwa-studio-screen .n5-listening-head{gap:8px}
- #kaiwa-studio-screen .n5-listening-level{font-size:9px;padding:5px 7px}
- #kaiwa-studio-screen .n5-listening-info span{font-size:10px}
- #kaiwa-studio-screen .n5-listening-picture-options{grid-template-columns:repeat(2,minmax(0,1fr))}
- #kaiwa-studio-screen .n5-listening-picture-options .n5-listening-option{padding:9px 5px;min-height:112px}
- #kaiwa-studio-screen .n5-picture-art{font-size:31px;min-width:0;padding:6px 8px}
- #kaiwa-studio-screen .kaiwa-practice-controls label{flex:1 1 100%}
- #kaiwa-studio-screen .kaiwa-practice-controls button{width:100%}
-}
-@media(prefers-reduced-motion:reduce){#kaiwa-studio-screen .n5-listening-option{transition:none}}
-</style>
-
 </head>
 <body>
 <div id="si-animated-backdrop" aria-hidden="true"></div>
@@ -1254,7 +1190,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
         <div class="n5-listening-info"><span>৫টি Mondai</span><span>মোট ২৪টি প্রশ্ন · Random order</span><span>ছবি দেখে উত্তর</span><span>বাংলা অর্থ দেখা যাবে</span></div>
         <div class="n5-listening-controls"><button type="button" class="primary" id="n5-listening-start">▶ Listening Test শুরু</button><button type="button" class="secondary" id="n5-listening-bn" disabled>বাংলা অর্থ দেখাও</button><button type="button" class="secondary" id="n5-listening-replay" disabled>↻ আবার শুনি</button></div>
         <div id="n5-listening-stage" class="n5-listening-stage"><div class="n5-listening-welcome"><div class="n5-listening-big">聞</div><strong>Listening Test প্রস্তুত</strong><span>Start চাপলে Mondai 1–4 থেকে ৫টি করে এবং Mondai 5 থেকে ৪টি প্রশ্ন আসবে। মোট ২৪টি প্রশ্নের ক্রম Random হবে। কিছু প্রশ্নে ছবি দেখে উত্তর দিতে হবে।</span></div></div>
-        <div class="n5-listening-foot" id="n5-listening-status">প্রস্তুত · ০ / ২৪</div>
+        <div class="n5-listening-foot" id="n5-listening-status">Ready · 0 / 5</div>
       </section>
 
       <div class="kaiwa-card" id="kaiwa-content" aria-live="polite"><div class="kaiwa-empty">Lesson নির্বাচন করে Random Content তৈরি করো।</div></div>
@@ -3899,6 +3835,10 @@ const jpGlyphSets=[
 })();
 function animateJapaneseWallpaper(){
  const wall=$('jp-parallax-wall');if(!wall)return;
+ // The mobile stylesheet intentionally hides this decorative layer; skip its
+ // 400-keyframe generation and hundreds of animated nodes on small screens.
+ const mobile=window.matchMedia('(max-width:760px)').matches;
+ if(mobile){wall.replaceChildren();return;}
  const sets=[
   ['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','ひ','の','ま','ゆ','り','日本語','勉強','こんにちは','ありがとう','学生','学校','毎日','練習','言葉','友だち','শিখি','জাপানি','অনুশীলন','ভাষা','শুভেচ্ছা','ধন্যবাদ','শিক্ষার্থী','স্কুল','প্রতিদিন','বন্ধু','বই','সময়'],
   ['ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','ヒ','ノ','マ','ユ','リ','カタカナ','コンニチハ','ガクセイ','ガッコウ','ベンキョウ','レンシュウ','コトバ','トモダチ','জাপানি','শেখা','ভাষা','পড়াশোনা','ধন্যবাদ','বন্ধু','প্রতিদিন','সময়'],
@@ -3926,7 +3866,7 @@ function animateJapaneseWallpaper(){
    motionStyle.textContent=css;document.head.appendChild(motionStyle);
  }
  let existing=[...wall.querySelectorAll('.jp-float')];
- const mobile=window.matchMedia('(max-width:600px)').matches,cols=mobile?5:12,rows=mobile?36:16,total=cols*rows;
+ const cols=12,rows=16,total=cols*rows;
  if(existing.length>total){existing.slice(total).forEach(el=>el.remove());existing=existing.slice(0,total)}
  for(let i=existing.length;i<total;i++){const el=document.createElement('span');el.className='jp-float';el.setAttribute('aria-hidden','true');wall.appendChild(el);existing.push(el)}
  existing.forEach((el,i)=>{
@@ -4513,7 +4453,7 @@ const kanjiMasterData = [
  }
  function n5ListenAnswer(a){if(n5ListeningAnswered)return;n5ListeningAnswered=true;const q=n5ListeningRun[n5ListeningIndex],ok=a===q.a;if(ok)n5ListeningScore++;n5ListenStage.querySelectorAll('[data-answer]').forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('correct');else if(i===a)b.classList.add('wrong')});document.getElementById('n5-listening-feedback').innerHTML=`${ok?'<strong>✓ সঠিক উত্তর!</strong>':'<strong>✕ সঠিক উত্তর: '+q.options[q.a][0]+' — '+q.options[q.a][1]+'</strong>'}<br>${q.why}`;document.getElementById('n5-listening-next').hidden=false;document.getElementById('n5-listening-status').textContent=`Score: ${n5ListeningScore} · ${n5ListeningIndex+1} / ${n5ListeningRun.length}`}
  function n5ListenNext(){if('speechSynthesis'in window)speechSynthesis.cancel();n5ListeningIndex++;if(n5ListeningIndex<n5ListeningRun.length){n5ListenRender();return}const pct=Math.round(n5ListeningScore/n5ListeningRun.length*100);n5ListenStage.innerHTML=`<div class="n5-listening-result"><div class="n5-listening-big">結果</div><strong>Listening Test সম্পন্ন!</strong><div class="n5-listening-result-score">${n5ListeningScore} / ${n5ListeningRun.length}</div><p>Accuracy: ${pct}% · ${pct>=80?'দারুণ! N5 Listening practice ভালো হয়েছে।':'আরও অনুশীলন করো। আবার নতুন Random Test দিতে পারো।'}</p><button type="button" class="primary" id="n5-listening-retry">↻ নতুন Random Test</button></div>`;document.getElementById('n5-listening-status').textContent=`সম্পন্ন · Final score ${n5ListeningScore}/${n5ListeningRun.length}`;document.getElementById('n5-listening-retry').addEventListener('click',n5ListenStart);document.getElementById('n5-listening-bn').disabled=true;document.getElementById('n5-listening-replay').disabled=true}
- function n5ListenStart(){if('speechSynthesis'in window)speechSynthesis.cancel();n5ListeningRun=[1,2,3,4].flatMap(m=>n5ListeningBank.filter(q=>q.m===m).slice(0,5)).concat(n5ListeningBank.filter(q=>q.m===5).slice(0,4));for(let i=n5ListeningRun.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[n5ListeningRun[i],n5ListeningRun[j]]=[n5ListeningRun[j],n5ListeningRun[i]]}n5ListeningIndex=0;n5ListeningScore=0;n5ListenRender()}
+ function n5ListenStart(){if('speechSynthesis'in window)speechSynthesis.cancel();n5ListeningRun=(()=>{const a=[1,2,3,4].flatMap(m=>n5ListeningBank.filter(q=>q.m===m).slice(0,5)).concat(n5ListeningBank.filter(q=>q.m===5).slice(0,4));for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;})();n5ListeningIndex=0;n5ListeningScore=0;n5ListenRender()}
  document.getElementById('n5-listening-start').addEventListener('click',n5ListenStart);
  document.getElementById('n5-listening-replay').addEventListener('click',()=>{const q=n5ListeningRun[n5ListeningIndex];if(q)n5ListenSpeak(q.audio+' '+q.q)});
  document.getElementById('n5-listening-bn').addEventListener('click',()=>{const q=n5ListeningRun[n5ListeningIndex];if(!q)return;n5ListeningShowBn=!n5ListeningShowBn;const box=document.getElementById('n5-listening-qbn');box.hidden=!n5ListeningShowBn;box.textContent='বাংলা অর্থ: '+q.bn+' প্রশ্ন: '+q.qbn;document.getElementById('n5-listening-bn').textContent=n5ListeningShowBn?'বাংলা অর্থ লুকাও':'বাংলা অর্থ দেখাও'});
@@ -4543,10 +4483,7 @@ const kanjiMasterData = [
 })();
 </script>
 
-</body>
-</html>
 
-<style id="sirjo-vocab-two-column-and-dark-animated-theme-v2">
 /* Low-glare animated background: deep navy/teal with a restrained violet undertone. */
 html,body{background:#03070f!important;color:#e2eaf5!important}
 body{background-image:none!important;animation:none!important;isolation:isolate!important}
@@ -4831,3 +4768,6 @@ html.mobile-performance #si-animated-backdrop,
 html.mobile-performance .color-fog-layer,
 html.mobile-performance .jp-parallax-wall { display: none !important; }
 </style>
+
+</body>
+</html>
