@@ -583,7 +583,9 @@ body>:not(.jp-parallax-wall){position:relative;z-index:2}
 #kana-write-modal.open{display:grid!important}
 #kana-write-modal .write-practice{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;width:min(920px,100%)!important;max-height:94vh!important;overflow:auto!important;position:relative!important;z-index:1!important}
 #kana-write-modal #write-stage,#kana-write-modal #write-canvas{pointer-events:auto!important;visibility:visible!important}
+</style>
 
+<style id="sirjo-smooth-random-400-fix">
 /* SiRJ0 Smooth Random 400: no water effects; fluid ambient palette + independently behaving glyphs. */
 body{
   background:linear-gradient(125deg,#07111f 0%,#101b31 22%,#102a30 43%,#211936 64%,#0b2030 82%,#07111f 100%)!important;
@@ -614,7 +616,9 @@ body{
 body:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}
 body.reduce-motion:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}
 @media(prefers-reduced-motion:reduce){body:after{animation:siVisibleAmbientFlow 24s ease-in-out infinite alternate!important}}
+</style>
 
+<style id="sirjo-lesson-picker-polish">
 /* Refined touch-friendly lesson selector */
 .lesson-picker{position:relative;border:1px solid rgba(111,231,218,.28);border-radius:18px;background:linear-gradient(145deg,rgba(12,31,52,.98),rgba(10,25,43,.96));color:var(--text);box-shadow:0 12px 30px rgba(0,0,0,.18);overflow:hidden;transition:border-color .2s,box-shadow .2s}
 .lesson-picker:focus-within,.lesson-picker.open{border-color:#55e0c0;box-shadow:0 0 0 3px rgba(85,224,192,.10),0 14px 34px rgba(0,0,0,.22)}
@@ -1145,6 +1149,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="home-profile-info"><div class="home-profile-kicker">YOUR PROFILE</div><div class="home-profile-name" id="home-profile-name">Username</div><div class="home-profile-meta" id="home-profile-meta">Profile saved on this device</div></div>
       <button class="small-btn home-profile-edit" id="home-edit-profile" type="button">Edit</button>
     </section>
+    <section class="home-glance-grid" aria-label="Study overview">
+      <article class="panel home-glance-card home-clock-card"><div class="home-glance-kicker">LOCAL TIME</div><div class="home-clock-value" id="home-local-time">--:--:--</div><div class="home-clock-date" id="home-local-date">Local date</div></article>
+      <article class="panel home-glance-card home-rule-card"><div class="home-glance-kicker">GRAMMAR LIBRARY</div><div class="home-rule-count"><strong id="home-grammar-count">172</strong><span>rules</span></div><div class="home-clock-date"><b id="home-n5-core-count">77</b> N5 Core · <span id="home-grammar-lessons">25</span> Lessons</div></article>
+    </section>
     <div class="stats">
       <div class="stat"><div class="stat-label">▦ Vocabulary</div><div class="stat-value" id="stat-words">—</div></div>
       <div class="stat"><div class="stat-label">✓ Accuracy</div><div class="stat-value" id="stat-accuracy">0%</div></div>
@@ -1161,13 +1169,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     </section>
     <section class="panel jlpt-mock-launch" aria-label="Full JLPT N5 mock examination · Vocabulary, Kanji, Grammar & Listening">
       <div class="jlpt-mock-launch-mark">N5</div>
-      <div class="grammar-guide-launch-copy"><div class="grammar-guide-launch-title">🎓 JLPT N5 Full Mock Exam · 180-point estimate</div><div class="grammar-guide-launch-desc">Vocabulary 10 min · Kanji 10 min · Grammar & Reading 40 min · Listening 30 min। Easy ও Hard mode, প্রতিবার random question, exam শেষে section-wise result এবং ভুল প্রশ্নের review।</div></div>
+      <div class="grammar-guide-launch-copy"><div class="grammar-guide-launch-title">🎓 JLPT N5 Full Mock Exam · 180-point estimate</div><div class="grammar-guide-launch-desc">Vocabulary 20 min · Grammar & Reading 40 min · Listening 30 min। JLPT N5 timing, Easy ও Hard mode, প্রতিবার random question, exam শেষে section-wise result এবং ভুল প্রশ্নের review।</div></div>
       <button class="primary" id="open-jlpt-mock" type="button">Mock Exam শুরু ↗</button>
     </section>
 
-    <section class="panel grammar-guide-launch" aria-label="Grammar rules guide">
-      <div class="grammar-guide-launch-copy"><div class="grammar-guide-launch-title">📚 Grammar Guide · Lesson 1–25</div><div class="grammar-guide-launch-desc">Minna no Nihongo Shokyu I-এর Lesson 1–25-এর grammar rule, সহজ বাংলা ব্যাখ্যা, sentence pattern, উদাহরণ, Romaji ও বাংলা অর্থ পড়ো। কিছু grammar JLPT N5-এর পরের স্তরেরও।</div></div>
-      <button class="primary" id="open-grammar-guide" type="button">Grammar শিখি ↗</button>
+    <section class="panel grammar-guide-launch" aria-label="Grammar rules library">
+      <div class="grammar-guide-launch-copy"><div class="grammar-guide-launch-title">📚 Grammar Rules Library · Lesson 1–25</div><div class="grammar-guide-launch-desc">শুধু Grammar Pattern ও Rules-এর পরিষ্কার তালিকা। Lesson 1–10 N5 Core, Lesson 11–25 Extended Rules। বিস্তারিত ব্যাখ্যা ও উদাহরণের পুরোনো guide-ও রাখা হয়েছে।</div></div>
+      <div class="grammar-home-actions"><button class="primary" id="open-grammar-rules" type="button">শুধু Grammar Rules ↗</button><button class="secondary" id="open-grammar-guide" type="button">Full Grammar Guide</button></div>
     </section>
 
     <section class="panel verb-forms-launch" aria-label="Japanese verb forms study guide">
@@ -1400,11 +1408,21 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="section-head"><div><div class="section-title">会話 Kaiwa & Listening Studio</div><div class="section-desc">Lesson 1–25-এর পূর্ণ Kaiwa, Listening Passage, speaking practice এবং Mixed Lesson practice</div></div><button class="small-btn" id="kaiwa-home" type="button">← Home</button></div>
       <div class="kaiwa-controls"><label>LESSON<select class="select" id="kaiwa-lesson"><option value="mixed">Mixed Lessons · Random 3 Lessons</option></select></label><label>CONTENT<select class="select" id="kaiwa-mode"><option value="dialogue">Big Kaiwa · Dialogue</option><option value="passage">Listening Passage</option><option value="sentence">Random Sentence</option></select></label><button class="primary" id="kaiwa-generate" type="button">⟳ নতুন Random Content তৈরি করো</button></div>
       <section class="n5-listening-test" id="n5-listening-test">
-        <div class="n5-listening-head"><div><div class="n5-listening-kicker">JLPT N5 · 聴解</div><h3>🎧 JLPT N5 Listening Test</h3><p>もんだい 1–5 · Mondai 1–4: ৫টি করে · Mondai 5: ৪টি · Japanese TTS সহ</p></div><span class="n5-listening-level">N5 ONLY</span></div>
-        <div class="n5-listening-info"><span>৫টি Mondai</span><span>মোট ২৪টি প্রশ্ন · Random order</span><span>ছবি দেখে উত্তর</span><span>বাংলা অর্থ দেখা যাবে</span></div>
+        <div class="n5-listening-head"><div><div class="n5-listening-kicker">JLPT N5 · 聴解</div><h3>🎧 JLPT / NAT N5 Listening Test</h3><p>৪ ধরনের প্রশ্ন · ২৪টি original practice item · ৩০ মিনিটের section timer · Japanese audio</p></div><span class="n5-listening-head-badges"><span class="n5-listening-level">N5 ONLY</span><span class="n5-listening-clock" id="n5-listening-clock">30:00</span></span></div>
+        <div class="n5-listening-info"><span>Task-based</span><span>Key Points</span><span>Visual Expressions</span><span>Quick Response</span><span>২৪ প্রশ্ন · ৩০ মিনিট</span></div>
         <div class="n5-listening-controls"><button type="button" class="primary" id="n5-listening-start">▶ Listening Test শুরু</button><button type="button" class="secondary" id="n5-listening-bn" disabled>বাংলা অর্থ দেখাও</button><button type="button" class="secondary" id="n5-listening-replay" disabled>↻ আবার শুনি</button></div>
-        <div id="n5-listening-stage" class="n5-listening-stage"><div class="n5-listening-welcome"><div class="n5-listening-big">聞</div><strong>Listening Test প্রস্তুত</strong><span>Start চাপলে Mondai 1–4 থেকে ৫টি করে এবং Mondai 5 থেকে ৪টি প্রশ্ন আসবে। মোট ২৪টি প্রশ্নের ক্রম Random হবে। কিছু প্রশ্নে ছবি দেখে উত্তর দিতে হবে।</span></div></div>
-        <div class="n5-listening-foot" id="n5-listening-status">Ready · 0 / 5</div>
+        <div id="n5-listening-stage" class="n5-listening-stage"><div class="n5-listening-welcome"><div class="n5-listening-big">聞</div><strong>Listening Test প্রস্তুত</strong><span>২৪টি নতুন practice question চারটি JLPT/NAT-style format-এ দেওয়া হবে। ছবিভিত্তিক প্রশ্নে চারটি illustrated option থাকবে। Audio শুনে উত্তর দাও; এটি official past paper নয়, exam-style practice।</span></div></div>
+        <div class="n5-listening-foot" id="n5-listening-status">Ready · 0 / 24</div>
+      </section>
+
+      <section class="kaiwa-pro panel" id="kaiwa-pro" aria-label="N5 practical Kaiwa speaking practice">
+        <div class="kaiwa-pro-head"><div><div class="n5-listening-kicker">N5 REAL-LIFE ROLEPLAY</div><h3>会話 · Practical Kaiwa</h3><p>বিভিন্ন বাস্তব পরিস্থিতির কঠিন N5 dialogue। তোমার line voice/text দিয়ে মিলিয়ে সঠিক হলে তবেই পরের speaker চলবে।</p></div><button type="button" class="small-btn kaiwa-random-btn" id="kaiwa-pro-random">⟳ Random Topic</button></div>
+        <div class="kaiwa-pro-toolbar"><div class="kaiwa-topic-badge" id="kaiwa-pro-topic">Choose a topic</div><label class="kaiwa-role-label">YOUR CHARACTER<select class="select" id="kaiwa-pro-role"><option value="A">Character A</option><option value="B">Character B</option></select></label><button type="button" class="primary" id="kaiwa-pro-start">▶ Start Role-play</button></div>
+        <div class="kaiwa-pro-context" id="kaiwa-pro-context">একটি নতুন topic নির্বাচন করে তোমার Character বেছে Start চাপো।</div>
+        <div class="kaiwa-pro-lines" id="kaiwa-pro-lines" aria-live="polite"></div>
+        <div class="kaiwa-active-card" id="kaiwa-pro-active" hidden><div class="kaiwa-active-top"><span id="kaiwa-pro-turn-label">YOUR TURN</span><span id="kaiwa-pro-progress">0 / 8</span></div><div class="kaiwa-active-jp" id="kaiwa-pro-target"></div><div class="kaiwa-active-romaji" id="kaiwa-pro-romaji"></div><div class="kaiwa-active-bn" id="kaiwa-pro-bn"></div><div class="kaiwa-live-transcript" id="kaiwa-pro-transcript">Microphone চালু করে Japanese line বলো।</div><div class="kaiwa-pro-feedback" id="kaiwa-pro-feedback"></div><div class="kaiwa-pro-actions"><button type="button" class="primary" id="kaiwa-pro-mic">🎙 Start Mic</button><button type="button" class="secondary" id="kaiwa-pro-replay">↻ Hear target</button><button type="button" class="secondary" id="kaiwa-pro-stop">■ Stop</button></div><details class="kaiwa-manual-fallback" id="kaiwa-manual-fallback"><summary>Microphone unavailable? Use text matching</summary><input class="login-input" id="kaiwa-pro-manual" type="text" placeholder="তোমার বলা Japanese এখানে লিখো…"><button class="secondary" type="button" id="kaiwa-pro-manual-check">Check my line</button></details>
+        </div>
+        <div class="kaiwa-pro-footnote">Live transcript + text similarity check · 86% match প্রয়োজন। এটি text-match estimate, accent/phonetic pronunciation-এর professional assessment নয়। Speech Recognition browser, permission, internet ও HTTPS/localhost support-এর ওপর নির্ভর করে।</div>
       </section>
 
       <div class="kaiwa-card" id="kaiwa-content" aria-live="polite"><div class="kaiwa-empty">Lesson নির্বাচন করে Random Content তৈরি করো।</div></div>
@@ -1514,6 +1532,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div id="jlpt-mock-review" class="jlpt-mock-review"></div>
       <div class="jlpt-mock-result-actions"><button type="button" class="secondary" id="jlpt-mock-result-home">← Dashboard</button><button type="button" class="primary" id="jlpt-mock-retry">↻ নতুন Random Mock Test</button></div>
     </section>
+  </section>
+
+  <section id="grammar-rules-only-screen" class="screen">
+    <div class="quiz-top"><button class="small-btn" id="grammar-rules-home" type="button">← Home</button><span class="quiz-chip">RULES ONLY · MINNA NO NIHONGO 1–25</span></div>
+    <section class="panel rules-only-hero"><div class="eyebrow">QUICK REFERENCE</div><h2>Grammar <span class="gradient-text">Rules</span></h2><p>কোনো ব্যাখ্যা বা উদাহরণ নয়—শুধু প্রতিটি Lesson-এর Rule name ও Japanese pattern।</p><div class="rules-only-summary"><span><b id="rules-only-total">172</b> Rules</span><span><b id="rules-only-core">77</b> N5 Core</span><span><b id="rules-only-lessons">25</b> Lessons</span></div></section>
+    <div class="rules-only-toolbar"><select class="select" id="rules-only-filter" aria-label="Filter lesson"><option value="all">All Lessons · 1–25</option><option value="core">N5 Core · 1–10</option><option value="extra">Extended · 11–25</option><option value="1">Lesson 1</option><option value="2">Lesson 2</option><option value="3">Lesson 3</option><option value="4">Lesson 4</option><option value="5">Lesson 5</option><option value="6">Lesson 6</option><option value="7">Lesson 7</option><option value="8">Lesson 8</option><option value="9">Lesson 9</option><option value="10">Lesson 10</option><option value="11">Lesson 11</option><option value="12">Lesson 12</option><option value="13">Lesson 13</option><option value="14">Lesson 14</option><option value="15">Lesson 15</option><option value="16">Lesson 16</option><option value="17">Lesson 17</option><option value="18">Lesson 18</option><option value="19">Lesson 19</option><option value="20">Lesson 20</option><option value="21">Lesson 21</option><option value="22">Lesson 22</option><option value="23">Lesson 23</option><option value="24">Lesson 24</option><option value="25">Lesson 25</option></select><input class="login-input" id="rules-only-search" type="search" placeholder="Rule বা pattern খুঁজুন…" aria-label="Search rules"></div>
+    <div id="rules-only-list" class="rules-only-list"></div>
+    <button class="secondary" id="grammar-rules-bottom-home" type="button">← Home-এ ফিরে যাও</button>
   </section>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -3082,7 +3108,7 @@ function speakEnglishLine(line){
   speechSynthesis.addEventListener?.('voiceschanged',finish,{once:true});const wait=setTimeout(finish,650);
  }catch(_){}
 }
-function speakWelcome(){if(welcomeTtsAttempted)return;const username=String(account?.name||$('profile-name')?.value||'Learner').trim()||'Learner';speakEnglishLine(`Let's learn Japanese N5, ${username}!`);welcomeTtsAttempted=!!(window.speechSynthesis&&(speechSynthesis.speaking||speechSynthesis.pending))}
+function speakWelcome(){welcomeTtsAttempted=true;/* Home opens silently; TTS remains available inside practice. */}
 function enterApp(){writeStore(authKey,true);showScreen('home-screen');renderStats();renderProfile();renderProgressGain();speakWelcome();}
 let avatarProcessing=false,avatarReadToken=0;
 async function makeCompactAvatar(file){
@@ -5192,19 +5218,60 @@ const kanjiMasterData = [
   ,{m:3,audio:'A: あした いっしょに としょかんへ いきませんか。 B: すみません。あしたは しごとが あります。',bn:'A: আগামীকাল একসঙ্গে লাইব্রেরিতে যাবেন? B: দুঃখিত, আগামীকাল আমার কাজ আছে।',q:'Bさんは あした どうしますか。',qbn:'B আগামীকাল কী করবেন?',options:[['としょかんへ いきます','লাইব্রেরিতে যাবেন'],['しごとを します','কাজ করবেন'],['えいがを みます','সিনেমা দেখবেন'],['うちで ねます','বাড়িতে ঘুমাবেন']],a:1,why:'「あしたは しごとが あります」— আগামীকাল কাজ আছে।'}
   ,{m:4,audio:'この かばんは あかいです。あの かばんは あおいです。',bn:'এই ব্যাগটি লাল। ওই ব্যাগটি নীল।',q:'あの かばんは なんの いろですか。',qbn:'ওই ব্যাগটির রং কী?',options:[['あか','লাল'],['あお','নীল'],['しろ','সাদা'],['くろ','কালো']],a:1,why:'「あの かばんは あおいです」— ওই ব্যাগটি নীল।'}
   ,{m:4,audio:'まいばん じゅうじに ねます。あさは ろくじに おきます。',bn:'প্রতি রাতে দশটায় ঘুমাই। সকালে ছয়টায় উঠি।',q:'このひとは なんじに おきますか。',qbn:'এই ব্যক্তি কয়টায় ওঠেন?',options:[['ごじ','পাঁচটা'],['ろくじ','ছয়টা'],['しちじ','সাতটা'],['はちじ','আটটা']],a:1,why:'「あさは ろくじに おきます」— সকালে ছয়টায় ওঠেন।'}
-  ,{m:5,audio:'えを みてください。おとこのひとは りんごを ひとつ かいます。',bn:'ছবিটি দেখো। পুরুষটি একটি আপেল কিনবেন।',q:'どの えが ただしいですか。',qbn:'কোন ছবিটি সঠিক?',picture:true,options:[['🍎','একটি আপেল'],['🍎 🍎','দুটি আপেল'],['🍌 🍌 🍌','তিনটি কলা'],['🍊 🍊','দুটি কমলা']],a:0,why:'অডিওতে 「りんごを ひとつ」— একটি আপেল বলা হয়েছে।'}
+  ,{m:5,audio:'おんなのひとは みせで みずを かいます。てんいんに なんと いいますか。',bn:'মহিলাটি দোকানে পানি কিনবেন। দোকানিকে কী বলবেন?',q:'このとき、なにと いいますか。',qbn:'এই পরিস্থিতিতে দোকানিকে কী বলা উচিত?',scenario:true,options:[['みずを ください。','পানি দিন।'],['みずを のみません。','আমি পানি পান করি না।'],['みずは あそこです。','পানি ওখানে।'],['みずを かいました。','আমি পানি কিনেছি।']],a:0,why:'দোকানে কোনো জিনিস চাইতে 「〜を ください」 বলা হয়。'}
 
+  ];
+ const n5VisualSvg=(kind,index,label)=>{
+  const escSvg=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  let art='';
+  if(kind==='clock'){
+   const hours=[2,3,4,5],h=hours[index],a=(h*30-90)*Math.PI/180,x=100+26*Math.cos(a),y=82+26*Math.sin(a);
+   art=`<circle cx="100" cy="82" r="47" fill="#102b3a" stroke="#62dfc7" stroke-width="5"/><circle cx="100" cy="82" r="3.5" fill="#e9fff9"/><path d="M100 82 L100 43" stroke="#e9fff9" stroke-width="5" stroke-linecap="round"/><path d="M100 82 L${x.toFixed(1)} ${y.toFixed(1)}" stroke="#77e9d3" stroke-width="7" stroke-linecap="round"/>`;
+   for(let n=1;n<=12;n++){const aa=(n*30-90)*Math.PI/180,tx=100+35*Math.cos(aa),ty=82+35*Math.sin(aa)+5;art+=`<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" font-size="10" fill="#d9edf2">${n}</text>`;}
+  } else {
+   const icons={
+    clothes:['👕','👟','👜','👒'],
+    party:['🥤','🍽️ 🥢','🎂','📕'],
+    fruit:['🍎','🍎 🍎','🍌 🍌 🍌','🍊 🍊']
+   };
+   const icon=(icons[kind]||icons.fruit)[index]||'✦';
+   art=`<text x="100" y="100" text-anchor="middle" dominant-baseline="middle" font-size="58">${icon}</text>`;
+  }
+  const clean=escSvg(label);
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="200" height="150" viewBox="0 0 200 150"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173b4c"/><stop offset="1" stop-color="#111b31"/></linearGradient></defs><rect width="200" height="150" rx="17" fill="url(#g)"/><path d="M12 118 Q100 100 188 118" fill="none" stroke="#55e0c0" stroke-opacity=".13" stroke-width="2"/>${art}<text x="100" y="137" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="700" fill="#8cebd8">${clean}</text></svg>`;
+  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+ };
+ const n5VisualGroups=[
+  {kind:'clock',labels:['２じ','３じ','４じ','５じ']},
+  {kind:'clothes',labels:['シャツ','くつ','かばん','ぼうし']},
+  {kind:'party',labels:['のみもの','おさらと はし','ケーキ','ほん']}
  ];
- let n5ListeningRun=[], n5ListeningIndex=0, n5ListeningScore=0, n5ListeningAnswered=false, n5ListeningShowBn=false;
+ const n5ScenarioSvg=()=>{
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300" viewBox="0 0 640 300"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#193f50"/><stop offset="1" stop-color="#111b31"/></linearGradient></defs><rect width="640" height="300" rx="24" fill="url(#bg)"/><rect x="0" y="218" width="640" height="82" fill="#0b1726"/><rect x="275" y="150" width="325" height="68" rx="12" fill="#8b6b4b"/><rect x="294" y="164" width="286" height="15" rx="7" fill="#d0a16c"/><rect x="490" y="78" width="56" height="94" rx="13" fill="#78d6e8" stroke="#d9faff" stroke-width="5"/><rect x="505" y="62" width="26" height="20" rx="5" fill="#e2f3f5"/><rect x="497" y="112" width="42" height="25" rx="5" fill="#ffffff" opacity=".82"/><text x="518" y="130" text-anchor="middle" font-size="13" font-family="sans-serif" font-weight="700" fill="#245063">WATER</text><circle cx="132" cy="92" r="35" fill="#e8bd91"/><path d="M92 89 Q100 35 153 55 Q181 69 166 103 Q147 76 92 89" fill="#24364b"/><path d="M74 218 Q75 139 132 137 Q190 138 194 218" fill="#67d7c4"/><path d="M166 164 Q220 146 260 177" fill="none" stroke="#e8bd91" stroke-width="17" stroke-linecap="round"/><path d="M250 177 Q273 176 286 168" fill="none" stroke="#e8bd91" stroke-width="14" stroke-linecap="round"/><text x="322" y="48" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="800" fill="#8fead9">おみせ · SHOP</text><text x="132" y="270" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#d9e8f0">Customer</text></svg>`;
+  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+ };
+ const n5VisualQuestions=n5ListeningBank.filter(q=>q.m===5);
+ n5VisualQuestions.forEach((q,qi)=>{
+  if(q.scenario){q.formatName='Verbal Expressions · Situation Picture';q.visualPrompt='পরিস্থিতির ছবিটি দেখে Japanese audio শুনে উপযুক্ত কথাটি বেছে নাও।';q.scenarioImage=n5ScenarioSvg();return;}
+  const group=n5VisualGroups[qi];if(!group)return;
+  q.formatName='Key Points · Illustrated Answer Choices';
+  q.visualPrompt='ছবিগুলো দেখে audio-তে বলা সঠিক উত্তরটি বেছে নাও।';
+  q.visualOptions=group.labels.map((label,i)=>n5VisualSvg(group.kind,i,label));
+ });
+ let n5ListeningRun=[], n5ListeningIndex=0, n5ListeningScore=0, n5ListeningAnswered=false, n5ListeningShowBn=false, n5ListeningRemaining=1800, n5ListeningTimer=null;
  const n5ListenStage=document.getElementById('n5-listening-stage');
  function n5ListenSpeak(text){if(!('speechSynthesis'in window)){document.getElementById('n5-listening-status').textContent='এই browser-এ Japanese TTS নেই।';return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ja-JP';u.rate=.86;const vs=speechSynthesis.getVoices();u.voice=vs.find(v=>/^ja(-|_)/i.test(v.lang))||null;speechSynthesis.speak(u)}
  function n5ListenRender(){const q=n5ListeningRun[n5ListeningIndex];if(!q)return; n5ListeningAnswered=false;n5ListeningShowBn=false;document.getElementById('n5-listening-bn').textContent='বাংলা অর্থ দেখাও';document.getElementById('n5-listening-bn').disabled=false;document.getElementById('n5-listening-replay').disabled=false;document.getElementById('n5-listening-status').textContent=`চলছে · ${n5ListeningIndex+1} / ${n5ListeningRun.length}`;
- n5ListenStage.innerHTML=`<div class="n5-listening-qtop"><span class="n5-listening-mondai">もんだい ${q.m}</span><span class="n5-listening-count">QUESTION ${n5ListeningIndex+1} / ${n5ListeningRun.length}</span></div><div class="n5-listening-prompt">${q.q}</div><div class="n5-listening-qbn" id="n5-listening-qbn" hidden>${q.qbn}</div><div class="${q.picture?'n5-listening-picture-options':'n5-listening-options'}">${q.options.map((o,i)=>`<button type="button" class="n5-listening-option" data-answer="${i}"><span class="n5-opt-letter">${'①②③④'[i]}</span>${q.picture?`<span class="n5-picture-art">${o[0]}</span><span class="n5-picture-label">${o[1]}</span>`:`<span class="n5-opt-text">${o[0]}<br><small>${o[1]}</small></span>`}</button>`).join('')}</div><div class="n5-listening-feedback" id="n5-listening-feedback">প্রথমে Japanese audio শুনো, তারপর সঠিক উত্তর বেছে নাও।</div><button type="button" class="primary n5-listening-next" id="n5-listening-next" hidden>${n5ListeningIndex===n5ListeningRun.length-1?'ফলাফল দেখো':'পরের প্রশ্ন →'}</button>`;
+ n5ListenStage.innerHTML=`<div class="n5-listening-qtop"><span class="n5-listening-mondai">${q.formatName||({1:'Task-based Comprehension',2:'Quick Response',3:'Key Points Comprehension',4:'Key Points Comprehension'}[q.m]||'Listening')}</span><span class="n5-listening-count">QUESTION ${n5ListeningIndex+1} / ${n5ListeningRun.length}</span></div><div class="n5-listening-prompt">${q.q}</div>${q.visualPrompt?`<div class="n5-visual-prompt">${q.visualPrompt}</div>`:''}${q.scenarioImage?`<div class="n5-scenario-visual"><img src="${q.scenarioImage}" alt="দোকানে পানি কেনার পরিস্থিতি"></div>`:''}<div class="n5-listening-qbn" id="n5-listening-qbn" hidden>${q.qbn}</div><div class="${q.visualOptions?'n5-listening-picture-options':'n5-listening-options'}">${q.options.map((o,i)=>`<button type="button" class="n5-listening-option" data-answer="${i}"><span class="n5-opt-letter">${'①②③④'[i]}</span>${q.visualOptions?`<img class="n5-picture-img" src="${q.visualOptions[i]}" alt="${o[1]}" loading="eager"><span class="n5-picture-label">${o[0]} · ${o[1]}</span>`:`<span class="n5-opt-text">${o[0]}<br><small>${o[1]}</small></span>`}</button>`).join('')}</div><div class="n5-listening-feedback" id="n5-listening-feedback">প্রথমে Japanese audio শুনো, তারপর সঠিক উত্তর বেছে নাও।</div><button type="button" class="primary n5-listening-next" id="n5-listening-next" hidden>${n5ListeningIndex===n5ListeningRun.length-1?'ফলাফল দেখো':'পরের প্রশ্ন →'}</button>`;
  n5ListenStage.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>n5ListenAnswer(Number(b.dataset.answer))));document.getElementById('n5-listening-next').addEventListener('click',n5ListenNext);n5ListenSpeak(q.audio+' '+q.q);
  }
  function n5ListenAnswer(a){if(n5ListeningAnswered)return;n5ListeningAnswered=true;const q=n5ListeningRun[n5ListeningIndex],ok=a===q.a;if(ok)n5ListeningScore++;n5ListenStage.querySelectorAll('[data-answer]').forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('correct');else if(i===a)b.classList.add('wrong')});document.getElementById('n5-listening-feedback').innerHTML=`${ok?'<strong>✓ সঠিক উত্তর!</strong>':'<strong>✕ সঠিক উত্তর: '+q.options[q.a][0]+' — '+q.options[q.a][1]+'</strong>'}<br>${q.why}`;document.getElementById('n5-listening-next').hidden=false;document.getElementById('n5-listening-status').textContent=`Score: ${n5ListeningScore} · ${n5ListeningIndex+1} / ${n5ListeningRun.length}`}
- function n5ListenNext(){if('speechSynthesis'in window)speechSynthesis.cancel();n5ListeningIndex++;if(n5ListeningIndex<n5ListeningRun.length){n5ListenRender();return}const pct=Math.round(n5ListeningScore/n5ListeningRun.length*100);n5ListenStage.innerHTML=`<div class="n5-listening-result"><div class="n5-listening-big">結果</div><strong>Listening Test সম্পন্ন!</strong><div class="n5-listening-result-score">${n5ListeningScore} / ${n5ListeningRun.length}</div><p>Accuracy: ${pct}% · ${pct>=80?'দারুণ! N5 Listening practice ভালো হয়েছে।':'আরও অনুশীলন করো। আবার নতুন Random Test দিতে পারো।'}</p><button type="button" class="primary" id="n5-listening-retry">↻ নতুন Random Test</button></div>`;document.getElementById('n5-listening-status').textContent=`সম্পন্ন · Final score ${n5ListeningScore}/${n5ListeningRun.length}`;document.getElementById('n5-listening-retry').addEventListener('click',n5ListenStart);document.getElementById('n5-listening-bn').disabled=true;document.getElementById('n5-listening-replay').disabled=true}
- function n5ListenStart(){if('speechSynthesis'in window)speechSynthesis.cancel();n5ListeningRun=(()=>{const a=[1,2,3,4].flatMap(m=>n5ListeningBank.filter(q=>q.m===m).slice(0,5)).concat(n5ListeningBank.filter(q=>q.m===5).slice(0,4));for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;})();n5ListeningIndex=0;n5ListeningScore=0;n5ListenRender()}
+ function n5ListenClockText(){const m=Math.floor(n5ListeningRemaining/60),sec=n5ListeningRemaining%60;return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0')}
+ function n5ListenStopClock(){if(n5ListeningTimer){clearInterval(n5ListeningTimer);n5ListeningTimer=null;}}
+ function n5ListenStartClock(){n5ListenStopClock();n5ListeningRemaining=1800;const el=document.getElementById('n5-listening-clock');if(el)el.textContent=n5ListenClockText();n5ListeningTimer=setInterval(()=>{n5ListeningRemaining=Math.max(0,n5ListeningRemaining-1);if(el)el.textContent=n5ListenClockText();if(n5ListeningRemaining<=0){n5ListenStopClock();n5ListenFinish(true);}},1000)}
+ function n5ListenFinish(timeUp=false){n5ListenStopClock();if('speechSynthesis'in window)speechSynthesis.cancel();const pct=n5ListeningRun.length?Math.round(n5ListeningScore/n5ListeningRun.length*100):0;n5ListenStage.innerHTML=`<div class="n5-listening-result"><div class="n5-listening-big">結果</div><strong>${timeUp?'সময় শেষ · Listening Test':'Listening Test সম্পন্ন!'}</strong><div class="n5-listening-result-score">${n5ListeningScore} / ${n5ListeningRun.length}</div><p>Accuracy: ${pct}% · ${timeUp?'৩০ মিনিটের সময় শেষ হয়েছে।':'পরীক্ষা সম্পন্ন হয়েছে।'} ${pct>=80?'দারুণ! N5 Listening practice ভালো হয়েছে।':'আরও অনুশীলন করো। আবার নতুন Random Test দিতে পারো।'}</p><button type="button" class="primary" id="n5-listening-retry">↻ নতুন Random Test</button></div>`;document.getElementById('n5-listening-status').textContent=`সম্পন্ন · Final score ${n5ListeningScore}/${n5ListeningRun.length}`;document.getElementById('n5-listening-retry').addEventListener('click',n5ListenStart);document.getElementById('n5-listening-bn').disabled=true;document.getElementById('n5-listening-replay').disabled=true}
+ function n5ListenNext(){if('speechSynthesis'in window)speechSynthesis.cancel();n5ListeningIndex++;if(n5ListeningIndex<n5ListeningRun.length){n5ListenRender();return}n5ListenFinish(false)}
+ function n5ListenStart(){if('speechSynthesis'in window)speechSynthesis.cancel();n5ListeningRun=(()=>{const a=[1,2,3,4].flatMap(m=>n5ListeningBank.filter(q=>q.m===m).slice(0,5)).concat(n5ListeningBank.filter(q=>q.m===5).slice(0,4));for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a.map(q=>{const pairs=q.options.map((o,i)=>({o,visual:q.visualOptions?.[i]||null,oldIndex:i}));const correct=pairs[q.a];for(let i=pairs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pairs[i],pairs[j]]=[pairs[j],pairs[i]];}q.options=pairs.map(x=>x.o);if(q.visualOptions)q.visualOptions=pairs.map(x=>x.visual);q.a=pairs.findIndex(x=>x.oldIndex===correct.oldIndex);return q;});})();n5ListeningIndex=0;n5ListeningScore=0;n5ListenStartClock();n5ListenRender()}
  document.getElementById('n5-listening-start').addEventListener('click',n5ListenStart);
  document.getElementById('n5-listening-replay').addEventListener('click',()=>{const q=n5ListeningRun[n5ListeningIndex];if(q)n5ListenSpeak(q.audio+' '+q.q)});
  document.getElementById('n5-listening-bn').addEventListener('click',()=>{const q=n5ListeningRun[n5ListeningIndex];if(!q)return;n5ListeningShowBn=!n5ListeningShowBn;const box=document.getElementById('n5-listening-qbn');box.hidden=!n5ListeningShowBn;box.textContent='বাংলা অর্থ: '+q.bn+' প্রশ্ন: '+q.qbn;document.getElementById('n5-listening-bn').textContent=n5ListeningShowBn?'বাংলা অর্থ লুকাও':'বাংলা অর্থ দেখাও'});
@@ -5547,8 +5614,8 @@ html.mobile-performance .jp-parallax-wall { display: none !important; }
  const letters=['①','②','③','④'];
  let difficulty='easy', exam=null, timer=null;
  const sectionMeta=[
-  {key:'vocab-kanji',title:'Vocabulary & Kanji · 文字・語彙',jp:'言語知識（文字・語彙）',minutes:25},
-  {key:'grammar-reading',title:'Grammar & Reading · 文法・読解',jp:'言語知識（文法）・読解',minutes:50},
+  {key:'vocab-kanji',title:'Vocabulary & Kanji · 文字・語彙',jp:'言語知識（文字・語彙）',minutes:20},
+  {key:'grammar-reading',title:'Grammar & Reading · 文法・読解',jp:'言語知識（文法）・読解',minutes:40},
   {key:'listening',title:'Listening · 聴解',jp:'聴解',minutes:30}
  ];
  function makeQuestion(category,prompt,answer,candidates,extra={}){
@@ -5639,10 +5706,12 @@ html.mobile-performance .jp-parallax-wall { display: none !important; }
  }
  function buildListeningQuestions(){
   const bank=Array.isArray(window.__sirjoN5ListeningBank)?window.__sirjoN5ListeningBank:[];
+  const formatFor=m=>m===1?'Listening · Task-based Comprehension':m===2?'Listening · Quick Response':m===5?'Listening · Verbal Expressions / Picture':'Listening · Key Points Comprehension';
   return shuffle(bank.filter(q=>q&&q.audio&&Array.isArray(q.options)&&q.options.length>=4).map(q=>{
-   const choices=q.options.map(o=>Array.isArray(o)?String(o[0]):String(o));
-   const answer=choices[Number(q.a)]||choices[0];
-   return {category:`Listening · Mondai ${q.m}`,prompt:q.q||'話を聞いて、質問に答えてください。',audio:q.audio,transcript:q.audio,answer,options:shuffle(choices),explain:q.why||'',bn:q.bn||''};
+   const pairs=q.options.map((o,i)=>({text:Array.isArray(o)?String(o[0]):String(o),visual:q.visualOptions?.[i]||null,oldIndex:i}));
+   const correct=pairs[Number(q.a)]||pairs[0];
+   const mixed=shuffle(pairs);
+   return {category:q.formatName||formatFor(q.m),prompt:q.q||'話を聞いて、質問に答えてください。',audio:q.audio,transcript:q.audio,answer:correct.text,options:mixed.map(x=>x.text),visualOptions:q.visualOptions?mixed.map(x=>x.visual):null,visualPrompt:q.visualPrompt||'',scenarioImage:q.scenarioImage||null,explain:q.why||'',bn:q.bn||''};
   }));
  }
  function buildExam(level){
@@ -5692,7 +5761,11 @@ html.mobile-performance .jp-parallax-wall { display: none !important; }
   const chosen=s.answers[i];
   const passage=q.passage?`<div class="jlpt-mock-passage"><div class="jlpt-mock-passage-label">READ THE TEXT</div>${esc(q.passage)}</div>`:'';
   const audio=q.audio?`<div class="jlpt-mock-audio-row"><button class="jlpt-mock-audio-button" type="button" id="jlpt-mock-play-audio">▶ 音声を聞く</button><p>Japanese audio শুনে উত্তর নির্বাচন করো। প্রয়োজনে আবার শুনতে পারবে।</p></div>`:'';
-  $('jlpt-mock-question').innerHTML=`<div class="jlpt-mock-question-head"><span class="jlpt-mock-kind">${esc(q.category||'Question')}</span><span class="jlpt-mock-question-number">問 ${i+1}</span></div>${passage}${audio}<div class="jlpt-mock-prompt">${esc(q.prompt||'')}</div><div class="jlpt-mock-options">${q.options.map((o,n)=>`<button type="button" class="jlpt-mock-option ${chosen===n?'selected':''}" data-mock-answer="${n}" aria-pressed="${chosen===n}"><span class="option-index">${letters[n]||n+1}</span><span class="jlpt-mock-option-text">${esc(o)}</span></button>`).join('')}</div>`;
+  const visualPrompt=q.visualPrompt?`<div class="jlpt-mock-visual-prompt">${esc(q.visualPrompt)}</div>`:'';
+  const scenarioVisual=q.scenarioImage?`<div class="jlpt-mock-scenario-image-wrap"><img class="jlpt-mock-scenario-image" src="${esc(q.scenarioImage)}" alt="Listening situation illustration"></div>`:'';
+  const visualMode=Array.isArray(q.visualOptions)&&q.visualOptions.length===q.options.length&&q.visualOptions.every(Boolean);
+  const optionMarkup=q.options.map((o,n)=>`<button type="button" class="jlpt-mock-option ${visualMode?'jlpt-mock-option-visual':''} ${chosen===n?'selected':''}" data-mock-answer="${n}" aria-pressed="${chosen===n}"><span class="option-index">${letters[n]||n+1}</span>${visualMode?`<img class="jlpt-mock-option-image" src="${esc(q.visualOptions[n])}" alt="${esc(o)}" loading="eager">`:''}<span class="jlpt-mock-option-text">${esc(o)}</span></button>`).join('');
+  $('jlpt-mock-question').innerHTML=`<div class="jlpt-mock-question-head"><span class="jlpt-mock-kind">${esc(q.category||'Question')}</span><span class="jlpt-mock-question-number">問 ${i+1}</span></div>${passage}${audio}<div class="jlpt-mock-prompt">${esc(q.prompt||'')}</div>${visualPrompt}${scenarioVisual}<div class="jlpt-mock-options ${visualMode?'jlpt-mock-options-visual':''}">${optionMarkup}</div>`;
   $('jlpt-mock-question').querySelectorAll('[data-mock-answer]').forEach(b=>b.addEventListener('click',()=>{
    const index=Number(b.dataset.mockAnswer);s.answers[i]=index;
    $('jlpt-mock-question').querySelectorAll('[data-mock-answer]').forEach(x=>{const on=Number(x.dataset.mockAnswer)===index;x.classList.toggle('selected',on);x.setAttribute('aria-pressed',String(on))});
@@ -5828,6 +5901,295 @@ html.mobile-performance .jp-parallax-wall { display: none !important; }
 #jlpt-mock-screen .jlpt-mock-time-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:720px){#jlpt-mock-screen .jlpt-mock-time-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#jlpt-mock-screen .jlpt-mock-time-grid>div:last-child{grid-column:1/-1}}
 </style>
+
+
+<style id="sirjo-n5-enhancement-styles">
+.n5-scenario-visual{display:flex;justify-content:center;margin:10px auto 16px;padding:10px;border:1px solid #55e0c044;border-radius:16px;background:#0b1424;max-width:640px}.n5-scenario-visual img{display:block;width:100%;max-height:250px;object-fit:contain;border-radius:10px}.jlpt-mock-scenario-image-wrap{display:flex;justify-content:center;margin:12px 0 18px;padding:10px;border:1px solid #55e0c044;border-radius:15px;background:#0b1424}.jlpt-mock-scenario-image{display:block;width:min(100%,640px);max-height:250px;object-fit:contain;border-radius:10px}.n5-listening-head-badges{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}.n5-listening-clock{display:inline-flex;align-items:center;justify-content:center;min-width:60px;padding:7px 9px;border:1px solid #d7a84d55;border-radius:10px;background:#d8a94b13;color:#ffe0a0;font-size:12px;font-weight:900;font-variant-numeric:tabular-nums}
+
+/* Home polish: preserve the existing dark/teal visual identity while reducing visual clutter. */
+.home-glance-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 14px}
+.home-glance-card{padding:16px 18px;min-width:0;background:linear-gradient(145deg,#122337ed,#0e1728f2);}
+.home-glance-kicker{font-size:9px;font-weight:900;letter-spacing:1.6px;color:#74ead4}
+.home-clock-value{font-size:clamp(24px,4vw,34px);font-weight:950;letter-spacing:-.7px;font-variant-numeric:tabular-nums;margin:7px 0 3px;color:#f2f8ff}
+.home-clock-date{font-size:10px;color:#9eafc5;line-height:1.6}
+.home-rule-count{display:flex;align-items:baseline;gap:7px;margin:5px 0 1px}.home-rule-count strong{font-size:34px;font-weight:950;letter-spacing:-1px;color:#89edd9}.home-rule-count span{font-size:12px;color:#b4c4d8}
+.home-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0 18px}
+.home-feature-grid>.panel{min-width:0;margin:0!important;display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:16px 17px;border-radius:18px;min-height:154px}
+.home-feature-grid .grammar-guide-launch-copy,.home-feature-grid .vocabulary-reading-copy,.home-feature-grid .kanji-launch-copy{width:100%;min-width:0}
+.home-feature-grid .grammar-guide-launch-title{font-size:14px;line-height:1.45}
+.home-feature-grid .grammar-guide-launch-desc{font-size:10px;line-height:1.65;margin-top:5px;color:#9fb1c8}
+.home-feature-grid .primary,.home-feature-grid .secondary{width:100%;min-height:42px;margin:0;font-size:11px;padding:9px 12px}
+.home-feature-grid .jlpt-mock-launch{grid-column:1/-1;display:grid;grid-template-columns:54px minmax(0,1fr) minmax(170px,.35fr);align-items:center;gap:13px;min-height:120px}
+.home-feature-grid .jlpt-mock-launch .primary{width:100%}
+.home-feature-grid .grammar-home-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;width:100%;margin-top:auto}
+.home-feature-grid .grammar-home-actions .secondary{margin:0}
+.home-feature-grid .grammar-guide-launch{justify-content:space-between}
+.home-practice-details{margin:14px 0 20px;border:1px solid #2b3b54;border-radius:18px;background:#101a2bca;overflow:hidden}
+.home-practice-details>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;list-style:none;font-size:13px;font-weight:850;color:#e9f4ff}
+.home-practice-details>summary::-webkit-details-marker{display:none}.home-practice-details>summary:after{content:'＋';color:#76ead5;font-size:18px}.home-practice-details[open]>summary:after{content:'−'}
+.home-practice-details>summary small{color:#91a5bf;font-size:10px;font-weight:500;text-align:right}.home-practice-details>.layout{margin:0;padding:0 12px 12px}
+/* Grammar rules-only page */
+.rules-only-hero{padding:22px;margin-bottom:14px}.rules-only-hero h2{font-size:clamp(25px,5vw,38px);margin:9px 0}.rules-only-hero p{color:#a8b9cd;font-size:12px;line-height:1.7;margin:0}
+.rules-only-summary{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.rules-only-summary span{padding:7px 10px;border:1px solid #55e0c033;background:#55e0c00b;border-radius:10px;color:#aebfd0;font-size:10px}.rules-only-summary b{color:#85ebd6;font-size:14px}
+.rules-only-toolbar{display:grid;grid-template-columns:1fr 1.4fr;gap:9px;margin:14px 0}.rules-only-toolbar input{min-height:48px}
+.rules-only-list{display:grid;gap:12px;margin:12px 0}.rules-only-lesson{padding:15px 16px}.rules-only-lesson-head{display:grid;grid-template-columns:38px minmax(0,1fr) auto auto;align-items:center;gap:9px;margin-bottom:11px}.rules-only-lesson-no{width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:#55e0c018;color:#80e9d4;font-weight:900;font-size:11px}.rules-only-lesson-head>strong{font-size:12px;line-height:1.5}.rules-only-tag{font-size:8px;font-weight:900;letter-spacing:.8px;padding:5px 7px;border-radius:99px;white-space:nowrap}.rules-only-tag.core{color:#7ce8cd;background:#55e0c014;border:1px solid #55e0c034}.rules-only-tag.extra{color:#b6aaff;background:#8d83ff12;border:1px solid #8d83ff34}.rules-only-number{font-size:9px;color:#8ea2bb;white-space:nowrap}
+.rules-only-patterns{display:grid;gap:7px}.rules-only-rule{display:grid;grid-template-columns:27px minmax(0,1fr);gap:10px;align-items:start;padding:10px 11px;border:1px solid #ffffff0c;border-radius:11px;background:#0a1423a8}.rules-only-index{font-size:10px;font-weight:900;color:#70dfcd;padding-top:2px}.rules-only-rule-content{min-width:0}.rules-only-rule-content strong{display:block;font-size:11px;color:#dce9f8;line-height:1.55}.rules-only-rule-content code{display:block;white-space:normal;overflow-wrap:anywhere;margin-top:4px;color:#85ead6;font-family:'Noto Sans JP','Noto Sans Bengali',sans-serif;font-size:12px;line-height:1.7}.rules-only-empty{padding:22px;text-align:center;color:#aebed0;font-size:12px}
+/* Illustrated Listening answer choices */
+.n5-visual-prompt,.jlpt-mock-visual-prompt{margin:5px 0 12px;color:#7ce8d4;font-size:11px;font-weight:750}
+.n5-listening-picture-options{grid-template-columns:repeat(2,minmax(0,1fr))}.n5-listening-picture-options .n5-listening-option{position:relative;min-height:145px;gap:7px;padding:10px;align-items:center;justify-content:flex-start}.n5-picture-img{display:block;width:min(100%,200px);height:112px;object-fit:contain;border-radius:11px;background:#102030}.n5-listening-picture-options .n5-picture-label{font-size:10px;line-height:1.5;color:#bdd0df}
+.jlpt-mock-options-visual{grid-template-columns:repeat(2,minmax(0,1fr))}.jlpt-mock-option-visual{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);align-items:start}.jlpt-mock-option-image{grid-column:2;width:100%;max-width:210px;aspect-ratio:4/3;object-fit:contain;border-radius:10px;background:#102031}.jlpt-mock-option-visual .jlpt-mock-option-text{grid-column:2;font-weight:750;color:#bfeee4}
+/* Kaiwa: compact topic picker and prominent random action beside the title. */
+.kaiwa-pro{margin:18px 0 6px;padding:clamp(15px,3vw,23px);border:1px solid #55e0c03b;background:radial-gradient(ellipse at 5% 0%,#55e0c014,transparent 50%),linear-gradient(145deg,#111e31,#0b1424)}
+.kaiwa-pro-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px}.kaiwa-pro-head h3{font-size:clamp(19px,3vw,25px);margin:5px 0}.kaiwa-pro-head p{font-size:11px;line-height:1.7;color:#a0b4c8;margin:0;max-width:560px}.kaiwa-random-btn{flex:0 0 auto;border-color:#55e0c066;color:#83ead7;min-height:43px}
+.kaiwa-pro-toolbar{display:grid;grid-template-columns:minmax(0,1fr) 160px 160px;gap:9px;align-items:end;margin:14px 0}.kaiwa-topic-badge{min-width:0;padding:12px 13px;border:1px solid #55e0c035;border-radius:12px;background:#55e0c010;color:#84ead6;font-size:12px;font-weight:850;min-height:48px;display:flex;align-items:center}.kaiwa-role-label{display:grid;gap:6px;color:#a9bbd0;font-size:9px;font-weight:850;letter-spacing:.8px}.kaiwa-role-label .select{padding:11px 32px 11px 10px;min-height:48px;font-size:11px}.kaiwa-pro-toolbar .primary{margin:0;min-height:48px;font-size:11px}
+.kaiwa-pro-context{font-size:11px;color:#b3c5d7;line-height:1.7;padding:10px 12px;background:#ffffff05;border:1px solid #ffffff0c;border-radius:11px;margin-bottom:12px}.kaiwa-pro-lines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}.kaiwa-pro-line{padding:11px 12px;border:1px solid #ffffff10;border-radius:12px;background:#0a1423a8;min-width:0;transition:border-color .2s,background .2s}.kaiwa-pro-line.active{border-color:#6de4cb;background:#55e0c012;box-shadow:0 0 0 2px #55e0c010}.kaiwa-pro-line.speaking{border-color:#8d83ff88;background:#8d83ff10}.kaiwa-pro-line.completed{opacity:.68}.kaiwa-line-speaker{display:inline-block;font-size:8px;font-weight:900;letter-spacing:1px;color:#75e6d2;margin-bottom:6px}.kaiwa-pro-line.partner-role .kaiwa-line-speaker{color:#b8aaff}.kaiwa-line-jp{font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:800;line-height:1.8;color:#edf7ff;overflow-wrap:anywhere}.kaiwa-line-romaji{font-size:9px;color:#8fa8bf;margin-top:4px;line-height:1.6}.kaiwa-line-bn{font-size:10px;color:#b8c8d7;margin-top:4px;line-height:1.6}
+.kaiwa-active-card{padding:15px;border:1px solid #55e0c055;border-radius:15px;background:linear-gradient(145deg,#102437,#0b1729);margin-top:12px}.kaiwa-active-top{display:flex;justify-content:space-between;gap:10px;color:#73e7d2;font-size:9px;font-weight:900;letter-spacing:1px}.kaiwa-active-jp{font-family:'Noto Sans JP',sans-serif;font-size:clamp(22px,4vw,31px);font-weight:850;line-height:1.7;margin:13px 0 3px;color:#f2f9ff;overflow-wrap:anywhere}.kaiwa-active-romaji{font-size:11px;color:#8de8d6;line-height:1.6}.kaiwa-active-bn{font-size:12px;color:#c4d2e0;line-height:1.7;margin-top:5px}.kaiwa-live-transcript{margin-top:13px;min-height:43px;padding:11px 12px;border:1px solid #ffffff13;border-radius:10px;background:#07101d;color:#d6e8f4;font-size:12px;line-height:1.6;overflow-wrap:anywhere}.kaiwa-pro-feedback{font-size:11px;color:#b4c6d8;min-height:22px;margin:9px 1px;line-height:1.6}.kaiwa-pro-feedback.retry{color:#ffb9a8}.kaiwa-pro-feedback.accepted{color:#7ce7ae}.kaiwa-pro-actions{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px}.kaiwa-pro-actions button{margin:0;min-height:44px;font-size:11px}.kaiwa-manual-fallback{margin-top:11px;color:#9db1c6;font-size:10px}.kaiwa-manual-fallback summary{cursor:pointer;padding:7px 0}.kaiwa-manual-fallback input{margin:7px 0;min-height:42px}.kaiwa-manual-fallback button{margin:0}.kaiwa-pro-footnote{font-size:9px;color:#8196ae;line-height:1.7;margin-top:13px;border-top:1px solid #ffffff0c;padding-top:10px}
+@media(max-width:700px){.home-feature-grid{gap:9px}.home-feature-grid>.panel{padding:13px}.home-feature-grid .jlpt-mock-launch{grid-template-columns:45px minmax(0,1fr)}.home-feature-grid .jlpt-mock-launch .primary{grid-column:1/-1}.kaiwa-pro-toolbar{grid-template-columns:1fr 1fr}.kaiwa-topic-badge{grid-column:1/-1}.kaiwa-pro-toolbar .primary{grid-column:1/-1}.kaiwa-pro-lines{grid-template-columns:1fr}}
+@media(max-width:520px){.home-glance-grid{gap:8px}.home-glance-card{padding:13px}.home-clock-value{font-size:23px}.home-clock-date{font-size:9px}.home-rule-count strong{font-size:29px}.home-feature-grid{grid-template-columns:1fr}.home-feature-grid .jlpt-mock-launch{grid-column:auto}.home-practice-details>summary{align-items:flex-start;flex-direction:column}.home-practice-details>summary small{text-align:left}.rules-only-toolbar{grid-template-columns:1fr}.rules-only-lesson-head{grid-template-columns:35px minmax(0,1fr) auto}.rules-only-number{grid-column:2/-1}.n5-listening-picture-options,.jlpt-mock-options-visual{grid-template-columns:1fr 1fr}.n5-listening-picture-options .n5-listening-option{min-height:130px}.n5-picture-img{height:95px}.kaiwa-pro-head{align-items:stretch;flex-direction:column}.kaiwa-random-btn{width:100%}.kaiwa-pro-toolbar{grid-template-columns:1fr 1fr}.kaiwa-pro-actions{grid-template-columns:1fr 1fr}.kaiwa-pro-actions #kaiwa-pro-mic{grid-column:1/-1}}
+@media(max-width:380px){.n5-listening-picture-options,.jlpt-mock-options-visual{grid-template-columns:1fr}.rules-only-lesson-head{grid-template-columns:32px minmax(0,1fr)}.rules-only-tag{grid-column:2;justify-self:start}.rules-only-number{grid-column:2}}
+</style>
+
+<script id="sirjo-n5-enhancement-layer">
+(function(){
+ 'use strict';
+ const $id=id=>document.getElementById(id);
+ const safe=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ // Home overview: local device clock, grammar counts, compact launcher grid and collapsed advanced controls.
+ function initHomePolish(){
+  const data=typeof grammarGuideData!=='undefined'?grammarGuideData:[];
+  const total=data.reduce((n,l)=>n+(Array.isArray(l.rules)?l.rules.length:0),0);
+  const core=data.filter(l=>Number(l.lesson)<=10).reduce((n,l)=>n+(Array.isArray(l.rules)?l.rules.length:0),0);
+  if($id('home-grammar-count'))$id('home-grammar-count').textContent=total;
+  if($id('home-n5-core-count'))$id('home-n5-core-count').textContent=core;
+  if($id('home-grammar-lessons'))$id('home-grammar-lessons').textContent=data.length;
+  const updateClock=()=>{
+   const now=new Date();
+   if($id('home-local-time'))$id('home-local-time').textContent=new Intl.DateTimeFormat(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
+   if($id('home-local-date'))$id('home-local-date').textContent=new Intl.DateTimeFormat(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(now);
+  };
+  updateClock();if(!window.__sirjoHomeClock)window.__sirjoHomeClock=setInterval(updateClock,1000);
+  const home=$id('home-screen');
+  if(home&&!home.querySelector('.home-feature-grid')){
+   const layout=home.querySelector('.layout');
+   const cards=['.jlpt-mock-launch','.grammar-guide-launch','.verb-forms-launch','.vocabulary-reading-launch','.kanji-launch','.kaiwa-launch'].map(sel=>home.querySelector(sel)).filter(Boolean);
+   if(layout&&cards.length){const grid=document.createElement('div');grid.className='home-feature-grid';layout.parentNode.insertBefore(grid,layout);cards.forEach(card=>grid.appendChild(card));}
+   if(layout){const details=document.createElement('details');details.className='home-practice-details';const summary=document.createElement('summary');summary.innerHTML='<span>⚙️ Practice options & progress</span><small>Vocabulary · Kana · Grammar Test · Lesson progress</small>';layout.parentNode.insertBefore(details,layout);details.append(summary,layout);}
+  }
+  const grammarCard=home?.querySelector('.grammar-guide-launch');if(grammarCard){const desc=grammarCard.querySelector('.grammar-guide-launch-desc');if(desc)desc.textContent='172টি Rule · 25 Lessons · N5 Core 77 Rules। চাইলে শুধু Pattern দেখো, অথবা Full Guide-এ ব্যাখ্যা ও উদাহরণ পড়ো।';}
+ }
+ // Rules-only reference: title + pattern only. No descriptions, sample sentences or examples are rendered.
+ function renderRulesOnly(){
+  const data=typeof grammarGuideData!=='undefined'?grammarGuideData:[];
+  const filter=$id('rules-only-filter')?.value||'all';
+  const query=String($id('rules-only-search')?.value||'').trim().toLocaleLowerCase();
+  const selected=data.filter(l=>filter==='all'||(filter==='core'&&Number(l.lesson)<=10)||(filter==='extra'&&Number(l.lesson)>10)||String(l.lesson)===filter);
+  const rows=selected.map(lesson=>({...lesson,rules:(lesson.rules||[]).filter(r=>!query||String(r[0]||'').toLocaleLowerCase().includes(query)||String(r[1]||'').toLocaleLowerCase().includes(query))})).filter(l=>l.rules.length);
+  const total=data.reduce((n,l)=>n+(l.rules||[]).length,0),core=data.filter(l=>Number(l.lesson)<=10).reduce((n,l)=>n+(l.rules||[]).length,0);
+  if($id('rules-only-total'))$id('rules-only-total').textContent=total;
+  if($id('rules-only-core'))$id('rules-only-core').textContent=core;
+  if($id('rules-only-lessons'))$id('rules-only-lessons').textContent=data.length;
+  const root=$id('rules-only-list');if(!root)return;
+  root.innerHTML=rows.length?rows.map(l=>`<section class="panel rules-only-lesson"><div class="rules-only-lesson-head"><span class="rules-only-lesson-no">L${l.lesson}</span><strong>Lesson ${l.lesson} · ${safe(l.title)}</strong><span class="rules-only-tag ${Number(l.lesson)<=10?'core':'extra'}">${Number(l.lesson)<=10?'N5 CORE':'EXTENDED'}</span><span class="rules-only-number">${l.rules.length} rules</span></div><div class="rules-only-patterns">${l.rules.map((r,i)=>`<article class="rules-only-rule"><span class="rules-only-index">${String(i+1).padStart(2,'0')}</span><div class="rules-only-rule-content"><strong>${safe(r[0])}</strong><code>${safe(r[1])}</code></div></article>`).join('')}</div></section>`).join(''):'<div class="panel rules-only-empty">এই search-এ কোনো Rule পাওয়া যায়নি।</div>';
+ }
+ function openRules(){renderRulesOnly();if(typeof showScreen==='function')showScreen('grammar-rules-only-screen');else{$id('grammar-rules-only-screen')?.classList.add('active');}}
+ $id('open-grammar-rules')?.addEventListener('click',openRules);
+ $id('grammar-rules-home')?.addEventListener('click',()=>typeof goHome==='function'?goHome():showScreen('home-screen'));
+ $id('grammar-rules-bottom-home')?.addEventListener('click',()=>typeof goHome==='function'?goHome():showScreen('home-screen'));
+ $id('rules-only-filter')?.addEventListener('change',renderRulesOnly);
+ $id('rules-only-search')?.addEventListener('input',renderRulesOnly);
+ // Keep the full guide button unchanged; the rules-only button is a separate destination.
+ initHomePolish();
+
+ const kaiwaTopics=[
+  {topic:'Train Station · 駅',context:'স্টেশনে টিকিট, ট্রেনের সময় ও গন্তব্য জিজ্ঞেস করা',lines:[
+   ['A','すみません、とうきょうえきへ いきたいです。','Sumimasen, Toukyou eki e ikitai desu.','মাফ করবেন, টোকিও স্টেশনে যেতে চাই।'],
+   ['B','この でんしゃで いけますよ。','Kono densha de ikemasu yo.','এই ট্রেনে যেতে পারবেন।'],
+   ['A','なんじに でますか。','Nanji ni demasu ka.','কয়টায় ছাড়বে?'],
+   ['B','９じ１５ふんに でます。','Ku-ji juugo-fun ni demasu.','৯টা ১৫ মিনিটে ছাড়বে।'],
+   ['A','きっぷは どこで かいますか。','Kippu wa doko de kaimasu ka.','টিকিট কোথায় কিনব?'],
+   ['B','あの きっぷうりばで かってください。','Ano kippu-uriba de katte kudasai.','ওই টিকিট কাউন্টারে কিনুন।'],
+   ['A','ありがとうございます。なんばんせんですか。','Arigatou gozaimasu. Nan-bansen desu ka.','ধন্যবাদ। কত নম্বর প্ল্যাটফর্ম?'],
+   ['B','３ばんせんです。','San-bansen desu.','৩ নম্বর প্ল্যাটফর্ম।']
+  ]},
+  {topic:'Supermarket · スーパー',context:'দোকানে প্রয়োজনীয় জিনিস, পরিমাণ ও দাম জানতে চাওয়া',lines:[
+   ['A','すみません、たまごは どこに ありますか。','Sumimasen, tamago wa doko ni arimasu ka.','মাফ করবেন, ডিম কোথায় আছে?'],
+   ['B','やさいの となりに あります。','Yasai no tonari ni arimasu.','সবজির পাশে আছে।'],
+   ['A','この たまごは いくらですか。','Kono tamago wa ikura desu ka.','এই ডিমের দাম কত?'],
+   ['B','ひとパック ２５０えんです。','Hitopakku nihyaku-gojuu en desu.','এক প্যাকেট ২৫০ ইয়েন।'],
+   ['A','りんごも ふたつ ください。','Ringo mo futatsu kudasai.','দুটি আপেলও দিন।'],
+   ['B','はい。ほかに なにか いりますか。','Hai. Hoka ni nanika irimasu ka.','জি। আর কিছু লাগবে?'],
+   ['A','いいえ、これだけです。','Iie, kore dake desu.','না, এইটুকুই।'],
+   ['B','ぜんぶで ５００えんです。','Zenbu de gohyaku en desu.','সব মিলিয়ে ৫০০ ইয়েন।']
+  ]},
+  {topic:'Restaurant · レストラン',context:'রেস্টুরেন্টে খাবার অর্ডার, পানীয় ও বিল',lines:[
+   ['A','すみません、メニューを おねがいします。','Sumimasen, menyuu o onegaishimasu.','মাফ করবেন, মেনুটি দিন।'],
+   ['B','はい、どうぞ。','Hai, douzo.','জি, নিন।'],
+   ['A','この カレーは からいですか。','Kono karee wa karai desu ka.','এই কারি কি ঝাল?'],
+   ['B','いいえ、あまり からくないです。','Iie, amari karakunai desu.','না, খুব একটা ঝাল নয়।'],
+   ['A','じゃ、カレーと みずを ください。','Ja, karee to mizu o kudasai.','তাহলে কারি ও পানি দিন।'],
+   ['B','はい、わかりました。','Hai, wakarimashita.','জি, বুঝেছি।'],
+   ['A','すみません、おかいけいを おねがいします。','Sumimasen, okaikei o onegaishimasu.','মাফ করবেন, বিল দিন।'],
+   ['B','ぜんぶで ８００えんです。','Zenbu de happyaku en desu.','সব মিলিয়ে ৮০০ ইয়েন।']
+  ]},
+  {topic:'Classroom · 教室',context:'ক্লাস, হোমওয়ার্ক, পরীক্ষার সময় ও বই ধার নেওয়া',lines:[
+   ['A','あしたの テストは なんじからですか。','Ashita no tesuto wa nanji kara desu ka.','আগামীকালের পরীক্ষা কয়টা থেকে?'],
+   ['B','あさ ９じからです。','Asa ku-ji kara desu.','সকাল ৯টা থেকে।'],
+   ['A','どの ほんを べんきょうしますか。','Dono hon o benkyou shimasu ka.','কোন বইটি পড়ব?'],
+   ['B','この ほんの １かと ２かを べんきょうしてください。','Kono hon no ikka to ni-ka o benkyou shite kudasai.','এই বইয়ের ১ ও ২ নম্বর অধ্যায় পড়ো।'],
+   ['A','ノートを かして ください。','Nooto o kashite kudasai.','নোটবুকটি ধার দাও।'],
+   ['B','いいですよ。どうぞ。','Ii desu yo. Douzo.','অবশ্যই। নাও।'],
+   ['A','ありがとうございます。あとで かえします。','Arigatou gozaimasu. Ato de kaeshimasu.','ধন্যবাদ। পরে ফেরত দেব।'],
+   ['B','はい。がんばってください。','Hai. Ganbatte kudasai.','ঠিক আছে। চেষ্টা করো।']
+  ]},
+  {topic:'Clinic · 病院',context:'ক্লিনিকে শরীর খারাপের কথা বলা ও সময় জিজ্ঞেস',lines:[
+   ['A','きょうは どうしましたか。','Kyou wa dou shimashita ka.','আজ কী সমস্যা হয়েছে?'],
+   ['B','あたまが いたいです。','Atama ga itai desu.','আমার মাথা ব্যথা করছে।'],
+   ['A','いつから いたいですか。','Itsu kara itai desu ka.','কখন থেকে ব্যথা?'],
+   ['B','きのうの よるからです。','Kinou no yoru kara desu.','গত রাত থেকে।'],
+   ['A','きょうは はやく かえって、よく やすんでください。','Kyou wa hayaku kaette, yoku yasunde kudasai.','আজ তাড়াতাড়ি বাড়ি ফিরে ভালোভাবে বিশ্রাম নিন।'],
+   ['B','くすりを のみますか。','Kusuri o nomimasu ka.','ওষুধ খাব?'],
+   ['A','はい。この くすりを あさと ばんに のんでください。','Hai. Kono kusuri o asa to ban ni nonde kudasai.','হ্যাঁ। এই ওষুধ সকাল ও রাতে খাবেন।'],
+   ['B','わかりました。ありがとうございます。','Wakarimashita. Arigatou gozaimasu.','বুঝেছি। ধন্যবাদ।']
+  ]},
+  {topic:'Weekend Plan · 週末',context:'বন্ধুর সঙ্গে ছুটির দিনের পরিকল্পনা ও সময় ঠিক করা',lines:[
+   ['A','どようびに なにを しますか。','Doyoubi ni nani o shimasu ka.','শনিবার কী করবে?'],
+   ['B','まだ なにも しません。','Mada nani mo shimasen.','এখনো কিছু করার কথা নেই।'],
+   ['A','いっしょに こうえんへ いきませんか。','Issho ni kouen e ikimasen ka.','একসঙ্গে পার্কে যাবে?'],
+   ['B','いいですね。なんじに あいますか。','Ii desu ne. Nanji ni aimasu ka.','ভালো হবে। কয়টায় দেখা করব?'],
+   ['A','あさ １０じに えきで あいましょう。','Asa juu-ji ni eki de aimashou.','সকাল ১০টায় স্টেশনে দেখা করি।'],
+   ['B','こうえんまで どうやって いきますか。','Kouen made douyatte ikimasu ka.','পার্কে কীভাবে যাব?'],
+   ['A','バスで いきます。','Basu de ikimasu.','বাসে যাব।'],
+   ['B','わかりました。たのしみです。','Wakarimashita. Tanoshimi desu.','বুঝেছি। অপেক্ষায় আছি।']
+  ]},
+  {topic:'Clothing Shop · 服',context:'দোকানে জামার রং, সাইজ ও দাম জানতে চাওয়া',lines:[
+   ['A','この シャツを みせてください。','Kono shatsu o misete kudasai.','এই শার্টটি দেখান।'],
+   ['B','はい。こちらです。','Hai. Kochira desu.','জি। এই যে।'],
+   ['A','ほかの いろも ありますか。','Hoka no iro mo arimasu ka.','অন্য রংও আছে?'],
+   ['B','あおと しろが あります。','Ao to shiro ga arimasu.','নীল ও সাদা আছে।'],
+   ['A','あおい シャツは いくらですか。','Aoi shatsu wa ikura desu ka.','নীল শার্টটির দাম কত?'],
+   ['B','３０００えんです。','Sanzen en desu.','৩০০০ ইয়েন।'],
+   ['A','ちょっと たかいですね。','Chotto takai desu ne.','একটু দামি, তাই না?'],
+   ['B','こちらは ２０００えんですよ。','Kochira wa nisen en desu yo.','এটির দাম ২০০০ ইয়েন।']
+  ]},
+  {topic:'Post Office · 郵便局',context:'চিঠি বা ছোট পার্সেল পাঠানো ও ঠিকানা জিজ্ঞেস',lines:[
+   ['A','この にもつを おくりたいです。','Kono nimotsu o okuritai desu.','এই পার্সেলটি পাঠাতে চাই।'],
+   ['B','どこへ おくりますか。','Doko e okurimasu ka.','কোথায় পাঠাবেন?'],
+   ['A','おおさかの ともだちの うちです。','Oosaka no tomodachi no uchi desu.','ওসাকায় বন্ধুর বাড়িতে।'],
+   ['B','なまえと じゅうしょを かいてください。','Namae to juusho o kaite kudasai.','নাম ও ঠিকানা লিখুন।'],
+   ['A','ここに なまえと じゅうしょを かきますか。','Koko ni namae to juusho o kakimasu ka.','এখানে নাম ও ঠিকানা লিখব?'],
+   ['B','はい。ここに かいてください。','Hai. Koko ni kaite kudasai.','জি, এখানে লিখুন।'],
+   ['A','なんにちぐらい かかりますか。','Nannichi gurai kakarimasu ka.','প্রায় কত দিন লাগবে?'],
+   ['B','３にちぐらいです。','Mikka gurai desu.','প্রায় তিন দিন।']
+  ]},
+  {topic:'Library · 図書館',context:'লাইব্রেরিতে বই খোঁজা ও ধার নেওয়ার সময়সীমা',lines:[
+   ['A','すみません、にほんごの ほんは どこですか。','Sumimasen, nihongo no hon wa doko desu ka.','মাফ করবেন, জাপানি ভাষার বই কোথায়?'],
+   ['B','２かいの みぎに あります。','Nikai no migi ni arimasu.','দ্বিতীয় তলার ডান দিকে।'],
+   ['A','この ほんを かりたいです。','Kono hon o karitai desu.','এই বইটি ধার নিতে চাই।'],
+   ['B','カードを みせてください。','Kaado o misete kudasai.','কার্ডটি দেখান।'],
+   ['A','なんにち かりることが できますか。','Nannichi kariru koto ga dekimasu ka.','কত দিনের জন্য ধার নিতে পারি?'],
+   ['B','２しゅうかんです。','Nishuukan desu.','দুই সপ্তাহ।'],
+   ['A','２さつ かりても いいですか。','Nisatsu karite mo ii desu ka.','দুটি বই ধার নিতে পারি?'],
+   ['B','はい、だいじょうぶです。','Hai, daijoubu desu.','হ্যাঁ, সমস্যা নেই।']
+  ]},
+  {topic:'Weather · 天気',context:'আবহাওয়ার কথা বলে কোথাও যাওয়ার পরিকল্পনা বদলানো',lines:[
+   ['A','きょうは あめが ふっていますね。','Kyou wa ame ga futte imasu ne.','আজ বৃষ্টি হচ্ছে, তাই না?'],
+   ['B','そうですね。かぜも つよいです。','Sou desu ne. Kaze mo tsuyoi desu.','হ্যাঁ। বাতাসও জোরে।'],
+   ['A','きょう、こうえんへ いきますか。','Kyou, kouen e ikimasu ka.','আজ কি পার্কে যাব?'],
+   ['B','いいえ、あめですから、えいがを みませんか。','Iie, ame desu kara, eiga o mimasen ka.','না, বৃষ্টি হচ্ছে, তাই সিনেমা দেখবে?'],
+   ['A','いいですね。なんじの えいがですか。','Ii desu ne. Nanji no eiga desu ka.','ভালো। কয়টার সিনেমা?'],
+   ['B','ごご ３じからです。','Gogo san-ji kara desu.','বিকেল ৩টা থেকে।'],
+   ['A','じゃ、２じはんに あいましょう。','Ja, ni-ji han ni aimashou.','তাহলে আড়াইটায় দেখা করি।'],
+   ['B','はい。えきの まえで あいましょう。','Hai. Eki no mae de aimashou.','ঠিক আছে। স্টেশনের সামনে দেখা করি।']
+  ]},
+  {topic:'Part-time Work · アルバイト',context:'কাজের সময়সূচি ও কোন দিন কাজ করা যাবে তা বলা',lines:[
+   ['A','らいしゅうの しごとは いつですか。','Raishuu no shigoto wa itsu desu ka.','আগামী সপ্তাহে কাজ কবে?'],
+   ['B','げつようびと すいようびです。','Getsuyoubi to suiyoubi desu.','সোমবার ও বুধবার।'],
+   ['A','なんじから なんじまでですか。','Nanji kara nanji made desu ka.','কয়টা থেকে কয়টা পর্যন্ত?'],
+   ['B','ごご ５じから ９じまでです。','Gogo go-ji kara ku-ji made desu.','বিকেল ৫টা থেকে রাত ৯টা পর্যন্ত।'],
+   ['A','すみません、すいようびは がっこうが あります。','Sumimasen, suiyoubi wa gakkou ga arimasu.','দুঃখিত, বুধবার আমার ক্লাস আছে।'],
+   ['B','じゃ、かようびは どうですか。','Ja, kayoubi wa dou desu ka.','তাহলে মঙ্গলবার কেমন?'],
+   ['A','かようびは だいじょうぶです。','Kayoubi wa daijoubu desu.','মঙ্গলবার আমার হবে।'],
+   ['B','わかりました。ありがとうございます。','Wakarimashita. Arigatou gozaimasu.','বুঝেছি। ধন্যবাদ।']
+  ]},
+  {topic:'Phone Call · 電話',context:'ফোনে কারও সঙ্গে কথা বলা এবং পরে দেখা করার সময় ঠিক করা',lines:[
+   ['A','もしもし、たなかさんは いますか。','Moshi moshi, Tanaka-san wa imasu ka.','হ্যালো, তানাকা-সান আছেন?'],
+   ['B','はい、わたしです。','Hai, watashi desu.','জি, আমি বলছি।'],
+   ['A','あした いっしょに ひるごはんを たべませんか。','Ashita issho ni hirugohan o tabemasen ka.','আগামীকাল একসঙ্গে দুপুরের খাবার খাবেন?'],
+   ['B','いいですね。なんじに しますか。','Ii desu ne. Nanji ni shimasu ka.','ভালো হবে। কয়টায় ঠিক করব?'],
+   ['A','１２じに えきで あいましょう。','Juu-ni ji ni eki de aimashou.','১২টায় স্টেশনে দেখা করি।'],
+   ['B','すみません、１２じは ちょっと…。','Sumimasen, juu-ni ji wa chotto...','দুঃখিত, ১২টা একটু অসুবিধা…'],
+   ['A','では、１じは どうですか。','Dewa, ichi-ji wa dou desu ka.','তাহলে ১টা কেমন?'],
+   ['B','はい、１じなら だいじょうぶです。','Hai, ichi-ji nara daijoubu desu.','জি, ১টা হলে পারব।']
+  ]}
+ ];
+ let currentTopic=null,lastTopicIndex=-1,kaiwaLineIndex=0,kaiwaRole='A',kaiwaRec=null,kaiwaSession=false,kaiwaFinalHandled=false;
+ const commonJapaneseReadings=[['有り難うございます','ありがとうございます'],['有難うございます','ありがとうございます'],['有り難う','ありがとう'],['有難う','ありがとう'],['東京','とうきょう'],['大阪','おおさか'],['図書館','としょかん'],['郵便局','ゆうびんきょく'],['土曜日','どようび'],['日曜日','にちようび'],['月曜日','げつようび'],['水曜日','すいようび'],['火曜日','かようび'],['週末','しゅうまつ'],['日本語','にほんご'],['友達','ともだち'],['家族','かぞく'],['学校','がっこう'],['教室','きょうしつ'],['先生','せんせい'],['電車','でんしゃ'],['切符','きっぷ'],['駅','えき'],['何時','なんじ'],['何日','なんにち'],['今日','きょう'],['明日','あした'],['昨日','きのう'],['午後','ごご'],['午前','ごぜん'],['仕事','しごと'],['名前','なまえ'],['住所','じゅうしょ'],['荷物','にもつ'],['全部','ぜんぶ'],['野菜','やさい'],['卵','たまご'],['隣','となり'],['何か','なにか'],['本','ほん'],['頭','あたま'],['痛い','いたい'],['薬','くすり'],['飲み','のみ'],['飲ん','のん'],['帰り','かえり'],['帰って','かえって'],['帰る','かえる'],['公園','こうえん'],['映画','えいが'],['天気','てんき'],['雨','あめ'],['風','かぜ'],['色','いろ'],['青','あお'],['白','しろ'],['赤','あか'],['黒','くろ'],['高い','たかい'],['安い','やすい'],['名前','なまえ'],['会計','かいけい'],['買い','かい'],['買う','かう'],['買って','かって'],['書いて','かいて'],['書く','かく'],['見せて','みせて'],['見ます','みます'],['借り','かり'],['借りる','かりる'],['週','しゅう'],['時','じ'],['分','ふん'],['円','えん']];
+ const normJapanese=t=>{let x=String(t||'').normalize('NFKC').toLowerCase();for(const [kanji,kana] of commonJapaneseReadings)x=x.split(kanji).join(kana);return x.replace(/[\u30a1-\u30f6]/g,c=>String.fromCharCode(c.charCodeAt(0)-0x60)).replace(/[\s\u3000、。，．！？!?・「」『』（）()…ー]/g,'');};
+ function editDistanceScore(a,b){if(!a||!b)return 0;const dp=Array.from({length:a.length+1},()=>Array(b.length+1).fill(0));for(let i=0;i<=a.length;i++)dp[i][0]=i;for(let j=0;j<=b.length;j++)dp[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return Math.max(0,Math.round((1-dp[a.length][b.length]/Math.max(a.length,b.length))*100));}
+ function kaiwaSpeak(text,done){if(!('speechSynthesis'in window)){done?.();return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(text));u.lang='ja-JP';u.rate=.88;u.pitch=1;const vs=speechSynthesis.getVoices();u.voice=vs.find(v=>/^ja(-|_)/i.test(v.lang))||null;u.onend=()=>done?.();u.onerror=()=>done?.();speechSynthesis.speak(u);}
+ function stopKaiwaRecognition(){if(kaiwaRec){const r=kaiwaRec;kaiwaRec=null;try{r.onresult=null;r.onerror=null;r.onend=null;r.stop();}catch(_){}}}
+ function renderKaiwaLines(){const root=$id('kaiwa-pro-lines');if(!root||!currentTopic)return;root.innerHTML=currentTopic.lines.map((l,i)=>`<article class="kaiwa-pro-line ${i===kaiwaLineIndex&&kaiwaSession?'active':''} ${l[0]===kaiwaRole?'user-role':'partner-role'}" data-kline="${i}"><span class="kaiwa-line-speaker">${l[0]==='A'?'A':'B'} · ${l[0]===kaiwaRole?'YOU':'PARTNER'}</span><div class="kaiwa-line-jp">${safe(l[1])}</div><div class="kaiwa-line-romaji">${safe(l[2])}</div><div class="kaiwa-line-bn">${safe(l[3])}</div></article>`).join('');}
+ function showKaiwaTarget(){
+  if(!currentTopic||!kaiwaSession)return;
+  if(kaiwaLineIndex>=currentTopic.lines.length){finishKaiwa();return;}
+  const line=currentTopic.lines[kaiwaLineIndex];
+  if(line[0]!==kaiwaRole){
+   $id('kaiwa-pro-active').hidden=true;
+   const root=$id('kaiwa-pro-lines');const card=root?.querySelector(`[data-kline="${kaiwaLineIndex}"]`);card?.classList.add('speaking');
+   $id('kaiwa-pro-context').textContent=`Partner ${line[0]} বলছে… মনোযোগ দিয়ে শোনো।`;
+   kaiwaSpeak(line[1],()=>{if(!kaiwaSession)return;kaiwaLineIndex++;renderKaiwaLines();showKaiwaTarget();});
+   return;
+  }
+  $id('kaiwa-pro-active').hidden=false;
+  $id('kaiwa-pro-turn-label').textContent=`YOUR TURN · CHARACTER ${kaiwaRole}`;
+  $id('kaiwa-pro-progress').textContent=`${kaiwaLineIndex+1} / ${currentTopic.lines.length}`;
+  $id('kaiwa-pro-target').textContent=line[1];$id('kaiwa-pro-romaji').textContent=line[2];$id('kaiwa-pro-bn').textContent=line[3];
+  $id('kaiwa-pro-transcript').textContent='Live transcript এখানে দেখা যাবে।';
+  $id('kaiwa-pro-feedback').textContent='86% বা তার বেশি text match হলে পরের speaker চলবে।';
+  $id('kaiwa-pro-mic').textContent='🎙 Start Mic';$id('kaiwa-pro-manual').value='';
+  $id('kaiwa-pro-context').textContent=`তোমার পালা · ${kaiwaLineIndex+1} নম্বর line বলো। ভুল হলে একই line আবার চেষ্টা করতে পারবে।`;
+  renderKaiwaLines();
+ }
+ function acceptKaiwaLine(score,heard){
+  const line=currentTopic?.lines[kaiwaLineIndex];if(!line||line[0]!==kaiwaRole)return;
+  if(score<86){$id('kaiwa-pro-feedback').textContent=`✕ ${score}% match · target-এর সঙ্গে আরও মিলিয়ে আবার বলো। পরের speaker এখনো শুরু হবে না।`;$id('kaiwa-pro-feedback').className='kaiwa-pro-feedback retry';$id('kaiwa-pro-mic').textContent='🎙 Try Again';return;}
+  $id('kaiwa-pro-feedback').textContent=`✓ ${score}% match · line accepted. よくできました！`;$id('kaiwa-pro-feedback').className='kaiwa-pro-feedback accepted';
+  $id('kaiwa-pro-transcript').textContent=heard;
+  kaiwaLineIndex++;
+  setTimeout(()=>{if(kaiwaSession){renderKaiwaLines();showKaiwaTarget();}},550);
+ }
+ function processKaiwaText(heard){const line=currentTopic?.lines[kaiwaLineIndex];if(!line||line[0]!==kaiwaRole)return;const score=editDistanceScore(normJapanese(heard),normJapanese(line[1]));acceptKaiwaLine(score,heard);}
+ function startKaiwaMic(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){$id('kaiwa-manual-fallback').open=true;$id('kaiwa-pro-feedback').textContent='এই browser-এ live speech recognition নেই। নিচের text matching ব্যবহার করো অথবা Chrome/Edge-এ HTTPS/localhost দিয়ে খোলো।';return;}
+  stopKaiwaRecognition();kaiwaFinalHandled=false;
+  const rec=new SR();kaiwaRec=rec;rec.lang='ja-JP';rec.continuous=false;rec.interimResults=true;rec.maxAlternatives=3;
+  $id('kaiwa-pro-mic').textContent='■ Listening…';$id('kaiwa-pro-transcript').textContent='Listening…';$id('kaiwa-pro-feedback').textContent='তোমার Japanese line বলা শুরু করো।';
+  rec.onresult=e=>{
+   if(!kaiwaSession)return;let interim='',final='';
+   for(let i=e.resultIndex;i<e.results.length;i++){const result=e.results[i];const transcript=result[0]?.transcript||'';if(result.isFinal){const target=currentTopic?.lines[kaiwaLineIndex]?.[1]||'';const alternatives=Array.from({length:result.length},(_,n)=>result[n]?.transcript||'').filter(Boolean);const best=alternatives.sort((a,b)=>editDistanceScore(normJapanese(b),normJapanese(target))-editDistanceScore(normJapanese(a),normJapanese(target)))[0]||transcript;final+=best;}else interim+=transcript;}
+   const heard=final||interim;if(heard)$id('kaiwa-pro-transcript').textContent=heard;
+   if(final.trim()&&!kaiwaFinalHandled){kaiwaFinalHandled=true;const score=editDistanceScore(normJapanese(final),normJapanese(currentTopic.lines[kaiwaLineIndex][1]));$id('kaiwa-pro-feedback').textContent=`Analyzed · ${score}% text match`;stopKaiwaRecognition();processKaiwaText(final);}
+  };
+  rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed')$id('kaiwa-pro-feedback').textContent='Microphone permission দেওয়া হয়নি। Browser settings থেকে permission চালু করো।';else if(e.error==='audio-capture')$id('kaiwa-pro-feedback').textContent='Microphone পাওয়া যাচ্ছে না। Device microphone পরীক্ষা করো।';else if(e.error!=='no-speech'&&e.error!=='aborted')$id('kaiwa-pro-feedback').textContent='Voice recognition error. আবার চেষ্টা করো।';$id('kaiwa-pro-mic').textContent='🎙 Try Again';};
+  rec.onend=()=>{if(kaiwaRec===rec)kaiwaRec=null;if(!kaiwaFinalHandled&&kaiwaSession){$id('kaiwa-pro-mic').textContent='🎙 Try Again';if(!$id('kaiwa-pro-transcript').textContent||$id('kaiwa-pro-transcript').textContent==='Listening…')$id('kaiwa-pro-feedback').textContent='কথা ধরা যায়নি। আবার বলো।';}};
+  try{rec.start();}catch(_){kaiwaRec=null;$id('kaiwa-pro-feedback').textContent='Microphone শুরু করা যায়নি। আবার চেষ্টা করো।';}
+ }
+ function finishKaiwa(){kaiwaSession=false;stopKaiwaRecognition();if('speechSynthesis'in window)speechSynthesis.cancel();$id('kaiwa-pro-active').hidden=true;$id('kaiwa-pro-context').textContent='সম্পূর্ণ dialogue শেষ! よくできました！';$id('kaiwa-pro-lines').querySelectorAll('.kaiwa-pro-line').forEach(x=>x.classList.add('completed'));$id('kaiwa-pro-feedback').textContent='সবগুলো speaker turn সম্পন্ন হয়েছে। অন্য topic বেছে আবার practice করো।';$id('kaiwa-pro-start').textContent='↻ আবার শুরু';}
+ function chooseKaiwaTopic(){stopKaiwaRecognition();if('speechSynthesis'in window)speechSynthesis.cancel();let next=Math.floor(Math.random()*kaiwaTopics.length);if(kaiwaTopics.length>1&&next===lastTopicIndex)next=(next+1+Math.floor(Math.random()*(kaiwaTopics.length-1)))%kaiwaTopics.length;lastTopicIndex=next;currentTopic=kaiwaTopics[next];kaiwaSession=false;kaiwaLineIndex=0;$id('kaiwa-pro-topic').textContent=currentTopic.topic;$id('kaiwa-pro-context').textContent=currentTopic.context;$id('kaiwa-pro-active').hidden=true;$id('kaiwa-pro-start').textContent='▶ Start Role-play';renderKaiwaLines();}
+ function startKaiwaSession(){if(!currentTopic)chooseKaiwaTopic();stopKaiwaRecognition();if('speechSynthesis'in window)speechSynthesis.cancel();kaiwaRole=$id('kaiwa-pro-role').value;kaiwaLineIndex=0;kaiwaSession=true;$id('kaiwa-pro-start').textContent='↻ Restart';renderKaiwaLines();showKaiwaTarget();}
+ $id('kaiwa-pro-random')?.addEventListener('click',chooseKaiwaTopic);
+ $id('kaiwa-pro-start')?.addEventListener('click',startKaiwaSession);
+ $id('kaiwa-pro-mic')?.addEventListener('click',startKaiwaMic);
+ $id('kaiwa-pro-replay')?.addEventListener('click',()=>{const line=currentTopic?.lines[kaiwaLineIndex];if(line)kaiwaSpeak(line[1]);});
+ $id('kaiwa-pro-stop')?.addEventListener('click',()=>{kaiwaSession=false;stopKaiwaRecognition();if('speechSynthesis'in window)speechSynthesis.cancel();$id('kaiwa-pro-active').hidden=true;$id('kaiwa-pro-context').textContent='Practice থামানো হয়েছে। আবার শুরু করতে Start চাপো।';});
+ $id('kaiwa-pro-manual-check')?.addEventListener('click',()=>{const value=$id('kaiwa-pro-manual').value.trim();if(!value){$id('kaiwa-pro-feedback').textContent='আগে Japanese text লেখো।';return;}processKaiwaText(value);});
+ // Start with a distinct topic; the random action remains beside the section heading.
+ chooseKaiwaTopic();
+ // Hide redundant older controls only; original datasets/scripts remain available for legacy content.
+ document.querySelectorAll('#kaiwa-studio-screen > .kaiwa-shell > .kaiwa-controls,#kaiwa-studio-screen #kaiwa-content,#kaiwa-studio-screen .kaiwa-actions,#kaiwa-studio-screen .kaiwa-practice,#kaiwa-studio-screen .kaiwa-footnote').forEach(el=>el.hidden=true);
+})();
+</script>
 
 </body>
 </html>
